@@ -1,0 +1,45 @@
+# Docker Compose for my-app
+# Full-stack container orchestration
+
+name: my-app
+
+services:
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    container_name: my-app-web
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - my-app-network
+
+  db:
+    image: postgres:16-alpine
+    container_name: my-app-postgres
+    environment:
+      POSTGRES_DB: my-app
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - my-app_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - my-app-network
+
+networks:
+  my-app-network:
+    driver: bridge
+
+volumes:
+  my-app_postgres_data:

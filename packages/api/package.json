@@ -1,0 +1,36 @@
+{
+  "name": "@my-app/api",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@effect/schema": "catalog:",
+    "@my-app/auth": "workspace:*",
+    "@my-app/db": "workspace:*",
+    "@my-app/env": "workspace:*",
+    "@trpc/client": "catalog:",
+    "@trpc/server": "catalog:",
+    "dotenv": "catalog:",
+    "effect": "catalog:",
+    "next": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@effect/vitest": "catalog:",
+    "@my-app/config": "workspace:*",
+    "@playwright/test": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "@vitest/ui": "catalog:",
+    "jsdom": "catalog:",
+    "playwright": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:"
+  }
+}
