@@ -3,7 +3,6 @@
 import { ArrowLeft, ArrowUp, Moon, Share2, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { use, useEffect, useState } from "react";
-import AdBanner from "@/components/ad-banner";
 import {
   calculateTax,
   detectFuel,
@@ -283,8 +282,6 @@ export default function ComparePage({
               />
             </div>
           )}
-        <AdBanner slot="compare-page" />
-
         <div className="mb-8 grid gap-6 md:grid-cols-2">
           <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
             <div className="mb-4">
