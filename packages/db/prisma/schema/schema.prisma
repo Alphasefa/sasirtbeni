@@ -7,3 +7,59 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model VehicleBrand {
+  id        String   @id @default(cuid())
+  name      String
+  country   String
+  logo      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  models    VehicleModel[]
+
+  @@unique([name])
+  @@map("vehicle_brand")
+}
+
+model VehicleModel {
+  id        String   @id @default(cuid())
+  brandId   String
+  name      String
+  startYear Int
+  endYear   Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  brand     VehicleBrand @relation(fields: [brandId], references: [id], onDelete: Cascade)
+  versions  VehicleVersion[]
+
+  @@unique([brandId, name])
+  @@map("vehicle_model")
+}
+
+model VehicleVersion {
+  id           String   @id @default(cuid())
+  modelId      String
+  name         String
+  engine       String
+  horsepower   Int
+  transmission String
+  fuel         String
+  price        Float
+  currency     String
+  country      String
+  source       String
+  updatedAt    DateTime @updatedAt
+  model        VehicleModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+
+  @@map("vehicle_version")
+}
+
+model ExchangeRate {
+  id        String   @id @default(cuid())
+  currency  String
+  rate      Float
+  fetchedAt DateTime @default(now())
+
+  @@unique([currency])
+  @@map("exchange_rate")
+}

@@ -1,0 +1,3634 @@
+{
+  "dealers": [
+    {
+      "id": "audi-aykan-kayseri",
+      "name": "Aykan Oto Kayseri",
+      "brand": "audi",
+      "city": "Kayseri",
+      "address": "Osman Kavuncu Cad. No.206 38060 Kayseri",
+      "phone": "+90 352 320 56 53",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:15 - 18:00 | Cmt: Kapalı | Pz: Kapalı"
+    },
+    {
+      "id": "audi-aykan-adana",
+      "name": "Aykan Oto",
+      "brand": "audi",
+      "city": "Adana",
+      "address": "Turhan Cemal Beriker Bulvarı No:418 Barkal 01190 Seyhan / ADANA",
+      "phone": "+90 322 421 55 76",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:15 - 18:00 | Cmt: 08:15 - 16:30 | Pz: 12:00 - 16:30"
+    },
+    {
+      "id": "audi-dogus-ankara",
+      "name": "Doğuş Oto Ankara",
+      "brand": "audi",
+      "city": "Ankara",
+      "address": "İşçi Blokları Mah. Mevlana Bulv. No:182/A Balgat 06520 Çankaya / ANKARA",
+      "phone": "+90 312 583 83 53",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:30 - 18:00 | Cmt: 09:00 - 17:00 | Pz: 11:00 - 17:00"
+    },
+    {
+      "id": "audi-miram-malatya",
+      "name": "Miram Otomotiv Malatya",
+      "brand": "audi",
+      "city": "Malatya",
+      "address": "Havaalanı Yolu 1.OSB Mah. 1. Cad. Yeşilyurt / MALATYA",
+      "phone": "+90 422 238 49 49",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:45 - 17:45 | Cmt: 08:45 - 17:00 | Pz: Kapalı"
+    },
+    {
+      "id": "audi-aldo-mersin",
+      "name": "Aldo Otomotiv",
+      "brand": "audi",
+      "city": "Mersin",
+      "address": "G.M.K. Blv. 75. Yıl Mah. No:899/B Davultepe Mezitli Mersin",
+      "phone": "+90 324 481 44 33",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:30 - 18:00 | Cmt: 08:30 - 16:00 | Pz: Kapalı"
+    },
+    {
+      "id": "audi-attarlar-konya",
+      "name": "Attarlar Otomotiv",
+      "brand": "audi",
+      "city": "Konya",
+      "address": "Ankara Yolu Üzeri Fevzi Çakmak Mah. No:186 42050 Karatay / KONYA",
+      "phone": "+90 332 342 64 64",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:30-17:30 | Cmt: 08:30-17:30 | Pz: Kapalı"
+    },
+    {
+      "id": "audi-acarsan-gaziantep",
+      "name": "Acarsan Otomotiv",
+      "brand": "audi",
+      "city": "Gaziantep",
+      "address": "Aydınlar Mah. Limak Çimento Kavşağı Durdu Yetkin Şekerci Bulv. No:7 Şehitkamil Gaziantep",
+      "phone": "+90 342 241 02 24",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:30 - 17:30 | Cmt: 08:30 - 13:30 | Pz: Kapalı"
+    },
+    {
+      "id": "audi-vimsa-sanliurfa",
+      "name": "Vimsa Otomotiv",
+      "brand": "audi",
+      "city": "Şanlıurfa",
+      "address": "Oğulbey Mah. Recep Tayyip Erdoğan Blv. No:392/1 63100 Merkez / ŞANLIURFA",
+      "phone": "+90 414 347 82 82",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:30 -18:00 | Cmt: 08:30- 16:00 | Pz: Kapalı"
+    },
+    {
+      "id": "audi-bahadir-trabzon",
+      "name": "Bahadır Otomotiv",
+      "brand": "audi",
+      "city": "Trabzon",
+      "address": "Devlet Karayolu Sahilyolu Cad. No:48 Yıldızlı Beldesi 61100 Merkez / TRABZON",
+      "phone": "+90 462 333 0333",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:30 - 18:30 | Cmt: Kapalı | Pz: Kapalı"
+    },
+    {
+      "id": "audi-asil-eskisehir",
+      "name": "Asil Motorlu Araçlar",
+      "brand": "audi",
+      "city": "Eskişehir",
+      "address": "Zincirlikuyu Mh Çevre Yolu Bulvarı No:642/B Tepebaşı / ESKİŞEHİR",
+      "phone": "+90 222 315 15 15",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:30 - 17:30 | Cmt: 09:00 - 17:30 | Pz: Kapalı"
+    },
+    {
+      "id": "audi-miram-diyarbakir",
+      "name": "Miram Otomotiv",
+      "brand": "audi",
+      "city": "Diyarbakır",
+      "address": "Elazığ Yolu Dicle Petrol Bitişiği Seyrantepe Yenişehir Diyarbakır",
+      "phone": "+90 412 262 26 00",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:45 - 17:45 | Cmt: 08:45 - 15:00 | Pz: Kapalı"
+    },
+    {
+      "id": "audi-otokur-sakarya",
+      "name": "Otokur",
+      "brand": "audi",
+      "city": "Sakarya",
+      "address": "Hanlıköy Mahallesi Eskişehir Caddesi No:99 Arifiye / SAKARYA",
+      "phone": "+90 264 276 77 14",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:30 - 18:00 | Cmt: 08:30 - 16:00 | Pz: Kapalı"
+    },
+    {
+      "id": "audi-basaran-antalya",
+      "name": "Başaran Otomotiv",
+      "brand": "audi",
+      "city": "Antalya",
+      "address": "Altınova Sinan Mah. Havaalanı Karşısı No:769 07300 Merkez / ANTALYA",
+      "phone": "+90 242 310 87 77",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:30 - 18:00 | Cmt: Kapalı | Pz: Kapalı"
+    },
+    {
+      "id": "audi-erz-erzurum",
+      "name": "Erz Otomotiv",
+      "brand": "audi",
+      "city": "Erzurum",
+      "address": "Ilıca Mahallesi E-80 Bulvarı No:90 Aziziye / ERZURUM",
+      "phone": "+90 442 631 31 31",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 09:00 - 18:00 | Cmt: 09:00 - 18:00 | Pz: Kapalı"
+    },
+    {
+      "id": "audi-arca-bursa",
+      "name": "Arca Otomotiv Bursa",
+      "brand": "audi",
+      "city": "Bursa",
+      "address": "Fatih Mah. Yeni Yalova Yolu Cad. N.327 Osmangazi / BURSA",
+      "phone": "+90 224 270 81 53",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:30 – 18:00 | Cmt: 09:00 – 17:00 | Pz: 11:00 – 17:00"
+    },
+    {
+      "id": "audi-dogus-kartal",
+      "name": "Doğuş Oto Kartal",
+      "brand": "audi",
+      "city": "İstanbul",
+      "address": "Hürriyet Mah. Yakacık D-100 E5 Kuzey Yanyol Cad. Site Giriş: 45 Kartal İstanbul",
+      "phone": "+90 216 453 15 53",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:00 - 17:30 | Cmt: 09:00 - 17:00 | Pz: 11:00 - 17:00"
+    },
+    {
+      "id": "audi-bati-denizli",
+      "name": "Batı Otomotiv",
+      "brand": "audi",
+      "city": "Denizli",
+      "address": "Eskihisar Mah. Atatürk Bulv. No:325 Merkezefendi / DENİZLİ",
+      "phone": "+90 258 268 33 35",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:30 - 18:30 | Cmt: Kapalı | Pz: Kapalı"
+    },
+    {
+      "id": "audi-ozon-istanbul",
+      "name": "Özön Otomotiv",
+      "brand": "audi",
+      "city": "İstanbul",
+      "address": "Şile Otoyolu Soğukpınar Mah. Adnan Kahveci Cad. No:1 Taşdelen 34788 Çekmeköy / İSTANBUL",
+      "phone": "+90 216 430 20 00",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:00 -18:00 | Cmt: 08:30 - 18:00 | Pz: 11:00 - 18:00"
+    },
+    {
+      "id": "audi-erel-istanbul",
+      "name": "Erel Otomotiv",
+      "brand": "audi",
+      "city": "İstanbul",
+      "address": "Altayçeşme Mah. Çamlı Sokak No: 28A Maltepe İstanbul",
+      "phone": "+90 216 305 75 76",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 09:00 - 18:00 | Cmt: 09:00 – 18:00 | Pz: 11:00 – 17:00"
+    },
+    {
+      "id": "audi-dogus-maslak",
+      "name": "Doğuş Oto Maslak",
+      "brand": "audi",
+      "city": "İstanbul",
+      "address": "Maslak Mah. Ahi Evran Cad. Doğuş Power Center Maslak No:4 Sarıyer / İSTANBUL",
+      "phone": "+90 212 366 51 51",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:00 - 17:30 | Cmt: 09:00 - 18:00 | Pz: Kapalı"
+    },
+    {
+      "id": "audi-avek-istanbul",
+      "name": "Avek Otomotiv",
+      "brand": "audi",
+      "city": "İstanbul",
+      "address": "Oruç Reis Mah. Giyimkent Cad. No: 2 Atışalanı-Esenler İstanbul",
+      "phone": "+90 212 440 25 50",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:00 - 18:00 | Cmt: 08:00 - 18:00 | Pz: 11:00 - 17:00"
+    },
+    {
+      "id": "audi-dogus-esenyurt",
+      "name": "Doğuş Oto Esenyurt",
+      "brand": "audi",
+      "city": "İstanbul",
+      "address": "Zafer Mahallesi Adile Naşit Bulvarı No:55 34513 Esenyurt İstanbul",
+      "phone": "+90 212 456 65 00",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:00 - 17:30 | Cmt: 09:00 - 18:00 | Pz: 11:00 - 17:00"
+    },
+    {
+      "id": "audi-lena-mugla",
+      "name": "Lena Otomotiv",
+      "brand": "audi",
+      "city": "Muğla",
+      "address": "Kemikler Köyü Güllük Güvercinlik Arası 2. Bulvar No: 5/1B Milas Muğla",
+      "phone": "444 54 19",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 09:00 - 18:30 | Cmt: Kapalı | Pz: Kapalı"
+    },
+    {
+      "id": "audi-vosmer-izmir",
+      "name": "Vosmer Otomotiv",
+      "brand": "audi",
+      "city": "İzmir",
+      "address": "Yunus Emre Mah. 7523 Sok. No:2 35060 Bornova İzmir",
+      "phone": "+90 232 463 50 75",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 09:00 – 18:00 | Cmt: 09:00 – 17:00 | Pz: 11:00 – 17:00"
+    },
+    {
+      "id": "audi-eroz-izmir",
+      "name": "Eröz Otomotiv",
+      "brand": "audi",
+      "city": "İzmir",
+      "address": "Şehitler Cad. No:159 Alsancak İzmir",
+      "phone": "+90 232 466 00 46",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:30 - 18:00 | Cmt: 08:30 - 18:00 | Pz: 11:00 - 17:00"
+    },
+    {
+      "id": "audi-avek-karsiyaka",
+      "name": "Avek Karşıyaka",
+      "brand": "audi",
+      "city": "İzmir",
+      "address": "AOSB Mah. 10049 Sk. No:11 İç Kapı No:1 Çiğli 35620 Karşıyaka / İZMİR",
+      "phone": "+90 232 440 25 25",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:00 - 18:00 | Cmt: 08:00 - 18:00 | Pz: 11:00 - 17:00"
+    },
+    {
+      "id": "audi-avek-canakkale",
+      "name": "Avek Çanakkale",
+      "brand": "audi",
+      "city": "Çanakkale",
+      "address": "Karacaören Köyü Testi çıkırı Mevkii 2. Sok No:2 17100 Merkez Çanakkale",
+      "phone": "+90 286 440 25 25",
+      "website": "https://audi.com.tr",
+      "hours": "H.içi: 08:00 - 18:00 | Cmt: Kapalı | Pz: Kapalı"
+    },
+    {
+      "id": "skoda-acik-kapi",
+      "name": "Açıkkapı Otomotiv",
+      "brand": "skoda",
+      "city": "Elazığ",
+      "address": "Elazığ",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-ahlatci",
+      "name": "Ahlatcı Otomotiv",
+      "brand": "skoda",
+      "city": "Çorum",
+      "address": "Çorum",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-algurlar",
+      "name": "Algurlar Otomotiv",
+      "brand": "skoda",
+      "city": "Edirne",
+      "address": "Edirne",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-altur",
+      "name": "Altur Otomotiv",
+      "brand": "skoda",
+      "city": "İstanbul",
+      "address": "İstanbul",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-and",
+      "name": "And Otomotiv",
+      "brand": "skoda",
+      "city": "Ankara",
+      "address": "Ankara",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-arca-etimesgut",
+      "name": "Arca Etimesgut",
+      "brand": "skoda",
+      "city": "Ankara",
+      "address": "Etimesgut / Ankara",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-arden",
+      "name": "Arden Otomotiv",
+      "brand": "skoda",
+      "city": "Van",
+      "address": "Van",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-arm",
+      "name": "Arm Otomotiv",
+      "brand": "skoda",
+      "city": "Diyarbakır",
+      "address": "Diyarbakır",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-asal",
+      "name": "Asal Otomotiv",
+      "brand": "skoda",
+      "city": "Samsun",
+      "address": "Samsun",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-avek-karsiyaka",
+      "name": "Avek Karşıyaka",
+      "brand": "skoda",
+      "city": "İzmir",
+      "address": "Karşıyaka / İzmir",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-avek-canakkale",
+      "name": "Avek Otomotiv",
+      "brand": "skoda",
+      "city": "Çanakkale",
+      "address": "Çanakkale",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-avek-istanbul",
+      "name": "Avek Otomotiv",
+      "brand": "skoda",
+      "city": "İstanbul",
+      "address": "İstanbul",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-aydoganlar-ankara",
+      "name": "Aydoğanlar Otomotiv",
+      "brand": "skoda",
+      "city": "Ankara",
+      "address": "Ankara",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-aykan-osmaniye",
+      "name": "Aykan - Y. Servis",
+      "brand": "skoda",
+      "city": "Osmaniye",
+      "address": "Osmaniye",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-aykan-adana",
+      "name": "Aykan Otomotiv",
+      "brand": "skoda",
+      "city": "Adana",
+      "address": "Adana",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-aykan-gebze",
+      "name": "Aykan Otomotiv Gebze",
+      "brand": "skoda",
+      "city": "Kocaeli",
+      "address": "Gebze / Kocaeli",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-aykan-kagithane",
+      "name": "Aykan Otomotiv Kağıthane",
+      "brand": "skoda",
+      "city": "İstanbul",
+      "address": "Kağıthane / İstanbul",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-aykan-kartal",
+      "name": "Aykan Otomotiv Kartal",
+      "brand": "skoda",
+      "city": "İstanbul",
+      "address": "Kartal / İstanbul",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-banaz",
+      "name": "Banaz Otomotiv",
+      "brand": "skoda",
+      "city": "Eskişehir",
+      "address": "Eskişehir",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-beser-duzce",
+      "name": "Beşer Otomotiv",
+      "brand": "skoda",
+      "city": "Düzce",
+      "address": "Düzce",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-beser-mardin",
+      "name": "Beşer Otomotiv",
+      "brand": "skoda",
+      "city": "Mardin",
+      "address": "Mardin",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-ckr",
+      "name": "C.k.r Otomotiv",
+      "brand": "skoda",
+      "city": "Trabzon",
+      "address": "Trabzon",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-cag",
+      "name": "Çağ Otomotiv",
+      "brand": "skoda",
+      "city": "Antalya",
+      "address": "Antalya",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-cakiroglu",
+      "name": "Çakıroğlu Otomotiv",
+      "brand": "skoda",
+      "city": "İstanbul",
+      "address": "İstanbul",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-demoto-manisa",
+      "name": "Demoto",
+      "brand": "skoda",
+      "city": "Manisa",
+      "address": "Manisa",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-demoto-afyon",
+      "name": "Demoto Otomotiv",
+      "brand": "skoda",
+      "city": "Afyonkarahisar",
+      "address": "Afyonkarahisar",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-dogus-esenyurt",
+      "name": "Doğuş Oto Esenyurt",
+      "brand": "skoda",
+      "city": "İstanbul",
+      "address": "Esenyurt / İstanbul",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-dogus-maslak",
+      "name": "Doğuş Oto Maslak",
+      "brand": "skoda",
+      "city": "İstanbul",
+      "address": "Maslak / İstanbul",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-dosman",
+      "name": "Döşman Otomotiv",
+      "brand": "skoda",
+      "city": "Gaziantep",
+      "address": "Gaziantep",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-efe",
+      "name": "Efe Otomotiv",
+      "brand": "skoda",
+      "city": "Ankara",
+      "address": "Ankara",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-egecan",
+      "name": "Egecan Otomotiv",
+      "brand": "skoda",
+      "city": "Iğdır",
+      "address": "Iğdır",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-elis",
+      "name": "Elis Otomotiv",
+      "brand": "skoda",
+      "city": "Kahramanmaraş",
+      "address": "Kahramanmaraş",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-erel",
+      "name": "Erel Otomotiv",
+      "brand": "skoda",
+      "city": "İstanbul",
+      "address": "İstanbul",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-erya",
+      "name": "Erya Otomotiv",
+      "brand": "skoda",
+      "city": "İstanbul",
+      "address": "İstanbul",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-erya-servis",
+      "name": "Erya Otomotiv - Y. Servis",
+      "brand": "skoda",
+      "city": "İstanbul",
+      "address": "İstanbul",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-erz",
+      "name": "ERZ Otomotiv",
+      "brand": "skoda",
+      "city": "Erzurum",
+      "address": "Erzurum",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-gumus",
+      "name": "Gümüş Otomotiv",
+      "brand": "skoda",
+      "city": "Hatay",
+      "address": "Hatay",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-guney",
+      "name": "Güney Otomotiv",
+      "brand": "skoda",
+      "city": "Batman",
+      "address": "Batman",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-hasan-kavi",
+      "name": "Hasan Kavi Otomotiv",
+      "brand": "skoda",
+      "city": "Mersin",
+      "address": "Mersin",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-incar",
+      "name": "İncar Otomotiv",
+      "brand": "skoda",
+      "city": "Kayseri",
+      "address": "Kayseri",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-kayadibi",
+      "name": "Kayadibi Otomotiv",
+      "brand": "skoda",
+      "city": "İstanbul",
+      "address": "İstanbul",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-kelesler",
+      "name": "Keleşler Otomotiv",
+      "brand": "skoda",
+      "city": "Kocaeli",
+      "address": "Kocaeli",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-konmar",
+      "name": "Konmar Otomotiv",
+      "brand": "skoda",
+      "city": "Konya",
+      "address": "Konya",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-lena-aydin",
+      "name": "Lena Otomotiv",
+      "brand": "skoda",
+      "city": "Aydın",
+      "address": "Aydın",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-lena-mugla",
+      "name": "Lena Otomotiv",
+      "brand": "skoda",
+      "city": "Muğla",
+      "address": "Muğla",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-miram-malatya",
+      "name": "Miram Otomotiv",
+      "brand": "skoda",
+      "city": "Malatya",
+      "address": "Malatya",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-neskar",
+      "name": "Neskar Otomotiv",
+      "brand": "skoda",
+      "city": "Bursa",
+      "address": "Bursa",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-neva",
+      "name": "Neva Otomotiv",
+      "brand": "skoda",
+      "city": "Ordu",
+      "address": "Ordu",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-otokur",
+      "name": "Otokur Otomotiv",
+      "brand": "skoda",
+      "city": "Sakarya",
+      "address": "Sakarya",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-otokur-servis",
+      "name": "Otokur Otomotiv - Y. Servis",
+      "brand": "skoda",
+      "city": "Sakarya",
+      "address": "Sakarya",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-otomol",
+      "name": "Otomol Kepez",
+      "brand": "skoda",
+      "city": "Antalya",
+      "address": "Kepez / Antalya",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-ozaydin",
+      "name": "Özaydın Otomotiv",
+      "brand": "skoda",
+      "city": "İstanbul",
+      "address": "İstanbul",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-ramazan-acemoglu",
+      "name": "Ramazan Acemoğlu Otomotiv",
+      "brand": "skoda",
+      "city": "Şanlıurfa",
+      "address": "Şanlıurfa",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-sertepe",
+      "name": "Sertepe Otomotiv",
+      "brand": "skoda",
+      "city": "Bursa",
+      "address": "Bursa",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-sina-auto",
+      "name": "Sina Auto",
+      "brand": "skoda",
+      "city": "Bitlis",
+      "address": "Bitlis",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-turkuaz",
+      "name": "Turkuaz Otomotiv",
+      "brand": "skoda",
+      "city": "Denizli",
+      "address": "Denizli",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-vimsa-antalya",
+      "name": "Vimsa Otomotiv",
+      "brand": "skoda",
+      "city": "Antalya",
+      "address": "Antalya",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-vimsa-gaziantep",
+      "name": "Vimsa Otomotiv",
+      "brand": "skoda",
+      "city": "Gaziantep",
+      "address": "Gaziantep",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-vosmer-alsancak",
+      "name": "Vosmer Otomotiv Alsancak",
+      "brand": "skoda",
+      "city": "İzmir",
+      "address": "Alsancak / İzmir",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-vosmer-bornova",
+      "name": "Vosmer Otomotiv Bornova",
+      "brand": "skoda",
+      "city": "İzmir",
+      "address": "Bornova / İzmir",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-vosmer-gaziemir",
+      "name": "Vosmer Otomotiv Gaziemir City Store",
+      "brand": "skoda",
+      "city": "İzmir",
+      "address": "Gaziemir / İzmir",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-yagci",
+      "name": "Yağcı Otomotiv",
+      "brand": "skoda",
+      "city": "Balıkesir",
+      "address": "Balıkesir",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-yilmaz-yilmazlar",
+      "name": "Yılmaz Yılmazlar Otomotiv",
+      "brand": "skoda",
+      "city": "Erzurum",
+      "address": "Erzurum",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "skoda-yunculer",
+      "name": "Yüncüler Otomotiv",
+      "brand": "skoda",
+      "city": "Tekirdağ",
+      "address": "Tekirdağ",
+      "phone": "",
+      "website": "https://skoda.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "citroen-oztek-cekmekoy",
+      "name": "ÖZTEK ÇEKMEKÖY",
+      "brand": "citroen",
+      "city": "İstanbul",
+      "address": "Madenler Mah. Serencebey Cad. No:40/2 Ümraniye, 34794",
+      "phone": "0216 645 5858",
+      "website": "https://bayi.citroen.com.tr/citroenoztekcekmekoy",
+      "hours": ""
+    },
+    {
+      "id": "citroen-can",
+      "name": "CAN",
+      "brand": "citroen",
+      "city": "İstanbul",
+      "address": "Şerifali Mah. Turgut Özal Bulvarı No: 206, 34775",
+      "phone": "02164668555",
+      "website": "https://bayi.citroen.com.tr/citroencan/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-gulan",
+      "name": "GÜLAN",
+      "brand": "citroen",
+      "city": "İstanbul",
+      "address": "EYUP SULTAN MAH. YADIGAR SOK. 34885",
+      "phone": "02162273232",
+      "website": "https://bayi.citroen.com.tr/citroengulan/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-deniz",
+      "name": "DENİZ",
+      "brand": "citroen",
+      "city": "İstanbul",
+      "address": "Deniz, E5 üzeri Sahrayıcedit, 34734",
+      "phone": "0216 285 55 55",
+      "website": "https://bayi.citroen.com.tr/citroendeniz",
+      "hours": ""
+    },
+    {
+      "id": "citroen-deger",
+      "name": "DEĞER",
+      "brand": "citroen",
+      "city": "İstanbul",
+      "address": "Girne Mahallesi, Dörtler Sokak, No:46/A, Maltepe, 34852",
+      "phone": "02165878800",
+      "website": "https://bayi.citroen.com.tr/citroendeger/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-oztek-kartal",
+      "name": "ÖZTEK KARTAL",
+      "brand": "citroen",
+      "city": "İstanbul",
+      "address": "YALI MAHALLESI, TOPSELVİ CADDESİ, 34865",
+      "phone": "0216 701 22 01",
+      "website": "https://bayi.citroen.com.tr/citroenoztek/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-nev",
+      "name": "NEV",
+      "brand": "citroen",
+      "city": "İstanbul",
+      "address": "TARABYA MAH, TARABYA BAYIRI CAD, NO:42, SARIYER, 34457",
+      "phone": "0212 325 06 38",
+      "website": "https://bayi.citroen.com.tr/citroennev",
+      "hours": ""
+    },
+    {
+      "id": "citroen-general",
+      "name": "GENERAL",
+      "brand": "citroen",
+      "city": "İstanbul",
+      "address": "Ayazağa Mah. Kemerburgaz Cad. No:2/1 Sarıyer / İstanbul, 34415",
+      "phone": "02122802525",
+      "website": "https://bayi.citroen.com.tr/citroengeneral/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-mar",
+      "name": "MAR",
+      "brand": "citroen",
+      "city": "İstanbul",
+      "address": "EYÜP MERKEZ MAH. SİLAHTARAĞA CAD. 71-73 1 EYÜPSULTAN/İSTANBUL, 34050",
+      "phone": "00902124172929",
+      "website": "https://bayi.citroen.com.tr/citroenmar/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-cetas-bayrampasa",
+      "name": "ÇETAS BAYRAMPASA",
+      "brand": "citroen",
+      "city": "İstanbul",
+      "address": "Muratpasa Mah.Uluyol Cad.Urallar, İs Merkezi, No:23/A, 34035",
+      "phone": "02126144004",
+      "website": "https://bayi.citroen.com.tr/citroencetasbayrampasa/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-mersa",
+      "name": "MERSA",
+      "brand": "citroen",
+      "city": "İstanbul",
+      "address": "SANAYI MAHALLESI SANCAKLI CAD. NO:26, GÜNGÖREN, 34165",
+      "phone": "0 212 642 69 69",
+      "website": "https://bayi.citroen.com.tr/citroenmersa/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-mepa",
+      "name": "MEPA",
+      "brand": "citroen",
+      "city": "İstanbul",
+      "address": "Yenibosna Mah,Çınar Cad, No:16/C, Bahçelievler, 34180",
+      "phone": "02126984444",
+      "website": "https://bayi.citroen.com.tr/citroenmepa/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-avek",
+      "name": "AVEK",
+      "brand": "citroen",
+      "city": "İstanbul",
+      "address": "Ataturk Blv. Ikitelli OSB No: 70 BASAKSEHIR, 34490",
+      "phone": "0212 440 27 72",
+      "website": "http://www.citroen.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "citroen-otokoc-gebze",
+      "name": "OTOKOÇ GEBZE",
+      "brand": "citroen",
+      "city": "Kocaeli",
+      "address": "KÖŞKLÜ ÇEŞME MAH, 573. SOK, NO:5, GEBZE, 41400",
+      "phone": "02626413333",
+      "website": "https://bayi.citroen.com.tr/citroenotokocgebze/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-erdemir",
+      "name": "ERDEMIR",
+      "brand": "citroen",
+      "city": "İstanbul",
+      "address": "E-5 Londra Asfaltı, Haramidere Sanayi Sitesi, D1 Blok, No:206-334, 34510",
+      "phone": "0212 422 0804",
+      "website": "https://bayi.citroen.com.tr/citroenerdemir/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-soysal",
+      "name": "Soysal",
+      "brand": "citroen",
+      "city": "Yalova",
+      "address": "TASKOPRU MERKEZ MAHALLESI, YALOVA IZMIT YOLU CADDESI, 77602",
+      "phone": "0226 333 00 46",
+      "website": "https://bayi.citroen.com.tr/citroensoysal/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-cetas-buyukcekmece",
+      "name": "ÇETAŞ BÜYÜKÇEKMECE",
+      "brand": "citroen",
+      "city": "İstanbul",
+      "address": "MIMARSINAN MAH, E 5 LONDARA ASFALTI UZERI, NO:55/A, 34535",
+      "phone": "0212 863 54 54",
+      "website": "https://bayi.citroen.com.tr/citroencetas/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-cetas-izmit",
+      "name": "ÇETAS İZMİT",
+      "brand": "citroen",
+      "city": "Kocaeli",
+      "address": "Sanayi Mahallesi D-130 Yanyol Cad. No:159, 41040 İzmit / Kocaeli",
+      "phone": "0262 335 4303",
+      "website": "https://bayi.citroen.com.tr/citroencetasizmit",
+      "hours": ""
+    },
+    {
+      "id": "citroen-inallar-ovaakca",
+      "name": "İNALLAR OVAAKÇA",
+      "brand": "citroen",
+      "city": "Bursa",
+      "address": "İstanbul Cd. Ovaakça Çeşmebaşı Mh. No: 669, Ovaakça, 16130",
+      "phone": "0 224 267 13 55",
+      "website": "https://bayi.citroen.com.tr/citroeninallar/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-neskar-nilufer",
+      "name": "NESKAR NİLÜFER",
+      "brand": "citroen",
+      "city": "Bursa",
+      "address": "Ertuğrul Mahallesi, İzmir Yolu Caddesi, No:366 D, Nilüfer, 16120",
+      "phone": "02242807171",
+      "website": "https://bayi.citroen.com.tr/citroenneskar",
+      "hours": ""
+    },
+    {
+      "id": "citroen-bul",
+      "name": "BÜL",
+      "brand": "citroen",
+      "city": "Sakarya",
+      "address": "Güllük Mah. Zübeyde Hanım Cad. No:87, Adapazarı, 54100",
+      "phone": "0 264 291 44 72",
+      "website": "https://bayi.citroen.com.tr/citroenbul/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-cetas-corlu",
+      "name": "ÇETAŞ ÇORLU",
+      "brand": "citroen",
+      "city": "Tekirdağ",
+      "address": "Önerler Mh. İstanbul Cd. No:55, Çorlu, 59850",
+      "phone": "0282 685 40 20",
+      "website": "https://bayi.citroen.com.tr/citroencetascorlu/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-kervan",
+      "name": "KERVAN",
+      "brand": "citroen",
+      "city": "Düzce",
+      "address": "E-80 Karayolu Üzeri, Üç Köprü Mevki, Kaynaşlı, 81900",
+      "phone": "03805488801",
+      "website": "https://bayi.citroen.com.tr/citroenkervan",
+      "hours": ""
+    },
+    {
+      "id": "citroen-alpata",
+      "name": "ALPATA",
+      "brand": "citroen",
+      "city": "Eskişehir",
+      "address": "75. Yıl Mah., Çevreyolu Bulvarı No: 2, Odunpazarı, 26110",
+      "phone": "02222280330",
+      "website": "https://bayi.citroen.com.tr/citroenalpata/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-aysa",
+      "name": "AYSA",
+      "brand": "citroen",
+      "city": "Zonguldak",
+      "address": "Dağlar Mahallesi,Tersaneler Sokak, No:1, Karadeniz Ereğli, 67300",
+      "phone": "03723180808",
+      "website": "https://bayi.citroen.com.tr/citroenaysa",
+      "hours": ""
+    },
+    {
+      "id": "citroen-beyaz",
+      "name": "BEYAZ",
+      "brand": "citroen",
+      "city": "Balıkesir",
+      "address": "Kesirven Mahallesi Yeni İzmir Yolu 9.km Akçakaya mevkii No:347/1, 10185",
+      "phone": "090266 202 0 202",
+      "website": "https://bayi.citroen.com.tr/citroenbeyaz/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-basaran",
+      "name": "BASARAN",
+      "brand": "citroen",
+      "city": "Çanakkale",
+      "address": "Boğazkent Mahallesi, Kamelya Sokak, No:2/2, Kepez, 17110",
+      "phone": "0286 262 02 02",
+      "website": "https://bayi.citroen.com.tr/citroenbasaran",
+      "hours": ""
+    },
+    {
+      "id": "citroen-cagdas",
+      "name": "ÇAĞDAŞ",
+      "brand": "citroen",
+      "city": "Uşak",
+      "address": "Fevzi Çakmak Mah. Gazi Bulvarı 1.Sok. NO:84/A, Merkez, 64000",
+      "phone": "0 276 231 47 47",
+      "website": "https://bayi.citroen.com.tr/citroencagdas/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-kutlu-kardesler",
+      "name": "KUTLU KARDEŞLER",
+      "brand": "citroen",
+      "city": "Afyon",
+      "address": "AFYON -ANKARA KARAYOLU 7. KM, 03200",
+      "phone": "0 272 223 10 53",
+      "website": "https://bayi.citroen.com.tr/citroenkutlu",
+      "hours": ""
+    },
+    {
+      "id": "citroen-otosay",
+      "name": "OTOSAY",
+      "brand": "citroen",
+      "city": "Ankara",
+      "address": "ESKİŞEHİR YOLU, FATİH SULTAN MAHALLESI, 2719 CADDE,NO:12,ÜMİTKÖY, 06790",
+      "phone": "0312 227 81 81",
+      "website": "https://bayi.citroen.com.tr/citroenotosay",
+      "hours": ""
+    },
+    {
+      "id": "citroen-abc",
+      "name": "ABC",
+      "brand": "citroen",
+      "city": "Ankara",
+      "address": "İnönü Mah. Fatih Sultan Mehmet Blv No:414, 06370",
+      "phone": "03122783838",
+      "website": "https://bayi.citroen.com.tr/citroenabc/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-ata",
+      "name": "ATA",
+      "brand": "citroen",
+      "city": "Ankara",
+      "address": "Kızılırmak Mah., Mevlana Bulvarı, Çankaya, 6570",
+      "phone": "03125826000",
+      "website": "https://bayi.citroen.com.tr/citroenata/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-arkas-karsiyaka",
+      "name": "ARKAS KARŞIYAKA",
+      "brand": "citroen",
+      "city": "İzmir",
+      "address": "ANADOLU CAD. NO:687/C SEMIKLER MAHALLESI, KARSIYAKA, 35350",
+      "phone": "02323993535",
+      "website": "https://bayi.citroen.com.tr/citroenarkaskarsiyaka/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-novamer",
+      "name": "NOVAMER",
+      "brand": "citroen",
+      "city": "İzmir",
+      "address": "MERİÇ MAH,FATİH CAD,DIŞ KAPI NO 107, BORNOVA, 35090",
+      "phone": "0232 2411555",
+      "website": "https://bayi.citroen.com.tr/citroennovamer/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-arkas-gaziemir",
+      "name": "ARKAS GAZİEMİR",
+      "brand": "citroen",
+      "city": "İzmir",
+      "address": "9 Eylül Mah. Akçay Cad. No:119 Gaziemir / İzmir, 35410",
+      "phone": "0232 298 27 27",
+      "website": "https://bayi.citroen.com.tr/citroenarkasgaziemir/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-coskunlar-denizli",
+      "name": "COŞKUNLAR DENİZLİ",
+      "brand": "citroen",
+      "city": "Denizli",
+      "address": "İZMİR ASFALTI, MENDERES BLV. GÜMÜŞLER, 20085",
+      "phone": "4441447",
+      "website": "https://bayi.citroen.com.tr/citroencoskunlardenizli/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-surtas",
+      "name": "SURTAS",
+      "brand": "citroen",
+      "city": "Aydın",
+      "address": "OVAEYMİR MAH.MUĞLA BUL.NO:126 EFELER, 09016",
+      "phone": "0256 226 45 45",
+      "website": "https://bayi.citroen.com.tr/citroensurtasaydin",
+      "hours": ""
+    },
+    {
+      "id": "citroen-turgut-mugla",
+      "name": "TURGUT MUĞLA",
+      "brand": "citroen",
+      "city": "Muğla",
+      "address": "MUĞLA AYDIN KARAYOLU 12.KM,SALİHPAŞALAR MEVKII, 48000",
+      "phone": "+90 252 2255100",
+      "website": "http://bayi.citroen.com.tr/citroenturgutmugla",
+      "hours": ""
+    },
+    {
+      "id": "citroen-turgut-milas",
+      "name": "TURGUT MİLAS",
+      "brand": "citroen",
+      "city": "Muğla",
+      "address": "Kemikler Mah. Güllük Güvercinlik arası 2.Bulvar, No:31/1, Milas",
+      "phone": "0252 512 51 00",
+      "website": "https://bayi.citroen.com.tr/citroenturgut/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-ozkaymak",
+      "name": "ÖZKAYMAK",
+      "brand": "citroen",
+      "city": "Konya",
+      "address": "ISTANBUL YOLU ÜZERI 1.ORGANIZE SANAYII Horozluhan, Yerlisu Sk. No:4, 42300",
+      "phone": "00903322482475",
+      "website": "https://bayi.citroen.com.tr/citroenozkaymak/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-balaban",
+      "name": "BALABAN",
+      "brand": "citroen",
+      "city": "Antalya",
+      "address": "Altınova Sinan Mah., Serik Cad., No: 141, Kepez, 07170",
+      "phone": "0242 340 02 22",
+      "website": "https://bayi.citroen.com.tr/citroenbalaban/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-antoto",
+      "name": "ANTOTO",
+      "brand": "citroen",
+      "city": "Antalya",
+      "address": "Liman mahallesi, 60 sokak, No:17/1, Konyaaltı, 07130",
+      "phone": "02422592200",
+      "website": "http://bayi.citroen.com.tr/citroenantoto",
+      "hours": ""
+    },
+    {
+      "id": "citroen-coskunlar-fethiye",
+      "name": "COŞKUNLAR FETHİYE",
+      "brand": "citroen",
+      "city": "Muğla",
+      "address": "Çamköy Mahallesi Mareşal Fevzi Çakmak Bulvarı No:68/1, 48300",
+      "phone": "4441447",
+      "website": "https://bayi.citroen.com.tr/citroencoskunlarfethiye/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-karatas",
+      "name": "KARATAŞ",
+      "brand": "citroen",
+      "city": "Çorum",
+      "address": "Mimar Sinan, Çevre Yolu Blv. 3.Km D:No:11, 19100",
+      "phone": "0364 217 24 60",
+      "website": "https://bayi.citroen.com.tr/citroenkaratas/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-agacli",
+      "name": "AĞAÇLI",
+      "brand": "citroen",
+      "city": "Aksaray",
+      "address": "TOPAKKAYA BELDESİ FATİH MAH. FATİH SULTAN MEHMET CAD. NO:37/1, 68105",
+      "phone": "03822900000",
+      "website": "https://bayi.citroen.com.tr/citroenagacli",
+      "hours": ""
+    },
+    {
+      "id": "citroen-inciroglu",
+      "name": "İNCİROĞLU",
+      "brand": "citroen",
+      "city": "Kayseri",
+      "address": "Osman Kavuncu Bulvarı, No:593-595, Melikgazi, 38070",
+      "phone": "0352 311 40 00",
+      "website": "https://bayi.citroen.com.tr/citroeninciroglu/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-demir",
+      "name": "DEMİR",
+      "brand": "citroen",
+      "city": "Samsun",
+      "address": "Kirazlık Mah, Atatürk Bulvarı, No:10, Tekkeköy, 55320",
+      "phone": "0362 266 57 88",
+      "website": "https://bayi.citroen.com.tr/citroendemir/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-cayan",
+      "name": "ÇAYAN",
+      "brand": "citroen",
+      "city": "Mersin",
+      "address": "Demirtaş Mah., H. Okan Merzeci Bulvarı, 33090",
+      "phone": "0 324 323 23 01",
+      "website": "https://bayi.citroen.com.tr/citroencayan/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-ofz",
+      "name": "OFZ",
+      "brand": "citroen",
+      "city": "Sivas",
+      "address": "Yeşilyurt mah. Sultanşehir Bulvarı no:126 Merkez Sivas, 58060",
+      "phone": "03462151962",
+      "website": "https://bayi.citroen.com.tr/citroenofz/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-onatca",
+      "name": "ONATCA VİZYON",
+      "brand": "citroen",
+      "city": "Adana",
+      "address": "Yeşiloba Mah., Turhan Cemal Beriker Bulvarı, No:584/A, Seyhan, 01120",
+      "phone": "+90 322 436 6666",
+      "website": "https://bayi.citroen.com.tr/citroenonatca/?location=Adana%7C0",
+      "hours": ""
+    },
+    {
+      "id": "citroen-oztek-adana",
+      "name": "ÖZTEK ADANA",
+      "brand": "citroen",
+      "city": "Adana",
+      "address": "GİRNE BULVARI ÖZGÜR MAH.NO:167/Z01, 01220",
+      "phone": "0322 228 80 80",
+      "website": "http://bayi.citroen.com.tr/citroenoztekadana",
+      "hours": ""
+    },
+    {
+      "id": "citroen-ates",
+      "name": "ATES",
+      "brand": "citroen",
+      "city": "Ordu",
+      "address": "KARAPINAR MAH. ATATÜRK BULVARI NO:552/A, 52200",
+      "phone": "04522336030",
+      "website": "https://bayi.citroen.com.tr/citroenates",
+      "hours": ""
+    },
+    {
+      "id": "citroen-adim-maras",
+      "name": "ADIM KAHRAMANMARAŞ",
+      "brand": "citroen",
+      "city": "Kahramanmaraş",
+      "address": "İstasyon mah. Adana yolu üzeri 1.km Otogar karşısı Dulkadiroğlu, 46080",
+      "phone": "0 344 235 11 55",
+      "website": "https://bayi.citroen.com.tr/citroenadimmaras/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-aslanbey-iskenderun",
+      "name": "ASLANBEY İSKENDERUN",
+      "brand": "citroen",
+      "city": "Hatay",
+      "address": "Sarımazı Mah. İskenderun Antakya yolu 6 km. Fatih Mah. Sokullu Mehmet Paşa Cad Zemin Kat No:46, D:5, 31060",
+      "phone": "0326 456 16 10",
+      "website": "https://bayi.citroen.com.tr/citroenaslanbeyiskenderun/?location=HATAY%230",
+      "hours": ""
+    },
+    {
+      "id": "citroen-aslanbey-antakya",
+      "name": "ASLANBEY ANTAKYA",
+      "brand": "citroen",
+      "city": "Hatay",
+      "address": "Güzelburç Mah. E5 Karayolu Cad. No: 197 Antakya, 31175",
+      "phone": "0326 221 05 55",
+      "website": "https://bayi.citroen.com.tr/citroenaslanbey",
+      "hours": ""
+    },
+    {
+      "id": "citroen-ilicak",
+      "name": "İLİCAK",
+      "brand": "citroen",
+      "city": "Malatya",
+      "address": "1.OSB MAH. HAVAALANIYOLU 2. CAD. NO: 14/3, 44900",
+      "phone": "04222383750",
+      "website": "https://bayi.citroen.com.tr/citroenilicak",
+      "hours": ""
+    },
+    {
+      "id": "citroen-adim-gaziantep",
+      "name": "ADIM GAZİANTEP",
+      "brand": "citroen",
+      "city": "Gaziantep",
+      "address": "Şehit Ömer Halisdemir Bulvarı, No : 16, Şehitkamil, 27580",
+      "phone": "0 342 324 34 34",
+      "website": "https://bayi.citroen.com.tr/citroenadimantep/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-vardallar",
+      "name": "VARDALLAR",
+      "brand": "citroen",
+      "city": "Trabzon",
+      "address": "Kaymaklı Mah. Anadolu Blv. Erzurum Yolu Üzeri No:163 Ortahisar Trabzon, 61100",
+      "phone": "0462 325 79 32",
+      "website": "https://bayi.citroen.com.tr/citroenvardallar/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-ercan",
+      "name": "ERCAN",
+      "brand": "citroen",
+      "city": "Elazığ",
+      "address": "Diyarbakır Yolu 10. Km, 23000",
+      "phone": "0 424 248 34 90",
+      "website": "https://bayi.citroen.com.tr/citroenercan",
+      "hours": ""
+    },
+    {
+      "id": "citroen-gapel",
+      "name": "GAPEL",
+      "brand": "citroen",
+      "city": "Şanlıurfa",
+      "address": "Akçakale Yolu 4. Km, 63300",
+      "phone": "04142474545",
+      "website": "https://bayi.citroen.com.tr/citroengapel/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-basdas",
+      "name": "BAŞDAŞ",
+      "brand": "citroen",
+      "city": "Diyarbakır",
+      "address": "Şanlıurfa yolu 12. Km. Gömmetaş Mh. Başdaş Plaza No: 254/1/1 Bağlar, 21090",
+      "phone": "0412 219 21 21",
+      "website": "https://bayi.citroen.com.tr/citroenbasdas/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-sonmezer",
+      "name": "SÖNMEZER",
+      "brand": "citroen",
+      "city": "Erzurum",
+      "address": "Sanayi Tortum Yolu Üzeri No:153/B Merkez, 25000",
+      "phone": "0442 242 44 44",
+      "website": "https://bayi.citroen.com.tr/citroensonmezer/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-kiziltepe",
+      "name": "KIZILTEPE",
+      "brand": "citroen",
+      "city": "Mardin",
+      "address": "TURGUT OZAL MAHALLESI, MARDIN CADDESI, 47400",
+      "phone": "04823125959",
+      "website": "https://bayi.citroen.com.tr/citroenkiziltepe/",
+      "hours": ""
+    },
+    {
+      "id": "citroen-dogu",
+      "name": "DOĞU",
+      "brand": "citroen",
+      "city": "Van",
+      "address": "İPEK YOLU ÜZERİ VAN ŞEHRI STADYUM KARŞISI NO:78, 65100",
+      "phone": "+90 432 217 7277",
+      "website": "http://bayi.citroen.com.tr/citroendogu",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-can",
+      "name": "CAN",
+      "brand": "peugeot",
+      "city": "İstanbul",
+      "address": "Şerifali Mah. Turgut Özal Bulvarı No: 206, 34775",
+      "phone": "02164668555",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-oztek-cekmekoy",
+      "name": "OZTEK ÇEKMEKOY",
+      "brand": "peugeot",
+      "city": "İstanbul",
+      "address": "Meclis Mah, Semih Sancar Cad, No:89, Sancaktepe, 34785",
+      "phone": "02166210500",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-gulan",
+      "name": "GÜLAN",
+      "brand": "peugeot",
+      "city": "İstanbul",
+      "address": "EYUP SULTAN MAH. YADIGAR SOK.C Blok NO:30-38C SANCAKTEPE, 34885",
+      "phone": "02162271515",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-deniz",
+      "name": "DENİZ",
+      "brand": "peugeot",
+      "city": "İstanbul",
+      "address": "Deniz, E5 üzeri Sahrayıcedit, 34734",
+      "phone": "02162855555",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-aktif",
+      "name": "AKTİF - İRİYIL",
+      "brand": "peugeot",
+      "city": "İstanbul",
+      "address": "Küçük Çamlıca Mh. Libadiye Cd. No:24 Üsküdar, 34696",
+      "phone": "4445508",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-oztek-kartal",
+      "name": "ÖZTEK KARTAL",
+      "brand": "peugeot",
+      "city": "İstanbul",
+      "address": "YALI MAHALLESI, TOPSELVİ CADDESİ, 34865",
+      "phone": "02167011200",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-nev",
+      "name": "NEV",
+      "brand": "peugeot",
+      "city": "İstanbul",
+      "address": "TARABYA MAH, TARABYA BAYIRI CAD, NO:42, SARIYER, 34457",
+      "phone": "02122700638",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-general",
+      "name": "GENERAL",
+      "brand": "peugeot",
+      "city": "İstanbul",
+      "address": "Ayazağa Mah. Kemerburgaz Cad. No:2/1 Sarıyer / İstanbul, 34415",
+      "phone": "02122802525",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-mar",
+      "name": "MAR",
+      "brand": "peugeot",
+      "city": "İstanbul",
+      "address": "Merkez Mah. Silahtarağa cd. No 71-73 Eyüp, 34050",
+      "phone": "0212417 29 29",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-odak",
+      "name": "ODAK",
+      "brand": "peugeot",
+      "city": "İstanbul",
+      "address": "Maltepe Mah., Londra Asfaltı Cad., No:40/A,Zeytinburnu, 34010",
+      "phone": "02124491313",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-baykaralar",
+      "name": "BAYKARALAR",
+      "brand": "peugeot",
+      "city": "İstanbul",
+      "address": "MURATPAŞA MAH.ULUYOL CAD.NO:25/1, 34020",
+      "phone": "02126144747",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-mepa",
+      "name": "MEPA",
+      "brand": "peugeot",
+      "city": "İstanbul",
+      "address": "Yenibosna Mah,Çınar Cad, No:16/C, Bahçelievler, 34197",
+      "phone": "02126984444",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-avek",
+      "name": "AVEK",
+      "brand": "peugeot",
+      "city": "İstanbul",
+      "address": "Ataturk Blv. Ikitelli OSB No: 70 BASAKSEHIR, 34490",
+      "phone": "0212 440 27 72",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-otokoc-gebze",
+      "name": "OTOKOÇ GEBZE",
+      "brand": "peugeot",
+      "city": "Kocaeli",
+      "address": "KÖŞKLÜ ÇEŞME MAH, 573. SOK, NO:5, GEBZE, 41400",
+      "phone": "02626413333",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-erdemir",
+      "name": "ERDEMİR",
+      "brand": "peugeot",
+      "city": "İstanbul",
+      "address": "E-5 Londra Asfaltı, Yakuplu Mahallesi, Haramidere Sanayi Sitesi, D1 Blok, No:206-334, 34510",
+      "phone": "90 212 422 0804",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-soysal",
+      "name": "SOYSAL",
+      "brand": "peugeot",
+      "city": "Yalova",
+      "address": "TASKOPRU MERKEZ MAHALLESI, YALOVA IZMIT YOLU CADDESI, 77602",
+      "phone": "02263333346",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-cetas-buyukcekmece",
+      "name": "ÇETAŞ BÜYÜKÇEKMECE",
+      "brand": "peugeot",
+      "city": "İstanbul",
+      "address": "MIMARSINAN MAH, E 5 LONDARA ASFALTI UZERI, NO:55/A, 34535",
+      "phone": "0212 863 54 54",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-cetas-izmit",
+      "name": "CETAS IZMIT",
+      "brand": "peugeot",
+      "city": "Kocaeli",
+      "address": "Sanayi Mahallesi D-130 Yanyol Cad. No:159, 41040 İzmit / Kocaeli",
+      "phone": "0262 335 4303",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-baykar",
+      "name": "BAYKAR",
+      "brand": "peugeot",
+      "city": "Bursa",
+      "address": "YENI YALOVA YOLU CADDESI, NO:433, 16250",
+      "phone": "02242111666",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-sancilik",
+      "name": "ŞANÇELİK",
+      "brand": "peugeot",
+      "city": "Bursa",
+      "address": "BEŞEVLER MAH.İZMİR YOLU CAD.5.KM, 16260",
+      "phone": "02244417500",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-ekin",
+      "name": "EKİN",
+      "brand": "peugeot",
+      "city": "Sakarya",
+      "address": "Arifbey Mah. Arifiye Cad. No: 1 Arifiye, 54060",
+      "phone": "00902642911200",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-cetas-corlu",
+      "name": "ÇETAŞ ÇORLU",
+      "brand": "peugeot",
+      "city": "Tekirdağ",
+      "address": "Önerler Mh. İstanbul Cd. No:55, Çorlu, 59850",
+      "phone": "0282 685 40 20",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-kervan",
+      "name": "KERVAN",
+      "brand": "peugeot",
+      "city": "Düzce",
+      "address": "E-80 Karayolu Üzeri, Üç Köprü Mevki, Kaynaşlı, 81900",
+      "phone": "03805488801",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-alpata",
+      "name": "ALPATA",
+      "brand": "peugeot",
+      "city": "Eskişehir",
+      "address": "75. Yıl Mah., Çevreyolu Bulvarı No: 2, Odunpazarı, 26110",
+      "phone": "02222280330",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-aysa",
+      "name": "AYSA",
+      "brand": "peugeot",
+      "city": "Zonguldak",
+      "address": "Dağlar Mahallesi,Tersaneler Sokak, No:1, Karadeniz Ereğli, 67300",
+      "phone": "+90 372 318 0808",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-beyaz",
+      "name": "BEYAZ",
+      "brand": "peugeot",
+      "city": "Balıkesir",
+      "address": "Kesirven Mahallesi Yeni İzmir Yolu 9.km Akçakaya mevkii No:347/1, 10185",
+      "phone": "+90266 202 0 202",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-basaran",
+      "name": "BASARAN",
+      "brand": "peugeot",
+      "city": "Çanakkale",
+      "address": "Boğazkent Mahallesi, Kamelya Sokak, No:2/1, Kepez, 17110",
+      "phone": "02862620202",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-cagdas",
+      "name": "ÇAĞDAŞ",
+      "brand": "peugeot",
+      "city": "Uşak",
+      "address": "Ankara Yolu üzeri, Fevzi Çakmak Mah.Gazi Bulvari 1.Sok..NO:84/A, MERKEZ, 64000",
+      "phone": "02762314747",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-kutlu-kardesler",
+      "name": "KUTLU KARDEŞLER",
+      "brand": "peugeot",
+      "city": "Afyon",
+      "address": "AFYON -ANKARA KARAYOLU 7. KM, 03200",
+      "phone": "02722231053",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-abc",
+      "name": "ABC",
+      "brand": "peugeot",
+      "city": "Ankara",
+      "address": "İnönü Mah. Fatih Sultan Mehmet Blv No:414, 06370",
+      "phone": "03122783838",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-goral-umitkoy",
+      "name": "GÖRAL Ümitköy",
+      "brand": "peugeot",
+      "city": "Ankara",
+      "address": "ESKISEHIR YOLU 12.KM, 06810",
+      "phone": "03122363680",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-goral-balgat",
+      "name": "GÖRAL Balgat",
+      "brand": "peugeot",
+      "city": "Ankara",
+      "address": "MEVLANA BULVARI KONYA YOLU NO:202, 06530",
+      "phone": "03122074545",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-arkas",
+      "name": "ARKAS",
+      "brand": "peugeot",
+      "city": "İzmir",
+      "address": "ANADOLU CAD. NO:687/C SEMIKLER MAHALLESI, KARSIYAKA, 35350",
+      "phone": "02323360101",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-novamer",
+      "name": "NOVAMER",
+      "brand": "peugeot",
+      "city": "İzmir",
+      "address": "MERİÇ MAH,FATİH CAD,DIŞ KAPI NO 107, BORNOVA, 35090",
+      "phone": "0232 2411555",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-kahyaogullari",
+      "name": "KAHYAOĞULLARI",
+      "brand": "peugeot",
+      "city": "İzmir",
+      "address": "Sevgi Mah. Menderes Cad. No:16 GAZİEMİR – İZMİR, 35410",
+      "phone": "0232 241 39 39",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-turkguaz",
+      "name": "TURKUAZ",
+      "brand": "peugeot",
+      "city": "Denizli",
+      "address": "BOZBURUN MAHALLESI, MENDERES BULVARI, 20085",
+      "phone": "0 258 251 77 66",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-surtas-aydin",
+      "name": "SURTAS AYDIN",
+      "brand": "peugeot",
+      "city": "Aydın",
+      "address": "OVAEYMİR MAH.MUĞLA BUL.NO:126 EFELER, 09016",
+      "phone": "0256 226 45 45",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-turgut-mugla",
+      "name": "TURGUT MUĞLA",
+      "brand": "peugeot",
+      "city": "Muğla",
+      "address": "MUĞLA AYDIN KARAYOLU 12.KM,SALİHPAŞALAR MEVKII, 48000",
+      "phone": "02522255100",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-turgut-milas",
+      "name": "TURGUT MİLAS",
+      "brand": "peugeot",
+      "city": "Muğla",
+      "address": "Kemikler Mah. Güllük Güvercinlik arası 2.Bulvar, No:31/1, Milas",
+      "phone": "02525125100",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-ozkaymak",
+      "name": "ÖZKAYMAK",
+      "brand": "peugeot",
+      "city": "Konya",
+      "address": "ISTANBUL YOLU ÜZERI 1.ORGANIZE SANAYII Horozluhan, Yerlisu Sk. No:4, 42300",
+      "phone": "0903322482475",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-hasim-balaban",
+      "name": "HAŞİM BALABAN Altınova",
+      "brand": "peugeot",
+      "city": "Antalya",
+      "address": "Altınova sinan mah. Serik cd No:81 kepez / antalya, 07170",
+      "phone": "02423403550",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-antoto",
+      "name": "ANTOTO",
+      "brand": "peugeot",
+      "city": "Antalya",
+      "address": "Liman mahallesi, 60 sokak, No:17/1, Konyaaltı, 07130",
+      "phone": "02422592200",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-bakircilar",
+      "name": "BAKIRCILAR",
+      "brand": "peugeot",
+      "city": "Muğla",
+      "address": "Yanıklar Mahallesi Muğla Caddesi No: 93 Fethiye, 48300",
+      "phone": "02526126800",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-karatas",
+      "name": "KARATAŞ",
+      "brand": "peugeot",
+      "city": "Çorum",
+      "address": "Ankara Yolu 3.KM, 19100",
+      "phone": "0364 217 24 50",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-agacli",
+      "name": "AĞAÇLI",
+      "brand": "peugeot",
+      "city": "Aksaray",
+      "address": "TOPAKKAYA BELDESİ FATİH MAH. FATİH SULTAN MEHMET CAD. NO:37/1, 68100",
+      "phone": "03822900000",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-inciroglu",
+      "name": "INCIROGLU",
+      "brand": "peugeot",
+      "city": "Kayseri",
+      "address": "Osman Kavuncu Bulvarı, No:593-595, Melikgazi, 38070",
+      "phone": "03523114000",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-demir",
+      "name": "DEMIR",
+      "brand": "peugeot",
+      "city": "Samsun",
+      "address": "İSTİKLAL MAHALLESİ, ATATÜRK BULVARI,NO:133, TEKKEKÖY, 55330",
+      "phone": "3622665805",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-ogutler",
+      "name": "ÖĞÜTLER",
+      "brand": "peugeot",
+      "city": "Mersin",
+      "address": "75.Yıl Mah. Gazi Mustafa Kemal Bulvarı No: 1440 A, 33330",
+      "phone": "03242261818",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-ofz",
+      "name": "OFZ",
+      "brand": "peugeot",
+      "city": "Sivas",
+      "address": "Yeşilyurt mah. Sultanşehir Bulvarı no:126 Merkez Sivas, 58060",
+      "phone": "03462151962",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-onatca-vizyon",
+      "name": "ONATÇA VİZYON",
+      "brand": "peugeot",
+      "city": "Adana",
+      "address": "Yeşiloba Mah., Turhan Cemal Beriker Bulvarı, No:584/A, Seyhan, 01120",
+      "phone": "+90 322 436 6666",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-oztek-adana",
+      "name": "ÖZTEK Adana",
+      "brand": "peugeot",
+      "city": "Adana",
+      "address": "GİRNE BULVARI ÖZGÜR MAH.NO:167/Z01, 101316",
+      "phone": "0322 882 10 10",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-ates",
+      "name": "ATEŞ",
+      "brand": "peugeot",
+      "city": "Ordu",
+      "address": "KARAPINAR MAH. ATATÜRK BULVARI NO:552/A, 52200",
+      "phone": "+90 452 233 6030",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-zabunoglu",
+      "name": "ZABUNOĞLU",
+      "brand": "peugeot",
+      "city": "Kahramanmaraş",
+      "address": "Barbaros, Batı Çevre Yolu No:86/A, 46100",
+      "phone": "03442343400",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-aslanbey-iskenderun",
+      "name": "ASLANBEY İSKENDERUN",
+      "brand": "peugeot",
+      "city": "Hatay",
+      "address": "Sarımazı Mah. İskenderun Antakya yolu 6 km. Fatih Mah. Sokullu Mehmet Paşa Cad Zemin Kat No:46, D:5, 31000 Belen/Hatay, 31060",
+      "phone": "0 326 4561610",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-aslanbey-antakya",
+      "name": "ASLANBEY ANTAKYA",
+      "brand": "peugeot",
+      "city": "Hatay",
+      "address": "Güzelburç, E-5 Karayolu Caddesi No: 326/A, 31001",
+      "phone": "0326 221 05 55",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-koluman-monde",
+      "name": "KOLUMAN MONDE",
+      "brand": "peugeot",
+      "city": "Gaziantep",
+      "address": "Aktoprak Mahallesi Kahramanmaraş Cd. Koluman Sitesi No :70 /1, 27620",
+      "phone": "03423421111",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-ilicak",
+      "name": "ILICAK",
+      "brand": "peugeot",
+      "city": "Malatya",
+      "address": "1.OSB MAH. HAVAALANIYOLU 2. CAD. NO: 14/3, 44900",
+      "phone": "04222383750",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-vardallar",
+      "name": "VARDALLAR",
+      "brand": "peugeot",
+      "city": "Trabzon",
+      "address": "Kaymaklı Mah. Anadolu Blv. Erzurum Yolu Üzeri No:163 Ortahisar, 61100",
+      "phone": "+90 462 325 7932",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-ercan-oto",
+      "name": "ERCAN OTO",
+      "brand": "peugeot",
+      "city": "Elazığ",
+      "address": "Diyarbakır Yolu 10. Km, 23000",
+      "phone": "04242483490",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-gapel",
+      "name": "GAPEL",
+      "brand": "peugeot",
+      "city": "Şanlıurfa",
+      "address": "Asya Mah. Akçakale Cad. No:544, Eyyübiye/Şanlıurfa, 63250",
+      "phone": "00904142474545",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-arm-diyarbakir",
+      "name": "ARM Diyarbakır",
+      "brand": "peugeot",
+      "city": "Diyarbakır",
+      "address": "Silvan Yolu üzeri 2.km Peugeot Plaza No:196 Yenişehir / Diyarbakır, 21120",
+      "phone": "04122282525",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-cimenler",
+      "name": "ÇİMENLER",
+      "brand": "peugeot",
+      "city": "Erzurum",
+      "address": "KUZEY CEVRE YOLU UZERI, 25030",
+      "phone": "04422421515",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-kiziltepe-otomotiv",
+      "name": "KIZILTEPE OTOMOTIV",
+      "brand": "peugeot",
+      "city": "Mardin",
+      "address": "TURGUT OZAL MAHALLESI, MARDIN CADDESI, 47400",
+      "phone": "04823125959",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-arm-batman",
+      "name": "ARM Batman",
+      "brand": "peugeot",
+      "city": "Batman",
+      "address": "Diyarbakır Cad. Ahmet Necdet Sezer Bulvarı No: 164, 72060",
+      "phone": "04882129021",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "peugeot-sevimli",
+      "name": "SEVİMLİ",
+      "brand": "peugeot",
+      "city": "Van",
+      "address": "IPEK YOLU UZERI, 65200",
+      "phone": "04322171414",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "opel-oztek-cekmekoy",
+      "name": "OZTEK CEKMEKOY",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "Meclis Mah, Semih Sancar Cad, No:89, Sancaktepe, 34785",
+      "phone": "+90 216 621 05 15",
+      "website": "https://www.opeloztek.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-gulan",
+      "name": "GÜLAN",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "Eyüp Sultan Mah. Yadigar Sok. C blok No:30-38C Sancaktepe, 34885",
+      "phone": "02162273333",
+      "website": "http://www.gulanopel.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "opel-deniz",
+      "name": "DENİZ",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "Deniz, E5 üzeri Sahrayıcedit, 34734",
+      "phone": "02162855555",
+      "website": "https://denizopel.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-deger",
+      "name": "DEĞER",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "Girne Mahallesi, Dörtler Sokak, No:46/A,Maltepe, 34852",
+      "phone": "+90 216 587 8800",
+      "website": "https://www.opeldeger.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-global",
+      "name": "GLOBAL",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "BARBAROS MAH, NUHKUYU CAD, NO:6, ALTUNİZADE, ÜSKÜDAR, 34662",
+      "phone": "+90 216 4283535",
+      "website": "https://www.opelglobal.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-gercek-balbumcu",
+      "name": "GERÇEK",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "Barbaros Bulvarı, No: 103, Balbumcu, Beşiktaş, 34349",
+      "phone": "+90 212 310 0410",
+      "website": "https://www.gercekopel.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-gercek-balmumcu",
+      "name": "GERÇEK",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "Barbaros Bulvarı, Hoş sohbet Sok, No:10 ( ATV binası arkası),Balmumcu, 35349",
+      "phone": "+90 212 315 91 00",
+      "website": "https://www.gercekopel.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-nev",
+      "name": "NEV",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "TARABYA MAH, TARABYA BAYIRI CAD, NO:42, SARIYER, 34457",
+      "phone": "+90 212 2690638",
+      "website": "https://www.opelnev.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-asal",
+      "name": "ASAL",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "Ayazağa Mahallesi, Cendere Caddesi, No:5, Maslak, Sarıyer, 34396",
+      "phone": "+90 212 289 8906",
+      "website": "http://opel.asaloto.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "opel-mar",
+      "name": "MAR",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "Merkez Mah. Silahtarağa cd. No 71-73 Eyüp, 34050",
+      "phone": "+90 212 417 2929",
+      "website": "https://www.opelmar.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-odak",
+      "name": "ODAK",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "Maltepe Mah., Londra Asfaltı Cad., No:40/A,Zeytinburnu, 34010",
+      "phone": "+90 212 449 1313",
+      "website": "https://www.odakopel.com.tr/",
+      "hours": ""
+    },
+    {
+      "id": "opel-cetas-bayrampasa",
+      "name": "CETAS BAYRAMPASA",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "Muratpasa Mah.Uluyol Cad.Urallar, İs Merkezi, No:23/A,Bayrampasa, 34035",
+      "phone": "+90 212 614 4004",
+      "website": "https://www.cetasopel.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-mepa",
+      "name": "MEPA",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "Yenibosna Mah,Çınar Cad, No:16/C, Bahçelievler, 34197",
+      "phone": "+90 212 6984444",
+      "website": "https://www.opelmepa.com",
+      "hours": ""
+    },
+    {
+      "id": "opel-avek",
+      "name": "AVEK",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "Ataturk Blv. Ikitelli OSB No: 70, Başakşehir, 34490",
+      "phone": "02124402772",
+      "website": "https://www.opelavek.com/?location=ISTANBUL%7C0",
+      "hours": ""
+    },
+    {
+      "id": "opel-otokoc-gebze",
+      "name": "OTOKOÇ GEBZE",
+      "brand": "opel",
+      "city": "Kocaeli",
+      "address": "KÖŞKLÜ ÇEŞME MAH, 573. SOK, NO:5, GEBZE, 41400",
+      "phone": "+90 262 6413333",
+      "website": "https://www.otokocopel.com",
+      "hours": ""
+    },
+    {
+      "id": "opel-erdemir",
+      "name": "ERDEMİR",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "E-5 Londra Asfaltı, Yakuplu Mahallesi, Haramidere Sanayi Sitesi, D1 Blok, No:206-334, 34510",
+      "phone": "+90 212 422 0804",
+      "website": "http://opelistanbul.erdemirler.com",
+      "hours": ""
+    },
+    {
+      "id": "opel-cetas-buyukcekmece",
+      "name": "Çetaş Büyükçekmece",
+      "brand": "opel",
+      "city": "İstanbul",
+      "address": "Mimarsinan Mah, E 5 Londra Asfaltı Cad, NO:55/A, Büyükçekmece, 34535",
+      "phone": "+90 212 863 5454",
+      "website": "http://www.cetasopel.com",
+      "hours": ""
+    },
+    {
+      "id": "opel-cetas-izmit",
+      "name": "CETAS IZMIT",
+      "brand": "opel",
+      "city": "Kocaeli",
+      "address": "Sanayi Mahallesi D-130 Yanyol Cad. No:159, 41040 İzmit / Kocaeli, 41040",
+      "phone": "0262 335 4303",
+      "website": "https://www.cetasopel.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-neskar-osmangazi",
+      "name": "NESKAR OSMANGAZİ",
+      "brand": "opel",
+      "city": "Bursa",
+      "address": "YENI YALOVA YOLU 12.KM OVAAKÇA, OSMANGAZİ, 16335",
+      "phone": "+90 224 2807171",
+      "website": "http://opel.neskar.com",
+      "hours": ""
+    },
+    {
+      "id": "opel-neskar-nilufer",
+      "name": "NESKAR NİLÜFER",
+      "brand": "opel",
+      "city": "Bursa",
+      "address": "Ertuğrul Mahallesi, İzmir Yolu Caddesi, No:366 D , Nilüfer, 16120",
+      "phone": "+90 224 280 71 71",
+      "website": "http://www.opel.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "opel-sakarya-ekin",
+      "name": "SAKARYA EKİN",
+      "brand": "opel",
+      "city": "Sakarya",
+      "address": "Arifbey Mah. Arifiye Cad. No: 1, Arifiye, 54060",
+      "phone": "+90 264 291 1200",
+      "website": "https://opel.ekinoto.com.tr/",
+      "hours": ""
+    },
+    {
+      "id": "opel-cetas-corlu",
+      "name": "ÇETAŞ ÇORLU",
+      "brand": "opel",
+      "city": "Tekirdağ",
+      "address": "Önerler Mh. İstanbul Cd. No:55, Çorlu, 59850",
+      "phone": "0282 685 40 20",
+      "website": "http://www.cetasopel.com",
+      "hours": ""
+    },
+    {
+      "id": "opel-kervan",
+      "name": "KERVAN",
+      "brand": "opel",
+      "city": "Düzce",
+      "address": "Yenidoğan Mah, 114. Sok No:38 Kaynaşlı, 81900",
+      "phone": "+90 380 548 8801",
+      "website": "https://www.opelkervan.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-alpata",
+      "name": "ALPATA",
+      "brand": "opel",
+      "city": "Eskişehir",
+      "address": "75. Yıl Mah., Çevreyolu Bulvarı No: 2, Odunpazarı, 26110",
+      "phone": "+90 222 228 0330",
+      "website": "https://opel.alpata.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-aysa",
+      "name": "AYSA",
+      "brand": "opel",
+      "city": "Zonguldak",
+      "address": "Dağlar Mahallesi,Tersaneler Sokak, No:1, Karadeniz Ereğli, 67300",
+      "phone": "+90 372 318 0808",
+      "website": "https://www.aysa.com.tr/",
+      "hours": ""
+    },
+    {
+      "id": "opel-beyaz",
+      "name": "BEYAZ",
+      "brand": "opel",
+      "city": "Balıkesir",
+      "address": "Kesirven Mah, Yeni İzmir Yolu 9.Km, Akçakaya Mevkii, No:347/1,Altıeylül, 10185",
+      "phone": "+90 266 202 0202",
+      "website": "https://opel.beyaz-opel.com",
+      "hours": ""
+    },
+    {
+      "id": "opel-basaran",
+      "name": "BAŞARAN",
+      "brand": "opel",
+      "city": "Çanakkale",
+      "address": "Boğazkent Mahallesi, Kamelya Sokak, No:2/1, Kepez, 17110",
+      "phone": "02862620202",
+      "website": "https://www.opelbasarancanakkale.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-arden",
+      "name": "ARDEN",
+      "brand": "opel",
+      "city": "Uşak",
+      "address": "Sarayaltı mahallesi, Gazi Bulvarı, No:177, 64100",
+      "phone": "+90 276 333 1555",
+      "website": "https://www.ardenotomotiv.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-kutlu-kardesler",
+      "name": "KUTLU KARDEŞLER",
+      "brand": "opel",
+      "city": "Afyon",
+      "address": "AFYON ANKARA KARAYOLU 7. KM, 03200",
+      "phone": "02722231053",
+      "website": "https://www.kutlukardesler.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "opel-otosay",
+      "name": "OTOSAY",
+      "brand": "opel",
+      "city": "Ankara",
+      "address": "ESKİŞEHİR YOLU, FATİH SULTAN MAHALLESI, 2719 CADDE,NO:12,ÜMİTKÖY, 06790",
+      "phone": "0312 227 8181",
+      "website": "https://www.opelotosay.com",
+      "hours": ""
+    },
+    {
+      "id": "opel-abc",
+      "name": "ABC",
+      "brand": "opel",
+      "city": "Ankara",
+      "address": "INONU MAHALLESI, 06370",
+      "phone": "+90 0312 278 3838",
+      "website": "https://opel.abcoto.com.tr/",
+      "hours": ""
+    },
+    {
+      "id": "opel-opal",
+      "name": "OPAL",
+      "brand": "opel",
+      "city": "Ankara",
+      "address": "KONYA YOLU ÜZERI NO:187, 06520",
+      "phone": "+90 312 583 0583",
+      "website": "https://opel.opaloto.com.tr/",
+      "hours": ""
+    },
+    {
+      "id": "opel-arkas",
+      "name": "ARKAS",
+      "brand": "opel",
+      "city": "İzmir",
+      "address": "ANADOLU CAD. NO:687/C SEMIKLER MAHALLESI, KARSIYAKA, 35350",
+      "phone": "+90 232 399 3535",
+      "website": "https://www.arkasopelizmir.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-novamer",
+      "name": "NOVAMER",
+      "brand": "opel",
+      "city": "İzmir",
+      "address": "MERİÇ MAH,FATİH CAD,DIŞ KAPI NO 107, BORNOVA, 35090",
+      "phone": "0232 2411555",
+      "website": "http://www.novameropel.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "opel-kahyaogullari",
+      "name": "KAHYAOGULLARI",
+      "brand": "opel",
+      "city": "İzmir",
+      "address": "Sevgi Mah. Menderes Cad. No:16 GAZİEMİR – İZMİR, 35410",
+      "phone": "0232 241 39 39",
+      "website": "https://www.opelkahyaogullari.com.tr/",
+      "hours": ""
+    },
+    {
+      "id": "opel-otomat",
+      "name": "OTOMAT",
+      "brand": "opel",
+      "city": "Denizli",
+      "address": "IZMIR ASFALTI ÜZERI ADNAN MENDERES BULVARI NO:84, Gümüsler, 20085",
+      "phone": "+90 258 371 5577",
+      "website": "https://opel.otomat.com.tr/",
+      "hours": ""
+    },
+    {
+      "id": "opel-surtas",
+      "name": "SURTAŞ",
+      "brand": "opel",
+      "city": "Aydın",
+      "address": "Muğla Karayolu Üzeri 3.KM, 09016",
+      "phone": "+90 256 226 4545",
+      "website": "https://opelaydin.surtasotomotiv.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-mutsan",
+      "name": "MUTSAN",
+      "brand": "opel",
+      "city": "Isparta",
+      "address": "Eğirdir Karayolu Üzeri 3. Km, 32200",
+      "phone": "+90 246 224 1004",
+      "website": "https://www.mutsanopel.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-turgut-mugla",
+      "name": "TURGUT MUĞLA",
+      "brand": "opel",
+      "city": "Muğla",
+      "address": "MUĞLA AYDIN KARAYOLU 12.KM,SALİHPAŞALAR MEVKII, 48000",
+      "phone": "+90 252 2255100",
+      "website": "https://www.turgutopel.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-turgut-milas",
+      "name": "TURGUT MİLAS",
+      "brand": "opel",
+      "city": "Muğla",
+      "address": "Kemikler Mah. Güllük Güvercinlik arası 2.Bulvar, No:31/1, Milas, 48670",
+      "phone": "+90 252 5125100",
+      "website": "https://www.turgutopel.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-ozkaymak",
+      "name": "ÖZKAYMAK",
+      "brand": "opel",
+      "city": "Konya",
+      "address": "ISTANBUL YOLU ÜZERI 1.ORGANIZE SANAYII, 42300",
+      "phone": "+90 332 248 2475",
+      "website": "https://www.ozkaymakopel.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-antoto",
+      "name": "ANTOTO",
+      "brand": "opel",
+      "city": "Antalya",
+      "address": "Altınova Sinan Mahallesi, Serik Caddesi, No:23, Kepez, 07090",
+      "phone": "0 242 340 00 60",
+      "website": "https://opel.antoto.com.tr/",
+      "hours": ""
+    },
+    {
+      "id": "opel-balaban",
+      "name": "BALABAN",
+      "brand": "opel",
+      "city": "Antalya",
+      "address": "SARISU MAHALLESİ, 121 SOKAK, NO:20 KONYAALTI, 07130",
+      "phone": "+90 242 259 10 59",
+      "website": "http://www.opel.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "opel-bakircilar",
+      "name": "BAKIRCILAR",
+      "brand": "opel",
+      "city": "Muğla",
+      "address": "Yanıklar Mahallesi Muğla Caddesi No: 93 Fethiye, 48300",
+      "phone": "02522126735",
+      "website": "https://www.opelbakircilar.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-karatas",
+      "name": "KARATAŞ",
+      "brand": "opel",
+      "city": "Çorum",
+      "address": "Mimar Sinan, Çevre Yolu Blv. 3.Km D:No:11, 19100",
+      "phone": "0364 217 24 55",
+      "website": "http://opel.karatas.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "opel-agacli",
+      "name": "AĞAÇLI",
+      "brand": "opel",
+      "city": "Aksaray",
+      "address": "TOPAKKAYA BELDESİ FATİH MAH. FATİH SULTAN MEHMET CAD. NO:37/1, 68105",
+      "phone": "03822900000",
+      "website": "http://www.opel.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "opel-inciroglu",
+      "name": "KAYSERİ İNCİROĞLU",
+      "brand": "opel",
+      "city": "Kayseri",
+      "address": "Osman Kavuncu Bulvarı, No:593-595, Melikgazi, 38070",
+      "phone": "+90 352 326 3838",
+      "website": "https://www.incirogluopel.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-demir",
+      "name": "SAMSUN DEMİR",
+      "brand": "opel",
+      "city": "Samsun",
+      "address": "Kirazlık Mah, Atatürk Bulvarı, No:10, Tekkeköy, 55320",
+      "phone": "+90 362 266 9600",
+      "website": "https://www.demiropel.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-ogutler",
+      "name": "ÖĞÜTLER",
+      "brand": "opel",
+      "city": "Mersin",
+      "address": "75.Yıl Mah. Gazi Mustafa Kemal Bulvarı No: 1440 A, 33200",
+      "phone": "+90 324 2261819",
+      "website": "https://www.opelogutler.com",
+      "hours": ""
+    },
+    {
+      "id": "opel-ofz",
+      "name": "OFZ",
+      "brand": "opel",
+      "city": "Sivas",
+      "address": "Yeşilyurt mah. Sultanşehir Bulvarı no:126 Merkez Sivas, 58060",
+      "phone": "03462151962",
+      "website": "https://www.opelofz.com/?location=SIVAS",
+      "hours": ""
+    },
+    {
+      "id": "opel-onatca-vizyon",
+      "name": "ONATÇA VİZYON",
+      "brand": "opel",
+      "city": "Adana",
+      "address": "Yeşiloba Mah., Turhan Cemal Beriker Bulvarı, No:584/A, Seyhan, 01120",
+      "phone": "+90 322 436 6666",
+      "website": "https://www.opelvizyon.com/?location=Adana%7C0",
+      "hours": ""
+    },
+    {
+      "id": "opel-ates",
+      "name": "ATEŞ",
+      "brand": "opel",
+      "city": "Ordu",
+      "address": "TURNASUYU MAH. MUSTAFA KEMAL BUL. NO : 323 GÜLYALI, 52010",
+      "phone": "+90 452 233 6030",
+      "website": "https://opel.atesmotor.com.tr/",
+      "hours": ""
+    },
+    {
+      "id": "opel-kibris-ozmerhan",
+      "name": "KIBRIS ÖZMERHAN",
+      "brand": "opel",
+      "city": "Lefkoşa (KKTC)",
+      "address": "Dr.Fazıl Kucuk Bulvari Gunyeli Cemberi, 99010",
+      "phone": "+90 392 223 8910",
+      "website": "",
+      "hours": ""
+    },
+    {
+      "id": "opel-adim-kmaras",
+      "name": "ADIM K.MARAS",
+      "brand": "opel",
+      "city": "Kahramanmaraş",
+      "address": "İstasyon mah. Adana yolu üzeri 1.km Otogar karşısı Dulkadiroğlu / Kahramanmaraş, 46080",
+      "phone": "0 344 235 11 55",
+      "website": "https://opel.adimotomotiv.com.tr/",
+      "hours": ""
+    },
+    {
+      "id": "opel-aslanbey",
+      "name": "ASLANBEY",
+      "brand": "opel",
+      "city": "Hatay",
+      "address": "Sarımazı Mah. İskenderun Antakya yolu 6 km. Fatih Mah. Sokullu Mehmet Paşa Cad Zemin Kat No:46, D:5, 31000 Belen/Hatay, 31060",
+      "phone": "+90 326 2855870",
+      "website": "https://opel.aslanbeyotomotiv.com.tr/?location=Hatay%7C0",
+      "hours": ""
+    },
+    {
+      "id": "opel-ilicak",
+      "name": "ILICAK",
+      "brand": "opel",
+      "city": "Malatya",
+      "address": "1.OSB MAH. HAVAALANIYOLU 2. CAD. NO: 14/3, 44900",
+      "phone": "04222383750",
+      "website": "https://www.ilicakopel.com.tr/",
+      "hours": ""
+    },
+    {
+      "id": "opel-adim",
+      "name": "ADIM",
+      "brand": "opel",
+      "city": "Gaziantep",
+      "address": "Şehit Ömer Halisdemir Bulvarı, No : 16, Şehitkamil, 27580",
+      "phone": "+90 342 3243434",
+      "website": "https://opel.adimotomotiv.com.tr",
+      "hours": ""
+    },
+    {
+      "id": "opel-vardallar",
+      "name": "VARDALLAR",
+      "brand": "opel",
+      "city": "Trabzon",
+      "address": "Kaymaklı Mah. Anadolu Blv. Erzurum Yolu Üzeri No:163 Ortahisar, 61100",
+      "phone": "+90 462 325 7932",
+      "website": "https://opel.vardallar.com.tr/",
+      "hours": ""
+    },
+    {
+      "id": "opel-firat",
+      "name": "FIRAT",
+      "brand": "opel",
+      "city": "Elazığ",
+      "address": "Abdullahpaşa mah. Malatya cad. No:230, 23100",
+      "phone": "+90 424 247 79 80",
+      "website": "https://www.opelfirat.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-gapel",
+      "name": "GAPEL",
+      "brand": "opel",
+      "city": "Şanlıurfa",
+      "address": "Akçakale Yolu 4. Km, 63100",
+      "phone": "+90 414 247 4545",
+      "website": "https://opel.gapel.com.tr/",
+      "hours": ""
+    },
+    {
+      "id": "opel-odabasi",
+      "name": "ODABAŞI",
+      "brand": "opel",
+      "city": "Diyarbakır",
+      "address": "ŞANLIURFA YOLU BULVARI NO:239, 21090",
+      "phone": "+90 412 251 8820",
+      "website": "https://www.odabasiotomotiv.com.tr/",
+      "hours": ""
+    },
+    {
+      "id": "opel-erdemir-erzurum",
+      "name": "ERZURUM ERDEMİR",
+      "brand": "opel",
+      "city": "Erzurum",
+      "address": "Sanayi Sitesi Çıkışı, Tortum Yolu Üzeri, 25050",
+      "phone": "+90 442 242 0050",
+      "website": "https://opelerzurum.erdemirler.com/",
+      "hours": ""
+    },
+    {
+      "id": "opel-dogu",
+      "name": "DOĞU",
+      "brand": "opel",
+      "city": "Van",
+      "address": "IPEK YOLU ÜZERI VAN ŞEHRI STADYUM KARŞISI NO:51, 65100",
+      "phone": "+90 432 217 7277",
+      "website": "https://opel.doguoto.com.tr/",
+      "hours": ""
+    },
+    {
+      "id": "vw-acarlar",
+      "name": "Acarlar",
+      "brand": "volkswagen",
+      "city": "İstanbul",
+      "address": "Acarlar Mah. Polonez Bağlantı Yolu, Şenkaya Çıkmazı, No: 2, Beykoz, 34805",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-dogus-kartal",
+      "name": "Doğuş Oto Kartal",
+      "brand": "volkswagen",
+      "city": "İstanbul",
+      "address": "Hürriyet Mah. D - 100 E5, Kuzey Yanyol Cad. Site Giriş: 45, Yakacık, Kartal, 34876",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-dogus-maslak",
+      "name": "Doğuş Oto Maslak",
+      "brand": "volkswagen",
+      "city": "İstanbul",
+      "address": "Maslak Mah. Ahi Evran - Polaris Cad. No: 4/13, Doğuş Center Maslak, Sarıyer, İstanbul, 34398",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-kaptanpasa",
+      "name": "Doğuş Oto Kaptanpaşa",
+      "brand": "volkswagen",
+      "city": "İstanbul",
+      "address": "Kaptanpaşa Mah. Zincirlikuyu Cad. No: 178 / 1, Kasımpaşa, Beyoğlu, 34440",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-hamidiye",
+      "name": "Doğuş Oto Hamidiye",
+      "brand": "volkswagen",
+      "city": "İstanbul",
+      "address": "Hamidiye Mah. Anadolu Cad. No:16/10 Kağıthane, 34408",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-osmaniye-istanbul",
+      "name": "Doğuş Oto Osmaniye İstanbul",
+      "brand": "volkswagen",
+      "city": "İstanbul",
+      "address": "Osmaniye Mah. Aksu Osmaniye Yolu Sok. No: 27A, Bakırköy, 34146",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-orucreis",
+      "name": "Avek Oto",
+      "brand": "volkswagen",
+      "city": "İstanbul",
+      "address": "Oruç Reis Mah. Giyimkent Cad. No: 2, Atış Alanı, Esenler, 34235",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-yenibosna",
+      "name": "Doğuş Oto Yenibosna",
+      "brand": "volkswagen",
+      "city": "İstanbul",
+      "address": "Yenibosna Basın Ekspres Yolu, Cemal Ulusoy Cad. No: 1, Bahçelievler, 34197",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-gebze",
+      "name": "Doğuş Oto Gebze",
+      "brand": "volkswagen",
+      "city": "Kocaeli",
+      "address": "Tatlıkuyu Mah. 1319/2 Sok. No: 26/A, Gebze, 41400",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-esenyurt",
+      "name": "Doğuş Oto Esenyurt",
+      "brand": "volkswagen",
+      "city": "İstanbul",
+      "address": "Zafer Mah. Adile Naşit Bulvarı, 55/1, Haramidere Mevkii, Esenyurt, 34513",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-basiskele",
+      "name": "Doğuş Oto Başiskele",
+      "brand": "volkswagen",
+      "city": "Kocaeli",
+      "address": "Karadenizliler Mah. D130 Yan Yol Cad. No:252 Başiskele, 41310",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-bursa",
+      "name": "Doğuş Oto Bursa",
+      "brand": "volkswagen",
+      "city": "Bursa",
+      "address": "Fatih Mah. Yeni Yalova Yolu Cad. No: 327, Osmangazi, 16140",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-arifiye",
+      "name": "Doğuş Oto Arifiye",
+      "brand": "volkswagen",
+      "city": "Sakarya",
+      "address": "Hanlıköy Mah. Akgün Cad. No: 55, Arifiye, 54580",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-corlu",
+      "name": "Doğuş Oto Çorlu",
+      "brand": "volkswagen",
+      "city": "Tekirdağ",
+      "address": "Kazımiye Mah. Salih Omurtak Cad. No: 6, Çorlu, 59860",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-eskisehir",
+      "name": "Doğuş Oto Eskişehir",
+      "brand": "volkswagen",
+      "city": "Eskişehir",
+      "address": "Aşağı Söğütönü Mah. Çevre Yolu Bulvarı No:644 Tepebaşı, 26210",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-duzce",
+      "name": "Doğuş Oto Düzce",
+      "brand": "volkswagen",
+      "city": "Düzce",
+      "address": "Doğanlı Köyü Doğanlı Mücavir Mevkii 9200. Sokak No:43 A/0 Merkez, 81060",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:15"
+    },
+    {
+      "id": "vw-balikesir",
+      "name": "Doğuş Oto Balıkesir",
+      "brand": "volkswagen",
+      "city": "Balıkesir",
+      "address": "Çayırhisar Mah. Yeni İzmir Cad. No: 163 / A, Altıeylül, 10100",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:45"
+    },
+    {
+      "id": "vw-karaelebasi",
+      "name": "Doğuş Oto Karabük",
+      "brand": "volkswagen",
+      "city": "Zonguldak",
+      "address": "Müftü Mah. Çetin Apatay Bulvarı, VW Plaza, K.Ereğli, 67300",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-kutahya",
+      "name": "Doğuş Oto Kütahya",
+      "brand": "volkswagen",
+      "city": "Kütahya",
+      "address": "İnköyü Mah. Eskişehir Bulvarı, No: 33/1, Merkez, 43000",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-kesan",
+      "name": "Doğuş Oto Keşan",
+      "brand": "volkswagen",
+      "city": "Edirne",
+      "address": "Cumhuriyet Mah. Hasan Tahsin Cad. No:43 Keşan, 22800",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-edirne",
+      "name": "Doğuş Oto Edirne",
+      "brand": "volkswagen",
+      "city": "Edirne",
+      "address": "Koca Sinan Mahallesi E5 Karayolu Caddesi Mercan Volkswagen Bayı Apt. No:34 Merkez, 22130",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-edremit",
+      "name": "Doğuş Oto Edremit",
+      "brand": "volkswagen",
+      "city": "Balıkesir",
+      "address": "Çay Mah. Beşçınarlar Mevki, No: 6, Zeytinli, Edremit, 10305",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:45"
+    },
+    {
+      "id": "vw-canakkale",
+      "name": "Avek Çanakkale",
+      "brand": "volkswagen",
+      "city": "Çanakkale",
+      "address": "Karacaören Köyü, Testicikiri Mevki, 2 Sok. No: 2, Merkez, 17100",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-usak",
+      "name": "Doğuş Oto Uşak",
+      "brand": "volkswagen",
+      "city": "Uşak",
+      "address": "Fevzi Çakmak Mah. Gazi Bulvarı, No: 104/A, 64702",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-afyon",
+      "name": "Doğuş Oto Afyon",
+      "brand": "volkswagen",
+      "city": "Afyonkarahisar",
+      "address": "Fevzi Çakmak Mah. Atatürk Bulvarı, 57/1, 03100",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-manisa",
+      "name": "Doğuş Oto Manisa",
+      "brand": "volkswagen",
+      "city": "Manisa",
+      "address": "Kuşlubahçe Mah. Mimar Sinan Bulvarı, No: 65/A, 45040",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-etimesgut",
+      "name": "Doğuş Oto Etimesgut",
+      "brand": "volkswagen",
+      "city": "Ankara",
+      "address": "Erler Mah. 2715. Cad. No: 6/A, Etimesgut, 06790",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-etimesgut2",
+      "name": "Doğuş Oto Etimesgut 2",
+      "brand": "volkswagen",
+      "city": "Ankara",
+      "address": "Fatih Sultan Mehmet Bulvarı, No: 289, Etimesgut, 06790",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-ankara-aydoganlar",
+      "name": "Aydoğanlar",
+      "brand": "volkswagen",
+      "city": "Ankara",
+      "address": "Oto Sanayi Sitesi Girişi, 6. Cad. No: 9-A, Güvercinlik, 06170",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-izmir-yunusemre",
+      "name": "Vosmer İzmir",
+      "brand": "volkswagen",
+      "city": "İzmir",
+      "address": "Yunusemre Mah. 7.523 Sok. No: 2, 35060",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-ankara-balgat",
+      "name": "Doğuş Oto Balgat",
+      "brand": "volkswagen",
+      "city": "Ankara",
+      "address": "İşçi Blokları Mah. Mevlana Bulvarı, No: 182/A, Balgat, Çankaya, 06520",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-ankara-pursaklar",
+      "name": "Doğuş Oto Pursaklar",
+      "brand": "volkswagen",
+      "city": "Ankara",
+      "address": "Yunus Emre Caddesi, No: 1, Pursaklar, 06145",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:00"
+    },
+    {
+      "id": "vw-izmir-alsancak",
+      "name": "Vosmer Alsancak",
+      "brand": "volkswagen",
+      "city": "İzmir",
+      "address": "Umurbey Mah. Şehitler Caddesi, No: 149, Alsancak Konak, 35220",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-izmir-cigli",
+      "name": "Avek Çiğli",
+      "brand": "volkswagen",
+      "city": "İzmir",
+      "address": "Karşıyaka, 10049. Sk. No: 11 D:1 Atatürk Osb Mh. Çiğli, 35620",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-izmir-gaziemir",
+      "name": "Vosmer Gaziemir",
+      "brand": "volkswagen",
+      "city": "İzmir",
+      "address": "Akçay Cad. No: 253 / 2, Gaziemir, 35410",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-denizli",
+      "name": "Batı Otomotiv",
+      "brand": "volkswagen",
+      "city": "Denizli",
+      "address": "Eskihisar Mah. Ankara Bulvarı, No: 325, 20100",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-aydin",
+      "name": "Doğuş Oto Aydın",
+      "brand": "volkswagen",
+      "city": "Aydın",
+      "address": "Ovaeymir Mah. Çine Cad. No: 4 Efeler, 09010",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-isparta",
+      "name": "Doğuş Oto Isparta",
+      "brand": "volkswagen",
+      "city": "Isparta",
+      "address": "Fatih Mah. Süleyman Demirel Bulvarı, 102. Cadde, No: 157/A-B, 32100",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-kusadasi",
+      "name": "Doğuş Oto Kuşadası",
+      "brand": "volkswagen",
+      "city": "Aydın",
+      "address": "Değirmendere Mah.Süleyman Demirel Bulv.No:219 Kuşadası, 09400",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-bodrum",
+      "name": "Lena Bodrum",
+      "brand": "volkswagen",
+      "city": "Muğla",
+      "address": "Bodrum - Milas Karayolu Üzeri, Kemikler Mevki, Bodrum, 48200",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:30"
+    },
+    {
+      "id": "vw-konya",
+      "name": "Doğuş Oto Konya",
+      "brand": "volkswagen",
+      "city": "Konya",
+      "address": "Fevzi Çakmak Mah. Ankara Cad. No: 192/1, Karatay, 42050",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-antalya-kepez",
+      "name": "Doğuş Oto Kepez",
+      "brand": "volkswagen",
+      "city": "Antalya",
+      "address": "Altınova Sinan Mah. Serik Cad. No: 161, Altınova, Kepez, 07170",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-antalya-kepez2",
+      "name": "Doğuş Oto Kepez 2",
+      "brand": "volkswagen",
+      "city": "Antalya",
+      "address": "Altınova Sinan Mah. Serik Cad. No:139 Kepez, 07170",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-antalya-konyaalti",
+      "name": "Doğuş Oto Konyaaltı",
+      "brand": "volkswagen",
+      "city": "Antalya",
+      "address": "Sarısu Mahallesi 121. Sokak No:24/A Konyaaltı, 07070",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-fethiye",
+      "name": "Lena Fethiye",
+      "brand": "volkswagen",
+      "city": "Muğla",
+      "address": "Yeni Mah. Adnan Menderes Bulvarı, No: 366/A-B, Fethiye, 48300",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-corum",
+      "name": "Doğuş Oto Çorum",
+      "brand": "volkswagen",
+      "city": "Çorum",
+      "address": "Ankara Yolu, 7. km, 19200",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-aksaray",
+      "name": "Doğuş Oto Aksaray",
+      "brand": "volkswagen",
+      "city": "Aksaray",
+      "address": "Yenimahalle Mahallesi, Recep Tayyip Erdoğan Blv. No: 97/A, 68000 Aksaray Merkez, 68120",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-alanya",
+      "name": "Doğuş Oto Alanya",
+      "brand": "volkswagen",
+      "city": "Antalya",
+      "address": "Sugözü Mah. Keykubat Bulvarı, No: 11, Alanya, 07400",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-kayseri",
+      "name": "Doğuş Oto Kayseri",
+      "brand": "volkswagen",
+      "city": "Kayseri",
+      "address": "Osman Kavuncu Cad. No: 206, Kocasinan, 38010",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-samsun",
+      "name": "Doğuş Oto Samsun",
+      "brand": "volkswagen",
+      "city": "Samsun",
+      "address": "Kirazlık Mah. Atatürk Bulv. No:68 Tekkeköy, 55300",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:45"
+    },
+    {
+      "id": "vw-mersin",
+      "name": "Doğuş Oto Mersin",
+      "brand": "volkswagen",
+      "city": "Mersin",
+      "address": "Akdeniz Mah. G.M.K. Bulvarı, Opat Plaza, Mezitli, 33210",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-tarsus",
+      "name": "Doğuş Oto Tarsus",
+      "brand": "volkswagen",
+      "city": "Mersin",
+      "address": "Sait Polat Bulvarı Beydeğirmeni Mahallesi No:317, 33450 Tarsus, 33402",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:00"
+    },
+    {
+      "id": "vw-unye",
+      "name": "Doğuş Oto Ünye",
+      "brand": "volkswagen",
+      "city": "Ordu",
+      "address": "Eski Kızılcakese Köyü, Yalı Mevkii, Ünye - Fatsa Karayolu, Ünye, 52300",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-adana",
+      "name": "Doğuş Oto Adana",
+      "brand": "volkswagen",
+      "city": "Adana",
+      "address": "Fevzipaşa Mah. Turhan Cemal Beriker Bulvarı No:416 Seyhan, 01190",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-adana-ceyhan",
+      "name": "Doğuş Oto Ceyhan",
+      "brand": "volkswagen",
+      "city": "Adana",
+      "address": "Ceyhan Yolu 5. km, No: 210, Yüreğir, 01130",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-adana-saricams",
+      "name": "Doğuş Oto Sarıçam",
+      "brand": "volkswagen",
+      "city": "Adana",
+      "address": "Yeni Mah. İncirlik Bulvarı 283/A Sarıçam, 01263",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-osmaniye",
+      "name": "Doğuş Oto Osmaniye",
+      "brand": "volkswagen",
+      "city": "Osmaniye",
+      "address": "Dumlupınar Mah. İskender Türkmen Cad. No: 249, 80030",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-bulancak",
+      "name": "Doğuş Oto Bulancak",
+      "brand": "volkswagen",
+      "city": "Giresun",
+      "address": "Pazarsuyu Köyü, Çardaktepe Mevkii, No:1 A/A Bulancak, 28300",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-kahramanmaras",
+      "name": "Doğuş Oto Kahramanmaraş",
+      "brand": "volkswagen",
+      "city": "Kahramanmaraş",
+      "address": "Malik Ejder Mah. Batı Çevre Yolu Bulv. 2.Km. No:67/A Onikişubat, 46050",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:10"
+    },
+    {
+      "id": "vw-iskenderun",
+      "name": "Doğuş Oto İskenderun",
+      "brand": "volkswagen",
+      "city": "Hatay",
+      "address": "İssume Mah. Sokullu Mehmet Paşa Cad.No:19/A, Belen, 31200",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-antakya",
+      "name": "Doğuş Oto Antakya",
+      "brand": "volkswagen",
+      "city": "Hatay",
+      "address": "Derince Mah. Akpa Sok. No: 25, Antakya, 31000",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-gaziantep",
+      "name": "Doğuş Oto Gaziantep",
+      "brand": "volkswagen",
+      "city": "Gaziantep",
+      "address": "Göktürk Mah. 150098 Sok. No:10, 27630",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-gaziantep-sehitkamil",
+      "name": "Doğuş Oto Şehitkamil",
+      "brand": "volkswagen",
+      "city": "Gaziantep",
+      "address": "Sanayi Mah.Sani Konukoğlu Bulvarı Şahintaş Plaza No:229 Şehitkamil, 27110",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-adiyaman",
+      "name": "Doğuş Oto Adıyaman",
+      "brand": "volkswagen",
+      "city": "Adıyaman",
+      "address": "Gölbaşı Yolu Blv No : 124/1 Merkez, 02000",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-trabzon",
+      "name": "Doğuş Oto Trabzon",
+      "brand": "volkswagen",
+      "city": "Trabzon",
+      "address": "Merkez Mahallesi Sahilyolu Caddesi No:48 Yıldızlı Akçaabat, 61400",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-erzincan",
+      "name": "Doğuş Oto Erzincan",
+      "brand": "volkswagen",
+      "city": "Erzincan",
+      "address": "Mengüceli, Erzurum Karayolu 3. km, 24100 Merkez",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-elazig",
+      "name": "Doğuş Oto Elazığ",
+      "brand": "volkswagen",
+      "city": "Elazığ",
+      "address": "Karşıyaka Mah. Cahit Dalokay Cad. No: 123, 23300",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-sanliurfa",
+      "name": "Doğuş Oto Şanlıurfa",
+      "brand": "volkswagen",
+      "city": "Şanlıurfa",
+      "address": "Recep Tayip Erdoğan Bulvarı, Oğul Bey Mah. No: 392 / 1, Mardin Yolu, 8. km, 63320",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-rize",
+      "name": "Doğuş Oto Rize",
+      "brand": "volkswagen",
+      "city": "Rize",
+      "address": "Hamidiye Menderes No:333/A Merkez, 53800",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-diyarbakir",
+      "name": "Doğuş Oto Diyarbakır",
+      "brand": "volkswagen",
+      "city": "Diyarbakır",
+      "address": "Elazığ Yolu 4. Km. Vw Dicle Otomotiv Yenişehir, 21100",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:45"
+    },
+    {
+      "id": "vw-erzurum",
+      "name": "Doğuş Oto Erzurum",
+      "brand": "volkswagen",
+      "city": "Erzurum",
+      "address": "Ilıca Yolu Üzeri, 10. km, Ilıca, 25700",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-mardin",
+      "name": "Doğuş Oto Mardin",
+      "brand": "volkswagen",
+      "city": "Mardin",
+      "address": "Turgut Özal Mah. Mardin Cad. Havaalanı Yolu Üzeri, No: 376, Kızıltepe, 47400",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-mardin2",
+      "name": "Doğuş Oto Mardin 2",
+      "brand": "volkswagen",
+      "city": "Mardin",
+      "address": "Kızıltepe Yolu Üzeri, 3. km, Tüvtürk Araç Muayene İstasyonu Bitişiği, 47000",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-batman",
+      "name": "Doğuş Oto Batman",
+      "brand": "volkswagen",
+      "city": "Batman",
+      "address": "Petrol Mah. TPAO Bulvarı, No: 69 Merkez, 72040",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-bitlis",
+      "name": "Doğuş Oto Bitlis",
+      "brand": "volkswagen",
+      "city": "Bitlis",
+      "address": "Beş Minare Mah. Ahmet Eren Bul. No:405, 13000",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-van",
+      "name": "Doğuş Oto Van",
+      "brand": "volkswagen",
+      "city": "Van",
+      "address": "Süphan Mah. İpekyolu Üzeri, Havaalanı Kavşağı, 5. km, 65300",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 08:30"
+    },
+    {
+      "id": "vw-igdir",
+      "name": "Doğuş Oto Iğdır",
+      "brand": "volkswagen",
+      "city": "Iğdır",
+      "address": "14 Kasım Mah. Çevre Yolu Cad. No: 102/A, Merkez, 76000",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    },
+    {
+      "id": "vw-avek-umraniye",
+      "name": "Avek Ümraniye",
+      "brand": "volkswagen",
+      "city": "İstanbul",
+      "address": "Yamanevler Mah. Ahmet Tevfik İleri Cd. N:28/2-3 Ümraniye, 34768",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-ozon-tasdelen",
+      "name": "Özön Taşdelen",
+      "brand": "volkswagen",
+      "city": "İstanbul",
+      "address": "Soğuk Pınar Mah.Adnan Menderes Cad. No: 36-38/A Taşdelen, Çekmeköy, 34788",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 18:00"
+    },
+    {
+      "id": "vw-erel-maltepe",
+      "name": "Erel Maltepe",
+      "brand": "volkswagen",
+      "city": "İstanbul",
+      "address": "Altayçeşme Mah. Çamlı Sok. No: 28/A, Maltepe, 34843",
+      "phone": "",
+      "website": "",
+      "hours": "Şu tarihe kadar açık 17:30"
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../index.css";
 import Header from "@/components/header";
 import Providers from "@/components/providers";
+import ScrollToTop from "@/components/scroll-to-top";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,8 +18,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "my-app",
-  description: "my-app",
+  title: "FiyatKarşılaştır | Türkiye vs Almanya Araç Fiyatları",
+  description:
+    "Türkiye ve Almanya araç fiyatlarını karşılaştır. ÖTV ve KDV dahil ne kadar vergi ödediğini gör. Volkswagen, BMW, Toyota ve daha fazlası.",
+  keywords:
+    "araç fiyat karşılaştırma, ötv hesaplama, türkiye almanya fiyat, araba vergi hesaplama",
+  openGraph: {
+    title: "FiyatKarşılaştır - Türkiye vs Almanya Araç Fiyatları",
+    description:
+      "Türkiye ve Almanya araç fiyatlarını karşılaştır. Ne kadar vergi ödediğini gör.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -28,12 +38,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <Providers>
-          <div className="grid grid-rows-[auto_1fr] h-svh">
+          <div className="grid h-svh grid-rows-[auto_1fr]">
             <Header />
             {children}
           </div>
+          <ScrollToTop />
         </Providers>
       </body>
     </html>

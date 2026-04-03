@@ -1,0 +1,444 @@
+"use client";
+
+import { ArrowLeft, ArrowUp, Moon, Share2, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { use, useEffect, useState } from "react";
+import AdBanner from "@/components/ad-banner";
+import {
+  calculateTax,
+  detectFuel,
+  extractEngineCC,
+  formatCurrency,
+  formatPercent,
+} from "@/features/tax-calculation/utils/taxCalculator";
+import vehicleData from "@/shared/data/vehicles.json";
+import { useCurrency } from "@/shared/utils/useCurrency";
+
+const { brands, models } = vehicleData as {
+  brands: { id: string; name: string; country: string; logo: string }[];
+  models: Record<
+    string,
+    {
+      id: string;
+      name: string;
+      versions: { engine: string; hp: number; tr: number; de: number }[];
+    }[]
+  >;
+};
+
+const countryNames: Record<string, string> = {
+  US: "ABD",
+  DE: "Almanya",
+  CZ: "Çekya",
+  FR: "Fransa",
+  KR: "Güney Kore",
+  SE: "İsveç",
+  IT: "İtalya",
+  JP: "Japonya",
+  TR: "Türkiye",
+  GB: "İngiltere",
+  ES: "İspanya",
+  RO: "Romanya",
+  RU: "Rusya",
+  CN: "Çin",
+  MY: "Malezya",
+  IN: "Hindistan",
+  IR: "İran",
+};
+
+const countryFlags: Record<string, string> = {
+  US: "https://flagcdn.com/w40/us.png",
+  DE: "https://flagcdn.com/w40/de.png",
+  CZ: "https://flagcdn.com/w40/cz.png",
+  FR: "https://flagcdn.com/w40/fr.png",
+  KR: "https://flagcdn.com/w40/kr.png",
+  SE: "https://flagcdn.com/w40/se.png",
+  IT: "https://flagcdn.com/w40/it.png",
+  JP: "https://flagcdn.com/w40/jp.png",
+  TR: "https://flagcdn.com/w40/tr.png",
+  GB: "https://flagcdn.com/w40/gb.png",
+  ES: "https://flagcdn.com/w40/es.png",
+  RO: "https://flagcdn.com/w40/ro.png",
+  RU: "https://flagcdn.com/w40/ru.png",
+  CN: "https://flagcdn.com/w40/cn.png",
+  MY: "https://flagcdn.com/w40/my.png",
+  IN: "https://flagcdn.com/w40/in.png",
+  IR: "https://flagcdn.com/w40/ir.png",
+};
+
+export default function ComparePage({
+  params,
+}: {
+  params: Promise<{ brand: string; model: string }>;
+}) {
+  const { brand, model } = use(params);
+  const { rates, isLoading, convertToTRY } = useCurrency();
+  const [selectedVersion, setSelectedVersion] = useState<number | null>(null);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `${brandName} ${modelName} Fiyat Karşılaştırması`,
+          text: "Bu aracın Türkiye ve Almanya fiyatlarını karşılaştırın!",
+          url: url,
+        });
+      } catch (err) {
+        console.log("Share cancelled");
+      }
+    } else {
+      navigator.clipboard.writeText(url);
+      alert("Link kopyalandı!");
+    }
+  };
+
+  const brandData = models[brand] || [];
+  const modelData = brandData.find((m: { id: string }) => m.id === model);
+  const data = modelData?.versions || [];
+  const currentData = selectedVersion !== null ? data[selectedVersion] : null;
+
+  const brandInfo = brands.find((b: { id: string }) => b.id === brand);
+  const brandName = brandInfo?.name || brand;
+  const modelName = modelData?.name || model;
+
+  if (data.length === 0) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="text-center">
+          <h1 className="mb-4 font-bold text-2xl">Bu model henüz eklenmedi</h1>
+          <a href="/" className="text-blue-600 hover:underline">
+            Ana sayfaya dön
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+  const taxInfo = currentData
+    ? calculateTax(
+        currentData.de,
+        rates.USD,
+        extractEngineCC(currentData.engine),
+        detectFuel(currentData.engine),
+      )
+    : null;
+
+  const trPrice = currentData?.tr || 0;
+  const dePriceTRY = currentData ? convertToTRY(currentData.de, "EUR") : 0;
+  const diff = trPrice - dePriceTRY;
+  const diffPercent = dePriceTRY > 0 ? diff / dePriceTRY : 0;
+
+  const minimumWageTR = 22600;
+  const monthsToAffordTR = Math.ceil(trPrice / minimumWageTR);
+
+  const minimumWages: Record<
+    string,
+    { amount: number; currency: string; name: string }
+  > = {
+    IT: { amount: 1900, currency: "€", name: "İtalya" },
+    DE: { amount: 2200, currency: "€", name: "Almanya" },
+    FR: { amount: 1800, currency: "€", name: "Fransa" },
+    GB: { amount: 1700, currency: "£", name: "İngiltere" },
+    US: { amount: 2200, currency: "$", name: "ABD" },
+    JP: { amount: 180000, currency: "¥", name: "Japonya" },
+    KR: { amount: 2000000, currency: "₩", name: "Güney Kore" },
+    CN: { amount: 5000, currency: "¥", name: "Çin" },
+    TR: { amount: 22600, currency: "₺", name: "Türkiye" },
+    ES: { amount: 1650, currency: "€", name: "İspanya" },
+    SE: { amount: 22000, currency: "kr", name: "İsveç" },
+    RO: { amount: 600, currency: "lei", name: "Romanya" },
+    CZ: { amount: 18000, currency: "Kč", name: "Çekya" },
+  };
+
+  const brandCountry = brandInfo?.country || "DE";
+  const brandCountryWage = minimumWages[brandCountry] || minimumWages.DE;
+
+  return (
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      <header className="bg-white shadow-sm dark:bg-slate-800">
+        <div className="container mx-auto max-w-5xl px-4 py-4">
+          <div className="flex items-center justify-between">
+            <a href="/" className="flex items-center gap-2">
+              <span className="text-2xl">🚗</span>
+              <span className="font-bold text-slate-900 text-xl dark:text-white">
+                FiyatKarşılaştır
+              </span>
+            </a>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handleShare}
+                className="flex items-center gap-2 rounded-lg px-3 py-2 font-medium text-slate-600 text-sm hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
+              >
+                <Share2 className="h-4 w-4" />
+                Paylaş
+              </button>
+              {mounted && (
+                <button
+                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  className="rounded-lg p-2 hover:bg-slate-100 dark:hover:bg-slate-700"
+                  aria-label="Tema değiştir"
+                >
+                  {theme === "dark" ? (
+                    <Sun className="h-5 w-5 dark:text-white" />
+                  ) : (
+                    <Moon className="h-5 w-5" />
+                  )}
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div className="container mx-auto max-w-5xl px-4 py-8">
+        <a
+          href="/"
+          className="mb-6 inline-flex items-center gap-2 text-blue-600 hover:underline dark:text-blue-400"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Geri
+        </a>
+        <h1 className="mb-2 flex items-center gap-4 font-bold text-4xl text-slate-900 dark:text-white">
+          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-200 font-bold text-2xl text-slate-600 dark:bg-slate-600 dark:text-slate-300">
+            {brandName.charAt(0)}
+          </div>
+          <div className="flex flex-col">
+            <span>
+              {brandName} {modelName}
+            </span>
+            <span className="flex items-center gap-2 font-normal text-lg text-slate-500">
+              <img
+                src={countryFlags[brandInfo?.country || "TR"]}
+                alt=""
+                className="h-4 w-6"
+              />
+              {countryNames[brandInfo?.country || "TR"] || brandInfo?.country}
+            </span>
+          </div>
+        </h1>
+        <p className="mb-8 text-lg text-slate-500 dark:text-slate-400">
+          Fiyat karşılaştırması • {currentData?.engine}
+        </p>
+        {currentData && (
+          <div className="mb-8 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800">
+            <div className="relative h-64 w-full bg-gradient-to-b from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800">
+              <div className="flex h-full w-full items-center justify-center">
+                <div className="flex items-center justify-center rounded-2xl bg-slate-300 font-bold text-6xl text-slate-500 dark:bg-slate-600 dark:text-slate-400">
+                  {brandName.charAt(0)}
+                </div>
+              </div>
+              <div className="absolute bottom-4 left-4 rounded-lg bg-black/70 px-4 py-2 text-white">
+                <span className="font-bold">{brandName}</span> {modelName}
+              </div>
+              <div className="absolute right-4 bottom-4 rounded-lg bg-blue-600 px-4 py-2 text-white">
+                {currentData.engine} • {currentData.hp} HP
+              </div>
+            </div>
+          </div>
+        )}
+        <div className="mb-8 rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
+          <label className="mb-4 block font-medium text-slate-700 text-sm dark:text-slate-200">
+            Versiyon Seç
+          </label>
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+            {data.map((item, idx) => (
+              <button
+                key={idx}
+                onClick={() =>
+                  setSelectedVersion(selectedVersion === idx ? null : idx)
+                }
+                className={`rounded-lg p-4 text-left transition-all ${
+                  selectedVersion === idx
+                    ? "bg-blue-600 text-white"
+                    : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600"
+                }`}
+              >
+                <div className="font-semibold">{item.engine}</div>
+                <div
+                  className={`text-sm ${selectedVersion === idx ? "text-blue-100" : "text-slate-500"}`}
+                >
+                  {item.hp} HP
+                </div>
+              </button>
+            ))}
+          </div>
+        </div>
+        {brand === "alfaromeo" &&
+          model === "tonale" &&
+          selectedVersion !== null && (
+            <div className="mb-8 overflow-hidden rounded-xl">
+              <iframe
+                className="aspect-video w-full"
+                src="https://www.youtube.com/embed/poYON3zPDik"
+                title="Alfa Romeo Tonale"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          )}
+        <AdBanner slot="compare-page" />
+
+        <div className="mb-8 grid gap-6 md:grid-cols-2">
+          <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
+            <div className="mb-4">
+              <h2 className="font-semibold dark:text-white">Türkiye</h2>
+              <p className="text-slate-500 text-sm">Vitrin fiyatı</p>
+            </div>
+            <div className="font-bold text-3xl text-slate-900 dark:text-white">
+              {formatCurrency(trPrice)}
+            </div>
+          </div>
+
+          <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
+            <div className="mb-4">
+              <h2 className="font-semibold dark:text-white">Almanya</h2>
+              <p className="text-slate-500 text-sm">mobile.de</p>
+            </div>
+            <div className="font-bold text-3xl text-slate-900 dark:text-white">
+              €{currentData?.de.toLocaleString()}
+            </div>
+            <div className="mt-1 text-slate-500 text-sm">
+              ≈ {formatCurrency(dePriceTRY)} (kur dönüşümü)
+            </div>
+          </div>
+        </div>
+        {taxInfo && (
+          <div className="mb-8 rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
+            <h3 className="mb-4 font-semibold text-lg dark:text-white">
+              🧮 Vergi Kırılımı
+            </h3>
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <tbody className="divide-y">
+                  <tr>
+                    <td className="py-3 text-slate-600 dark:text-slate-300">
+                      Gümrük Çıkış Fiyatı (EUR)
+                    </td>
+                    <td className="py-3 text-right font-medium dark:text-white">
+                      €{currentData?.de.toLocaleString()}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 text-slate-600 dark:text-slate-300">
+                      Döviz Kuru (USD)
+                    </td>
+                    <td className="py-3 text-right font-medium dark:text-white">
+                      {rates.USD.toFixed(2)} TL
+                    </td>
+                  </tr>
+                  <tr className="bg-slate-50 dark:bg-slate-700">
+                    <td className="py-3 font-medium text-slate-600 dark:text-slate-200">
+                      Matrah (Vergisiz Fiyat)
+                    </td>
+                    <td className="py-3 text-right font-medium dark:text-white">
+                      {formatCurrency(taxInfo.matrah)}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 text-slate-600 dark:text-slate-300">
+                      ÖTV Oranı
+                    </td>
+                    <td className="py-3 text-right font-medium dark:text-white">
+                      {formatPercent(taxInfo.otvRate)}
+                    </td>
+                  </tr>
+                  <tr className="bg-slate-50 dark:bg-slate-700">
+                    <td className="py-3 font-medium text-slate-600 dark:text-slate-200">
+                      ÖTV Tutarı
+                    </td>
+                    <td className="py-3 text-right font-medium text-red-600 dark:text-red-400">
+                      +{formatCurrency(taxInfo.otvAmount)}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 text-slate-600 dark:text-slate-300">
+                      KDV Oranı
+                    </td>
+                    <td className="py-3 text-right font-medium dark:text-white">
+                      {formatPercent(taxInfo.kdvRate)}
+                    </td>
+                  </tr>
+                  <tr className="bg-slate-50 dark:bg-slate-700">
+                    <td className="py-3 font-medium text-slate-600 dark:text-slate-200">
+                      KDV Tutarı
+                    </td>
+                    <td className="py-3 text-right font-medium text-red-600 dark:text-red-400">
+                      +{formatCurrency(taxInfo.kdvAmount)}
+                    </td>
+                  </tr>
+                  <tr className="border-slate-200 border-t-2 dark:border-slate-600">
+                    <td className="py-4 font-bold text-lg dark:text-white">
+                      Toplam (Türkiye)
+                    </td>
+                    <td className="py-4 text-right font-bold text-blue-600 text-lg dark:text-blue-400">
+                      {formatCurrency(taxInfo.totalPrice)}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+        <div
+          className={`rounded-xl p-6 ${diff > 0 ? "bg-red-50 dark:bg-red-900/30" : "bg-green-50 dark:bg-green-900/30"}`}
+        >
+          <div className="text-center">
+            <div className="mb-2 font-medium text-lg dark:text-white">
+              Türkiye'de fiyat Almanya'ya göre
+            </div>
+            <div
+              className={`font-bold text-3xl ${diff > 0 ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`}
+            >
+              {diff > 0 ? "+" : ""}
+              {formatPercent(diffPercent)} daha pahalı
+            </div>
+            <div className="mt-2 text-slate-600 dark:text-slate-300">
+              Fark: {formatCurrency(Math.abs(diff))}
+            </div>
+            <div className="mt-4 border-slate-300 border-t pt-4 dark:border-slate-600">
+              <div className="grid gap-3 text-sm md:grid-cols-2">
+                <div>
+                  <div className="text-slate-500 dark:text-slate-400">
+                    Türkiye (Asgari ücret {formatCurrency(minimumWageTR)} TL)
+                    ile:
+                  </div>
+                  <div className="mt-1 font-bold text-slate-900 dark:text-white">
+                    {monthsToAffordTR} ay (~{Math.floor(monthsToAffordTR / 12)}{" "}
+                    yıl)
+                  </div>
+                </div>
+                <div>
+                  <div className="text-slate-500 dark:text-slate-400">
+                    {brandCountryWage.name} (Asgari ücret{" "}
+                    {brandCountryWage.amount.toLocaleString()}{" "}
+                    {brandCountryWage.currency}) ile:
+                  </div>
+                  <div className="mt-1 font-bold text-slate-900 dark:text-white">
+                    ~
+                    {Math.ceil(
+                      (currentData?.de || 0) / brandCountryWage.amount,
+                    )}{" "}
+                    ay (~
+                    {Math.floor(
+                      Math.ceil(
+                        (currentData?.de || 0) / brandCountryWage.amount,
+                      ) / 12,
+                    )}{" "}
+                    yıl)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
