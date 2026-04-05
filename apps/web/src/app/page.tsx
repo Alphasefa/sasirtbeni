@@ -310,20 +310,32 @@ export default function Home() {
         <div className="mb-6 flex gap-2">
           <button
             onClick={() => setActiveTab("brands")}
-            className="flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition-colors"
+            className={`flex items-center gap-2 rounded-lg px-6 py-3 font-semibold transition-colors ${
+              activeTab === "brands"
+                ? "bg-blue-600 text-white"
+                : "bg-white text-slate-600 hover:bg-slate-100"
+            }`}
           >
             🚗 Markalar
           </button>
           <button
             onClick={() => setActiveTab("dealers")}
-            className="flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-slate-600 transition-colors hover:bg-slate-100"
+            className={`flex items-center gap-2 rounded-lg px-6 py-3 font-semibold transition-colors ${
+              activeTab === "dealers"
+                ? "bg-blue-600 text-white"
+                : "bg-white text-slate-600 hover:bg-slate-100"
+            }`}
           >
             <Store className="h-5 w-5" />
             Yetkili Bayiler
           </button>
           <button
             onClick={() => setActiveTab("campaigns")}
-            className="flex items-center gap-2 rounded-lg bg-white px-6 py-3 font-semibold text-slate-600 transition-colors hover:bg-slate-100"
+            className={`flex items-center gap-2 rounded-lg px-6 py-3 font-semibold transition-colors ${
+              activeTab === "campaigns"
+                ? "bg-blue-600 text-white"
+                : "bg-white text-slate-600 hover:bg-slate-100"
+            }`}
           >
             <Tag className="h-5 w-5" />
             Kampanyalar
@@ -958,25 +970,23 @@ export default function Home() {
           </div>
         )}
 
-        <div className="grid gap-4 sm:grid-cols-3">
-          <div className="rounded-xl bg-white p-6 shadow dark:bg-slate-800">
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Link
+            href="/compare/alfaromeo/tonale"
+            className="rounded-xl bg-white p-6 shadow transition-all hover:scale-105 hover:shadow-lg dark:bg-slate-800"
+          >
             <div className="mb-3 font-bold text-2xl dark:text-white">
               Almanya
             </div>
             <h3 className="mb-1 font-semibold dark:text-white">Kaynak Fiyat</h3>
             <p className="text-slate-500 text-sm">mobile.de referansı</p>
-          </div>
+          </Link>
           <div className="rounded-xl bg-white p-6 shadow dark:bg-slate-800">
             <div className="mb-3 font-bold text-2xl dark:text-white">
               Türkiye
             </div>
             <h3 className="mb-1 font-semibold dark:text-white">Satış Fiyatı</h3>
             <p className="text-slate-500 text-sm">Vitrin, Bayiler</p>
-          </div>
-          <div className="rounded-xl bg-white p-6 shadow dark:bg-slate-800">
-            <div className="mb-3 font-bold text-2xl dark:text-white">Vergi</div>
-            <h3 className="mb-1 font-semibold dark:text-white">ÖTV + KDV</h3>
-            <p className="text-slate-500 text-sm">Detaylı kırılım</p>
           </div>
         </div>
       </div>
