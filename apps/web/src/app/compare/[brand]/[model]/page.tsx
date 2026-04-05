@@ -1,6 +1,18 @@
 "use client";
 
-import { ArrowLeft, ArrowUp, Moon, Share2, Sun } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUp,
+  GitCompare,
+  Moon,
+  Plus,
+  Share2,
+  Sun,
+  X,
+} from "lucide-react";
+import Link from "next/link";
 import { useTheme } from "next-themes";
 import { use, useEffect, useState } from "react";
 import {
@@ -75,6 +87,10 @@ export default function ComparePage({
   const [selectedVersion, setSelectedVersion] = useState<number | null>(null);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [showCompare, setShowCompare] = useState(false);
+  const [compareBrand, setCompareBrand] = useState("");
+  const [compareModel, setCompareModel] = useState("");
+  const [compareVersion, setCompareVersion] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -159,6 +175,25 @@ export default function ComparePage({
   const brandCountry = brandInfo?.country || "DE";
   const brandCountryWage = minimumWages[brandCountry] || minimumWages.DE;
 
+  const compareBrandData = compareBrand ? models[compareBrand] || [] : [];
+  const compareModelData = compareBrandData.find(
+    (m: { id: string }) => m.id === compareModel,
+  );
+  const compareVersionData = compareModelData?.versions || [];
+  const compareCurrentData =
+    compareVersion !== null ? compareVersionData[compareVersion] : null;
+
+  const compareBrandInfo = compareBrand
+    ? brands.find((b: { id: string }) => b.id === compareBrand)
+    : null;
+  const compareBrandName = compareBrandInfo?.name || compareBrand;
+  const compareModelName = compareModelData?.name || compareModel;
+
+  const compareTrPrice = compareCurrentData?.tr || 0;
+  const compareDePriceTRY = compareCurrentData
+    ? convertToTRY(compareCurrentData.de, "EUR")
+    : 0;
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
       <header className="bg-white shadow-sm dark:bg-slate-800">
@@ -171,6 +206,17 @@ export default function ComparePage({
               </span>
             </a>
             <div className="flex items-center gap-2">
+              <button
+                onClick={() => setShowCompare(!showCompare)}
+                className={`flex items-center gap-2 rounded-lg px-3 py-2 font-medium text-sm ${
+                  showCompare
+                    ? "bg-orange-600 text-white"
+                    : "text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
+                }`}
+              >
+                <GitCompare className="h-4 w-4" />
+                Karşılaştır
+              </button>
               <button
                 onClick={handleShare}
                 className="flex items-center gap-2 rounded-lg px-3 py-2 font-medium text-slate-600 text-sm hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
@@ -269,6 +315,76 @@ export default function ComparePage({
             ))}
           </div>
         </div>
+
+        {showCompare && (
+          <div className="mb-8 rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="font-bold text-xl dark:text-white">
+                Araç Karşılaştır
+              </h3>
+              <button
+                onClick={() => setShowCompare(false)}
+                className="text-slate-500 hover:text-slate-700"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="grid gap-4 md:grid-cols-3">
+              <select
+                value={compareBrand}
+                onChange={(e) => {
+                  setCompareBrand(e.target.value);
+                  setCompareModel("");
+                  setCompareVersion(null);
+                }}
+                className="rounded-lg border border-slate-200 px-4 py-2 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+              >
+                <option value="">Marka seç</option>
+                {brands
+                  .filter((b: { id: string }) => b.id !== brand)
+                  .map((b: { id: string; name: string }) => (
+                    <option key={b.id} value={b.id}>
+                      {b.name}
+                    </option>
+                  ))}
+              </select>
+              <select
+                value={compareModel}
+                onChange={(e) => {
+                  setCompareModel(e.target.value);
+                  setCompareVersion(null);
+                }}
+                disabled={!compareBrand}
+                className="rounded-lg border border-slate-200 px-4 py-2 disabled:opacity-50 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+              >
+                <option value="">Model seç</option>
+                {compareBrandData.map((m: { id: string; name: string }) => (
+                  <option key={m.id} value={m.id}>
+                    {m.name}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={compareVersion?.toString() || ""}
+                onChange={(e) =>
+                  setCompareVersion(
+                    e.target.value ? Number.parseInt(e.target.value) : null,
+                  )
+                }
+                disabled={!compareModel}
+                className="rounded-lg border border-slate-200 px-4 py-2 disabled:opacity-50 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+              >
+                <option value="">Versiyon seç</option>
+                {compareVersionData.map((item, idx) => (
+                  <option key={idx} value={idx.toString()}>
+                    {item.engine} - {item.hp} HP
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+        )}
+
         {brand === "alfaromeo" &&
           model === "tonale" &&
           selectedVersion !== null && (
@@ -306,6 +422,100 @@ export default function ComparePage({
             </div>
           </div>
         </div>
+
+        {showCompare && compareCurrentData && selectedVersion !== null && (
+          <div className="mb-8 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800">
+            <div className="grid grid-cols-3 divide-x divide-slate-200 bg-slate-50 dark:divide-slate-600 dark:bg-slate-700">
+              <div className="p-4 text-center">
+                <div className="mb-2 text-slate-500 text-sm">Karşılaştırma</div>
+              </div>
+              <div className="p-4 text-center">
+                <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-600 text-xl dark:bg-blue-900 dark:text-blue-300">
+                  {brandName.charAt(0)}
+                </div>
+                <div className="font-bold dark:text-white">{brandName}</div>
+                <div className="text-slate-500 text-sm">{modelName}</div>
+              </div>
+              <div className="p-4 text-center">
+                <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 font-bold text-orange-600 text-xl dark:bg-orange-900 dark:text-orange-300">
+                  {compareBrandName.charAt(0)}
+                </div>
+                <div className="font-bold dark:text-white">
+                  {compareBrandName}
+                </div>
+                <div className="text-slate-500 text-sm">{compareModelName}</div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 divide-x divide-slate-200 dark:divide-slate-600">
+              <div className="p-4">
+                <div className="text-slate-500 text-sm">Motor</div>
+              </div>
+              <div className="p-4 text-center font-medium dark:text-white">
+                {currentData?.engine}
+              </div>
+              <div className="p-4 text-center font-medium dark:text-white">
+                {compareCurrentData.engine}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 divide-x divide-slate-200 bg-slate-50 dark:divide-slate-600 dark:bg-slate-700">
+              <div className="p-4">
+                <div className="text-slate-500 text-sm">HP</div>
+              </div>
+              <div className="p-4 text-center font-medium dark:text-white">
+                {currentData?.hp} HP
+              </div>
+              <div className="p-4 text-center font-medium dark:text-white">
+                {compareCurrentData.hp} HP
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 divide-x divide-slate-200 dark:divide-slate-600">
+              <div className="p-4">
+                <div className="text-slate-500 text-sm">Almanya Fiyat</div>
+              </div>
+              <div className="p-4 text-center font-bold text-blue-600">
+                €{currentData?.de.toLocaleString()}
+              </div>
+              <div className="p-4 text-center font-bold text-orange-600">
+                €{compareCurrentData.de.toLocaleString()}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 divide-x divide-slate-200 bg-slate-50 dark:divide-slate-600 dark:bg-slate-700">
+              <div className="p-4">
+                <div className="text-slate-500 text-sm">Türkiye Fiyat</div>
+              </div>
+              <div className="p-4 text-center font-bold text-blue-600">
+                {formatCurrency(trPrice)}
+              </div>
+              <div className="p-4 text-center font-bold text-orange-600">
+                {formatCurrency(compareTrPrice)}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-3 divide-x divide-slate-200 dark:divide-slate-600">
+              <div className="p-4">
+                <div className="text-slate-500 text-sm">Fark</div>
+              </div>
+              <div className="p-4 text-center" colSpan={2}>
+                <span
+                  className={`inline-block rounded-full px-4 py-2 font-bold ${
+                    dePriceTRY > compareDePriceTRY
+                      ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
+                      : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
+                  }`}
+                >
+                  {dePriceTRY > compareDePriceTRY
+                    ? `${compareBrandName} €${(dePriceTRY - compareDePriceTRY).toLocaleString()} daha uygun`
+                    : `${brandName} €${(compareDePriceTRY - dePriceTRY).toLocaleString()} daha uygun`}
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
+
         {taxInfo && (
           <div className="mb-8 rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
             <h3 className="mb-4 font-semibold text-lg dark:text-white">

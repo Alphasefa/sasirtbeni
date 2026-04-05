@@ -1,12 +1,13 @@
 "use client";
 
-import { ChevronDown, Heart, Store, Tag, X } from "lucide-react";
+import { ChevronDown, GitCompare, Heart, Store, Tag, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import AdBanner from "@/components/ad-banner";
 import campaignsData from "@/shared/data/campaigns.json";
 import dealersData from "@/shared/data/dealers.json";
 import vehicleData from "@/shared/data/vehicles.json";
+import { useCurrency } from "@/shared/utils/useCurrency";
 
 const { brands, models } = vehicleData as {
   brands: { id: string; name: string; country: string; logo: string }[];
@@ -195,6 +196,13 @@ export default function Home() {
     "date",
   );
   const { toggleFavorite, isFavorite } = useFavorites();
+  const { convertToTRY } = useCurrency();
+
+  const [compareMode, setCompareMode] = useState(false);
+  const [compareBrand1, setCompareBrand1] = useState("");
+  const [compareModel1, setCompareModel1] = useState("");
+  const [compareBrand2, setCompareBrand2] = useState("");
+  const [compareModel2, setCompareModel2] = useState("");
 
   const { dealers } = dealersData as {
     dealers: {
@@ -340,9 +348,122 @@ export default function Home() {
             <Tag className="h-5 w-5" />
             Kampanyalar
           </button>
+          <button
+            onClick={() => setCompareMode(!compareMode)}
+            className={`flex items-center gap-2 rounded-lg px-6 py-3 font-semibold transition-colors ${
+              compareMode
+                ? "bg-orange-500 text-white"
+                : "bg-orange-100 text-orange-700 hover:bg-orange-200"
+            }`}
+          >
+            <GitCompare className="h-5 w-5" />
+            Karşılaştır
+          </button>
         </div>
 
         <AdBanner slot="homepage-top" />
+
+        {compareMode && (
+          <div className="mb-6 rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="font-bold text-xl dark:text-white">
+                🚗 Araç Karşılaştır
+              </h3>
+              <button
+                onClick={() => setCompareMode(false)}
+                className="text-slate-500 hover:text-slate-700"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div>
+                <label className="mb-2 block font-medium text-slate-600 text-sm dark:text-slate-300">
+                  1. Araç
+                </label>
+                <select
+                  value={compareBrand1}
+                  onChange={(e) => {
+                    setCompareBrand1(e.target.value);
+                    setCompareModel1("");
+                  }}
+                  className="mb-2 w-full rounded-lg border border-slate-200 px-3 py-2 dark:border-slate-600 dark:bg-slate-700"
+                >
+                  <option value="">Marka seç</option>
+                  {brands.map((b: { id: string; name: string }) => (
+                    <option key={b.id} value={b.id}>
+                      {b.name}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  value={compareModel1}
+                  onChange={(e) => setCompareModel1(e.target.value)}
+                  disabled={!compareBrand1}
+                  className="w-full rounded-lg border border-slate-200 px-3 py-2 disabled:opacity-50 dark:border-slate-600 dark:bg-slate-700"
+                >
+                  <option value="">Model seç</option>
+                  {compareBrand1 &&
+                    models[compareBrand1]?.map(
+                      (m: { id: string; name: string }) => (
+                        <option key={m.id} value={m.id}>
+                          {m.name}
+                        </option>
+                      ),
+                    )}
+                </select>
+              </div>
+              <div>
+                <label className="mb-2 block font-medium text-slate-600 text-sm dark:text-slate-300">
+                  2. Araç
+                </label>
+                <select
+                  value={compareBrand2}
+                  onChange={(e) => {
+                    setCompareBrand2(e.target.value);
+                    setCompareModel2("");
+                  }}
+                  className="mb-2 w-full rounded-lg border border-slate-200 px-3 py-2 dark:border-slate-600 dark:bg-slate-700"
+                >
+                  <option value="">Marka seç</option>
+                  {brands.map((b: { id: string; name: string }) => (
+                    <option key={b.id} value={b.id}>
+                      {b.name}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  value={compareModel2}
+                  onChange={(e) => setCompareModel2(e.target.value)}
+                  disabled={!compareBrand2}
+                  className="w-full rounded-lg border border-slate-200 px-3 py-2 disabled:opacity-50 dark:border-slate-600 dark:bg-slate-700"
+                >
+                  <option value="">Model seç</option>
+                  {compareBrand2 &&
+                    models[compareBrand2]?.map(
+                      (m: { id: string; name: string }) => (
+                        <option key={m.id} value={m.id}>
+                          {m.name}
+                        </option>
+                      ),
+                    )}
+                </select>
+              </div>
+            </div>
+            <div className="mt-4 flex justify-center">
+              <Link
+                href={
+                  compareBrand1 && compareModel1
+                    ? `/compare/${compareBrand1}/${compareModel1}`
+                    : "#"
+                }
+                className={`rounded-lg px-6 py-3 font-bold text-white transition-colors ${compareBrand1 && compareModel1 ? "bg-blue-600 hover:bg-blue-700" : "cursor-not-allowed bg-slate-300"}`}
+              >
+                Karşılaştır →
+              </Link>
+            </div>
+          </div>
+        )}
 
         {activeTab === "brands" ? (
           <>

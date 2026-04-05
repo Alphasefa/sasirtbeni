@@ -73,14 +73,12 @@ function formatCurrencyTRY(amount: number): string {
 
 export default function ComparePage() {
   const { convertToTRY } = useCurrency();
-  const [selectedVehicles, setSelectedVehicles] = useState<SelectedVehicle[]>(
-    [],
-  );
+  const [selectedVehicles, setSelectedVehicles] = useState<SelectedVehicle[]>([]);
   const [showBrandSelect, setShowBrandSelect] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredBrands = brands.filter((b) =>
-    b.name.toLowerCase().includes(searchTerm.toLowerCase()),
+    b.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const selectBrand = (brandId: string, slotIndex: number) => {
@@ -141,30 +139,14 @@ export default function ComparePage() {
   };
 
   const comparisonRows = [
-    {
-      label: "Fiyat (Türkiye)",
-      key: "tr",
-      format: (v: any) => (v ? formatCurrencyTRY(v.tr) : "-"),
-    },
-    {
-      label: "Fiyat (Almanya)",
-      key: "de",
-      format: (v: any) => (v ? `€${v.de.toLocaleString()}` : "-"),
-    },
+    { label: "Fiyat (Türkiye)", key: "tr", format: (v: any) => v ? formatCurrencyTRY(v.tr) : "-" },
+    { label: "Fiyat (Almanya)", key: "de", format: (v: any) => v ? `€${v.de.toLocaleString()}` : "-" },
     { label: "Motor", key: "engine", format: (v: any) => v?.engine || "-" },
-    {
-      label: "Beygir Gücü",
-      key: "hp",
-      format: (v: any) => (v ? `${v.hp} HP` : "-"),
-    },
-    {
-      label: "Ülke",
-      key: "country",
-      format: (_: any, brandId: string) => {
-        const brand = brands.find((b) => b.id === brandId);
-        return countryNames[brand?.country || "DE"] || "-";
-      },
-    },
+    { label: "Beygir Gücü", key: "hp", format: (v: any) => v ? `${v.hp} HP` : "-" },
+    { label: "Ülke", key: "country", format: (_: any, brandId: string) => {
+      const brand = brands.find(b => b.id === brandId);
+      return countryNames[brand?.country || "DE"] || "-";
+    }},
   ];
 
   return (
@@ -203,45 +185,41 @@ export default function ComparePage() {
                 <div className="rounded-xl bg-white p-4 shadow-lg dark:bg-slate-800">
                   <button
                     onClick={() => removeVehicle(slotIndex)}
-                    className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-white hover:bg-red-600"
+                    className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-white hover:bg-red-600"
                   >
                     <X className="h-4 w-4" />
                   </button>
-                  <div className="mb-3 flex h-16 items-center justify-center rounded-lg bg-slate-100 font-bold text-2xl text-slate-600 dark:bg-slate-700 dark:text-slate-300">
+                  <div className="mb-3 flex h-16 items-center justify-center rounded-lg bg-slate-100 text-2xl font-bold text-slate-600 dark:bg-slate-700 dark:text-slate-300">
                     {getBrandName(selectedVehicles[slotIndex].brand).charAt(0)}
                   </div>
                   <div className="mb-3 text-center">
                     <div className="font-semibold dark:text-white">
                       {getBrandName(selectedVehicles[slotIndex].brand)}
                     </div>
-                    <div className="text-slate-500 text-sm">
+                    <div className="text-sm text-slate-500">
                       {getModelName(
                         selectedVehicles[slotIndex].brand,
-                        selectedVehicles[slotIndex].model,
+                        selectedVehicles[slotIndex].model
                       )}
                     </div>
                   </div>
 
                   <div className="mb-3">
-                    <label className="mb-1 block font-medium text-slate-500 text-xs">
+                    <label className="mb-1 block text-xs font-medium text-slate-500">
                       Versiyon
                     </label>
                     <select
                       value={selectedVehicles[slotIndex].versionIndex}
-                      onChange={(e) =>
-                        selectVersion(Number(e.target.value), slotIndex)
-                      }
+                      onChange={(e) => selectVersion(Number(e.target.value), slotIndex)}
                       className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-white"
                     >
-                      {models[selectedVehicles[slotIndex].brand]
-                        ?.find(
-                          (m) => m.id === selectedVehicles[slotIndex].model,
-                        )
-                        ?.versions.map((v, idx) => (
-                          <option key={idx} value={idx}>
-                            {v.engine} - {v.hp} HP
-                          </option>
-                        ))}
+                      {models[selectedVehicles[slotIndex].brand]?.find(
+                        (m) => m.id === selectedVehicles[slotIndex].model
+                      )?.versions.map((v, idx) => (
+                        <option key={idx} value={idx}>
+                          {v.engine} - {v.hp} HP
+                        </option>
+                      ))}
                     </select>
                   </div>
 
@@ -251,18 +229,14 @@ export default function ComparePage() {
                         <span className="text-slate-500">Türkiye:</span>
                         <span className="font-medium dark:text-white">
                           {formatCurrencyTRY(
-                            getVehicleData(selectedVehicles[slotIndex])?.tr ||
-                              0,
+                            getVehicleData(selectedVehicles[slotIndex])?.tr || 0
                           )}
                         </span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-slate-500">Almanya:</span>
                         <span className="font-medium dark:text-white">
-                          €
-                          {getVehicleData(
-                            selectedVehicles[slotIndex],
-                          )?.de.toLocaleString()}
+                          €{getVehicleData(selectedVehicles[slotIndex])?.de.toLocaleString()}
                         </span>
                       </div>
                     </div>
@@ -271,7 +245,7 @@ export default function ComparePage() {
               ) : (
                 <button
                   onClick={() => setShowBrandSelect(slotIndex)}
-                  className="flex h-full min-h-[300px] w-full flex-col items-center justify-center rounded-xl border-2 border-slate-300 border-dashed p-4 text-slate-400 hover:border-blue-400 hover:text-blue-500 dark:border-slate-600"
+                  className="flex h-full min-h-[300px] w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 p-4 text-slate-400 hover:border-blue-400 hover:text-blue-500 dark:border-slate-600"
                 >
                   <Plus className="h-8 w-8" />
                   <span className="mt-2">Araç ekle</span>
@@ -279,7 +253,7 @@ export default function ComparePage() {
               )}
 
               {showBrandSelect === slotIndex && (
-                <div className="absolute top-0 right-0 left-0 z-50 mt-2 rounded-xl border border-slate-200 bg-white p-4 shadow-xl dark:border-slate-600 dark:bg-slate-800">
+                <div className="absolute left-0 right-0 top-0 z-50 mt-2 rounded-xl border border-slate-200 bg-white p-4 shadow-xl dark:border-slate-600 dark:bg-slate-800">
                   <div className="mb-3">
                     <input
                       type="text"
@@ -321,10 +295,7 @@ export default function ComparePage() {
                       Özellik
                     </th>
                     {selectedVehicles.filter(Boolean).map((v, idx) => (
-                      <th
-                        key={idx}
-                        className="px-4 py-3 text-left font-medium dark:text-white"
-                      >
+                      <th key={idx} className="px-4 py-3 text-left font-medium dark:text-white">
                         {getBrandName(v.brand)} {getModelName(v.brand, v.model)}
                       </th>
                     ))}
@@ -351,11 +322,8 @@ export default function ComparePage() {
                         {selectedVehicles.filter(Boolean).map((v, idx) => {
                           const value = values[idx];
                           const brandId = v.brand;
-                          const cellValue = (value as any)?.[
-                            row.key as keyof typeof value
-                          ];
-                          const isBest =
-                            cellValue === bestValue && numericValues.length > 1;
+                          const cellValue = (value as any)?.[row.key as keyof typeof value];
+                          const isBest = cellValue === bestValue && numericValues.length > 1;
                           return (
                             <td
                               key={idx}

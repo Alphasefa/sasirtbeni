@@ -49,7 +49,9 @@ export async function fetchExchangeRates(): Promise<ExchangeRates> {
   if (cached) return cached;
 
   try {
-    const res = await fetch("https://api.exchangerate-api.com/v1/latest/USD");
+    const res = await fetch("https://api.exchangerate-api.com/v1/latest/USD", {
+      mode: "cors",
+    });
     if (!res.ok) throw new Error("Failed to fetch rates");
 
     const data = await res.json();
@@ -61,7 +63,7 @@ export async function fetchExchangeRates(): Promise<ExchangeRates> {
     };
 
     const tryResim = await fetch(
-      "https://api.tcmb.gov.tr/api/kur Dolan?type=json",
+      "https://api.tcmb.gov.tr/kurlar/today?type=json",
     );
     if (tryResim.ok) {
       const tcmbData = await tryResim.json();
