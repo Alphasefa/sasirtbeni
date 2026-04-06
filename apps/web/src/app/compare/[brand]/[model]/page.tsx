@@ -5,9 +5,14 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUp,
+  Building2,
+  Check,
   GitCompare,
+  MapPin,
   Moon,
+  Phone,
   Plus,
+  Send,
   Share2,
   Sun,
   X,
@@ -91,6 +96,15 @@ export default function ComparePage({
   const [compareBrand, setCompareBrand] = useState("");
   const [compareModel, setCompareModel] = useState("");
   const [compareVersion, setCompareVersion] = useState<number | null>(null);
+  const [showLeadModal, setShowLeadModal] = useState(false);
+  const [leadForm, setLeadForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    city: "",
+    message: "",
+  });
+  const [leadSent, setLeadSent] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -112,6 +126,16 @@ export default function ComparePage({
       navigator.clipboard.writeText(url);
       alert("Link kopyalandı!");
     }
+  };
+
+  const handleLeadSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setLeadSent(true);
+    setTimeout(() => {
+      setShowLeadModal(false);
+      setLeadSent(false);
+      setLeadForm({ name: "", phone: "", email: "", city: "", message: "" });
+    }, 2000);
   };
 
   const brandData = models[brand] || [];
@@ -316,6 +340,14 @@ export default function ComparePage({
           </div>
         </div>
 
+        <button
+          onClick={() => setShowLeadModal(true)}
+          className="mb-8 w-full rounded-xl bg-gradient-to-r from-green-500 to-green-600 py-4 text-lg font-bold text-white shadow-lg transition-all hover:from-green-600 hover:to-green-700 hover:shadow-xl"
+        >
+          <Send className="mr-2 inline h-5 w-5" />
+          Bayiden Özel Teklif Al
+        </button>
+
         {showCompare && (
           <div className="mb-8 rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
             <div className="mb-4 flex items-center justify-between">
@@ -499,7 +531,7 @@ export default function ComparePage({
               <div className="p-4">
                 <div className="text-slate-500 text-sm">Fark</div>
               </div>
-              <div className="p-4 text-center" colSpan={2}>
+              <div className="col-span-2 p-4 text-center">
                 <span
                   className={`inline-block rounded-full px-4 py-2 font-bold ${
                     dePriceTRY > compareDePriceTRY
@@ -646,6 +678,123 @@ export default function ComparePage({
           </div>
         </div>
       </div>
+
+      {showLeadModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <div className="w-full max-w-md rounded-2xl bg-white p-6 dark:bg-slate-800">
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="font-bold text-xl text-slate-900 dark:text-white">
+                {brandName} {modelName} için Teklif Al
+              </h3>
+              <button
+                onClick={() => setShowLeadModal(false)}
+                className="rounded-full p-2 hover:bg-slate-100 dark:hover:bg-slate-700"
+              >
+                <X className="h-5 w-5 text-slate-500" />
+              </button>
+            </div>
+
+            <p className="mb-4 text-slate-500 dark:text-slate-400">
+              Bu araç için yetkili bayilerden özel teklif isteyin. En kısa
+              sürede size ulaşacaklar.
+            </p>
+
+            {leadSent ? (
+              <div className="flex flex-col items-center justify-center py-8">
+                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
+                  <Check className="h-8 w-8 text-green-600" />
+                </div>
+                <h4 className="font-semibold text-lg text-slate-900 dark:text-white">
+                  Talep Gönderildi!
+                </h4>
+                <p className="text-slate-500 text-center">
+                  Bayiler en kısa sürede sizinle iletişime geçecek.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleLeadSubmit} className="space-y-4">
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                    Ad Soyad
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={leadForm.name}
+                    onChange={(e) =>
+                      setLeadForm({ ...leadForm, name: e.target.value })
+                    }
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+                    placeholder="Adınızı girin"
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                    Telefon
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    value={leadForm.phone}
+                    onChange={(e) =>
+                      setLeadForm({ ...leadForm, phone: e.target.value })
+                    }
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+                    placeholder="05XX XXX XX XX"
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                    Şehir
+                  </label>
+                  <select
+                    required
+                    value={leadForm.city}
+                    onChange={(e) =>
+                      setLeadForm({ ...leadForm, city: e.target.value })
+                    }
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+                  >
+                    <option value="">Şehir seçin</option>
+                    <option value="İstanbul">İstanbul</option>
+                    <option value="Ankara">Ankara</option>
+                    <option value="İzmir">İzmir</option>
+                    <option value="Bursa">Bursa</option>
+                    <option value="Antalya">Antalya</option>
+                    <option value="Adana">Adana</option>
+                    <option value="Konya">Konya</option>
+                    <option value="Gaziantep">Gaziantep</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                    Mesaj (İsteğe bağlı)
+                  </label>
+                  <textarea
+                    value={leadForm.message}
+                    onChange={(e) =>
+                      setLeadForm({ ...leadForm, message: e.target.value })
+                    }
+                    className="w-full rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+                    rows={3}
+                    placeholder={`${brandName} ${modelName} için fiyat teklifi istiyorum`}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full rounded-xl bg-green-600 py-3 font-semibold text-white transition-all hover:bg-green-700"
+                >
+                  Teklif İste →
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

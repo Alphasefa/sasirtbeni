@@ -1,9 +1,9 @@
 "use client";
 
-import { ArrowLeft, Check, ChevronDown, Plus, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ArrowLeft, Car, Check, Plus, Search, X } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 import vehicleData from "@/shared/data/vehicles.json";
-import { useCurrency } from "@/shared/utils/useCurrency";
 
 const { brands, models } = vehicleData as {
   brands: { id: string; name: string; country: string; logo: string }[];
@@ -17,44 +17,16 @@ const { brands, models } = vehicleData as {
   >;
 };
 
-const countryNames: Record<string, string> = {
-  US: "ABD",
-  DE: "Almanya",
-  CZ: "Çekya",
-  FR: "Fransa",
-  KR: "Güney Kore",
-  SE: "İsveç",
-  IT: "İtalya",
-  JP: "Japonya",
-  TR: "Türkiye",
-  GB: "İngiltere",
-  ES: "İspanya",
-  RO: "Romanya",
-  RU: "Rusya",
-  CN: "Çin",
-  MY: "Malezya",
-  IN: "Hindistan",
-  IR: "İran",
-};
-
 const countryFlags: Record<string, string> = {
   US: "https://flagcdn.com/w40/us.png",
   DE: "https://flagcdn.com/w40/de.png",
-  CZ: "https://flagcdn.com/w40/cz.png",
-  FR: "https://flagcdn.com/w40/fr.png",
-  KR: "https://flagcdn.com/w40/kr.png",
-  SE: "https://flagcdn.com/w40/se.png",
-  IT: "https://flagcdn.com/w40/it.png",
   JP: "https://flagcdn.com/w40/jp.png",
-  TR: "https://flagcdn.com/w40/tr.png",
+  KR: "https://flagcdn.com/w40/kr.png",
+  FR: "https://flagcdn.com/w40/fr.png",
+  IT: "https://flagcdn.com/w40/it.png",
   GB: "https://flagcdn.com/w40/gb.png",
-  ES: "https://flagcdn.com/w40/es.png",
-  RO: "https://flagcdn.com/w40/ro.png",
-  RU: "https://flagcdn.com/w40/ru.png",
+  TR: "https://flagcdn.com/w40/tr.png",
   CN: "https://flagcdn.com/w40/cn.png",
-  MY: "https://flagcdn.com/w40/my.png",
-  IN: "https://flagcdn.com/w40/in.png",
-  IR: "https://flagcdn.com/w40/ir.png",
 };
 
 interface SelectedVehicle {
@@ -72,13 +44,15 @@ function formatCurrencyTRY(amount: number): string {
 }
 
 export default function ComparePage() {
-  const { convertToTRY } = useCurrency();
-  const [selectedVehicles, setSelectedVehicles] = useState<SelectedVehicle[]>([]);
+  const [selectedVehicles, setSelectedVehicles] = useState<SelectedVehicle[]>(
+    [],
+  );
   const [showBrandSelect, setShowBrandSelect] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showModelSelect, setShowModelSelect] = useState<number | null>(null);
 
   const filteredBrands = brands.filter((b) =>
-    b.name.toLowerCase().includes(searchTerm.toLowerCase())
+    b.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   const selectBrand = (brandId: string, slotIndex: number) => {
@@ -96,16 +70,22 @@ export default function ComparePage() {
     }
     setShowBrandSelect(null);
     setSearchTerm("");
+    setShowModelSelect(slotIndex);
   };
 
   const selectModel = (modelId: string, slotIndex: number) => {
     setSelectedVehicles((prev) => {
       const updated = [...prev];
       if (updated[slotIndex]) {
-        updated[slotIndex] = { ...updated[slotIndex], model: modelId };
+        updated[slotIndex] = {
+          ...updated[slotIndex],
+          model: modelId,
+          versionIndex: 0,
+        };
       }
       return updated;
     });
+    setShowModelSelect(null);
   };
 
   const selectVersion = (versionIndex: number, slotIndex: number) => {
@@ -138,203 +118,331 @@ export default function ComparePage() {
     return brandModels.find((m) => m.id === modelId)?.name || modelId;
   };
 
+  const getModelVersions = (brandId: string, modelId: string) => {
+    const brandModels = models[brandId] || [];
+    return brandModels.find((m) => m.id === modelId)?.versions || [];
+  };
+
   const comparisonRows = [
-    { label: "Fiyat (Türkiye)", key: "tr", format: (v: any) => v ? formatCurrencyTRY(v.tr) : "-" },
-    { label: "Fiyat (Almanya)", key: "de", format: (v: any) => v ? `€${v.de.toLocaleString()}` : "-" },
+    {
+      label: "Fiyat (Türkiye)",
+      key: "tr",
+      format: (v: any) => (v ? formatCurrencyTRY(v.tr) : "-"),
+    },
+    {
+      label: "Fiyat (Almanya)",
+      key: "de",
+      format: (v: any) => (v ? `€${v.de.toLocaleString()}` : "-"),
+    },
     { label: "Motor", key: "engine", format: (v: any) => v?.engine || "-" },
-    { label: "Beygir Gücü", key: "hp", format: (v: any) => v ? `${v.hp} HP` : "-" },
-    { label: "Ülke", key: "country", format: (_: any, brandId: string) => {
-      const brand = brands.find(b => b.id === brandId);
-      return countryNames[brand?.country || "DE"] || "-";
-    }},
+    {
+      label: "Beygir Gücü",
+      key: "hp",
+      format: (v: any) => (v ? `${v.hp} HP` : "-"),
+    },
   ];
 
+  const selectedCount = selectedVehicles.filter(Boolean).length;
+
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <header className="bg-white shadow-sm dark:bg-slate-800">
-        <div className="container mx-auto max-w-6xl px-4 py-4">
-          <a href="/" className="flex items-center gap-2">
-            <span className="text-2xl">🚗</span>
-            <span className="font-bold text-slate-900 text-xl dark:text-white">
+    <div className="min-h-screen bg-slate-50 dark:from-slate-900 dark:to-slate-800">
+      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/80">
+        <div className="container mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white text-xl font-bold">
+              🚗
+            </div>
+            <span className="font-bold text-xl text-slate-900 dark:text-white">
               FiyatKarşılaştır
             </span>
-          </a>
+          </Link>
+          <Link
+            href="/"
+            className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Ana Sayfa
+          </Link>
         </div>
       </header>
 
       <div className="container mx-auto max-w-6xl px-4 py-8">
-        <a
-          href="/"
-          className="mb-6 inline-flex items-center gap-2 text-blue-600 hover:underline dark:text-blue-400"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Geri
-        </a>
+        <div className="mb-6">
+          <h1 className="mb-2 font-bold text-3xl text-slate-900 dark:text-white">
+            Araç Karşılaştır
+          </h1>
+          <p className="text-slate-500 dark:text-slate-400">
+            En fazla 4 aracı karşılaştırabilirsiniz
+          </p>
+        </div>
 
-        <h1 className="mb-2 font-bold text-3xl text-slate-900 dark:text-white">
-          Araç Karşılaştırma
-        </h1>
-        <p className="mb-8 text-lg text-slate-500 dark:text-slate-400">
-          En fazla 4 aracı karşılaştırabilirsiniz
-        </p>
+        <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[0, 1, 2, 3].map((slotIndex) => {
+            const vehicle = selectedVehicles[slotIndex];
+            const isSelected = !!vehicle;
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {[0, 1, 2, 3].map((slotIndex) => (
-            <div key={slotIndex} className="relative">
-              {selectedVehicles[slotIndex] ? (
-                <div className="rounded-xl bg-white p-4 shadow-lg dark:bg-slate-800">
-                  <button
-                    onClick={() => removeVehicle(slotIndex)}
-                    className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-white hover:bg-red-600"
-                  >
-                    <X className="h-4 w-4" />
-                  </button>
-                  <div className="mb-3 flex h-16 items-center justify-center rounded-lg bg-slate-100 text-2xl font-bold text-slate-600 dark:bg-slate-700 dark:text-slate-300">
-                    {getBrandName(selectedVehicles[slotIndex].brand).charAt(0)}
-                  </div>
-                  <div className="mb-3 text-center">
-                    <div className="font-semibold dark:text-white">
-                      {getBrandName(selectedVehicles[slotIndex].brand)}
-                    </div>
-                    <div className="text-sm text-slate-500">
-                      {getModelName(
-                        selectedVehicles[slotIndex].brand,
-                        selectedVehicles[slotIndex].model
+            return (
+              <div key={slotIndex} className="relative">
+                {isSelected ? (
+                  <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all hover:shadow-xl dark:bg-slate-800">
+                    <button
+                      onClick={() => removeVehicle(slotIndex)}
+                      className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-red-500 text-white transition-colors hover:bg-red-600 z-10"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+
+                    <div className="p-6">
+                      <div className="mb-4 flex h-20 w-full items-center justify-center rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 text-4xl font-bold text-slate-600 dark:from-slate-700 dark:to-slate-600 dark:text-slate-300">
+                        {getBrandName(vehicle.brand).charAt(0)}
+                      </div>
+
+                      <div className="mb-4 text-center">
+                        <div className="font-bold text-lg text-slate-900 dark:text-white">
+                          {getBrandName(vehicle.brand)}
+                        </div>
+                        <div className="text-slate-500 dark:text-slate-400">
+                          {getModelName(vehicle.brand, vehicle.model)}
+                        </div>
+                      </div>
+
+                      <div className="mb-4">
+                        <label className="mb-2 block text-xs font-medium text-slate-500">
+                          Versiyon seç
+                        </label>
+                        <select
+                          value={vehicle.versionIndex}
+                          onChange={(e) =>
+                            selectVersion(Number(e.target.value), slotIndex)
+                          }
+                          className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+                        >
+                          {getModelVersions(vehicle.brand, vehicle.model).map(
+                            (v, idx) => (
+                              <option key={idx} value={idx}>
+                                {v.engine} • {v.hp} HP
+                              </option>
+                            ),
+                          )}
+                        </select>
+                      </div>
+
+                      {getVehicleData(vehicle) && (
+                        <div className="space-y-3 rounded-xl bg-slate-50 p-4 dark:bg-slate-700">
+                          <div className="flex items-center justify-between">
+                            <span className="text-sm text-slate-500">
+                              🇹🇷 Türkiye
+                            </span>
+                            <span className="font-bold text-slate-900 dark:text-white">
+                              {formatCurrencyTRY(
+                                getVehicleData(vehicle)?.tr || 0,
+                              )}
+                            </span>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-sm text-slate-500">
+                              🇩🇪 Almanya
+                            </span>
+                            <span className="font-bold text-slate-900 dark:text-white">
+                              €{getVehicleData(vehicle)?.de.toLocaleString()}
+                            </span>
+                          </div>
+                        </div>
                       )}
                     </div>
                   </div>
+                ) : (
+                  <button
+                    onClick={() => setShowBrandSelect(slotIndex)}
+                    className="flex h-full min-h-[280px] w-full flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed border-slate-300 bg-white p-6 text-slate-400 transition-all hover:border-blue-400 hover:text-blue-500 hover:shadow-lg dark:border-slate-600 dark:bg-slate-800"
+                  >
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700">
+                      <Plus className="h-8 w-8" />
+                    </div>
+                    <span className="font-medium">Araç ekle</span>
+                    <span className="text-sm">{slotIndex + 1}. araç</span>
+                  </button>
+                )}
 
-                  <div className="mb-3">
-                    <label className="mb-1 block text-xs font-medium text-slate-500">
-                      Versiyon
-                    </label>
-                    <select
-                      value={selectedVehicles[slotIndex].versionIndex}
-                      onChange={(e) => selectVersion(Number(e.target.value), slotIndex)}
-                      className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-                    >
-                      {models[selectedVehicles[slotIndex].brand]?.find(
-                        (m) => m.id === selectedVehicles[slotIndex].model
-                      )?.versions.map((v, idx) => (
-                        <option key={idx} value={idx}>
-                          {v.engine} - {v.hp} HP
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {getVehicleData(selectedVehicles[slotIndex]) && (
-                    <div className="space-y-2 text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-slate-500">Türkiye:</span>
-                        <span className="font-medium dark:text-white">
-                          {formatCurrencyTRY(
-                            getVehicleData(selectedVehicles[slotIndex])?.tr || 0
-                          )}
-                        </span>
+                {showBrandSelect === slotIndex && (
+                  <div className="absolute left-0 right-0 top-0 z-50 mt-2 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-600 dark:bg-slate-800">
+                    <div className="border-b border-slate-200 p-4 dark:border-slate-600">
+                      <div className="relative">
+                        <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
+                        <input
+                          type="text"
+                          placeholder="Marka ara..."
+                          value={searchTerm}
+                          onChange={(e) => setSearchTerm(e.target.value)}
+                          className="w-full rounded-xl border border-slate-200 bg-slate-50 pl-10 pr-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+                          autoFocus
+                        />
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-slate-500">Almanya:</span>
-                        <span className="font-medium dark:text-white">
-                          €{getVehicleData(selectedVehicles[slotIndex])?.de.toLocaleString()}
+                    </div>
+                    <div className="max-h-80 overflow-y-auto p-2">
+                      {filteredBrands.slice(0, 15).map((brand) => (
+                        <button
+                          key={brand.id}
+                          onClick={() => selectBrand(brand.id, slotIndex)}
+                          className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left transition-colors hover:bg-slate-100 dark:hover:bg-slate-700"
+                        >
+                          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 font-bold text-slate-600 dark:bg-slate-600 dark:text-slate-300">
+                            {brand.name.charAt(0)}
+                          </div>
+                          <div className="flex-1">
+                            <span className="font-medium text-slate-900 dark:text-white">
+                              {brand.name}
+                            </span>
+                          </div>
+                          <img
+                            src={countryFlags[brand.country]}
+                            alt=""
+                            className="h-5 w-8"
+                          />
+                        </button>
+                      ))}
+                      {filteredBrands.length === 0 && (
+                        <p className="p-4 text-center text-slate-500">
+                          Marka bulunamadı
+                        </p>
+                      )}
+                    </div>
+                    <button
+                      onClick={() => setShowBrandSelect(null)}
+                      className="w-full border-t border-slate-200 py-3 text-center font-medium text-slate-500 hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-700"
+                    >
+                      Kapat
+                    </button>
+                  </div>
+                )}
+
+                {showModelSelect === slotIndex && vehicle && (
+                  <div className="absolute left-0 right-0 top-0 z-50 mt-2 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-600 dark:bg-slate-800">
+                    <div className="border-b border-slate-200 p-4 dark:border-slate-600">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 font-bold text-slate-600 dark:bg-slate-600 dark:text-slate-300">
+                          {getBrandName(vehicle.brand).charAt(0)}
+                        </div>
+                        <span className="font-bold text-slate-900 dark:text-white">
+                          {getBrandName(vehicle.brand)} - Model seç
                         </span>
                       </div>
                     </div>
-                  )}
-                </div>
-              ) : (
-                <button
-                  onClick={() => setShowBrandSelect(slotIndex)}
-                  className="flex h-full min-h-[300px] w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 p-4 text-slate-400 hover:border-blue-400 hover:text-blue-500 dark:border-slate-600"
-                >
-                  <Plus className="h-8 w-8" />
-                  <span className="mt-2">Araç ekle</span>
-                </button>
-              )}
-
-              {showBrandSelect === slotIndex && (
-                <div className="absolute left-0 right-0 top-0 z-50 mt-2 rounded-xl border border-slate-200 bg-white p-4 shadow-xl dark:border-slate-600 dark:bg-slate-800">
-                  <div className="mb-3">
-                    <input
-                      type="text"
-                      placeholder="Marka ara..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="w-full rounded-lg border border-slate-200 px-3 py-2 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-                    />
+                    <div className="max-h-80 overflow-y-auto p-2">
+                      {models[vehicle.brand]?.map((model) => (
+                        <button
+                          key={model.id}
+                          onClick={() => selectModel(model.id, slotIndex)}
+                          className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-left transition-colors hover:bg-slate-100 dark:hover:bg-slate-700"
+                        >
+                          <span className="font-medium text-slate-900 dark:text-white">
+                            {model.name}
+                          </span>
+                          <span className="text-sm text-slate-500">
+                            {model.versions.length} versiyon
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                    <button
+                      onClick={() => {
+                        setShowModelSelect(null);
+                        setShowBrandSelect(slotIndex);
+                      }}
+                      className="w-full border-t border-slate-200 py-3 text-center font-medium text-slate-500 hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-700"
+                    >
+                      ← Marka değiştir
+                    </button>
                   </div>
-                  <div className="max-h-64 space-y-1 overflow-y-auto">
-                    {filteredBrands.slice(0, 20).map((brand) => (
-                      <button
-                        key={brand.id}
-                        onClick={() => selectBrand(brand.id, slotIndex)}
-                        className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left hover:bg-slate-100 dark:hover:bg-slate-700"
-                      >
-                        <img
-                          src={countryFlags[brand.country]}
-                          alt=""
-                          className="h-4 w-6"
-                        />
-                        <span className="dark:text-white">{brand.name}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            );
+          })}
         </div>
 
-        {selectedVehicles.filter(Boolean).length >= 2 && (
-          <div className="mt-8 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800">
+        {selectedCount >= 2 && (
+          <div className="overflow-hidden rounded-2xl bg-white shadow-xl dark:bg-slate-800">
+            <div className="border-b border-slate-200 bg-slate-50 px-6 py-4 dark:border-slate-600 dark:bg-slate-700">
+              <h2 className="font-bold text-lg text-slate-900 dark:text-white">
+                Karşılaştırma Tablosu
+              </h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                {selectedCount} araç karşılaştırılıyor
+              </p>
+            </div>
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="bg-slate-50 dark:bg-slate-700">
-                    <th className="px-4 py-3 text-left font-medium text-slate-600 dark:text-slate-200">
+                  <tr className="border-b border-slate-200 dark:border-slate-600">
+                    <th className="px-6 py-4 text-left font-semibold text-slate-600 dark:text-slate-200">
                       Özellik
                     </th>
                     {selectedVehicles.filter(Boolean).map((v, idx) => (
-                      <th key={idx} className="px-4 py-3 text-left font-medium dark:text-white">
-                        {getBrandName(v.brand)} {getModelName(v.brand, v.model)}
+                      <th
+                        key={idx}
+                        className="px-6 py-4 text-left font-semibold dark:text-white"
+                      >
+                        <div className="flex items-center gap-2">
+                          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-200 font-bold text-slate-600 dark:bg-slate-600 dark:text-slate-300">
+                            {getBrandName(v.brand).charAt(0)}
+                          </div>
+                          <div>
+                            <div className="font-bold">
+                              {getBrandName(v.brand)}
+                            </div>
+                            <div className="text-sm font-normal text-slate-500">
+                              {getModelName(v.brand, v.model)}
+                            </div>
+                          </div>
+                        </div>
                       </th>
                     ))}
                   </tr>
                 </thead>
-                <tbody className="divide-y">
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
                   {comparisonRows.map((row) => {
                     const values = selectedVehicles
                       .filter(Boolean)
                       .map((v) => getVehicleData(v));
-                    const isBestHigher = ["hp", "tr", "de"].includes(row.key);
                     const numericValues = values
                       .map((v) => (v as any)?.[row.key as keyof typeof v])
-                      .filter(Boolean);
-                    const bestValue = isBestHigher
-                      ? Math.max(...numericValues)
-                      : Math.min(...numericValues);
+                      .filter((v) => typeof v === "number");
+                    const bestValue =
+                      numericValues.length > 0
+                        ? Math.max(...(numericValues as number[]))
+                        : null;
 
                     return (
-                      <tr key={row.key}>
-                        <td className="px-4 py-3 font-medium text-slate-600 dark:text-slate-200">
+                      <tr
+                        key={row.key}
+                        className="hover:bg-slate-50 dark:hover:bg-slate-700/50"
+                      >
+                        <td className="px-6 py-4 font-medium text-slate-600 dark:text-slate-200">
                           {row.label}
                         </td>
                         {selectedVehicles.filter(Boolean).map((v, idx) => {
                           const value = values[idx];
-                          const brandId = v.brand;
-                          const cellValue = (value as any)?.[row.key as keyof typeof value];
-                          const isBest = cellValue === bestValue && numericValues.length > 1;
+                          const cellValue = (value as any)?.[
+                            row.key as keyof typeof value
+                          ];
+                          const isBest =
+                            cellValue === bestValue && bestValue !== null;
+
                           return (
                             <td
                               key={idx}
-                              className={`px-4 py-3 dark:text-white ${
+                              className={`px-6 py-4 dark:text-white ${
                                 isBest ? "font-bold text-green-600" : ""
                               }`}
                             >
-                              {row.format(cellValue, brandId)}
-                              {isBest && (
-                                <Check className="ml-1 inline h-4 w-4 text-green-500" />
-                              )}
+                              <div className="flex items-center gap-2">
+                                {row.format(cellValue)}
+                                {isBest && (
+                                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-green-100 text-green-600 dark:bg-green-900">
+                                    <Check className="h-3 w-3" />
+                                  </span>
+                                )}
+                              </div>
                             </td>
                           );
                         })}
@@ -347,13 +455,37 @@ export default function ComparePage() {
           </div>
         )}
 
-        {selectedVehicles.filter(Boolean).length < 2 && (
-          <div className="mt-8 rounded-xl bg-blue-50 p-6 text-center dark:bg-blue-900/30">
-            <p className="text-blue-600 dark:text-blue-400">
+        {selectedCount < 2 && (
+          <div className="rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 p-8 text-center dark:from-blue-900/30 dark:to-indigo-900/30">
+            <Car className="mx-auto mb-4 h-12 w-12 text-blue-400" />
+            <p className="text-lg font-medium text-blue-600 dark:text-blue-400">
               En az 2 araç seçerek karşılaştırmaya başlayabilirsiniz
+            </p>
+            <p className="mt-2 text-slate-500 dark:text-slate-400">
+              {4 - selectedCount} araç daha ekleyebilirsiniz
             </p>
           </div>
         )}
+
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          {[
+            "Volkswagen Golf",
+            "Toyota Corolla",
+            "Fiat Egea",
+            "Renault Clio",
+          ].map((name) => {
+            const [brand, model] = name.toLowerCase().split(" ");
+            return (
+              <Link
+                key={name}
+                href={`/compare/${brand}/${model}`}
+                className="rounded-full bg-white px-5 py-2 text-sm font-medium text-slate-600 shadow-sm transition-all hover:shadow-md hover:text-blue-600 dark:bg-slate-800 dark:text-slate-300"
+              >
+                {name} →
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
