@@ -268,7 +268,7 @@ export default function ComparePage({
 
       <div className="container mx-auto max-w-5xl px-4 py-8">
         <a
-          href="/"
+          href={`/compare/${brand}`}
           className="mb-6 inline-flex items-center gap-2 text-blue-600 hover:underline dark:text-blue-400"
         >
           <ArrowLeft className="h-4 w-4" />

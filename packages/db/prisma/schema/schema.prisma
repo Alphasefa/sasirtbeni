@@ -5,7 +5,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
 }
 
 model VehicleBrand {
@@ -50,6 +50,7 @@ model VehicleVersion {
   source       String
   updatedAt    DateTime @updatedAt
   model        VehicleModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  dealerStocks DealerStock[]
 
   @@map("vehicle_version")
 }
@@ -62,4 +63,53 @@ model ExchangeRate {
 
   @@unique([currency])
   @@map("exchange_rate")
+}
+
+model Dealer {
+  id        String   @id @default(cuid())
+  name      String
+  city      String
+  address   String?
+  phone     String?
+  email     String?
+  latitude  Float?
+  longitude Float?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  stocks    DealerStock[]
+
+  @@map("dealer")
+}
+
+model DealerStock {
+  id           String   @id @default(cuid())
+  dealerId     String
+  versionId    String
+  price        Float
+  stockStatus  String   @default("available")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  dealer       Dealer        @relation(fields: [dealerId], references: [id], onDelete: Cascade)
+  version      VehicleVersion @relation(fields: [versionId], references: [id], onDelete: Cascade)
+  campaigns    Campaign[]
+
+  @@unique([dealerId, versionId])
+  @@map("dealer_stock")
+}
+
+model Campaign {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  discountRate Float?
+  discountAmount Float?
+  startDate   DateTime
+  endDate     DateTime
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  stock       DealerStock? @relation(fields: [stockId], references: [id], onDelete: Cascade)
+  stockId     String?
+
+  @@map("campaign")
 }

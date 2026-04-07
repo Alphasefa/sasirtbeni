@@ -103,16 +103,28 @@ export default function Home() {
               Karşılaştır
             </Link>
             <Link
-              href="/dealers"
+              href="/dealers?tab=sales"
               className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
             >
               Bayiler
             </Link>
             <Link
-              href="/dealers"
+              href="/dealers?tab=service"
               className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
             >
-              Bayiler
+              Servis
+            </Link>
+            <Link
+              href="/dealers?tab=campaigns"
+              className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
+            >
+              Kampanyalar
+            </Link>
+            <Link
+              href="/dealers?tab=overseas"
+              className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
+            >
+              Yurt Dışı Fiyatları
             </Link>
           </nav>
         </div>

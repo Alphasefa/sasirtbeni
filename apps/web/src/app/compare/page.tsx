@@ -1,9 +1,16 @@
 "use client";
 
-import { ArrowLeft, Car, Check, Plus, Search, X } from "lucide-react";
+import { ArrowLeft, Car, Check, Plus, Search, Star, X } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import vehicleData from "@/shared/data/vehicles.json";
+import {
+  detectFuelType,
+  detectTransmission,
+  fuelTypes,
+  transmissions,
+  priceRanges,
+} from "@/shared/utils/filters";
 
 const { brands, models } = vehicleData as {
   brands: { id: string; name: string; country: string; logo: string }[];
@@ -50,6 +57,40 @@ export default function ComparePage() {
   const [showBrandSelect, setShowBrandSelect] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [showModelSelect, setShowModelSelect] = useState<number | null>(null);
+  const [fuelFilter, setFuelFilter] = useState<string>("Tümü");
+  const [transmissionFilter, setTransmissionFilter] = useState<string>("Tümü");
+  const [priceFilter, setPriceFilter] = useState<string>("Tümü");
+  const [favorites, setFavorites] = useState<string[]>([]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("favoriteVehicles");
+    if (saved) {
+      try {
+        setFavorites(JSON.parse(saved));
+      } catch {}
+    }
+  }, []);
+
+  const addToFavorites = (vehicle: SelectedVehicle) => {
+    const key = `${vehicle.brand}|${vehicle.model}|${vehicle.versionIndex}`;
+    if (!favorites.includes(key)) {
+      const updated = [...favorites, key];
+      setFavorites(updated);
+      localStorage.setItem("favoriteVehicles", JSON.stringify(updated));
+    }
+  };
+
+  const removeFromFavorites = (vehicle: SelectedVehicle) => {
+    const key = `${vehicle.brand}|${vehicle.model}|${vehicle.versionIndex}`;
+    const updated = favorites.filter((f) => f !== key);
+    setFavorites(updated);
+    localStorage.setItem("favoriteVehicles", JSON.stringify(updated));
+  };
+
+  const isFavorite = (vehicle: SelectedVehicle) => {
+    const key = `${vehicle.brand}|${vehicle.model}|${vehicle.versionIndex}`;
+    return favorites.includes(key);
+  };
 
   const filteredBrands = brands.filter((b) =>
     b.name.toLowerCase().includes(searchTerm.toLowerCase()),
@@ -120,25 +161,51 @@ export default function ComparePage() {
 
   const getModelVersions = (brandId: string, modelId: string) => {
     const brandModels = models[brandId] || [];
-    return brandModels.find((m) => m.id === modelId)?.versions || [];
+    const allVersions =
+      brandModels.find((m) => m.id === modelId)?.versions || [];
+
+    return allVersions.filter((v: any) => {
+      if (fuelFilter !== "Tümü" && detectFuelType(v.engine) !== fuelFilter)
+        return false;
+      if (
+        transmissionFilter !== "Tümü" &&
+        detectTransmission(v.engine) !== transmissionFilter
+      )
+        return false;
+      if (priceFilter !== "Tümü") {
+        const range = priceRanges.find((r) => r.label === priceFilter);
+        if (range && (v.tr < range.min || v.tr > range.max)) return false;
+      }
+      return true;
+    });
   };
 
   const comparisonRows = [
     {
       label: "Fiyat (Türkiye)",
       key: "tr",
-      format: (v: any) => (v ? formatCurrencyTRY(v.tr) : "-"),
+      format: (v: any) => (v?.tr ? formatCurrencyTRY(v.tr) : "-"),
     },
     {
       label: "Fiyat (Almanya)",
       key: "de",
-      format: (v: any) => (v ? `€${v.de.toLocaleString()}` : "-"),
+      format: (v: any) => (v?.de ? `€${v.de.toLocaleString()}` : "-"),
     },
     { label: "Motor", key: "engine", format: (v: any) => v?.engine || "-" },
     {
+      label: "Yakıt Tipi",
+      key: "fuel",
+      format: (v: any) => (v?.engine ? detectFuelType(v.engine) : "-"),
+    },
+    {
+      label: "Vites",
+      key: "transmission",
+      format: (v: any) => (v?.engine ? detectTransmission(v.engine) : "-"),
+    },
+    {
       label: "Beygir Gücü",
       key: "hp",
-      format: (v: any) => (v ? `${v.hp} HP` : "-"),
+      format: (v: any) => (v?.hp ? `${v.hp} HP` : "-"),
     },
   ];
 
@@ -176,6 +243,44 @@ export default function ComparePage() {
           </p>
         </div>
 
+        <div className="mb-6 flex flex-wrap gap-3">
+          <select
+            value={fuelFilter}
+            onChange={(e) => setFuelFilter(e.target.value)}
+            className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+          >
+            <option value="Tümü">Yakıt: Tümü</option>
+            {fuelTypes.map((f) => (
+              <option key={f} value={f}>
+                {f}
+              </option>
+            ))}
+          </select>
+          <select
+            value={transmissionFilter}
+            onChange={(e) => setTransmissionFilter(e.target.value)}
+            className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+          >
+            <option value="Tümü">Vites: Tümü</option>
+            {transmissions.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
+          <select
+            value={priceFilter}
+            onChange={(e) => setPriceFilter(e.target.value)}
+            className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+          >
+            {priceRanges.map((p) => (
+              <option key={p.label} value={p.label}>
+                {p.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
         <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[0, 1, 2, 3].map((slotIndex) => {
             const vehicle = selectedVehicles[slotIndex];
@@ -185,12 +290,28 @@ export default function ComparePage() {
               <div key={slotIndex} className="relative">
                 {isSelected ? (
                   <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all hover:shadow-xl dark:bg-slate-800">
-                    <button
-                      onClick={() => removeVehicle(slotIndex)}
-                      className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-red-500 text-white transition-colors hover:bg-red-600 z-10"
-                    >
-                      <X className="h-4 w-4" />
-                    </button>
+                    <div className="absolute right-3 top-3 flex gap-2 z-10">
+                      <button
+                        onClick={() =>
+                          isFavorite(vehicle)
+                            ? removeFromFavorites(vehicle)
+                            : addToFavorites(vehicle)
+                        }
+                        className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors ${
+                          isFavorite(vehicle)
+                            ? "bg-yellow-400 text-white hover:bg-yellow-500"
+                            : "bg-slate-200 text-slate-400 hover:bg-slate-300"
+                        }`}
+                      >
+                        <Star className="h-4 w-4" />
+                      </button>
+                      <button
+                        onClick={() => removeVehicle(slotIndex)}
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-red-500 text-white transition-colors hover:bg-red-600"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
 
                     <div className="p-6">
                       <div className="mb-4 flex h-20 w-full items-center justify-center rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 text-4xl font-bold text-slate-600 dark:from-slate-700 dark:to-slate-600 dark:text-slate-300">

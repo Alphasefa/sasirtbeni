@@ -45,12 +45,14 @@
   },
   "dependencies": {
     "@my-app/env": "workspace:*",
-    "dotenv": "catalog:",
+    "dotenv": "^17.4.1",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.7",
+    "@libsql/client": "^0.17.2",
     "@my-app/config": "workspace:*",
+    "@prisma/adapter-libsql": "^7.6.0",
     "@types/node": "^22.13.14",
     "turbo": "^2.9.3",
     "typescript": "catalog:"

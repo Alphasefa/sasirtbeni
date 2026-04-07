@@ -206,83 +206,194 @@
         "id": "a3",
         "name": "A3",
         "versions": [
-          { "engine": "1.5 TFSI", "hp": 150, "tr": 1650000, "de": 31990 }
+          { "engine": "1.5 TFSI", "hp": 150, "tr": 1650000, "de": 31990 },
+          {
+            "engine": "1.5 TFSI S tronic",
+            "hp": 150,
+            "tr": 1795000,
+            "de": 33990
+          },
+          { "engine": "2.0 TDI", "hp": 150, "tr": 1895000, "de": 36990 },
+          { "engine": "2.0 TFSI", "hp": 190, "tr": 2150000, "de": 38990 },
+          {
+            "engine": "2.0 TFSI S tronic",
+            "hp": 190,
+            "tr": 2295000,
+            "de": 41990
+          },
+          {
+            "engine": "2.0 TDI S tronic",
+            "hp": 204,
+            "tr": 2450000,
+            "de": 44990
+          }
         ]
       },
       {
         "id": "a4",
         "name": "A4",
         "versions": [
-          { "engine": "2.0 TFSI", "hp": 204, "tr": 2450000, "de": 42990 }
+          { "engine": "2.0 TDI", "hp": 136, "tr": 2150000, "de": 37990 },
+          { "engine": "2.0 TDI", "hp": 150, "tr": 2295000, "de": 39990 },
+          { "engine": "2.0 TFSI", "hp": 204, "tr": 2450000, "de": 42990 },
+          { "engine": "2.0 TDI", "hp": 204, "tr": 2595000, "de": 45990 },
+          {
+            "engine": "2.0 TFSI S tronic",
+            "hp": 204,
+            "tr": 2695000,
+            "de": 47990
+          },
+          {
+            "engine": "2.0 TDI S tronic",
+            "hp": 204,
+            "tr": 2895000,
+            "de": 52990
+          },
+          { "engine": "3.0 TDI", "hp": 286, "tr": 3850000, "de": 64990 }
         ]
       },
       {
         "id": "a5",
         "name": "A5",
         "versions": [
-          { "engine": "2.0 TFSI", "hp": 204, "tr": 2650000, "de": 45990 }
+          { "engine": "2.0 TDI", "hp": 136, "tr": 2350000, "de": 40990 },
+          { "engine": "2.0 TFSI", "hp": 204, "tr": 2650000, "de": 45990 },
+          {
+            "engine": "2.0 TFSI S tronic",
+            "hp": 204,
+            "tr": 2795000,
+            "de": 48990
+          },
+          {
+            "engine": "2.0 TDI S tronic",
+            "hp": 204,
+            "tr": 2995000,
+            "de": 52990
+          },
+          { "engine": "3.0 TDI", "hp": 286, "tr": 4250000, "de": 72990 }
         ]
       },
       {
         "id": "a6",
         "name": "A6",
         "versions": [
-          { "engine": "2.0 TDI", "hp": 204, "tr": 3150000, "de": 55990 }
+          { "engine": "2.0 TDI", "hp": 204, "tr": 3150000, "de": 55990 },
+          { "engine": "2.0 TFSI", "hp": 245, "tr": 3350000, "de": 59990 },
+          {
+            "engine": "2.0 TDI S tronic",
+            "hp": 204,
+            "tr": 3450000,
+            "de": 61990
+          },
+          { "engine": "3.0 TDI", "hp": 286, "tr": 4250000, "de": 78990 },
+          { "engine": "3.0 TDI e-tron", "hp": 340, "tr": 4850000, "de": 85990 },
+          { "engine": "RS6", "hp": 600, "tr": 9500000, "de": 109000 }
         ]
       },
       {
         "id": "a7",
         "name": "A7",
         "versions": [
-          { "engine": "2.0 TDI", "hp": 204, "tr": 3450000, "de": 62990 }
+          { "engine": "2.0 TFSI", "hp": 245, "tr": 3450000, "de": 62990 },
+          { "engine": "2.0 TDI", "hp": 204, "tr": 3450000, "de": 62990 },
+          { "engine": "3.0 TDI", "hp": 286, "tr": 4550000, "de": 82990 },
+          { "engine": "3.0 TDI e-tron", "hp": 340, "tr": 5250000, "de": 89990 }
         ]
       },
       {
         "id": "a8",
         "name": "A8",
         "versions": [
-          { "engine": "3.0 TDI", "hp": 286, "tr": 5250000, "de": 95990 }
+          { "engine": "3.0 TDI", "hp": 286, "tr": 5250000, "de": 95990 },
+          { "engine": "3.0 TFSI", "hp": 340, "tr": 5850000, "de": 105000 },
+          { "engine": "4.0 TFSI", "hp": 460, "tr": 7850000, "de": 139000 },
+          { "engine": "4.0 TDI", "hp": 435, "tr": 8750000, "de": 149000 }
         ]
       },
       {
         "id": "q2",
         "name": "Q2",
         "versions": [
-          { "engine": "1.5 TFSI", "hp": 150, "tr": 1850000, "de": 32990 }
+          { "engine": "1.5 TFSI", "hp": 150, "tr": 1850000, "de": 32990 },
+          {
+            "engine": "1.5 TFSI S tronic",
+            "hp": 150,
+            "tr": 1995000,
+            "de": 35990
+          },
+          { "engine": "2.0 TDI", "hp": 150, "tr": 2150000, "de": 38990 }
         ]
       },
       {
         "id": "q3",
         "name": "Q3",
         "versions": [
-          { "engine": "2.0 TDI", "hp": 150, "tr": 2250000, "de": 37990 }
+          { "engine": "1.5 TFSI", "hp": 150, "tr": 2050000, "de": 35990 },
+          {
+            "engine": "1.5 TFSI S tronic",
+            "hp": 150,
+            "tr": 2195000,
+            "de": 38990
+          },
+          { "engine": "2.0 TDI", "hp": 150, "tr": 2250000, "de": 37990 },
+          { "engine": "2.0 TDI", "hp": 204, "tr": 2595000, "de": 44990 },
+          { "engine": "2.0 TFSI", "hp": 230, "tr": 2750000, "de": 47990 },
+          { "engine": "RS Q3", "hp": 400, "tr": 6250000, "de": 79990 }
         ]
       },
       {
         "id": "q5",
         "name": "Q5",
         "versions": [
-          { "engine": "2.0 TDI", "hp": 204, "tr": 2950000, "de": 49990 }
+          { "engine": "2.0 TDI", "hp": 150, "tr": 2650000, "de": 45990 },
+          { "engine": "2.0 TDI", "hp": 204, "tr": 2950000, "de": 49990 },
+          { "engine": "2.0 TFSI", "hp": 204, "tr": 3150000, "de": 54990 },
+          {
+            "engine": "2.0 TDI S tronic",
+            "hp": 204,
+            "tr": 3350000,
+            "de": 58990
+          },
+          { "engine": "3.0 TDI", "hp": 286, "tr": 4250000, "de": 75990 }
         ]
       },
       {
         "id": "q7",
         "name": "Q7",
         "versions": [
-          { "engine": "3.0 TDI", "hp": 286, "tr": 4250000, "de": 75990 }
+          { "engine": "2.0 TDI", "hp": 204, "tr": 3750000, "de": 66990 },
+          { "engine": "3.0 TDI", "hp": 286, "tr": 4250000, "de": 75990 },
+          { "engine": "3.0 TFSI", "hp": 340, "tr": 4650000, "de": 82990 },
+          { "engine": "4.0 TDI", "hp": 435, "tr": 6250000, "de": 109000 }
         ]
       },
       {
         "id": "q8",
         "name": "Q8",
         "versions": [
-          { "engine": "3.0 TDI", "hp": 286, "tr": 4850000, "de": 85990 }
+          { "engine": "3.0 TDI", "hp": 286, "tr": 4850000, "de": 85990 },
+          { "engine": "3.0 TFSI", "hp": 340, "tr": 5250000, "de": 92990 },
+          { "engine": "4.0 TDI", "hp": 435, "tr": 6950000, "de": 119000 },
+          { "engine": "RS Q8", "hp": 600, "tr": 8750000, "de": 145000 }
         ]
       },
       {
         "id": "e-tron",
         "name": "e-tron",
-        "versions": [{ "engine": "EV", "hp": 408, "tr": 4250000, "de": 77990 }]
+        "versions": [
+          { "engine": "50 quattro", "hp": 313, "tr": 3850000, "de": 69990 },
+          { "engine": "55 quattro", "hp": 408, "tr": 4250000, "de": 77990 },
+          { "engine": "S quattro", "hp": 503, "tr": 5850000, "de": 105000 }
+        ]
+      },
+      {
+        "id": "q4-etron",
+        "name": "Q4 e-tron",
+        "versions": [
+          { "engine": "35", "hp": 170, "tr": 2450000, "de": 44990 },
+          { "engine": "40", "hp": 204, "tr": 2850000, "de": 52990 },
+          { "engine": "50 quattro", "hp": 299, "tr": 3350000, "de": 62990 }
+        ]
       }
     ],
     "bentley": [
@@ -306,105 +417,152 @@
         "id": "1seri",
         "name": "1 Serisi",
         "versions": [
-          { "engine": "118i", "hp": 136, "tr": 1450000, "de": 29990 }
+          { "engine": "118i", "hp": 136, "tr": 1450000, "de": 29990 },
+          { "engine": "120i", "hp": 156, "tr": 1595000, "de": 32990 },
+          { "engine": "M135i", "hp": 306, "tr": 3250000, "de": 54990 }
         ]
       },
       {
         "id": "2seri",
         "name": "2 Serisi",
         "versions": [
-          { "engine": "220i", "hp": 184, "tr": 1850000, "de": 35990 }
+          { "engine": "218i", "hp": 136, "tr": 1650000, "de": 32990 },
+          { "engine": "220i", "hp": 184, "tr": 1850000, "de": 35990 },
+          { "engine": "M240i", "hp": 374, "tr": 3650000, "de": 59990 },
+          { "engine": "M2", "hp": 460, "tr": 6850000, "de": 89990 }
         ]
       },
       {
         "id": "3seri",
         "name": "3 Serisi",
         "versions": [
-          { "engine": "320i", "hp": 184, "tr": 2350000, "de": 42990 }
+          { "engine": "318i", "hp": 156, "tr": 1950000, "de": 37990 },
+          { "engine": "320i", "hp": 184, "tr": 2350000, "de": 42990 },
+          { "engine": "320d", "hp": 190, "tr": 2550000, "de": 45990 },
+          { "engine": "330i", "hp": 245, "tr": 2850000, "de": 51990 },
+          { "engine": "330d", "hp": 286, "tr": 3450000, "de": 62990 },
+          { "engine": "M3", "hp": 480, "tr": 6950000, "de": 89990 }
         ]
       },
       {
         "id": "4seri",
         "name": "4 Serisi",
         "versions": [
-          { "engine": "420i", "hp": 184, "tr": 2550000, "de": 46990 }
+          { "engine": "420i", "hp": 184, "tr": 2550000, "de": 46990 },
+          { "engine": "420d", "hp": 190, "tr": 2750000, "de": 49990 },
+          { "engine": "430i", "hp": 245, "tr": 3050000, "de": 55990 },
+          { "engine": "M440i", "hp": 374, "tr": 4850000, "de": 79990 },
+          { "engine": "M4", "hp": 480, "tr": 7250000, "de": 94990 }
         ]
       },
       {
         "id": "5seri",
         "name": "5 Serisi",
         "versions": [
-          { "engine": "520i", "hp": 190, "tr": 3150000, "de": 55990 }
+          { "engine": "520i", "hp": 190, "tr": 3150000, "de": 55990 },
+          { "engine": "520d", "hp": 190, "tr": 3350000, "de": 58990 },
+          { "engine": "530i", "hp": 245, "tr": 3750000, "de": 65990 },
+          { "engine": "530d", "hp": 286, "tr": 4150000, "de": 72990 },
+          { "engine": "540i", "hp": 340, "tr": 4850000, "de": 84990 },
+          { "engine": "M5", "hp": 600, "tr": 9250000, "de": 125000 }
         ]
       },
       {
         "id": "7seri",
         "name": "7 Serisi",
         "versions": [
-          { "engine": "730d", "hp": 286, "tr": 5750000, "de": 95990 }
+          { "engine": "730d", "hp": 286, "tr": 5750000, "de": 95990 },
+          { "engine": "740i", "hp": 340, "tr": 6250000, "de": 105000 },
+          { "engine": "740d", "hp": 320, "tr": 6950000, "de": 115000 },
+          { "engine": "750i", "hp": 530, "tr": 8950000, "de": 149000 },
+          { "engine": "i7", "hp": 544, "tr": 7250000, "de": 125000 }
         ]
       },
       {
         "id": "x1",
         "name": "X1",
         "versions": [
-          { "engine": "sDrive18i", "hp": 136, "tr": 1850000, "de": 35990 }
+          { "engine": "sDrive18i", "hp": 136, "tr": 1850000, "de": 35990 },
+          { "engine": "xDrive20i", "hp": 192, "tr": 2150000, "de": 42990 },
+          { "engine": "xDrive25d", "hp": 231, "tr": 2650000, "de": 49990 },
+          { "engine": "M35i", "hp": 306, "tr": 3450000, "de": 59990 }
         ]
       },
       {
         "id": "x2",
         "name": "X2",
         "versions": [
-          { "engine": "sDrive18i", "hp": 136, "tr": 1950000, "de": 37990 }
+          { "engine": "sDrive18i", "hp": 136, "tr": 1950000, "de": 37990 },
+          { "engine": "xDrive20i", "hp": 192, "tr": 2250000, "de": 44990 },
+          { "engine": "M35i", "hp": 306, "tr": 3650000, "de": 62990 }
         ]
       },
       {
         "id": "x3",
         "name": "X3",
         "versions": [
-          { "engine": "xDrive20d", "hp": 190, "tr": 2850000, "de": 52990 }
+          { "engine": "xDrive20i", "hp": 184, "tr": 2650000, "de": 48990 },
+          { "engine": "xDrive20d", "hp": 190, "tr": 2850000, "de": 52990 },
+          { "engine": "xDrive30i", "hp": 245, "tr": 3350000, "de": 60990 },
+          { "engine": "xDrive30d", "hp": 286, "tr": 3950000, "de": 70990 },
+          { "engine": "M40i", "hp": 360, "tr": 4850000, "de": 84990 }
         ]
       },
       {
         "id": "x4",
         "name": "X4",
         "versions": [
-          { "engine": "xDrive20d", "hp": 190, "tr": 3050000, "de": 55990 }
+          { "engine": "xDrive20i", "hp": 184, "tr": 2850000, "de": 52990 },
+          { "engine": "xDrive20d", "hp": 190, "tr": 3050000, "de": 55990 },
+          { "engine": "xDrive30i", "hp": 245, "tr": 3550000, "de": 64990 },
+          { "engine": "xDrive30d", "hp": 286, "tr": 4250000, "de": 74990 },
+          { "engine": "M40i", "hp": 360, "tr": 5150000, "de": 89990 }
         ]
       },
       {
         "id": "x5",
         "name": "X5",
         "versions": [
-          { "engine": "xDrive30d", "hp": 286, "tr": 4250000, "de": 75990 }
+          { "engine": "xDrive30d", "hp": 286, "tr": 4250000, "de": 75990 },
+          { "engine": "xDrive40i", "hp": 340, "tr": 4850000, "de": 85990 },
+          { "engine": "xDrive40d", "hp": 340, "tr": 5450000, "de": 94990 },
+          { "engine": "M50d", "hp": 400, "tr": 6950000, "de": 119000 },
+          { "engine": "xDrive45e", "hp": 394, "tr": 5250000, "de": 92990 }
         ]
       },
       {
         "id": "x6",
         "name": "X6",
         "versions": [
-          { "engine": "xDrive30d", "hp": 286, "tr": 4450000, "de": 79990 }
+          { "engine": "xDrive30d", "hp": 286, "tr": 4450000, "de": 79990 },
+          { "engine": "xDrive40i", "hp": 340, "tr": 5050000, "de": 89990 },
+          { "engine": "M50i", "hp": 530, "tr": 7250000, "de": 125000 }
         ]
       },
       {
         "id": "x7",
         "name": "X7",
         "versions": [
-          { "engine": "xDrive30d", "hp": 286, "tr": 5250000, "de": 95990 }
+          { "engine": "xDrive30d", "hp": 286, "tr": 5250000, "de": 95990 },
+          { "engine": "xDrive40i", "hp": 340, "tr": 5850000, "de": 105000 },
+          { "engine": "M50d", "hp": 400, "tr": 7950000, "de": 139000 }
         ]
       },
       {
         "id": "i4",
         "name": "i4",
         "versions": [
-          { "engine": "eDrive40", "hp": 340, "tr": 2950000, "de": 54990 }
+          { "engine": "eDrive40", "hp": 340, "tr": 2950000, "de": 54990 },
+          { "engine": "M50", "hp": 544, "tr": 4850000, "de": 84990 }
         ]
       },
       {
         "id": "ix",
         "name": "iX",
         "versions": [
-          { "engine": "xDrive40", "hp": 326, "tr": 4250000, "de": 77990 }
+          { "engine": "xDrive40", "hp": 326, "tr": 4250000, "de": 77990 },
+          { "engine": "xDrive50", "hp": 523, "tr": 5850000, "de": 105000 },
+          { "engine": "M60", "hp": 619, "tr": 7250000, "de": 129000 }
         ]
       }
     ],
@@ -706,45 +864,79 @@
         "id": "500",
         "name": "500",
         "versions": [
-          { "engine": "1.0 Hybrid", "hp": 70, "tr": 795000, "de": 15990 }
+          { "engine": "1.0 Hybrid", "hp": 70, "tr": 795000, "de": 15990 },
+          { "engine": "1.0 Hybrid", "hp": 85, "tr": 895000, "de": 17990 },
+          { "engine": "1.0 Hybrid DCT", "hp": 85, "tr": 995000, "de": 19990 },
+          { "engine": "Electric", "hp": 118, "tr": 1250000, "de": 24990 },
+          { "engine": "Abarth", "hp": 155, "tr": 1650000, "de": 32990 }
         ]
       },
       {
         "id": "panda",
         "name": "Panda",
-        "versions": [{ "engine": "1.2", "hp": 69, "tr": 695000, "de": 12990 }]
+        "versions": [
+          { "engine": "1.2", "hp": 69, "tr": 695000, "de": 12990 },
+          { "engine": "1.0 Hybrid", "hp": 70, "tr": 795000, "de": 14990 },
+          { "engine": "1.3 MultiJet", "hp": 95, "tr": 895000, "de": 16990 },
+          { "engine": "4x4", "hp": 95, "tr": 1150000, "de": 22990 }
+        ]
       },
       {
         "id": "tipo",
         "name": "Tipo",
-        "versions": [{ "engine": "1.4", "hp": 95, "tr": 895000, "de": 16990 }]
+        "versions": [
+          { "engine": "1.4", "hp": 95, "tr": 895000, "de": 16990 },
+          { "engine": "1.4 MultiJet", "hp": 120, "tr": 1050000, "de": 20990 },
+          { "engine": "1.6 MultiJet", "hp": 130, "tr": 1150000, "de": 22990 },
+          { "engine": "Cross", "hp": 130, "tr": 1350000, "de": 26990 }
+        ]
       },
       {
         "id": "doblo",
         "name": "Doblo",
         "versions": [
-          { "engine": "1.6 MultiJet", "hp": 120, "tr": 1150000, "de": 22990 }
+          { "engine": "1.6 MultiJet", "hp": 105, "tr": 995000, "de": 19990 },
+          { "engine": "1.6 MultiJet", "hp": 120, "tr": 1150000, "de": 22990 },
+          { "engine": "2.0 MultiJet", "hp": 145, "tr": 1350000, "de": 26990 },
+          { "engine": "Electric", "hp": 136, "tr": 1450000, "de": 28990 }
         ]
       },
       {
         "id": "scudo",
         "name": "Scudo",
         "versions": [
-          { "engine": "2.0 MultiJet", "hp": 145, "tr": 1350000, "de": 26990 }
+          { "engine": "2.0 MultiJet", "hp": 145, "tr": 1350000, "de": 26990 },
+          { "engine": "2.0 MultiJet", "hp": 177, "tr": 1550000, "de": 30990 },
+          { "engine": "Electric", "hp": 136, "tr": 1650000, "de": 32990 }
         ]
       },
       {
         "id": "500x",
         "name": "500X",
         "versions": [
-          { "engine": "1.0 Hybrid", "hp": 120, "tr": 1150000, "de": 22990 }
+          { "engine": "1.0 Hybrid", "hp": 120, "tr": 1150000, "de": 22990 },
+          { "engine": "1.3 MultiJet", "hp": 150, "tr": 1350000, "de": 26990 },
+          { "engine": "1.5 Hybrid", "hp": 130, "tr": 1450000, "de": 28990 },
+          { "engine": "1.6 MultiJet", "hp": 120, "tr": 1250000, "de": 24990 },
+          { "engine": "Sport", "hp": 180, "tr": 1850000, "de": 36990 }
         ]
       },
       {
         "id": "pulse",
         "name": "Pulse",
         "versions": [
-          { "engine": "1.0 Turbo", "hp": 125, "tr": 995000, "de": 19990 }
+          { "engine": "1.0 Turbo", "hp": 125, "tr": 995000, "de": 19990 },
+          { "engine": "1.0 Turbo", "hp": 130, "tr": 1095000, "de": 21990 },
+          { "engine": "1.3 MultiJet", "hp": 100, "tr": 995000, "de": 19990 },
+          { "engine": "1.3 MultiJet", "hp": 120, "tr": 1150000, "de": 22990 }
+        ]
+      },
+      {
+        "id": "600",
+        "name": "600",
+        "versions": [
+          { "engine": "1.2 Hybrid", "hp": 136, "tr": 1150000, "de": 22990 },
+          { "engine": "Electric", "hp": 156, "tr": 1450000, "de": 28990 }
         ]
       }
     ],
@@ -868,73 +1060,124 @@
       {
         "id": "i10",
         "name": "i10",
-        "versions": [{ "engine": "1.0", "hp": 67, "tr": 595000, "de": 11990 }]
+        "versions": [
+          { "engine": "1.0 MPI", "hp": 67, "tr": 595000, "de": 11990 },
+          { "engine": "1.0 MPI", "hp": 75, "tr": 645000, "de": 12990 },
+          { "engine": "1.2 MPI", "hp": 84, "tr": 695000, "de": 13990 }
+        ]
       },
       {
         "id": "i20",
         "name": "i20",
         "versions": [
-          { "engine": "1.0 T-GDI", "hp": 100, "tr": 795000, "de": 15990 }
+          { "engine": "1.2 MPI", "hp": 84, "tr": 695000, "de": 13990 },
+          { "engine": "1.0 T-GDI", "hp": 100, "tr": 795000, "de": 15990 },
+          { "engine": "1.0 T-GDI", "hp": 120, "tr": 895000, "de": 17990 },
+          { "engine": "1.6 CRDi", "hp": 136, "tr": 1050000, "de": 20990 },
+          { "engine": "N Line", "hp": 204, "tr": 1450000, "de": 28990 }
         ]
       },
       {
         "id": "i30",
         "name": "i30",
         "versions": [
-          { "engine": "1.5 T-GDI", "hp": 160, "tr": 1150000, "de": 22990 }
+          { "engine": "1.5 MPI", "hp": 110, "tr": 895000, "de": 17990 },
+          { "engine": "1.5 T-GDI", "hp": 160, "tr": 1150000, "de": 22990 },
+          { "engine": "2.0 MPI", "hp": 150, "tr": 1250000, "de": 24990 },
+          { "engine": "1.6 CRDi", "hp": 136, "tr": 1350000, "de": 26990 },
+          { "engine": "N", "hp": 275, "tr": 2250000, "de": 44990 }
         ]
       },
       {
         "id": "elantra",
         "name": "Elantra",
         "versions": [
-          { "engine": "1.6 MPI", "hp": 123, "tr": 1050000, "de": 20990 }
+          { "engine": "1.6 MPI", "hp": 123, "tr": 1050000, "de": 20990 },
+          { "engine": "1.6 T-GDI", "hp": 175, "tr": 1350000, "de": 26990 },
+          { "engine": "2.0 MPI", "hp": 160, "tr": 1250000, "de": 24990 },
+          { "engine": "Hybrid", "hp": 141, "tr": 1450000, "de": 28990 }
         ]
       },
       {
         "id": "sonata",
         "name": "Sonata",
         "versions": [
-          { "engine": "2.0 MPI", "hp": 160, "tr": 1450000, "de": 28990 }
+          { "engine": "2.0 MPI", "hp": 160, "tr": 1450000, "de": 28990 },
+          { "engine": "1.6 T-GDI", "hp": 180, "tr": 1650000, "de": 32990 },
+          { "engine": "2.0 MPI", "hp": 168, "tr": 1550000, "de": 30990 },
+          { "engine": "Hybrid", "hp": 195, "tr": 1750000, "de": 35990 }
         ]
       },
       {
         "id": "kona",
         "name": "Kona",
         "versions": [
-          { "engine": "1.0 T-GDI", "hp": 120, "tr": 1150000, "de": 22990 }
+          { "engine": "1.0 T-GDI", "hp": 120, "tr": 1150000, "de": 22990 },
+          { "engine": "1.6 T-GDI", "hp": 175, "tr": 1450000, "de": 28990 },
+          { "engine": "2.0 MPI", "hp": 149, "tr": 1350000, "de": 26990 },
+          { "engine": "Electric", "hp": 204, "tr": 1750000, "de": 35990 },
+          { "engine": "N Line", "hp": 198, "tr": 1850000, "de": 37990 }
         ]
       },
       {
-        "id": " Tucson",
+        "id": "tucson",
         "name": "Tucson",
         "versions": [
-          { "engine": "1.6 T-GDI", "hp": 150, "tr": 1450000, "de": 28990 }
+          { "engine": "1.6 T-GDI", "hp": 150, "tr": 1450000, "de": 28990 },
+          { "engine": "1.6 T-GDI", "hp": 180, "tr": 1650000, "de": 32990 },
+          { "engine": "2.0 MPI", "hp": 155, "tr": 1350000, "de": 26990 },
+          { "engine": "1.6 CRDi", "hp": 136, "tr": 1550000, "de": 30990 },
+          { "engine": "Hybrid", "hp": 230, "tr": 1850000, "de": 37990 },
+          { "engine": "Plug-in Hybrid", "hp": 265, "tr": 2350000, "de": 47990 }
         ]
       },
       {
         "id": "santa-fe",
         "name": "Santa Fe",
         "versions": [
-          { "engine": "2.2 CRDi", "hp": 200, "tr": 2250000, "de": 44990 }
+          { "engine": "2.2 CRDi", "hp": 200, "tr": 2250000, "de": 44990 },
+          { "engine": "2.2 CRDi", "hp": 202, "tr": 2450000, "de": 48990 },
+          { "engine": "2.5 GDi", "hp": 194, "tr": 2150000, "de": 42990 },
+          { "engine": "Hybrid", "hp": 230, "tr": 2550000, "de": 51990 },
+          { "engine": "Plug-in Hybrid", "hp": 265, "tr": 3250000, "de": 65990 }
         ]
       },
       {
         "id": "staria",
         "name": "Staria",
         "versions": [
-          { "engine": "2.2 CRDi", "hp": 177, "tr": 1950000, "de": 37990 }
+          { "engine": "2.2 CRDi", "hp": 177, "tr": 1950000, "de": 37990 },
+          { "engine": "2.2 CRDi", "hp": 202, "tr": 2350000, "de": 45990 },
+          { "engine": "3.5 GDi V6", "hp": 272, "tr": 2850000, "de": 55990 }
         ]
       },
       {
         "id": "ioniq5",
         "name": "IONIQ 5",
-        "versions": [{ "engine": "EV", "hp": 170, "tr": 1850000, "de": 36990 }]
+        "versions": [
+          { "engine": "Standard Range", "hp": 170, "tr": 1850000, "de": 36990 },
+          { "engine": "Long Range", "hp": 218, "tr": 2250000, "de": 44990 },
+          { "engine": "Long Range AWD", "hp": 306, "tr": 2850000, "de": 56990 },
+          { "engine": "N", "hp": 650, "tr": 4250000, "de": 84990 }
+        ]
       },
       {
         "id": "ioniq6",
         "name": "IONIQ 6",
-        "versions": [{ "engine": "EV", "hp": 229, "tr": 2050000, "de": 41990 }]
+        "versions": [
+          { "engine": "Standard Range", "hp": 170, "tr": 1850000, "de": 36990 },
+          { "engine": "Long Range", "hp": 229, "tr": 2050000, "de": 41990 },
+          { "engine": "Long Range AWD", "hp": 325, "tr": 2850000, "de": 56990 },
+          { "engine": "N", "hp": 650, "tr": 4450000, "de": 89990 }
+        ]
+      },
+      {
+        "id": "ioniq9",
+        "name": "IONIQ 9",
+        "versions": [
+          { "engine": "Long Range", "hp": 229, "tr": 2650000, "de": 52990 },
+          { "engine": "Long Range AWD", "hp": 350, "tr": 3450000, "de": 68990 }
+        ]
       }
     ],
     "ikco": [
@@ -999,63 +1242,116 @@
       {
         "id": "picanto",
         "name": "Picanto",
-        "versions": [{ "engine": "1.0", "hp": 67, "tr": 545000, "de": 10990 }]
+        "versions": [
+          { "engine": "1.0 MPI", "hp": 67, "tr": 545000, "de": 10990 },
+          { "engine": "1.2 MPI", "hp": 84, "tr": 645000, "de": 12990 },
+          { "engine": "1.0 T-GDI", "hp": 100, "tr": 745000, "de": 14990 },
+          { "engine": "GT Line", "hp": 84, "tr": 795000, "de": 15990 }
+        ]
       },
       {
         "id": "rio",
         "name": "Rio",
-        "versions": [{ "engine": "1.2", "hp": 84, "tr": 695000, "de": 13990 }]
+        "versions": [
+          { "engine": "1.2 MPI", "hp": 84, "tr": 695000, "de": 13990 },
+          { "engine": "1.4 MPI", "hp": 100, "tr": 795000, "de": 15990 },
+          { "engine": "1.5 T-GDI", "hp": 120, "tr": 895000, "de": 17990 }
+        ]
       },
       {
         "id": "ceed",
         "name": "Ceed",
         "versions": [
-          { "engine": "1.5 T-GDI", "hp": 140, "tr": 1050000, "de": 20990 }
+          { "engine": "1.4 MPI", "hp": 100, "tr": 895000, "de": 17990 },
+          { "engine": "1.5 T-GDI", "hp": 140, "tr": 1050000, "de": 20990 },
+          { "engine": "1.6 CRDi", "hp": 136, "tr": 1250000, "de": 24990 },
+          { "engine": "1.6 CRDi", "hp": 159, "tr": 1450000, "de": 28990 },
+          { "engine": "GT", "hp": 204, "tr": 1950000, "de": 38990 }
         ]
       },
       {
         "id": "proceed",
         "name": "ProCeed",
         "versions": [
-          { "engine": "1.5 T-GDI", "hp": 140, "tr": 1150000, "de": 22990 }
+          { "engine": "1.5 T-GDI", "hp": 140, "tr": 1150000, "de": 22990 },
+          { "engine": "1.6 CRDi", "hp": 136, "tr": 1350000, "de": 26990 },
+          { "engine": "GT", "hp": 204, "tr": 2050000, "de": 40990 }
         ]
       },
       {
         "id": "stonic",
         "name": "Stonic",
         "versions": [
-          { "engine": "1.0 T-GDI", "hp": 100, "tr": 895000, "de": 17990 }
+          { "engine": "1.0 T-GDI", "hp": 100, "tr": 895000, "de": 17990 },
+          { "engine": "1.4 MPI", "hp": 100, "tr": 795000, "de": 15990 },
+          { "engine": "1.0 T-GDI", "hp": 120, "tr": 1050000, "de": 20990 },
+          { "engine": "1.5 T-GDI", "hp": 130, "tr": 1150000, "de": 22990 },
+          { "engine": "1.6 CRDi", "hp": 110, "tr": 1050000, "de": 20990 }
         ]
       },
       {
         "id": "sportage",
         "name": "Sportage",
         "versions": [
-          { "engine": "1.6 T-GDI", "hp": 177, "tr": 1350000, "de": 27990 }
+          { "engine": "1.6 MPI", "hp": 150, "tr": 1150000, "de": 23990 },
+          { "engine": "1.6 T-GDI", "hp": 177, "tr": 1350000, "de": 27990 },
+          { "engine": "1.6 CRDi", "hp": 136, "tr": 1250000, "de": 25990 },
+          { "engine": "2.0 CRDi", "hp": 185, "tr": 1650000, "de": 33990 },
+          { "engine": "Hybrid", "hp": 230, "tr": 1850000, "de": 37990 },
+          { "engine": "Plug-in Hybrid", "hp": 265, "tr": 2350000, "de": 47990 }
         ]
       },
       {
         "id": "sorento",
         "name": "Sorento",
         "versions": [
-          { "engine": "2.2 CRDi", "hp": 202, "tr": 1950000, "de": 38990 }
+          { "engine": "2.2 CRDi", "hp": 186, "tr": 1750000, "de": 35990 },
+          { "engine": "2.2 CRDi", "hp": 202, "tr": 1950000, "de": 38990 },
+          { "engine": "2.0 T-GDI", "hp": 240, "tr": 2150000, "de": 43990 },
+          { "engine": "Hybrid", "hp": 230, "tr": 2050000, "de": 41990 },
+          { "engine": "Plug-in Hybrid", "hp": 261, "tr": 2750000, "de": 55990 }
         ]
       },
       {
         "id": "ev6",
         "name": "EV6",
-        "versions": [{ "engine": "EV", "hp": 229, "tr": 1750000, "de": 35990 }]
+        "versions": [
+          { "engine": "Standard Range", "hp": 170, "tr": 1550000, "de": 32990 },
+          { "engine": "Long Range", "hp": 229, "tr": 1750000, "de": 35990 },
+          { "engine": "GT-Line", "hp": 229, "tr": 2050000, "de": 42990 },
+          { "engine": "GT", "hp": 585, "tr": 3250000, "de": 65990 }
+        ]
       },
       {
         "id": "ev9",
         "name": "EV9",
-        "versions": [{ "engine": "EV", "hp": 384, "tr": 2850000, "de": 57990 }]
+        "versions": [
+          { "engine": "Long Range", "hp": 204, "tr": 2450000, "de": 49990 },
+          { "engine": "Long Range AWD", "hp": 384, "tr": 2850000, "de": 57990 },
+          { "engine": "GT-Line AWD", "hp": 384, "tr": 3250000, "de": 65990 }
+        ]
       },
       {
         "id": "niro",
         "name": "Niro",
         "versions": [
-          { "engine": "1.6 Hybrid", "hp": 139, "tr": 1150000, "de": 23990 }
+          { "engine": "1.6 Hybrid", "hp": 139, "tr": 1150000, "de": 23990 },
+          {
+            "engine": "1.6 Plug-in Hybrid",
+            "hp": 180,
+            "tr": 1450000,
+            "de": 29990
+          },
+          { "engine": "EV", "hp": 204, "tr": 1650000, "de": 34990 }
+        ]
+      },
+      {
+        "id": "carnival",
+        "name": "Carnival",
+        "versions": [
+          { "engine": "2.2 CRDi", "hp": 190, "tr": 1950000, "de": 39990 },
+          { "engine": "2.2 CRDi", "hp": 202, "tr": 2250000, "de": 45990 },
+          { "engine": "2.2 CRDi AWD", "hp": 202, "tr": 2450000, "de": 49990 }
         ]
       }
     ],
@@ -1282,112 +1578,255 @@
         "id": "a180",
         "name": "A 180",
         "versions": [
-          { "engine": "1.3 Turbo", "hp": 136, "tr": 1450000, "de": 29990 }
+          { "engine": "1.3 Turbo", "hp": 136, "tr": 1450000, "de": 29990 },
+          {
+            "engine": "1.3 Turbo 7G-DCT",
+            "hp": 136,
+            "tr": 1550000,
+            "de": 32990
+          }
         ]
       },
       {
         "id": "a200",
         "name": "A 200",
         "versions": [
-          { "engine": "1.3 Turbo", "hp": 163, "tr": 1650000, "de": 33990 }
+          { "engine": "1.3 Turbo", "hp": 163, "tr": 1650000, "de": 33990 },
+          {
+            "engine": "1.3 Turbo 7G-DCT",
+            "hp": 163,
+            "tr": 1750000,
+            "de": 36990
+          },
+          { "engine": "2.0 Turbo", "hp": 224, "tr": 2150000, "de": 43990 }
+        ]
+      },
+      {
+        "id": "a35",
+        "name": "A 35 AMG",
+        "versions": [
+          {
+            "engine": "2.0 Turbo 4Matic",
+            "hp": 306,
+            "tr": 3250000,
+            "de": 54990
+          }
         ]
       },
       {
         "id": "c180",
         "name": "C 180",
         "versions": [
-          { "engine": "1.5 Turbo", "hp": 170, "tr": 2050000, "de": 42990 }
+          { "engine": "1.5 Turbo", "hp": 170, "tr": 2050000, "de": 42990 },
+          {
+            "engine": "1.5 Turbo 9G-TRONIC",
+            "hp": 170,
+            "tr": 2150000,
+            "de": 45990
+          }
         ]
       },
       {
         "id": "c200",
         "name": "C 200",
         "versions": [
-          { "engine": "2.0 Turbo", "hp": 204, "tr": 2350000, "de": 47990 }
+          { "engine": "2.0 Turbo", "hp": 204, "tr": 2350000, "de": 47990 },
+          {
+            "engine": "2.0 Turbo 4Matic",
+            "hp": 204,
+            "tr": 2550000,
+            "de": 52990
+          }
         ]
       },
       {
         "id": "c300",
         "name": "C 300",
         "versions": [
-          { "engine": "2.0 Turbo", "hp": 258, "tr": 2650000, "de": 54990 }
+          { "engine": "2.0 Turbo", "hp": 258, "tr": 2650000, "de": 54990 },
+          {
+            "engine": "2.0 Turbo 4Matic",
+            "hp": 258,
+            "tr": 2850000,
+            "de": 59990
+          },
+          { "engine": "C 63 AMG", "hp": 476, "tr": 5250000, "de": 89990 }
         ]
       },
       {
         "id": "e200",
         "name": "E 200",
         "versions": [
-          { "engine": "2.0 Turbo", "hp": 197, "tr": 2750000, "de": 55990 }
+          { "engine": "2.0 Turbo", "hp": 197, "tr": 2750000, "de": 55990 },
+          {
+            "engine": "2.0 Turbo 4Matic",
+            "hp": 197,
+            "tr": 2950000,
+            "de": 60990
+          }
         ]
       },
       {
         "id": "e300",
         "name": "E 300",
         "versions": [
-          { "engine": "2.0 Turbo", "hp": 258, "tr": 3150000, "de": 63990 }
+          { "engine": "2.0 Turbo", "hp": 258, "tr": 3150000, "de": 63990 },
+          {
+            "engine": "2.0 Turbo 4Matic",
+            "hp": 258,
+            "tr": 3350000,
+            "de": 68990
+          },
+          { "engine": "E 53 AMG", "hp": 435, "tr": 5250000, "de": 89990 }
+        ]
+      },
+      {
+        "id": "e350",
+        "name": "E 350",
+        "versions": [
+          {
+            "engine": "2.0 Turbo 4Matic",
+            "hp": 299,
+            "tr": 3650000,
+            "de": 72990
+          },
+          { "engine": "3.0 Diesel", "hp": 286, "tr": 3950000, "de": 79990 }
         ]
       },
       {
         "id": "s350",
         "name": "S 350",
         "versions": [
-          { "engine": "2.9 Diesel", "hp": 286, "tr": 4750000, "de": 95990 }
+          { "engine": "2.9 Diesel", "hp": 286, "tr": 4750000, "de": 95990 },
+          {
+            "engine": "3.0 Diesel 4Matic",
+            "hp": 286,
+            "tr": 5150000,
+            "de": 105000
+          },
+          { "engine": "S 63 AMG", "hp": 612, "tr": 8950000, "de": 149000 }
         ]
       },
       {
         "id": "gla",
         "name": "GLA",
         "versions": [
-          { "engine": "1.3 Turbo", "hp": 163, "tr": 1750000, "de": 36990 }
+          { "engine": "1.3 Turbo", "hp": 163, "tr": 1750000, "de": 36990 },
+          {
+            "engine": "2.0 Turbo 4Matic",
+            "hp": 224,
+            "tr": 2250000,
+            "de": 46990
+          },
+          { "engine": "GLA 35 AMG", "hp": 306, "tr": 3150000, "de": 54990 }
         ]
       },
       {
         "id": "glb",
         "name": "GLB",
         "versions": [
-          { "engine": "2.0 Turbo", "hp": 190, "tr": 1950000, "de": 40990 }
+          { "engine": "2.0 Turbo", "hp": 190, "tr": 1950000, "de": 40990 },
+          {
+            "engine": "2.0 Turbo 4Matic",
+            "hp": 224,
+            "tr": 2350000,
+            "de": 48990
+          },
+          { "engine": "GLB 35 AMG", "hp": 306, "tr": 3350000, "de": 58990 }
         ]
       },
       {
         "id": "glc",
         "name": "GLC",
         "versions": [
-          { "engine": "2.0 Diesel", "hp": 194, "tr": 2650000, "de": 54990 }
+          { "engine": "2.0 Diesel", "hp": 194, "tr": 2650000, "de": 54990 },
+          {
+            "engine": "2.0 Diesel 4Matic",
+            "hp": 194,
+            "tr": 2850000,
+            "de": 59990
+          },
+          {
+            "engine": "2.0 Turbo 4Matic",
+            "hp": 258,
+            "tr": 3150000,
+            "de": 65990
+          },
+          { "engine": "GLC 63 AMG", "hp": 476, "tr": 5850000, "de": 99990 }
         ]
       },
       {
         "id": "gle",
         "name": "GLE",
         "versions": [
-          { "engine": "2.0 Diesel", "hp": 195, "tr": 2950000, "de": 59990 }
+          {
+            "engine": "2.0 Diesel 4Matic",
+            "hp": 195,
+            "tr": 2950000,
+            "de": 59990
+          },
+          {
+            "engine": "3.0 Diesel 4Matic",
+            "hp": 272,
+            "tr": 3850000,
+            "de": 77990
+          },
+          {
+            "engine": "4.0 Turbo 4Matic",
+            "hp": 435,
+            "tr": 5250000,
+            "de": 89990
+          },
+          { "engine": "GLE 63 AMG", "hp": 612, "tr": 7250000, "de": 125000 }
         ]
       },
       {
         "id": "g",
         "name": "G",
         "versions": [
-          { "engine": "3.0 Diesel", "hp": 286, "tr": 5250000, "de": 109000 }
+          { "engine": "3.0 Diesel", "hp": 286, "tr": 5250000, "de": 109000 },
+          {
+            "engine": "4.0 Turbo 4Matic",
+            "hp": 422,
+            "tr": 7250000,
+            "de": 149000
+          },
+          { "engine": "G 63 AMG", "hp": 585, "tr": 9250000, "de": 185000 }
         ]
       },
       {
         "id": "eqa",
         "name": "EQA",
-        "versions": [{ "engine": "EV", "hp": 190, "tr": 1750000, "de": 37990 }]
+        "versions": [
+          { "engine": "250+", "hp": 190, "tr": 1750000, "de": 37990 },
+          { "engine": "300 4Matic", "hp": 228, "tr": 2050000, "de": 44990 }
+        ]
       },
       {
         "id": "eqb",
         "name": "EQB",
-        "versions": [{ "engine": "EV", "hp": 228, "tr": 1950000, "de": 41990 }]
+        "versions": [
+          { "engine": "250+", "hp": 190, "tr": 1950000, "de": 41990 },
+          { "engine": "300 4Matic", "hp": 228, "tr": 2250000, "de": 48990 }
+        ]
       },
       {
         "id": "eqe",
         "name": "EQE",
-        "versions": [{ "engine": "EV", "hp": 292, "tr": 2950000, "de": 62990 }]
+        "versions": [
+          { "engine": "350+", "hp": 292, "tr": 2950000, "de": 62990 },
+          { "engine": "350 4Matic", "hp": 292, "tr": 3250000, "de": 69990 },
+          { "engine": "53 4Matic", "hp": 476, "tr": 4850000, "de": 84990 }
+        ]
       },
       {
         "id": "eqs",
         "name": "EQS",
-        "versions": [{ "engine": "EV", "hp": 333, "tr": 4250000, "de": 89990 }]
+        "versions": [
+          { "engine": "450+", "hp": 333, "tr": 4250000, "de": 89990 },
+          { "engine": "580 4Matic", "hp": 523, "tr": 5850000, "de": 125000 },
+          { "engine": "AMG 53", "hp": 658, "tr": 7850000, "de": 165000 }
+        ]
       }
     ],
     "mg": [
@@ -1489,46 +1928,88 @@
       {
         "id": "corsa",
         "name": "Corsa",
-        "versions": [{ "engine": "1.2", "hp": 75, "tr": 695000, "de": 13990 }]
+        "versions": [
+          { "engine": "1.2", "hp": 75, "tr": 695000, "de": 13990 },
+          { "engine": "1.2 Turbo", "hp": 100, "tr": 795000, "de": 15990 },
+          { "engine": "1.2 Turbo", "hp": 130, "tr": 995000, "de": 19990 },
+          { "engine": "1.5 Diesel", "hp": 100, "tr": 895000, "de": 17990 },
+          { "engine": "Electric", "hp": 136, "tr": 1250000, "de": 25990 },
+          { "engine": "GS", "hp": 130, "tr": 1150000, "de": 23990 }
+        ]
       },
       {
         "id": "astra",
         "name": "Astra",
         "versions": [
-          { "engine": "1.2 Turbo", "hp": 110, "tr": 895000, "de": 18990 }
+          { "engine": "1.2 Turbo", "hp": 110, "tr": 895000, "de": 18990 },
+          { "engine": "1.2 Turbo", "hp": 130, "tr": 1050000, "de": 21990 },
+          { "engine": "1.5 Diesel", "hp": 122, "tr": 1050000, "de": 21990 },
+          { "engine": "1.6 Turbo", "hp": 150, "tr": 1150000, "de": 23990 },
+          { "engine": "1.6 Hybrid", "hp": 180, "tr": 1450000, "de": 29990 },
+          { "engine": "Plug-in Hybrid", "hp": 225, "tr": 1950000, "de": 39990 },
+          { "engine": "GSi", "hp": 300, "tr": 2650000, "de": 54990 }
         ]
       },
       {
         "id": "insignia",
         "name": "Insignia",
         "versions": [
-          { "engine": "2.0 CDTI", "hp": 170, "tr": 1450000, "de": 29990 }
+          { "engine": "1.5 Turbo", "hp": 140, "tr": 1150000, "de": 24990 },
+          { "engine": "2.0 CDTI", "hp": 130, "tr": 1250000, "de": 26990 },
+          { "engine": "2.0 CDTI", "hp": 170, "tr": 1450000, "de": 29990 },
+          { "engine": "2.0 Biturbo", "hp": 210, "tr": 1650000, "de": 34990 },
+          { "engine": "GSi", "hp": 325, "tr": 2850000, "de": 59990 }
         ]
       },
       {
         "id": "mokka",
         "name": "Mokka",
         "versions": [
-          { "engine": "1.2 Turbo", "hp": 130, "tr": 1050000, "de": 21990 }
+          { "engine": "1.2 Turbo", "hp": 100, "tr": 895000, "de": 18990 },
+          { "engine": "1.2 Turbo", "hp": 130, "tr": 1050000, "de": 21990 },
+          { "engine": "1.5 Diesel", "hp": 110, "tr": 1050000, "de": 21990 },
+          { "engine": "Electric", "hp": 136, "tr": 1350000, "de": 27990 },
+          { "engine": "GS", "hp": 130, "tr": 1250000, "de": 25990 }
         ]
       },
       {
         "id": "grandland",
         "name": "Grandland",
         "versions": [
-          { "engine": "1.6 Hybrid", "hp": 165, "tr": 1350000, "de": 27990 }
+          { "engine": "1.2 Turbo", "hp": 130, "tr": 1150000, "de": 23990 },
+          { "engine": "1.5 Diesel", "hp": 130, "tr": 1250000, "de": 25990 },
+          { "engine": "1.6 Hybrid", "hp": 165, "tr": 1350000, "de": 27990 },
+          { "engine": "Plug-in Hybrid", "hp": 300, "tr": 2150000, "de": 44990 },
+          { "engine": "GS", "hp": 165, "tr": 1550000, "de": 32990 }
         ]
       },
       {
         "id": "crossland",
         "name": "Crossland",
-        "versions": [{ "engine": "1.2", "hp": 110, "tr": 895000, "de": 18990 }]
+        "versions": [
+          { "engine": "1.2", "hp": 83, "tr": 795000, "de": 16990 },
+          { "engine": "1.2", "hp": 110, "tr": 895000, "de": 18990 },
+          { "engine": "1.5 Diesel", "hp": 110, "tr": 995000, "de": 20990 },
+          { "engine": "1.6 Turbo", "hp": 120, "tr": 1050000, "de": 21990 }
+        ]
       },
       {
         "id": "vivaro",
         "name": "Vivaro",
         "versions": [
-          { "engine": "2.0 CDTI", "hp": 145, "tr": 1350000, "de": 27990 }
+          { "engine": "1.5 Diesel", "hp": 120, "tr": 1150000, "de": 23990 },
+          { "engine": "2.0 CDTI", "hp": 145, "tr": 1350000, "de": 27990 },
+          { "engine": "2.0 CDTI", "hp": 177, "tr": 1550000, "de": 31990 },
+          { "engine": "Electric", "hp": 136, "tr": 1650000, "de": 33990 }
+        ]
+      },
+      {
+        "id": "zafira",
+        "name": "Zafira",
+        "versions": [
+          { "engine": "1.5 Diesel", "hp": 130, "tr": 1350000, "de": 28990 },
+          { "engine": "2.0 Diesel", "hp": 177, "tr": 1650000, "de": 34990 },
+          { "engine": "Life", "hp": 177, "tr": 1850000, "de": 38990 }
         ]
       }
     ],
@@ -1537,63 +2018,111 @@
         "id": "208",
         "name": "208",
         "versions": [
-          { "engine": "1.2 PureTech", "hp": 100, "tr": 795000, "de": 15990 }
+          { "engine": "1.2 PureTech", "hp": 75, "tr": 695000, "de": 13990 },
+          { "engine": "1.2 PureTech", "hp": 100, "tr": 795000, "de": 15990 },
+          { "engine": "1.2 PureTech", "hp": 130, "tr": 995000, "de": 19990 },
+          { "engine": "1.5 BlueHDi", "hp": 100, "tr": 995000, "de": 19990 },
+          { "engine": "Electric", "hp": 156, "tr": 1450000, "de": 29990 },
+          { "engine": "GT", "hp": 130, "tr": 1250000, "de": 25990 }
         ]
       },
       {
         "id": "308",
         "name": "308",
         "versions": [
-          { "engine": "1.2 PureTech", "hp": 130, "tr": 1050000, "de": 21990 }
+          { "engine": "1.2 PureTech", "hp": 110, "tr": 895000, "de": 18990 },
+          { "engine": "1.2 PureTech", "hp": 130, "tr": 1050000, "de": 21990 },
+          { "engine": "1.5 BlueHDi", "hp": 130, "tr": 1150000, "de": 23990 },
+          { "engine": "1.6 PureTech", "hp": 180, "tr": 1450000, "de": 29990 },
+          { "engine": "Hybrid", "hp": 180, "tr": 1550000, "de": 32990 },
+          { "engine": "GT", "hp": 225, "tr": 1950000, "de": 39990 }
         ]
       },
       {
         "id": "408",
         "name": "408",
         "versions": [
-          { "engine": "1.2 PureTech", "hp": 130, "tr": 1150000, "de": 23990 }
+          { "engine": "1.2 PureTech", "hp": 130, "tr": 1150000, "de": 23990 },
+          { "engine": "1.5 BlueHDi", "hp": 130, "tr": 1250000, "de": 25990 },
+          { "engine": "1.6 PureTech", "hp": 180, "tr": 1550000, "de": 32990 },
+          { "engine": "Hybrid", "hp": 180, "tr": 1650000, "de": 34990 },
+          { "engine": "Plug-in Hybrid", "hp": 225, "tr": 2150000, "de": 44990 }
         ]
       },
       {
         "id": "508",
         "name": "508",
         "versions": [
-          { "engine": "1.6 PureTech", "hp": 165, "tr": 1650000, "de": 34990 }
+          { "engine": "1.5 BlueHDi", "hp": 130, "tr": 1350000, "de": 28990 },
+          { "engine": "1.6 PureTech", "hp": 165, "tr": 1650000, "de": 34990 },
+          { "engine": "1.6 PureTech", "hp": 215, "tr": 1950000, "de": 40990 },
+          { "engine": "Hybrid", "hp": 180, "tr": 1750000, "de": 36990 },
+          { "engine": "SW", "hp": 165, "tr": 1750000, "de": 36990 }
         ]
       },
       {
         "id": "2008",
         "name": "2008",
         "versions": [
-          { "engine": "1.2 PureTech", "hp": 130, "tr": 1050000, "de": 21990 }
+          { "engine": "1.2 PureTech", "hp": 100, "tr": 895000, "de": 18990 },
+          { "engine": "1.2 PureTech", "hp": 130, "tr": 1050000, "de": 21990 },
+          { "engine": "1.5 BlueHDi", "hp": 110, "tr": 1050000, "de": 21990 },
+          { "engine": "1.5 BlueHDi", "hp": 130, "tr": 1150000, "de": 23990 },
+          { "engine": "Electric", "hp": 136, "tr": 1450000, "de": 29990 },
+          { "engine": "GT", "hp": 155, "tr": 1550000, "de": 32990 }
         ]
       },
       {
         "id": "3008",
         "name": "3008",
         "versions": [
-          { "engine": "1.6 Hybrid", "hp": 165, "tr": 1450000, "de": 29990 }
+          { "engine": "1.2 PureTech", "hp": 130, "tr": 1250000, "de": 26990 },
+          { "engine": "1.5 BlueHDi", "hp": 130, "tr": 1350000, "de": 28990 },
+          { "engine": "1.6 Hybrid", "hp": 165, "tr": 1450000, "de": 29990 },
+          { "engine": "1.6 PureTech", "hp": 180, "tr": 1650000, "de": 34990 },
+          { "engine": "Plug-in Hybrid", "hp": 300, "tr": 2350000, "de": 48990 },
+          { "engine": "GT", "hp": 225, "tr": 2050000, "de": 42990 }
         ]
       },
       {
         "id": "5008",
         "name": "5008",
         "versions": [
-          { "engine": "1.6 Hybrid", "hp": 165, "tr": 1650000, "de": 34990 }
+          { "engine": "1.2 PureTech", "hp": 130, "tr": 1350000, "de": 28990 },
+          { "engine": "1.5 BlueHDi", "hp": 130, "tr": 1450000, "de": 30990 },
+          { "engine": "1.6 Hybrid", "hp": 165, "tr": 1650000, "de": 34990 },
+          { "engine": "1.6 PureTech", "hp": 180, "tr": 1750000, "de": 36990 },
+          { "engine": "Plug-in Hybrid", "hp": 300, "tr": 2550000, "de": 52990 },
+          { "engine": "GT", "hp": 225, "tr": 2250000, "de": 46990 }
         ]
       },
       {
         "id": "partner",
         "name": "Partner",
         "versions": [
-          { "engine": "1.5 BlueHDi", "hp": 110, "tr": 895000, "de": 18990 }
+          { "engine": "1.5 BlueHDi", "hp": 75, "tr": 695000, "de": 14990 },
+          { "engine": "1.5 BlueHDi", "hp": 100, "tr": 795000, "de": 16990 },
+          { "engine": "1.5 BlueHDi", "hp": 110, "tr": 895000, "de": 18990 },
+          { "engine": "Electric", "hp": 136, "tr": 1150000, "de": 23990 }
         ]
       },
       {
         "id": "expert",
         "name": "Expert",
         "versions": [
-          { "engine": "2.0 BlueHDi", "hp": 145, "tr": 1250000, "de": 25990 }
+          { "engine": "1.5 BlueHDi", "hp": 100, "tr": 995000, "de": 20990 },
+          { "engine": "2.0 BlueHDi", "hp": 145, "tr": 1250000, "de": 25990 },
+          { "engine": "2.0 BlueHDi", "hp": 177, "tr": 1450000, "de": 29990 },
+          { "engine": "Electric", "hp": 136, "tr": 1450000, "de": 29990 }
+        ]
+      },
+      {
+        "id": "boxer",
+        "name": "Boxer",
+        "versions": [
+          { "engine": "2.0 BlueHDi", "hp": 140, "tr": 1350000, "de": 28990 },
+          { "engine": "2.2 BlueHDi", "hp": 160, "tr": 1550000, "de": 32990 },
+          { "engine": "3.0 BlueHDi", "hp": 180, "tr": 1850000, "de": 38990 }
         ]
       }
     ],
@@ -1684,75 +2213,124 @@
         "id": "clio",
         "name": "Clio",
         "versions": [
-          { "engine": "1.0 TCe", "hp": 90, "tr": 725000, "de": 14990 }
+          { "engine": "1.0 SCe", "hp": 65, "tr": 625000, "de": 12990 },
+          { "engine": "1.0 TCe", "hp": 90, "tr": 725000, "de": 14990 },
+          { "engine": "1.0 TCe", "hp": 100, "tr": 795000, "de": 16990 },
+          { "engine": "1.3 TCe", "hp": 130, "tr": 995000, "de": 20990 },
+          { "engine": "1.5 dCi", "hp": 85, "tr": 825000, "de": 17990 },
+          { "engine": "1.5 dCi", "hp": 95, "tr": 895000, "de": 18990 },
+          { "engine": "RS", "hp": 280, "tr": 2150000, "de": 42990 }
         ]
       },
       {
         "id": "captur",
         "name": "Captur",
         "versions": [
-          { "engine": "1.0 TCe", "hp": 100, "tr": 895000, "de": 18990 }
+          { "engine": "1.0 TCe", "hp": 90, "tr": 795000, "de": 16990 },
+          { "engine": "1.0 TCe", "hp": 100, "tr": 895000, "de": 18990 },
+          { "engine": "1.3 TCe", "hp": 130, "tr": 1095000, "de": 22990 },
+          { "engine": "1.3 TCe", "hp": 150, "tr": 1250000, "de": 25990 },
+          { "engine": "1.5 dCi", "hp": 95, "tr": 995000, "de": 20990 },
+          { "engine": "1.5 dCi", "hp": 115, "tr": 1150000, "de": 23990 },
+          { "engine": "E-Tech", "hp": 145, "tr": 1350000, "de": 27990 }
         ]
       },
       {
         "id": "austral",
         "name": "Austral",
         "versions": [
-          { "engine": "1.2 TCe", "hp": 130, "tr": 1350000, "de": 27990 }
+          { "engine": "1.2 TCe", "hp": 130, "tr": 1350000, "de": 27990 },
+          { "engine": "1.2 TCe", "hp": 160, "tr": 1550000, "de": 31990 },
+          { "engine": "1.3 TCe", "hp": 140, "tr": 1450000, "de": 29990 },
+          { "engine": "1.5 dCi", "hp": 115, "tr": 1450000, "de": 29990 },
+          { "engine": "E-Tech Hybrid", "hp": 200, "tr": 1750000, "de": 35990 }
         ]
       },
       {
         "id": "arkana",
         "name": "Arkana",
         "versions": [
-          { "engine": "1.3 TCe", "hp": 140, "tr": 1150000, "de": 23990 }
+          { "engine": "1.3 TCe", "hp": 140, "tr": 1150000, "de": 23990 },
+          { "engine": "1.3 TCe", "hp": 160, "tr": 1350000, "de": 27990 },
+          { "engine": "E-Tech Hybrid", "hp": 145, "tr": 1250000, "de": 25990 }
         ]
       },
       {
         "id": "koleos",
         "name": "Koleos",
         "versions": [
-          { "engine": "2.0 dCi", "hp": 177, "tr": 1650000, "de": 34990 }
+          { "engine": "2.0 dCi", "hp": 150, "tr": 1450000, "de": 29990 },
+          { "engine": "2.0 dCi", "hp": 177, "tr": 1650000, "de": 34990 },
+          { "engine": "2.0 dCi", "hp": 190, "tr": 1850000, "de": 38990 }
         ]
       },
       {
         "id": "talisman",
         "name": "Talisman",
         "versions": [
-          { "engine": "1.6 dCi", "hp": 160, "tr": 1750000, "de": 37990 }
+          { "engine": "1.6 dCi", "hp": 130, "tr": 1450000, "de": 29990 },
+          { "engine": "1.6 dCi", "hp": 160, "tr": 1750000, "de": 37990 },
+          { "engine": "1.3 TCe", "hp": 160, "tr": 1650000, "de": 34990 }
         ]
       },
       {
         "id": "duster",
         "name": "Duster",
         "versions": [
-          { "engine": "1.0 TCe", "hp": 125, "tr": 995000, "de": 20990 }
+          { "engine": "1.0 TCe", "hp": 90, "tr": 795000, "de": 16990 },
+          { "engine": "1.0 TCe", "hp": 125, "tr": 995000, "de": 20990 },
+          { "engine": "1.3 TCe", "hp": 150, "tr": 1250000, "de": 25990 },
+          { "engine": "1.5 dCi", "hp": 110, "tr": 1150000, "de": 23990 },
+          { "engine": "4x4", "hp": 125, "tr": 1350000, "de": 27990 }
         ]
       },
       {
         "id": "kangoo",
         "name": "Kangoo",
         "versions": [
-          { "engine": "1.5 dCi", "hp": 95, "tr": 895000, "de": 18990 }
+          { "engine": "1.5 dCi", "hp": 75, "tr": 795000, "de": 16990 },
+          { "engine": "1.5 dCi", "hp": 95, "tr": 895000, "de": 18990 },
+          { "engine": "1.3 TCe", "hp": 100, "tr": 895000, "de": 18990 },
+          { "engine": "Electric", "hp": 122, "tr": 1250000, "de": 25990 }
         ]
       },
       {
         "id": "express",
         "name": "Express",
         "versions": [
-          { "engine": "1.5 dCi", "hp": 95, "tr": 795000, "de": 16990 }
+          { "engine": "1.5 dCi", "hp": 75, "tr": 695000, "de": 14990 },
+          { "engine": "1.5 dCi", "hp": 95, "tr": 795000, "de": 16990 },
+          { "engine": "1.0 TCe", "hp": 100, "tr": 895000, "de": 18990 }
         ]
       },
       {
         "id": "zoe",
         "name": "ZOE",
-        "versions": [{ "engine": "EV", "hp": 135, "tr": 1050000, "de": 22990 }]
+        "versions": [
+          { "engine": "ZEN", "hp": 108, "tr": 895000, "de": 19990 },
+          { "engine": "INTENS", "hp": 135, "tr": 1050000, "de": 22990 },
+          { "engine": "RS", "hp": 135, "tr": 1150000, "de": 24990 }
+        ]
       },
       {
         "id": "megane",
         "name": "Megane",
         "versions": [
-          { "engine": "1.3 TCe", "hp": 140, "tr": 1050000, "de": 22990 }
+          { "engine": "1.3 TCe", "hp": 115, "tr": 895000, "de": 18990 },
+          { "engine": "1.3 TCe", "hp": 140, "tr": 1050000, "de": 22990 },
+          { "engine": "1.3 TCe", "hp": 160, "tr": 1250000, "de": 26990 },
+          { "engine": "1.5 dCi", "hp": 110, "tr": 1050000, "de": 22990 },
+          { "engine": "E-Tech", "hp": 145, "tr": 1350000, "de": 28990 },
+          { "engine": "RS", "hp": 280, "tr": 2450000, "de": 49990 }
+        ]
+      },
+      {
+        "id": "espace",
+        "name": "Espace",
+        "versions": [
+          { "engine": "1.3 TCe", "hp": 160, "tr": 1750000, "de": 36990 },
+          { "engine": "1.5 dCi", "hp": 150, "tr": 1850000, "de": 38990 },
+          { "engine": "E-Tech Hybrid", "hp": 200, "tr": 2050000, "de": 42990 }
         ]
       }
     ],
@@ -2010,76 +2588,100 @@
         "id": "yaris",
         "name": "Yaris",
         "versions": [
-          { "engine": "1.5 Hybrid", "hp": 116, "tr": 895000, "de": 18990 }
+          { "engine": "1.0", "hp": 72, "tr": 695000, "de": 14990 },
+          { "engine": "1.5", "hp": 120, "tr": 795000, "de": 16990 },
+          { "engine": "1.5 Hybrid", "hp": 116, "tr": 895000, "de": 18990 },
+          { "engine": "1.5 Hybrid", "hp": 130, "tr": 995000, "de": 21990 },
+          { "engine": "GR Yaris", "hp": 261, "tr": 2350000, "de": 39990 }
         ]
       },
       {
         "id": "corolla",
         "name": "Corolla",
         "versions": [
-          { "engine": "1.8 Hybrid", "hp": 140, "tr": 1050000, "de": 22990 }
+          { "engine": "1.5", "hp": 120, "tr": 895000, "de": 19990 },
+          { "engine": "1.8 Hybrid", "hp": 140, "tr": 1050000, "de": 22990 },
+          { "engine": "2.0 Hybrid", "hp": 196, "tr": 1350000, "de": 29990 },
+          { "engine": "GR Sport", "hp": 196, "tr": 1550000, "de": 34990 }
         ]
       },
       {
         "id": "camry",
         "name": "Camry",
         "versions": [
-          { "engine": "2.5 Hybrid", "hp": 211, "tr": 1650000, "de": 34990 }
+          { "engine": "2.5 Hybrid", "hp": 211, "tr": 1650000, "de": 34990 },
+          { "engine": "2.5 Hybrid", "hp": 218, "tr": 1850000, "de": 38990 }
         ]
       },
       {
         "id": "prius",
         "name": "Prius",
         "versions": [
-          { "engine": "1.8 Hybrid", "hp": 122, "tr": 1150000, "de": 24990 }
+          { "engine": "1.8 Hybrid", "hp": 122, "tr": 1150000, "de": 24990 },
+          { "engine": "2.0 Hybrid", "hp": 196, "tr": 1450000, "de": 32990 }
         ]
       },
       {
         "id": "c-hr",
         "name": "C-HR",
         "versions": [
-          { "engine": "1.8 Hybrid", "hp": 140, "tr": 1250000, "de": 26990 }
+          { "engine": "1.8 Hybrid", "hp": 140, "tr": 1250000, "de": 26990 },
+          { "engine": "2.0 Hybrid", "hp": 196, "tr": 1550000, "de": 33990 },
+          { "engine": "GR SPORT", "hp": 196, "tr": 1750000, "de": 37990 }
         ]
       },
       {
         "id": "rav4",
         "name": "RAV4",
         "versions": [
-          { "engine": "2.5 Hybrid", "hp": 218, "tr": 1550000, "de": 32990 }
+          { "engine": "2.0", "hp": 175, "tr": 1350000, "de": 29990 },
+          { "engine": "2.5 Hybrid", "hp": 218, "tr": 1550000, "de": 32990 },
+          { "engine": "2.5 Hybrid", "hp": 222, "tr": 1750000, "de": 37990 },
+          { "engine": "Plug-in Hybrid", "hp": 306, "tr": 2350000, "de": 49990 }
         ]
       },
       {
         "id": "highlander",
         "name": "Highlander",
         "versions": [
-          { "engine": "2.5 Hybrid", "hp": 248, "tr": 1950000, "de": 41990 }
+          { "engine": "2.5 Hybrid", "hp": 248, "tr": 1950000, "de": 41990 },
+          { "engine": "Plug-in Hybrid", "hp": 306, "tr": 2550000, "de": 54990 }
         ]
       },
       {
         "id": "landcruiser",
         "name": "Land Cruiser",
         "versions": [
-          { "engine": "2.8 Diesel", "hp": 204, "tr": 2850000, "de": 59990 }
+          { "engine": "2.8 Diesel", "hp": 204, "tr": 2850000, "de": 59990 },
+          { "engine": "2.8 Diesel", "hp": 205, "tr": 3150000, "de": 65990 },
+          { "engine": "3.3 Diesel", "hp": 302, "tr": 3950000, "de": 82990 }
         ]
       },
       {
         "id": "proace",
         "name": "Proace",
         "versions": [
-          { "engine": "2.0 Diesel", "hp": 144, "tr": 1250000, "de": 26990 }
+          { "engine": "1.5 Diesel", "hp": 102, "tr": 995000, "de": 21990 },
+          { "engine": "2.0 Diesel", "hp": 144, "tr": 1250000, "de": 26990 },
+          { "engine": "2.0 Diesel", "hp": 177, "tr": 1450000, "de": 31990 }
         ]
       },
       {
         "id": "supra",
         "name": "Supra",
         "versions": [
-          { "engine": "2.0 Turbo", "hp": 258, "tr": 2950000, "de": 52990 }
+          { "engine": "2.0 Turbo", "hp": 258, "tr": 2950000, "de": 52990 },
+          { "engine": "3.0 Turbo", "hp": 340, "tr": 3850000, "de": 69990 },
+          { "engine": "GR Supra", "hp": 387, "tr": 4250000, "de": 79990 }
         ]
       },
       {
         "id": "bz4x",
         "name": "bZ4X",
-        "versions": [{ "engine": "EV", "hp": 204, "tr": 1750000, "de": 37990 }]
+        "versions": [
+          { "engine": "Front", "hp": 204, "tr": 1750000, "de": 37990 },
+          { "engine": "AWD", "hp": 218, "tr": 1950000, "de": 42990 }
+        ]
       }
     ],
     "volkswagen": [
@@ -2087,79 +2689,159 @@
         "id": "polo",
         "name": "Polo",
         "versions": [
-          { "engine": "1.0 TSI", "hp": 95, "tr": 695000, "de": 14990 }
+          { "engine": "1.0 MPI", "hp": 80, "tr": 595000, "de": 12990 },
+          { "engine": "1.0 TSI", "hp": 95, "tr": 695000, "de": 14990 },
+          { "engine": "1.0 TSI", "hp": 110, "tr": 795000, "de": 16990 },
+          { "engine": "1.0 TSI DSG", "hp": 110, "tr": 895000, "de": 18990 },
+          { "engine": "1.5 TSI", "hp": 150, "tr": 995000, "de": 21990 },
+          { "engine": "GTI", "hp": 207, "tr": 1450000, "de": 29990 }
         ]
       },
       {
         "id": "golf",
         "name": "Golf",
         "versions": [
-          { "engine": "1.5 TSI", "hp": 130, "tr": 1050000, "de": 22990 }
+          { "engine": "1.0 TSI", "hp": 110, "tr": 895000, "de": 19990 },
+          { "engine": "1.5 TSI", "hp": 130, "tr": 1050000, "de": 22990 },
+          { "engine": "1.5 TSI", "hp": 150, "tr": 1150000, "de": 24990 },
+          { "engine": "1.5 eTSI", "hp": 150, "tr": 1250000, "de": 26990 },
+          { "engine": "2.0 TDI", "hp": 150, "tr": 1350000, "de": 29990 },
+          { "engine": "2.0 TDI", "hp": 200, "tr": 1550000, "de": 34990 },
+          { "engine": "GTI", "hp": 245, "tr": 1950000, "de": 39990 },
+          { "engine": "GTI Clubsport", "hp": 300, "tr": 2350000, "de": 45990 },
+          { "engine": "R", "hp": 320, "tr": 2750000, "de": 54990 }
         ]
       },
       {
         "id": "passat",
         "name": "Passat",
         "versions": [
-          { "engine": "1.5 TSI", "hp": 150, "tr": 1450000, "de": 32990 }
+          { "engine": "1.5 TSI", "hp": 150, "tr": 1450000, "de": 32990 },
+          { "engine": "1.5 eTSI", "hp": 150, "tr": 1550000, "de": 34990 },
+          { "engine": "2.0 TDI", "hp": 122, "tr": 1550000, "de": 34990 },
+          { "engine": "2.0 TDI", "hp": 150, "tr": 1750000, "de": 38990 },
+          { "engine": "2.0 TDI", "hp": 200, "tr": 2050000, "de": 44990 },
+          { "engine": "2.0 TSI 4Motion", "hp": 272, "tr": 2350000, "de": 49990 }
         ]
       },
       {
         "id": "arteon",
         "name": "Arteon",
         "versions": [
-          { "engine": "2.0 TDI", "hp": 150, "tr": 1850000, "de": 37990 }
+          { "engine": "1.5 TSI", "hp": 150, "tr": 1650000, "de": 34990 },
+          { "engine": "2.0 TDI", "hp": 150, "tr": 1850000, "de": 37990 },
+          { "engine": "2.0 TDI", "hp": 200, "tr": 2150000, "de": 44990 },
+          {
+            "engine": "2.0 TSI 4Motion",
+            "hp": 272,
+            "tr": 2550000,
+            "de": 52990
+          },
+          { "engine": "R", "hp": 320, "tr": 3250000, "de": 65990 }
         ]
       },
       {
         "id": "troc",
         "name": "T-Roc",
         "versions": [
-          { "engine": "1.5 TSI", "hp": 150, "tr": 1150000, "de": 24990 }
+          { "engine": "1.0 TSI", "hp": 110, "tr": 995000, "de": 21990 },
+          { "engine": "1.5 TSI", "hp": 150, "tr": 1150000, "de": 24990 },
+          { "engine": "1.5 TSI DSG", "hp": 150, "tr": 1250000, "de": 26990 },
+          { "engine": "2.0 TDI", "hp": 150, "tr": 1450000, "de": 31990 },
+          {
+            "engine": "2.0 TSI 4Motion",
+            "hp": 190,
+            "tr": 1650000,
+            "de": 35990
+          },
+          { "engine": "R", "hp": 300, "tr": 2350000, "de": 49990 }
         ]
       },
       {
         "id": "tiguan",
         "name": "Tiguan",
         "versions": [
-          { "engine": "1.5 TSI", "hp": 150, "tr": 1350000, "de": 28990 }
+          { "engine": "1.5 TSI", "hp": 130, "tr": 1150000, "de": 25990 },
+          { "engine": "1.5 TSI", "hp": 150, "tr": 1350000, "de": 28990 },
+          { "engine": "1.5 eTSI", "hp": 150, "tr": 1450000, "de": 30990 },
+          { "engine": "2.0 TDI", "hp": 150, "tr": 1650000, "de": 34990 },
+          { "engine": "2.0 TDI", "hp": 200, "tr": 1950000, "de": 41990 },
+          {
+            "engine": "2.0 TSI 4Motion",
+            "hp": 245,
+            "tr": 2150000,
+            "de": 45990
+          },
+          { "engine": "R", "hp": 320, "tr": 2950000, "de": 62990 }
         ]
       },
       {
         "id": "touareg",
         "name": "Touareg",
         "versions": [
-          { "engine": "3.0 V6 TDI", "hp": 286, "tr": 3250000, "de": 59990 }
+          { "engine": "3.0 V6 TDI", "hp": 231, "tr": 2950000, "de": 54990 },
+          { "engine": "3.0 V6 TDI", "hp": 286, "tr": 3250000, "de": 59990 },
+          { "engine": "3.0 V6 TSI", "hp": 340, "tr": 3550000, "de": 65990 },
+          { "engine": "4.0 V8 TDI", "hp": 421, "tr": 4850000, "de": 89990 }
         ]
       },
       {
         "id": "transporter",
         "name": "Transporter",
         "versions": [
-          { "engine": "2.0 TDI", "hp": 150, "tr": 1250000, "de": 26990 }
+          { "engine": "2.0 TDI", "hp": 102, "tr": 1050000, "de": 23990 },
+          { "engine": "2.0 TDI", "hp": 150, "tr": 1250000, "de": 26990 },
+          { "engine": "2.0 TDI", "hp": 180, "tr": 1450000, "de": 30990 },
+          { "engine": "2.0 TSI", "hp": 204, "tr": 1350000, "de": 28990 }
         ]
       },
       {
         "id": "caddy",
         "name": "Caddy",
         "versions": [
-          { "engine": "2.0 TDI", "hp": 102, "tr": 895000, "de": 19990 }
+          { "engine": "1.6 TDI", "hp": 102, "tr": 795000, "de": 17990 },
+          { "engine": "2.0 TDI", "hp": 102, "tr": 895000, "de": 19990 },
+          { "engine": "2.0 TDI", "hp": 122, "tr": 995000, "de": 22990 },
+          { "engine": "2.0 TDI", "hp": 150, "tr": 1150000, "de": 25990 }
         ]
       },
       {
         "id": "id3",
         "name": "ID.3",
-        "versions": [{ "engine": "EV", "hp": 204, "tr": 1250000, "de": 27990 }]
+        "versions": [
+          { "engine": "Pure", "hp": 145, "tr": 1050000, "de": 23990 },
+          { "engine": "Pro", "hp": 204, "tr": 1250000, "de": 27990 },
+          { "engine": "Pro S", "hp": 204, "tr": 1450000, "de": 32990 },
+          { "engine": "GTX", "hp": 286, "tr": 1850000, "de": 41990 }
+        ]
       },
       {
         "id": "id4",
         "name": "ID.4",
-        "versions": [{ "engine": "EV", "hp": 204, "tr": 1450000, "de": 32990 }]
+        "versions": [
+          { "engine": "Pure", "hp": 148, "tr": 1250000, "de": 27990 },
+          { "engine": "Pro", "hp": 204, "tr": 1450000, "de": 32990 },
+          { "engine": "Pro S", "hp": 204, "tr": 1650000, "de": 37990 },
+          { "engine": "GTX", "hp": 299, "tr": 2150000, "de": 48990 }
+        ]
       },
       {
         "id": "id5",
         "name": "ID.5",
-        "versions": [{ "engine": "EV", "hp": 286, "tr": 1750000, "de": 39990 }]
+        "versions": [
+          { "engine": "Pro", "hp": 204, "tr": 1650000, "de": 37990 },
+          { "engine": "Pro S", "hp": 204, "tr": 1850000, "de": 42990 },
+          { "engine": "GTX", "hp": 299, "tr": 2350000, "de": 52990 }
+        ]
+      },
+      {
+        "id": "id7",
+        "name": "ID.7",
+        "versions": [
+          { "engine": "Pro", "hp": 286, "tr": 1950000, "de": 44990 },
+          { "engine": "Pro S", "hp": 286, "tr": 2250000, "de": 51990 },
+          { "engine": "GTX", "hp": 340, "tr": 2750000, "de": 62990 }
+        ]
       }
     ],
     "volvo": [
