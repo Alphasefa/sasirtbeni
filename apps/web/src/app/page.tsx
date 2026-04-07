@@ -103,16 +103,16 @@ export default function Home() {
               Karşılaştır
             </Link>
             <Link
-              href="/?tab=dealers"
+              href="/dealers"
               className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
             >
               Bayiler
             </Link>
             <Link
-              href="/?tab=campaigns"
+              href="/dealers"
               className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
             >
-              Kampanyalar
+              Bayiler
             </Link>
           </nav>
         </div>
