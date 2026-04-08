@@ -503,13 +503,13 @@ function DealersContent() {
                     <Phone className="h-4 w-4" />
                     Ara
                   </a>
-                  <button
-                    onClick={() => openLeadModal(dealer)}
-                    className="flex flex-1 items-center justify-center gap-2 rounded-xl border-2 border-green-500 px-4 py-3 font-semibold text-green-600 transition-all hover:bg-green-500 hover:text-white dark:border-green-400 dark:text-green-400"
+                  <Link
+                    href={`/dealers/${dealer.id}`}
+                    className="flex flex-1 items-center justify-center gap-2 rounded-xl border-2 border-slate-300 px-4 py-3 font-semibold text-slate-600 transition-all hover:bg-slate-100 dark:border-slate-600 dark:text-slate-300"
                   >
-                    <Send className="h-4 w-4" />
-                    Teklif Al
-                  </button>
+                    <Building2 className="h-4 w-4" />
+                    Bayi Sayfası
+                  </Link>
                 </div>
               </div>
             ))}
