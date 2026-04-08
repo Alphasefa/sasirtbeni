@@ -14,10 +14,12 @@ import {
   Plus,
   Send,
   Share2,
+  Star,
   Sun,
   X,
 } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
 import { use, useEffect, useState } from "react";
 import {
@@ -28,6 +30,8 @@ import {
   formatPercent,
 } from "@/features/tax-calculation/utils/taxCalculator";
 import vehicleData from "@/shared/data/vehicles.json";
+import dealersData from "@/shared/data/dealers.json";
+import { brandStories, modelStories } from "@/shared/data/stories";
 import { useCurrency } from "@/shared/utils/useCurrency";
 
 const { brands, models } = vehicleData as {
@@ -88,8 +92,12 @@ export default function ComparePage({
   params: Promise<{ brand: string; model: string }>;
 }) {
   const { brand, model } = use(params);
+  const searchParams = useSearchParams();
+  const versionParam = searchParams?.get("v");
   const { rates, isLoading, convertToTRY } = useCurrency();
-  const [selectedVersion, setSelectedVersion] = useState<number | null>(null);
+  const [selectedVersion, setSelectedVersion] = useState<number | null>(
+    versionParam ? parseInt(versionParam) : null,
+  );
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [showCompare, setShowCompare] = useState(false);
@@ -105,6 +113,49 @@ export default function ComparePage({
     message: "",
   });
   const [leadSent, setLeadSent] = useState(false);
+  const [favorites, setFavorites] = useState<
+    { key: string; timestamp: number; priceTR: number; priceDE: number }[]
+  >([]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("favoriteVehicles");
+    if (saved) {
+      try {
+        setFavorites(JSON.parse(saved));
+      } catch {}
+    }
+  }, []);
+
+  const toggleFavorite = (idx: number) => {
+    const key = `${brand}|${model}|${idx}`;
+    const currentPrice = data[idx];
+    const existing = favorites.find((f) => f.key === key);
+
+    let updated: {
+      key: string;
+      timestamp: number;
+      priceTR: number;
+      priceDE: number;
+    }[];
+    if (existing) {
+      updated = favorites.filter((f) => f.key !== key);
+    } else {
+      updated = [
+        ...favorites,
+        {
+          key,
+          timestamp: Date.now(),
+          priceTR: currentPrice?.tr || 0,
+          priceDE: currentPrice?.de || 0,
+        },
+      ];
+    }
+    setFavorites(updated);
+    localStorage.setItem("favoriteVehicles", JSON.stringify(updated));
+  };
+
+  const isFavorite = (idx: number) =>
+    favorites.some((f) => f.key === `${brand}|${model}|${idx}`);
 
   useEffect(() => {
     setMounted(true);
@@ -130,6 +181,33 @@ export default function ComparePage({
 
   const handleLeadSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const { dealers } = dealersData as {
+      dealers: {
+        id: string;
+        name: string;
+        brand: string;
+        city: string;
+        phone: string;
+        address: string;
+      }[];
+    };
+
+    const relevantDealers = dealers.filter((d) => d.brand === brand);
+    const formData = {
+      ...leadForm,
+      vehicle: `${brandName} ${modelName}`,
+      version: currentData?.engine || "",
+      selectedVersion: selectedVersion !== null ? selectedVersion : 0,
+    };
+
+    console.log(
+      "Lead submitted:",
+      formData,
+      "Dealers:",
+      relevantDealers.map((d) => d.name),
+    );
+
     setLeadSent(true);
     setTimeout(() => {
       setShowLeadModal(false);
@@ -292,9 +370,14 @@ export default function ComparePage({
             </span>
           </div>
         </h1>
-        <p className="mb-8 text-lg text-slate-500 dark:text-slate-400">
+        <p className="mb-2 text-lg text-slate-500 dark:text-slate-400">
           Fiyat karşılaştırması • {currentData?.engine}
         </p>
+        {(brandStories[brand] || modelStories[`${brand}-${model}`]) && (
+          <p className="mb-8 text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
+            {modelStories[`${brand}-${model}`] || brandStories[brand]}
+          </p>
+        )}
         {currentData && (
           <div className="mb-8 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800">
             <div className="relative h-64 w-full bg-gradient-to-b from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800">
@@ -323,12 +406,25 @@ export default function ComparePage({
                 onClick={() =>
                   setSelectedVersion(selectedVersion === idx ? null : idx)
                 }
-                className={`rounded-lg p-4 text-left transition-all ${
+                className={`relative rounded-lg p-4 text-left transition-all ${
                   selectedVersion === idx
                     ? "bg-blue-600 text-white"
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600"
                 }`}
               >
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleFavorite(idx);
+                  }}
+                  className={`absolute right-2 top-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-colors ${
+                    isFavorite(idx)
+                      ? "bg-yellow-400 text-white"
+                      : "bg-slate-200/50 text-slate-400 hover:bg-slate-300"
+                  }`}
+                >
+                  <Star className="h-4 w-4" />
+                </div>
                 <div className="font-semibold">{item.engine}</div>
                 <div
                   className={`text-sm ${selectedVersion === idx ? "text-blue-100" : "text-slate-500"}`}
@@ -698,6 +794,61 @@ export default function ComparePage({
               Bu araç için yetkili bayilerden özel teklif isteyin. En kısa
               sürede size ulaşacaklar.
             </p>
+
+            {(() => {
+              const { dealers } = dealersData as {
+                dealers: {
+                  id: string;
+                  name: string;
+                  brand: string;
+                  city: string;
+                  phone: string;
+                  address: string;
+                }[];
+              };
+              const relevantDealers = dealers.filter((d) => d.brand === brand);
+
+              if (relevantDealers.length === 0) {
+                return (
+                  <div className="mb-4 rounded-lg bg-yellow-50 p-3 text-sm text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400">
+                    ℹ️ Bu marka için henüz bayi verisi yok. Formu doldurarak
+                    genel teklif talep edebilirsiniz.
+                  </div>
+                );
+              }
+
+              return (
+                <div className="mb-4">
+                  <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                    Yetkili Bayi Seç
+                  </label>
+                  <div className="max-h-40 space-y-2 overflow-y-auto rounded-lg border border-slate-200 p-2 dark:border-slate-600">
+                    {relevantDealers.slice(0, 5).map((dealer) => (
+                      <label
+                        key={dealer.id}
+                        className="flex cursor-pointer items-center gap-2 rounded p-2 hover:bg-slate-50 dark:hover:bg-slate-700"
+                      >
+                        <input
+                          type="radio"
+                          name="dealer"
+                          value={dealer.id}
+                          className="text-blue-600"
+                          defaultChecked={dealer.id === relevantDealers[0]?.id}
+                        />
+                        <div>
+                          <div className="text-sm font-medium text-slate-900 dark:text-white">
+                            {dealer.name}
+                          </div>
+                          <div className="text-xs text-slate-500">
+                            {dealer.city} • {dealer.address.substring(0, 40)}...
+                          </div>
+                        </div>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              );
+            })()}
 
             {leadSent ? (
               <div className="flex flex-col items-center justify-center py-8">

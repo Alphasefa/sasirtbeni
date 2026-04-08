@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { use } from "react";
 import vehicleData from "@/shared/data/vehicles.json";
+import { brandStories } from "@/shared/data/stories";
 
 const { models } = vehicleData as {
   models: Record<
@@ -39,9 +40,16 @@ export default function BrandModelsPage({
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-white font-bold text-xl">
               {brand.charAt(0).toUpperCase()}
             </div>
-            <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
-              {brand} - Model Seçin
-            </h1>
+            <div>
+              <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
+                {brand} - Model Seçin
+              </h1>
+              {brandStories[brand] && (
+                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400 max-w-md">
+                  {brandStories[brand]}
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </header>

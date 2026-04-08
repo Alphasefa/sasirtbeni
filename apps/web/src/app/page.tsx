@@ -56,6 +56,15 @@ const featuredComparisons = [
   { brand1: "bmw", model1: "3", brand2: "mercedes", model2: "c" },
 ];
 
+const popularUsedCars = [
+  { brand: "volkswagen", model: "passat", name: "Volkswagen Passat" },
+  { brand: "toyota", model: "corolla", name: "Toyota Corolla" },
+  { brand: "mercedes", model: "c-serisi", name: "Mercedes C Serisi" },
+  { brand: "bmw", model: "3-serisi", name: "BMW 3 Serisi" },
+  { brand: "audi", model: "a4", name: "Audi A4" },
+  { brand: "ford", model: "focus", name: "Ford Focus" },
+];
+
 function formatPrice(price: number): string {
   return new Intl.NumberFormat("tr-TR", {
     style: "currency",
@@ -398,6 +407,99 @@ export default function Home() {
               </Link>
             </div>
           )}
+        </div>
+      </section>
+
+      <section className="py-8">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="mb-6 flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-600 dark:bg-green-900">
+              <Car className="h-5 w-5" />
+            </div>
+            <div>
+              <h2 className="font-bold text-xl text-slate-900 dark:text-white">
+                Yeni Yüklenen Araçlar
+              </h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                En son eklenen modeller
+              </p>
+            </div>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {featuredComparisons.slice(0, 3).map((comp, idx) => {
+              const b = brands.find((x) => x.id === comp.brand1);
+              const v = getFirstVersion(comp.brand1, comp.model1);
+              return (
+                <Link
+                  key={idx}
+                  href={`/compare/${comp.brand1}/${comp.model1}`}
+                  className="group rounded-xl border border-slate-200 bg-white p-4 hover:border-green-300 dark:border-slate-600 dark:bg-slate-800"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600 font-bold dark:bg-green-900">
+                      {b?.name.charAt(0)}
+                    </div>
+                    <div>
+                      <div className="font-medium text-slate-900 dark:text-white">
+                        {b?.name} {comp.model1}
+                      </div>
+                      {v && (
+                        <div className="text-sm font-bold text-green-600">
+                          {formatPrice(v.tr)}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-8">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="mb-6 flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100 text-purple-600 dark:bg-purple-900">
+              <Star className="h-5 w-5" />
+            </div>
+            <div>
+              <h2 className="font-bold text-xl text-slate-900 dark:text-white">
+                Yeni Satılan Araçlar
+              </h2>
+              <p className="text-sm text-slate-500 dark:text-slate-400">
+                Popüler ve ilgi gören araçlar
+              </p>
+            </div>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {popularUsedCars.slice(0, 3).map((car, idx) => {
+              const v = getFirstVersion(car.brand, car.model);
+              return (
+                <Link
+                  key={idx}
+                  href={`/compare/${car.brand}/${car.model}`}
+                  className="group rounded-xl border border-slate-200 bg-white p-4 hover:border-purple-300 dark:border-slate-600 dark:bg-slate-800"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-100 text-purple-600 font-bold dark:bg-purple-900">
+                      {car.brand.charAt(0).toUpperCase()}
+                    </div>
+                    <div>
+                      <div className="font-medium text-slate-900 dark:text-white">
+                        {car.name}
+                      </div>
+                      {v && (
+                        <div className="text-sm font-bold text-purple-600">
+                          {formatPrice(v.tr)}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </section>
 

@@ -109,32 +109,38 @@ function DealersContent() {
     message: "",
   });
   const [leadSent, setLeadSent] = useState(false);
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [favorites, setFavorites] = useState<
+    { key: string; timestamp?: number; priceTR?: number; priceDE?: number }[]
+  >([]);
 
   useEffect(() => {
     const saved = localStorage.getItem("favoriteVehicles");
     if (saved) {
       try {
-        setFavorites(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        setFavorites(
+          parsed.map((f: any) => (typeof f === "string" ? { key: f } : f)),
+        );
       } catch {}
     }
   }, []);
 
   const addToFavorites = (vehicleKey: string) => {
-    if (!favorites.includes(vehicleKey)) {
-      const updated = [...favorites, vehicleKey];
+    if (!favorites.some((f) => f.key === vehicleKey)) {
+      const updated = [...favorites, { key: vehicleKey }];
       setFavorites(updated);
       localStorage.setItem("favoriteVehicles", JSON.stringify(updated));
     }
   };
 
   const removeFromFavorites = (vehicleKey: string) => {
-    const updated = favorites.filter((f) => f !== vehicleKey);
+    const updated = favorites.filter((f) => f.key !== vehicleKey);
     setFavorites(updated);
     localStorage.setItem("favoriteVehicles", JSON.stringify(updated));
   };
 
-  const isFavorite = (vehicleKey: string) => favorites.includes(vehicleKey);
+  const isFavorite = (vehicleKey: string) =>
+    favorites.some((f) => f.key === vehicleKey);
 
   const filteredDealers = dealers.filter((dealer) => {
     const matchesBrand = !selectedBrand || dealer.brand === selectedBrand;
@@ -669,17 +675,30 @@ function DealersContent() {
               </div>
             ) : (
               <div className="grid grid-cols-1 gap-4">
-                {favorites.map((fav) => {
-                  const [brandId, modelId, versionIdx] = fav.split("|");
+                {favorites.map((fav: any) => {
+                  const [brandId, modelId, versionIdx] = fav.key.split("|");
                   const brandModels = models[brandId] || [];
                   const model = brandModels.find((m: any) => m.id === modelId);
-                  const version = model?.versions?.[parseInt(versionIdx)];
-                  if (!version) return null;
+                  const currentVersion =
+                    model?.versions?.[parseInt(versionIdx)];
+                  const savedPriceTR = fav.priceTR;
+                  const savedPriceDE = fav.priceDE;
+
+                  let priceChange = 0;
+                  let hasPriceHistory = savedPriceTR && savedPriceTR > 0;
+
+                  if (hasPriceHistory && currentVersion) {
+                    priceChange =
+                      ((currentVersion.tr - savedPriceTR) / savedPriceTR) * 100;
+                  }
+
+                  if (!currentVersion && !hasPriceHistory) return null;
 
                   return (
-                    <div
-                      key={fav}
-                      className="flex items-center justify-between rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-800"
+                    <Link
+                      key={fav.key}
+                      href={`/compare/${brandId}/${modelId}?v=${versionIdx}`}
+                      className="flex items-center justify-between rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-700 dark:bg-slate-800 hover:border-blue-500 transition-colors"
                     >
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
@@ -692,28 +711,56 @@ function DealersContent() {
                               {model?.name}
                             </div>
                             <div className="text-sm text-slate-500">
-                              {version.engine} • {version.hp} HP
+                              {currentVersion?.engine} • {currentVersion?.hp} HP
                             </div>
                           </div>
                         </div>
+                        {fav.timestamp && (
+                          <div className="mt-1 text-xs text-slate-400">
+                            Favoriye eklenme:{" "}
+                            {new Date(fav.timestamp).toLocaleDateString(
+                              "tr-TR",
+                            )}
+                          </div>
+                        )}
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="text-right">
+                          {hasPriceHistory && priceChange !== 0 && (
+                            <div
+                              className={`text-xs font-medium ${priceChange > 0 ? "text-red-500" : "text-green-500"}`}
+                            >
+                              {priceChange > 0 ? "+" : ""}
+                              {priceChange.toFixed(1)}%
+                            </div>
+                          )}
+                          {!hasPriceHistory && (
+                            <div className="text-xs text-slate-400">
+                              Fiyat takibi yok
+                            </div>
+                          )}
                           <div className="font-bold text-slate-900 dark:text-white">
-                            {formatCurrencyTRY(version.tr)}
+                            {currentVersion
+                              ? formatCurrencyTRY(currentVersion.tr)
+                              : "-"}
                           </div>
                           <div className="text-sm text-slate-500">
-                            €{version.de.toLocaleString()}
+                            {currentVersion
+                              ? `€${currentVersion.de.toLocaleString()}`
+                              : "-"}
                           </div>
                         </div>
                         <button
-                          onClick={() => removeFromFavorites(fav)}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            removeFromFavorites(fav.key);
+                          }}
                           className="flex h-8 w-8 items-center justify-center rounded-full bg-red-100 text-red-500 hover:bg-red-200"
                         >
                           <X className="h-4 w-4" />
                         </button>
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>

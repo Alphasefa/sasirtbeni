@@ -60,21 +60,35 @@ export default function ComparePage() {
   const [fuelFilter, setFuelFilter] = useState<string>("Tümü");
   const [transmissionFilter, setTransmissionFilter] = useState<string>("Tümü");
   const [priceFilter, setPriceFilter] = useState<string>("Tümü");
-  const [favorites, setFavorites] = useState<string[]>([]);
+  const [favorites, setFavorites] = useState<
+    { key: string; timestamp?: number; priceTR?: number; priceDE?: number }[]
+  >([]);
 
   useEffect(() => {
     const saved = localStorage.getItem("favoriteVehicles");
     if (saved) {
       try {
-        setFavorites(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        setFavorites(
+          parsed.map((f: any) => (typeof f === "string" ? { key: f } : f)),
+        );
       } catch {}
     }
   }, []);
 
   const addToFavorites = (vehicle: SelectedVehicle) => {
     const key = `${vehicle.brand}|${vehicle.model}|${vehicle.versionIndex}`;
-    if (!favorites.includes(key)) {
-      const updated = [...favorites, key];
+    if (!favorites.some((f) => f.key === key)) {
+      const currentData = getVehicleData(vehicle);
+      const updated = [
+        ...favorites,
+        {
+          key,
+          timestamp: Date.now(),
+          priceTR: currentData?.tr,
+          priceDE: currentData?.de,
+        },
+      ];
       setFavorites(updated);
       localStorage.setItem("favoriteVehicles", JSON.stringify(updated));
     }
@@ -82,14 +96,14 @@ export default function ComparePage() {
 
   const removeFromFavorites = (vehicle: SelectedVehicle) => {
     const key = `${vehicle.brand}|${vehicle.model}|${vehicle.versionIndex}`;
-    const updated = favorites.filter((f) => f !== key);
+    const updated = favorites.filter((f) => f.key !== key);
     setFavorites(updated);
     localStorage.setItem("favoriteVehicles", JSON.stringify(updated));
   };
 
   const isFavorite = (vehicle: SelectedVehicle) => {
     const key = `${vehicle.brand}|${vehicle.model}|${vehicle.versionIndex}`;
-    return favorites.includes(key);
+    return favorites.some((f) => f.key === key);
   };
 
   const filteredBrands = brands.filter((b) =>

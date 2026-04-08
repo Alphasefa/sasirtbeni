@@ -158,7 +158,7 @@
         "id": "tonale",
         "name": "Tonale",
         "versions": [
-          { "engine": "1.5 Hybrid", "hp": 160, "tr": 2250000, "de": 37990 }
+          { "engine": "1.5 Hybrid", "hp": 160, "tr": 2350000, "de": 37990 }
         ]
       }
     ],
