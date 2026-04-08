@@ -4,12 +4,14 @@ import {
   ArrowRight,
   Car,
   GitCompare,
+  Leaf,
   Search,
   Star,
   TrendingUp,
 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import AdBanner from "@/components/ad-banner";
 import vehicleData from "@/shared/data/vehicles.json";
 
@@ -73,10 +75,52 @@ function formatPrice(price: number): string {
   }).format(price);
 }
 
-export default function Home() {
+function getVehicleType(
+  engine: string,
+): "electric" | "hybrid" | "internal" | null {
+  const e = engine.toLowerCase();
+  if (
+    e.includes("ev") ||
+    e.includes("electric") ||
+    e === "ev" ||
+    e.includes("e-tron") ||
+    e.includes("iq") ||
+    e.includes("rz") ||
+    e.includes("eletre")
+  ) {
+    return "electric";
+  }
+  if (
+    e.includes("hybrid") ||
+    e.includes("hev") ||
+    e.includes("phev") ||
+    e.includes("plug-in") ||
+    e.includes("e-tech")
+  ) {
+    return "hybrid";
+  }
+  return null;
+}
+
+const electricBrands = [
+  "tesla",
+  "togg",
+  "byd",
+  "aion",
+  "leapmotor",
+  "xev",
+  "volta",
+  "nio",
+];
+
+const electricModels: { brand: string; model: string }[] = [];
+
+function HomeContent() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
+  const searchParams = useSearchParams();
+  const showElectricHybrid = searchParams.get("filter") === "electric";
 
   const filteredBrands = brands.filter((b) =>
     b.name.toLowerCase().includes(searchQuery.toLowerCase()),
@@ -89,6 +133,82 @@ export default function Home() {
     if (!brandModels) return null;
     const model = brandModels.find((m) => m.id === modelId);
     return model?.versions[0] || null;
+  };
+
+  const electricAndHybridCars: {
+    brandId: string;
+    modelId: string;
+    modelName: string;
+    engine: string;
+    hp: number;
+    tr: number;
+    type: "electric" | "hybrid";
+  }[] = [];
+  for (const [brandId, brandModels] of Object.entries(models)) {
+    for (const model of brandModels) {
+      for (const version of model.versions) {
+        const vehicleType = getVehicleType(version.engine);
+        if (vehicleType && vehicleType !== "internal") {
+          electricAndHybridCars.push({
+            brandId,
+            modelId: model.id,
+            modelName: model.name,
+            engine: version.engine,
+            hp: version.hp,
+            tr: version.tr,
+            type: vehicleType,
+          });
+        }
+      }
+    }
+  }
+
+  const sortedElectricHybrid = electricAndHybridCars
+    .sort((a, b) => a.tr - b.tr)
+    .slice(0, 12);
+
+  const renderElectricHybridCard = (
+    car: (typeof electricAndHybridCars)[0],
+    idx: number,
+  ) => {
+    const brand = brands.find((b) => b.id === car.brandId);
+    return (
+      <Link
+        key={`${car.brandId}-${car.modelId}-${idx}`}
+        href={`/compare/${car.brandId}/${car.modelId}`}
+        className="group rounded-xl border border-emerald-200 bg-white p-5 transition-all hover:border-emerald-400 hover:shadow-lg dark:border-emerald-800 dark:bg-slate-800"
+      >
+        <div className="mb-3 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 font-bold dark:bg-emerald-900">
+              {brand?.name.charAt(0)}
+            </div>
+            <div>
+              <div className="font-medium text-slate-900 dark:text-white">
+                {brand?.name} {car.modelName}
+              </div>
+            </div>
+          </div>
+          <span
+            className={`rounded-full px-2 py-1 text-xs font-semibold ${
+              car.type === "electric"
+                ? "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300"
+                : "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300"
+            }`}
+          >
+            {car.type === "electric" ? "EV" : "Hybrid"}
+          </span>
+        </div>
+        <div className="flex items-center justify-between">
+          <div className="text-sm text-slate-500">
+            {car.engine} • {car.hp} HP
+          </div>
+          <div className="font-bold text-emerald-600">
+            {formatPrice(car.tr)}
+          </div>
+        </div>
+      </Link>
+    );
   };
 
   return (
@@ -104,6 +224,13 @@ export default function Home() {
             </span>
           </Link>
           <nav className="hidden items-center gap-6 md:flex">
+            <Link
+              href="/?filter=electric"
+              className="flex items-center gap-2 text-slate-600 transition-colors hover:text-emerald-600 dark:text-slate-300"
+            >
+              <Leaf className="h-5 w-5" />
+              Elektrikli & Hibrit
+            </Link>
             <Link
               href="/compare"
               className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
@@ -505,6 +632,49 @@ export default function Home() {
 
       <AdBanner slot="homepage-bottom" />
 
+      {sortedElectricHybrid.length > 0 && (
+        <section className="py-12">
+          <div className="container mx-auto max-w-6xl px-4">
+            <div className="mb-8 flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-900">
+                <Leaf className="h-5 w-5" />
+              </div>
+              <div>
+                <h2 className="font-bold text-2xl text-slate-900 dark:text-white">
+                  {showElectricHybrid
+                    ? "Tüm Elektrikli & Hibrit Araçlar"
+                    : "Elektrikli & Hibrit Araçlar"}
+                </h2>
+                <p className="text-slate-500 dark:text-slate-400">
+                  {showElectricHybrid
+                    ? `${sortedElectricHybrid.length} araç bulundu`
+                    : "Türkiye'deki en uygun fiyatlı elektrikli ve hibrit araçlar"}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {(showElectricHybrid
+                ? sortedElectricHybrid
+                : sortedElectricHybrid.slice(0, 6)
+              ).map((car, idx) => renderElectricHybridCard(car, idx))}
+            </div>
+
+            {!showElectricHybrid && (
+              <div className="mt-6 text-center">
+                <Link
+                  href="/?filter=electric"
+                  className="inline-flex items-center gap-2 rounded-xl border border-emerald-300 px-6 py-3 font-semibold text-emerald-700 transition-colors hover:bg-emerald-50 dark:border-emerald-700 dark:text-emerald-400"
+                >
+                  Tüm Elektrikli & Hibrit Araçlar
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
       <footer className="mt-12 bg-slate-900 py-8 text-center">
         <div className="container mx-auto max-w-6xl px-4">
           <p className="text-slate-400">
@@ -513,5 +683,13 @@ export default function Home() {
         </div>
       </footer>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-slate-50" />}>
+      <HomeContent />
+    </Suspense>
   );
 }
