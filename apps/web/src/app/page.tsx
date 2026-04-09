@@ -225,18 +225,11 @@ function HomeContent() {
           </Link>
           <nav className="hidden items-center gap-6 md:flex">
             <Link
-              href="/?filter=electric"
+              href="/electric-hybrid"
               className="flex items-center gap-2 text-slate-600 transition-colors hover:text-emerald-600 dark:text-slate-300"
             >
               <Leaf className="h-5 w-5" />
               Elektrikli & Hibrit
-            </Link>
-            <Link
-              href="/compare"
-              className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
-            >
-              <GitCompare className="h-5 w-5" />
-              Karşılaştır
             </Link>
             <Link
               href="/dealers?tab=sales"
@@ -456,16 +449,6 @@ function HomeContent() {
               );
             })}
           </div>
-
-          <div className="mt-8 text-center">
-            <Link
-              href="/compare"
-              className="inline-flex items-center gap-2 rounded-xl border border-slate-300 px-6 py-3 font-semibold text-slate-700 transition-colors hover:border-blue-500 hover:text-blue-600 dark:border-slate-600 dark:text-slate-300"
-            >
-              Tüm Karşılaştırmalar
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
         </div>
       </section>
 
@@ -663,7 +646,7 @@ function HomeContent() {
             {!showElectricHybrid && (
               <div className="mt-6 text-center">
                 <Link
-                  href="/?filter=electric"
+                  href="/electric-hybrid"
                   className="inline-flex items-center gap-2 rounded-xl border border-emerald-300 px-6 py-3 font-semibold text-emerald-700 transition-colors hover:bg-emerald-50 dark:border-emerald-700 dark:text-emerald-400"
                 >
                   Tüm Elektrikli & Hibrit Araçlar
