@@ -4,7 +4,9 @@ import {
   Battery,
   Car,
   Headphones,
+  Mail,
   MapPin,
+  MessageCircle,
   Navigation,
   Phone,
   Shield,
@@ -110,7 +112,7 @@ const getNearbyServices = (userLat: number, userLng: number) => {
     (d) => d.services?.includes("Servis") && electricBrands.includes(d.brand),
   );
 
-  return allServiceDealers
+  const sorted = allServiceDealers
     .map((dealer) => {
       const cityData = cityCoords[dealer.city] || {
         lat: userLat,
@@ -134,8 +136,9 @@ const getNearbyServices = (userLat: number, userLng: number) => {
         distNum: dist,
       };
     })
-    .sort((a, b) => a.distNum - b.distNum)
-    .slice(0, 10);
+    .sort((a, b) => a.distNum - b.distNum);
+
+  return sorted.map((item, index) => ({ ...item, order: index + 1 }));
 };
 
 const services = [
@@ -235,6 +238,7 @@ export default function ElectricHybridPage() {
   const [locationLoading, setLocationLoading] = useState(false);
   const [nearbyList, setNearbyList] = useState<any[]>([]);
   const [locationRequested, setLocationRequested] = useState(false);
+  const [chargingStations, setChargingStations] = useState<any[]>([]);
 
   const requestUserLocation = useCallback(async () => {
     if (locationRequested) return;
@@ -277,12 +281,146 @@ export default function ElectricHybridPage() {
 
   const handleServiceClick = (serviceId: string) => {
     setSelectedService(serviceId);
+
+    if (serviceId === "support") {
+      return;
+    }
+
+    if (serviceId === "charging") {
+      if (chargingStations.length === 0 && userLocation) {
+        const stations = getChargingStations(
+          userLocation.lat,
+          userLocation.lng,
+        );
+        setChargingStations(stations);
+      }
+      return;
+    }
+
     if (!userLocation) {
       requestUserLocation();
     } else {
       const services = getNearbyServices(userLocation.lat, userLocation.lng);
       setNearbyList(services);
     }
+  };
+
+  const getChargingStations = (userLat: number, userLng: number) => {
+    const mockStations = [
+      {
+        id: "cs1",
+        name: "Tesla Supercharger",
+        brand: "Tesla",
+        city: "Istanbul",
+        address: "Maslak Mahallesi, Istanbul",
+        distance: "3 km",
+        distNum: 3,
+      },
+      {
+        id: "cs2",
+        name: "Eşarj Charging",
+        brand: "Eşarj",
+        city: "Istanbul",
+        address: "Kadıköy İstanbul",
+        distance: "8 km",
+        distNum: 8,
+      },
+      {
+        id: "cs3",
+        name: "ZES Şarj İstasyonu",
+        brand: "ZES",
+        city: "Istanbul",
+        address: "Levent, Istanbul",
+        distance: "5 km",
+        distNum: 5,
+      },
+      {
+        id: "cs4",
+        name: "Voltrun Şarj İstasyonu",
+        brand: "Voltrun",
+        city: "Istanbul",
+        address: "Beşiktaş, Istanbul",
+        distance: "7 km",
+        distNum: 7,
+      },
+      {
+        id: "cs5",
+        name: "EPDK Belgeli Şarj",
+        brand: "EPDK",
+        city: "Istanbul",
+        address: "Ataşehir, Istanbul",
+        distance: "10 km",
+        distNum: 10,
+      },
+      {
+        id: "cs6",
+        name: "SCHARGE İstasyonu",
+        brand: "SCHARGE",
+        city: "Istanbul",
+        address: "Üsküdar, Istanbul",
+        distance: "9 km",
+        distNum: 9,
+      },
+      {
+        id: "cs7",
+        name: "Enerjisa Şarj Noktası",
+        brand: "Enerjisa",
+        city: "Istanbul",
+        address: "Kozyatağı, Istanbul",
+        distance: "11 km",
+        distNum: 11,
+      },
+      {
+        id: "cs8",
+        name: "CHG İstanbul",
+        brand: "CHG",
+        city: "Istanbul",
+        address: "Sarıyer, Istanbul",
+        distance: "15 km",
+        distNum: 15,
+      },
+      {
+        id: "cs5",
+        name: "EPDK Şarj - Ataşehir",
+        brand: "EPDK",
+        city: "Istanbul",
+        address: "Ataşehir, Istanbul",
+        distance: "12 km",
+        distNum: 12,
+      },
+      {
+        id: "cs6",
+        name: "Tesla Supercharger - Caddebostan",
+        brand: "Tesla",
+        city: "Istanbul",
+        address: "Caddebostan, Istanbul",
+        distance: "10 km",
+        distNum: 10,
+      },
+      {
+        id: "cs7",
+        name: "SCHARGE - Üsküdar",
+        brand: "SCHARGE",
+        city: "Istanbul",
+        address: "Üsküdar, Istanbul",
+        distance: "9 km",
+        distNum: 9,
+      },
+      {
+        id: "cs8",
+        name: "Enerjisa - Kozyatağı",
+        brand: "Enerjisa",
+        city: "Istanbul",
+        address: "Kozyatağı, Istanbul",
+        distance: "11 km",
+        distNum: 11,
+      },
+    ];
+
+    return mockStations
+      .map((s) => ({ ...s, order: 0 }))
+      .sort((a, b) => a.distNum - b.distNum)
+      .map((item, index) => ({ ...item, order: index + 1 }));
   };
 
   const closeServicePanel = () => {
@@ -409,16 +547,30 @@ export default function ElectricHybridPage() {
             <div className="flex items-center justify-between border-b border-slate-200 p-4 dark:border-slate-700">
               <div className="flex items-center gap-3">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-900">
-                  <Navigation className="h-6 w-6" />
+                  {selectedService === "charging" ? (
+                    <Battery className="h-6 w-6" />
+                  ) : selectedService === "support" ? (
+                    <Headphones className="h-6 w-6" />
+                  ) : (
+                    <Navigation className="h-6 w-6" />
+                  )}
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                    Yukaridaki Servisler
+                    {selectedService === "charging"
+                      ? "Sarj Istasyonlari"
+                      : selectedService === "support"
+                        ? "7/24 Müşteri Desteği"
+                        : "Yakin Servisler"}
                   </h3>
                   <p className="text-sm text-slate-500">
                     {locationLoading
                       ? "Konum aliniyor..."
-                      : "Konumuna en yakin servisler"}
+                      : selectedService === "charging"
+                        ? "Konumuna en yakin sarj istasyonlari"
+                        : selectedService === "support"
+                          ? "Elektrikli araç sahipleri için özel destek hattı"
+                          : "Konumuna en yakin servisler"}
                   </p>
                 </div>
               </div>
@@ -446,7 +598,72 @@ export default function ElectricHybridPage() {
               className="overflow-y-auto p-4"
               style={{ maxHeight: "calc(85vh - 80px)" }}
             >
-              {locationLoading ? (
+              {selectedService === "support" ? (
+                <div className="space-y-4">
+                  <div className="rounded-xl border border-slate-200 p-6 dark:border-slate-700">
+                    <div className="text-center">
+                      <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-cyan-600">
+                        <Phone className="h-8 w-8 text-white" />
+                      </div>
+                      <h4 className="text-lg font-bold text-slate-900 dark:text-white">
+                        7/24 Destek Hattı
+                      </h4>
+                      <a
+                        href="tel:+908503200400"
+                        className="mt-2 block text-2xl font-bold text-emerald-600 hover:underline"
+                      >
+                        0850 320 04 00
+                      </a>
+                      <p className="mt-1 text-sm text-slate-500">
+                        Her gün, her saat hizmetinizdeyiz
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="rounded-xl border border-slate-200 p-6 dark:border-slate-700">
+                    <div className="text-center">
+                      <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-600">
+                        <Mail className="h-8 w-8 text-white" />
+                      </div>
+                      <h4 className="text-lg font-bold text-slate-900 dark:text-white">
+                        E-posta Desteği
+                      </h4>
+                      <a
+                        href="mailto:destek@fiyatkarsilastir.com"
+                        className="mt-2 block text-lg font-medium text-emerald-600 hover:underline"
+                      >
+                        destek@fiyatkarsilastir.com
+                      </a>
+                      <p className="mt-1 text-sm text-slate-500">
+                        24 saat içinde yanıt veriyoruz
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <a
+                      href="https://wa.me/908503200400"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-xl border border-slate-200 p-4 text-center transition-colors hover:border-emerald-300 hover:bg-emerald-50 dark:border-slate-700 dark:hover:bg-emerald-900/20"
+                    >
+                      <MessageCircle className="mx-auto mb-2 h-8 w-8 text-emerald-600" />
+                      <span className="font-medium text-slate-900 dark:text-white">
+                        WhatsApp
+                      </span>
+                    </a>
+                    <a
+                      href="/dealers?tab=service"
+                      className="rounded-xl border border-slate-200 p-4 text-center transition-colors hover:border-emerald-300 hover:bg-emerald-50 dark:border-slate-700 dark:hover:bg-emerald-900/20"
+                    >
+                      <MapPin className="mx-auto mb-2 h-8 w-8 text-emerald-600" />
+                      <span className="font-medium text-slate-900 dark:text-white">
+                        Servis Bul
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              ) : locationLoading ? (
                 <div className="mb-4 flex aspect-video items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-700 text-center">
                   <div>
                     <Loader2 className="mx-auto h-12 w-12 text-emerald-600 animate-spin" />
@@ -457,85 +674,99 @@ export default function ElectricHybridPage() {
                   </div>
                 </div>
               ) : (
-                <a
-                  href={
-                    userLocation
-                      ? `https://www.google.com/maps/search/elektrikli+araç+servisi/@${userLocation.lat},${userLocation.lng},12z`
-                      : "https://www.google.com/maps/search/elektrikli+araç+servisi"
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mb-4 flex aspect-video items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-700 text-center transition-colors hover:bg-slate-200 dark:hover:bg-slate-600"
-                >
-                  <div>
-                    <MapPin className="mx-auto h-12 w-12 text-emerald-600" />
-                    <p className="mt-2 font-medium text-slate-700 dark:text-slate-300">
-                      Konumuma Gore Harita
-                    </p>
-                    <p className="text-sm text-slate-500">
-                      Haritada gostermek icin tiklayin
-                    </p>
+                <div className="mb-4 w-full">
+                  <div className="h-[250px] w-full rounded-xl overflow-hidden border border-slate-200">
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      src={`https://www.openstreetmap.org/export/embed.html?bbox=${userLocation ? `${userLocation.lng - 0.2},${userLocation.lat - 0.2},${userLocation.lng + 0.2},${userLocation.lat + 0.2}` : "28.7,40.7,29.4,41.3"}&layer=mapnik&marker=${userLocation ? `${userLocation.lat},${userLocation.lng}` : "41.0082,28.9784"}`}
+                      title="Harita"
+                    />
                   </div>
-                </a>
+                  <a
+                    href={
+                      userLocation
+                        ? selectedService === "charging"
+                          ? `https://www.google.com/maps/search/elektrikli+araç+şarj+istasyonu/@${userLocation.lat},${userLocation.lng},14z`
+                          : `https://www.google.com/maps/search/elektrikli+araç+servis/@${userLocation.lat},${userLocation.lng},14z`
+                        : "https://www.google.com/maps/search/elektrikli+araç+şarj+istasyonu"
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 block text-center text-sm text-emerald-600 hover:underline"
+                  >
+                    Buyuk harita icin tiklayin
+                  </a>
+                </div>
               )}
 
               <div className="space-y-3">
-                {(nearbyList.length > 0 ? nearbyList : []).map(
-                  (service: any) => (
-                    <div
-                      key={service.id}
-                      className="flex items-start gap-4 rounded-xl border border-slate-200 p-4 transition-colors hover:border-emerald-300 hover:bg-emerald-50 dark:border-slate-700 dark:hover:bg-emerald-900/20"
-                    >
-                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-cyan-600 text-white font-bold">
-                        {service.brand?.charAt(0).toUpperCase()}
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between">
+                {(selectedService === "charging"
+                  ? chargingStations
+                  : nearbyList
+                ).map((service: any) => (
+                  <div
+                    key={service.id}
+                    className="flex items-start gap-4 rounded-xl border border-slate-200 p-4 transition-colors hover:border-emerald-300 hover:bg-emerald-50 dark:border-slate-700 dark:hover:bg-emerald-900/20"
+                  >
+                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-cyan-600 text-white font-bold">
+                      {service.brand?.charAt(0).toUpperCase() ||
+                        service.name?.charAt(0).toUpperCase()}
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-600">
+                            #{service.order}
+                          </span>
                           <h4 className="font-semibold text-slate-900 dark:text-white">
                             {service.name}
                           </h4>
-                          <span className="text-sm font-medium text-emerald-600">
-                            {service.distance}
-                          </span>
                         </div>
-                        <p className="text-sm text-slate-600 dark:text-slate-400">
-                          {service.city}
-                        </p>
-                        <p className="mt-1 text-sm text-slate-500">
-                          {service.address}
-                        </p>
-                        <div className="mt-2 flex flex-wrap gap-2">
-                          {(service.services || []).map(
-                            (s: string, idx: number) => (
-                              <span
-                                key={idx}
-                                className="rounded-full bg-slate-100 px-2 py-1 text-xs text-slate-600 dark:bg-slate-700 dark:text-slate-300"
-                              >
-                                {s}
-                              </span>
-                            ),
-                          )}
-                        </div>
+                        <span className="text-sm font-bold text-emerald-600">
+                          {service.distance}
+                        </span>
                       </div>
-                      <div className="flex flex-col gap-2">
-                        <a
-                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(service.address)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 hover:bg-emerald-200 dark:bg-emerald-900 dark:text-emerald-400"
-                        >
-                          <Navigation className="h-5 w-5" />
-                        </a>
-                        <a
-                          href={`tel:${service.phone}`}
-                          className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 hover:bg-emerald-200 dark:bg-emerald-900 dark:text-emerald-400"
-                        >
-                          <Phone className="h-5 w-5" />
-                        </a>
+                      <p className="text-sm text-slate-600 dark:text-slate-400">
+                        {service.city}
+                      </p>
+                      <p className="mt-1 text-sm text-slate-500">
+                        {service.address}
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {(service.services || []).map(
+                          (s: string, idx: number) => (
+                            <span
+                              key={idx}
+                              className="rounded-full bg-slate-100 px-2 py-1 text-xs text-slate-600 dark:bg-slate-700 dark:text-slate-300"
+                            >
+                              {s}
+                            </span>
+                          ),
+                        )}
                       </div>
                     </div>
-                  ),
-                )}
+                    <div className="flex flex-col gap-2">
+                      <a
+                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(service.address)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 hover:bg-emerald-200 dark:bg-emerald-900 dark:text-emerald-400"
+                      >
+                        <Navigation className="h-5 w-5" />
+                      </a>
+                      <a
+                        href={`tel:${service.phone}`}
+                        className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 hover:bg-emerald-200 dark:bg-emerald-900 dark:text-emerald-400"
+                      >
+                        <Phone className="h-5 w-5" />
+                      </a>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
