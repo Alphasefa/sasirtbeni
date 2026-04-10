@@ -5,6 +5,7 @@ import {
   Car,
   Headphones,
   MapPin,
+  Navigation,
   Phone,
   Shield,
   Truck,
@@ -12,10 +13,135 @@ import {
   Zap,
 } from "lucide-react";
 import Link from "next/link";
+import { useState, useEffect, useCallback } from "react";
+import { Loader2 } from "lucide-react";
+
+declare global {
+  interface Navigator {
+    geolocation: {
+      getCurrentPosition: (
+        successCallback: (position: GeolocationPosition) => void,
+        errorCallback?: (error: GeolocationPositionError) => void,
+        options?: PositionOptions,
+      ) => void;
+    };
+  }
+}
+import dealersData from "@/shared/data/dealers.json";
+
+const { dealers } = dealersData as {
+  dealers: {
+    id: string;
+    name: string;
+    brand: string;
+    city: string;
+    address: string;
+    phone: string;
+    services: string[];
+  }[];
+};
+
+const electricBrands = [
+  "tesla",
+  "togg",
+  "byd",
+  "hyundai",
+  "kia",
+  "bmw",
+  "mercedes",
+  "audi",
+  "volkswagen",
+];
+
+const cityCoords: Record<string, { lat: number; lng: number }> = {
+  Istanbul: { lat: 41.0082, lng: 28.9784 },
+  Ankara: { lat: 39.9334, lng: 32.8597 },
+  Izmir: { lat: 38.4192, lng: 27.1287 },
+  Bursa: { lat: 40.1826, lng: 29.0665 },
+  Antalya: { lat: 36.8969, lng: 30.7133 },
+  Adana: { lat: 37.0017, lng: 35.3213 },
+  Konya: { lat: 37.8746, lng: 32.4932 },
+  Gaziantep: { lat: 37.0662, lng: 37.3833 },
+  Kayseri: { lat: 38.7312, lng: 35.4787 },
+  Eskişehir: { lat: 39.7667, lng: 30.5256 },
+  İstanbul: { lat: 41.0082, lng: 28.9784 },
+  Ankara: { lat: 39.9334, lng: 32.8597 },
+  İzmir: { lat: 38.4192, lng: 27.1287 },
+  Bursa: { lat: 40.1826, lng: 29.0665 },
+  Antalya: { lat: 36.8969, lng: 30.7133 },
+  Adana: { lat: 37.0017, lng: 35.3213 },
+  Konya: { lat: 37.8746, lng: 32.4932 },
+  Gaziantep: { lat: 37.0662, lng: 37.3833 },
+  Kayseri: { lat: 38.7312, lng: 35.4787 },
+  Eskişehir: { lat: 39.7667, lng: 30.5256 },
+  Samsun: { lat: 41.2928, lng: 36.3313 },
+  Sakarya: { lat: 40.694, lng: 30.4358 },
+  Mersin: { lat: 36.8, lng: 34.6333 },
+  Denizli: { lat: 37.7765, lng: 29.0864 },
+  Kocaeli: { lat: 40.8533, lng: 29.8765 },
+  Manisa: { lat: 38.6191, lng: 27.4289 },
+  Kütahya: { lat: 39.4242, lng: 29.9833 },
+  Aydın: { lat: 37.856, lng: 27.8418 },
+  Balıkesir: { lat: 39.6484, lng: 27.8826 },
+  Muğla: { lat: 37.2153, lng: 28.3636 },
+};
+
+const calculateDistance = (
+  lat1: number,
+  lng1: number,
+  lat2: number,
+  lng2: number,
+) => {
+  const R = 6371;
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLng = ((lng2 - lng1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLng / 2) *
+      Math.sin(dLng / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+};
+
+const getNearbyServices = (userLat: number, userLng: number) => {
+  const allServiceDealers = dealers.filter(
+    (d) => d.services?.includes("Servis") && electricBrands.includes(d.brand),
+  );
+
+  return allServiceDealers
+    .map((dealer) => {
+      const cityData = cityCoords[dealer.city] || {
+        lat: userLat,
+        lng: userLng,
+      };
+      const dist = calculateDistance(
+        userLat,
+        userLng,
+        cityData.lat,
+        cityData.lng,
+      );
+      return {
+        id: dealer.id,
+        name: dealer.name,
+        brand: dealer.brand,
+        city: dealer.city,
+        address: dealer.address,
+        phone: dealer.phone,
+        services: dealer.services,
+        distance: dist < 1 ? "< 1 km" : `${Math.round(dist)} km`,
+        distNum: dist,
+      };
+    })
+    .sort((a, b) => a.distNum - b.distNum)
+    .slice(0, 10);
+};
 
 const services = [
   {
     icon: Wrench,
+    id: "repair",
     title: "Tamir & Bakim",
     description:
       "Elektrikli araclar icin uzman teknisyenlerimizle profesyonel bakim ve tamir hizmetleri",
@@ -28,6 +154,7 @@ const services = [
   },
   {
     icon: Truck,
+    id: "tow",
     title: "Cekici Hizmeti",
     description:
       "7/24 elektrikli araclar icin ozel cekici ve yol yardim hizmeti",
@@ -40,6 +167,7 @@ const services = [
   },
   {
     icon: Battery,
+    id: "battery",
     title: "Batarya Destegi",
     description: "Batarya sagligi kontrolu, degisim ve geri donusum hizmetleri",
     features: [
@@ -51,6 +179,7 @@ const services = [
   },
   {
     icon: Shield,
+    id: "warranty",
     title: "Garanti Servisi",
     description: "Uretici garantisi kapsaminda kapsamli destek ve ilgilendirme",
     features: [
@@ -62,6 +191,7 @@ const services = [
   },
   {
     icon: MapPin,
+    id: "charging",
     title: "Sarj Istasyonu",
     description: "Sarj istasyonu kurulumu ve bakim hizmetleri",
     features: [
@@ -73,6 +203,7 @@ const services = [
   },
   {
     icon: Headphones,
+    id: "support",
     title: "Musteri Destegi",
     description: "Elektrikli arac sahipleri icin ozel 7/24 destek hatti",
     features: [
@@ -96,6 +227,68 @@ const brands = [
 ];
 
 export default function ElectricHybridPage() {
+  const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [userLocation, setUserLocation] = useState<{
+    lat: number;
+    lng: number;
+  } | null>(null);
+  const [locationLoading, setLocationLoading] = useState(false);
+  const [nearbyList, setNearbyList] = useState<any[]>([]);
+  const [locationRequested, setLocationRequested] = useState(false);
+
+  const requestUserLocation = useCallback(async () => {
+    if (locationRequested) return;
+    setLocationRequested(true);
+    setLocationLoading(true);
+
+    if (navigator.geolocation) {
+      try {
+        const position = await new Promise<GeolocationPosition>(
+          (resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject, {
+              enableHighAccuracy: true,
+              timeout: 15000,
+              maximumAge: 60000,
+            });
+          },
+        );
+
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        setUserLocation({ lat, lng });
+        const services = getNearbyServices(lat, lng);
+        setNearbyList(services);
+      } catch (err) {
+        setUserLocation({ lat: 41.0082, lng: 28.9784 });
+        const services = getNearbyServices(41.0082, 28.9784);
+        setNearbyList(services);
+      }
+    } else {
+      setUserLocation({ lat: 41.0082, lng: 28.9784 });
+      const services = getNearbyServices(41.0082, 28.9784);
+      setNearbyList(services);
+    }
+    setLocationLoading(false);
+  }, [locationRequested]);
+
+  useEffect(() => {
+    requestUserLocation();
+  }, [requestUserLocation]);
+
+  const handleServiceClick = (serviceId: string) => {
+    setSelectedService(serviceId);
+    if (!userLocation) {
+      requestUserLocation();
+    } else {
+      const services = getNearbyServices(userLocation.lat, userLocation.lng);
+      setNearbyList(services);
+    }
+  };
+
+  const closeServicePanel = () => {
+    setSelectedService(null);
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 dark:from-slate-900 dark:to-slate-800">
       <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/80">
@@ -179,9 +372,10 @@ export default function ElectricHybridPage() {
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, idx) => (
-              <div
+              <button
                 key={idx}
-                className="group rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-emerald-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800"
+                onClick={() => handleServiceClick(service.id)}
+                className="group rounded-2xl border border-slate-200 bg-white p-6 text-left transition-all hover:border-emerald-300 hover:shadow-xl dark:border-slate-700 dark:bg-slate-800 cursor-pointer"
               >
                 <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-cyan-600 text-white">
                   <service.icon className="h-7 w-7" />
@@ -203,11 +397,150 @@ export default function ElectricHybridPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </button>
             ))}
           </div>
         </div>
       </section>
+
+      {selectedService && (
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50">
+          <div className="w-full max-w-4xl rounded-t-3xl bg-white dark:bg-slate-800 max-h-[85vh] overflow-hidden">
+            <div className="flex items-center justify-between border-b border-slate-200 p-4 dark:border-slate-700">
+              <div className="flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-900">
+                  <Navigation className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                    Yukaridaki Servisler
+                  </h3>
+                  <p className="text-sm text-slate-500">
+                    {locationLoading
+                      ? "Konum aliniyor..."
+                      : "Konumuna en yakin servisler"}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={closeServicePanel}
+                className="rounded-full p-2 hover:bg-slate-100 dark:hover:bg-slate-700"
+              >
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div
+              className="overflow-y-auto p-4"
+              style={{ maxHeight: "calc(85vh - 80px)" }}
+            >
+              {locationLoading ? (
+                <div className="mb-4 flex aspect-video items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-700 text-center">
+                  <div>
+                    <Loader2 className="mx-auto h-12 w-12 text-emerald-600 animate-spin" />
+                    <p className="mt-2 font-medium text-slate-700 dark:text-slate-300">
+                      Konum aliniyor...
+                    </p>
+                    <p className="text-sm text-slate-500">Lutfen bekleyin</p>
+                  </div>
+                </div>
+              ) : (
+                <a
+                  href={
+                    userLocation
+                      ? `https://www.google.com/maps/search/elektrikli+araç+servisi/@${userLocation.lat},${userLocation.lng},12z`
+                      : "https://www.google.com/maps/search/elektrikli+araç+servisi"
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mb-4 flex aspect-video items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-700 text-center transition-colors hover:bg-slate-200 dark:hover:bg-slate-600"
+                >
+                  <div>
+                    <MapPin className="mx-auto h-12 w-12 text-emerald-600" />
+                    <p className="mt-2 font-medium text-slate-700 dark:text-slate-300">
+                      Konumuma Gore Harita
+                    </p>
+                    <p className="text-sm text-slate-500">
+                      Haritada gostermek icin tiklayin
+                    </p>
+                  </div>
+                </a>
+              )}
+
+              <div className="space-y-3">
+                {(nearbyList.length > 0 ? nearbyList : []).map(
+                  (service: any) => (
+                    <div
+                      key={service.id}
+                      className="flex items-start gap-4 rounded-xl border border-slate-200 p-4 transition-colors hover:border-emerald-300 hover:bg-emerald-50 dark:border-slate-700 dark:hover:bg-emerald-900/20"
+                    >
+                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-cyan-600 text-white font-bold">
+                        {service.brand?.charAt(0).toUpperCase()}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between">
+                          <h4 className="font-semibold text-slate-900 dark:text-white">
+                            {service.name}
+                          </h4>
+                          <span className="text-sm font-medium text-emerald-600">
+                            {service.distance}
+                          </span>
+                        </div>
+                        <p className="text-sm text-slate-600 dark:text-slate-400">
+                          {service.city}
+                        </p>
+                        <p className="mt-1 text-sm text-slate-500">
+                          {service.address}
+                        </p>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {(service.services || []).map(
+                            (s: string, idx: number) => (
+                              <span
+                                key={idx}
+                                className="rounded-full bg-slate-100 px-2 py-1 text-xs text-slate-600 dark:bg-slate-700 dark:text-slate-300"
+                              >
+                                {s}
+                              </span>
+                            ),
+                          )}
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <a
+                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(service.address)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 hover:bg-emerald-200 dark:bg-emerald-900 dark:text-emerald-400"
+                        >
+                          <Navigation className="h-5 w-5" />
+                        </a>
+                        <a
+                          href={`tel:${service.phone}`}
+                          className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 hover:bg-emerald-200 dark:bg-emerald-900 dark:text-emerald-400"
+                        >
+                          <Phone className="h-5 w-5" />
+                        </a>
+                      </div>
+                    </div>
+                  ),
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <section className="bg-gradient-to-r from-emerald-50 to-cyan-50 py-16 dark:from-slate-800 dark:to-slate-900">
         <div className="container mx-auto max-w-6xl px-4">
