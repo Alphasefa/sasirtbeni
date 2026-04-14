@@ -380,7 +380,7 @@ export default function ElectricHybridPage() {
         distNum: 15,
       },
       {
-        id: "cs5",
+        id: "cs9",
         name: "EPDK Şarj - Ataşehir",
         brand: "EPDK",
         city: "Istanbul",
@@ -389,7 +389,7 @@ export default function ElectricHybridPage() {
         distNum: 12,
       },
       {
-        id: "cs6",
+        id: "cs10",
         name: "Tesla Supercharger - Caddebostan",
         brand: "Tesla",
         city: "Istanbul",
@@ -398,7 +398,7 @@ export default function ElectricHybridPage() {
         distNum: 10,
       },
       {
-        id: "cs7",
+        id: "cs11",
         name: "SCHARGE - Üsküdar",
         brand: "SCHARGE",
         city: "Istanbul",
@@ -407,7 +407,7 @@ export default function ElectricHybridPage() {
         distNum: 9,
       },
       {
-        id: "cs8",
+        id: "cs12",
         name: "Enerjisa - Kozyatağı",
         brand: "Enerjisa",
         city: "Istanbul",

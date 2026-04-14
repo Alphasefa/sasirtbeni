@@ -10,7 +10,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import Link from "next/link";
-import { useState, Suspense } from "react";
+import { useState, Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import AdBanner from "@/components/ad-banner";
 import vehicleData from "@/shared/data/vehicles.json";
@@ -119,8 +119,17 @@ function HomeContent() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
+  const [showHikaye, setShowHikaye] = useState(false);
   const searchParams = useSearchParams();
   const showElectricHybrid = searchParams.get("filter") === "electric";
+
+  useEffect(() => {
+    const gosterildi = localStorage.getItem("hikayeGosterildi");
+    if (!gosterildi) {
+      setShowHikaye(true);
+      localStorage.setItem("hikayeGosterildi", "true");
+    }
+  }, []);
 
   const filteredBrands = brands.filter((b) =>
     b.name.toLowerCase().includes(searchQuery.toLowerCase()),
@@ -211,54 +220,66 @@ function HomeContent() {
     );
   };
 
-  return (
-    <div className="min-h-screen bg-slate-50 dark:from-slate-900 dark:to-slate-800">
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/80">
-        <div className="container mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white text-xl font-bold">
+  if (showHikaye) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 p-4">
+        <div className="max-w-2xl rounded-3xl bg-white p-8 shadow-2xl">
+          <div className="mb-6 flex justify-center">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-orange-100 text-4xl">
               🚗
             </div>
-            <span className="font-bold text-xl text-slate-900 dark:text-white">
-              FiyatKarşılaştır
-            </span>
-          </Link>
-          <nav className="hidden items-center gap-6 md:flex">
-            <Link
-              href="/electric-hybrid"
-              className="flex items-center gap-2 text-slate-600 transition-colors hover:text-emerald-600 dark:text-slate-300"
-            >
-              <Leaf className="h-5 w-5" />
-              Elektrikli & Hibrit
-            </Link>
-            <Link
-              href="/dealers?tab=sales"
-              className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
-            >
-              Bayiler
-            </Link>
-            <Link
-              href="/dealers?tab=service"
-              className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
-            >
-              Servis
-            </Link>
-            <Link
-              href="/dealers?tab=campaigns"
-              className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
-            >
-              Kampanyalar
-            </Link>
-            <Link
-              href="/dealers?tab=overseas"
-              className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
-            >
-              Yurt Dışı Fiyatları
-            </Link>
-          </nav>
+          </div>
+          <h1 className="mb-6 text-center font-bold text-3xl text-slate-900">
+            Bizim Hikayemiz
+          </h1>
+          <div className="space-y-4 text-lg leading-relaxed text-slate-700">
+            <p>
+              <span className="font-semibold text-orange-600">Bir gün</span>{" "}
+              yolda giderken göstergedeki bir uyarıyı görmezden geldim. "Batarya
+              düşük, en yakın şarj istasyonuna gidin" diyordu ama "biraz daha
+              gider yetişir" dedim.
+            </p>
+            <p>
+              Tabii ki yetmedi. Yolda kaldım. Çekici çağırdım, servise taşıdık,{" "}
+              <span className="font-bold text-red-600">10.000 TL</span> fatura
+              geldi. Ama asıl sürpriz{" "}
+              <span className="font-bold text-red-600">sonra geldi</span>: tam
+              irfan kontrolünde{" "}
+              <span className="font-bold text-red-600">
+                batarya hasar görmüş
+              </span>{" "}
+              çıktı. Fatura{" "}
+              <span className="font-bold text-red-600">100.000 TL</span> oldu!
+            </p>
+            <p>
+              Sadece <span className="font-semibold">10.000 TL</span> ile{" "}
+              <span className="font-semibold">100.000 TL</span> arasında{" "}
+              <span className="font-bold">fark şuydu</span>: bir uyarıyı ciddiye
+              almamak.
+            </p>
+          </div>
+          <div className="mt-8 rounded-xl bg-orange-50 p-4 text-center">
+            <p className="font-bold text-orange-800">
+              Bu proje, aynı hatayı bir daha yapmamanız için var.
+            </p>
+            <p className="mt-2 text-orange-700">
+              Araç fiyatlarını karşılaştırın, yedek parça ve servis fiyatlarını
+              inceleyin, bilinçli karar verin.
+            </p>
+          </div>
+          <button
+            onClick={() => setShowHikaye(false)}
+            className="mt-8 w-full rounded-xl bg-blue-600 px-6 py-4 font-bold text-white transition-colors hover:bg-blue-700"
+          >
+            Anladım, Başla
+          </button>
         </div>
-      </header>
+      </div>
+    );
+  }
 
+  return (
+    <div className="min-h-screen bg-slate-50 dark:from-slate-900 dark:to-slate-800">
       <section className="bg-gradient-to-b from-blue-600 to-blue-700 py-16 text-white">
         <div className="container mx-auto max-w-4xl px-4">
           <div className="mb-6 text-center">
