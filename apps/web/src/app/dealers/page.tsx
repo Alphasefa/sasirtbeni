@@ -7,12 +7,15 @@ import {
   Calendar,
   Check,
   Clock,
+  Grid3X3,
+  List,
   MapPin,
   Phone,
   Search,
   Send,
   Star,
   Tag,
+  Truck,
   Wrench,
   X,
 } from "lucide-react";
@@ -92,6 +95,7 @@ function DealersContent() {
     "campaigns",
     "overseas",
     "favorites",
+    "tow",
   ] as const;
   const initialTab = validTabs.includes(tabParam as any) ? tabParam : "sales";
 
@@ -109,6 +113,15 @@ function DealersContent() {
     message: "",
   });
   const [leadSent, setLeadSent] = useState(false);
+  const [viewMode, setViewMode] = useState<"list" | "grid">("grid");
+  const [showMap, setShowMap] = useState(false);
+  const [towRequestSent, setTowRequestSent] = useState(false);
+  const [towOffers, setTowOffers] = useState<
+    { id: number; name: string; price: number; time: string; status: string }[]
+  >([]);
+  const [selectedOffer, setSelectedOffer] = useState<number | null>(null);
+  const [userLocation, setUserLocation] = useState<string>("");
+  const [locationLoading, setLocationLoading] = useState(false);
   const [favorites, setFavorites] = useState<
     { key: string; timestamp?: number; priceTR?: number; priceDE?: number }[]
   >([]);
@@ -136,7 +149,27 @@ function DealersContent() {
   const removeFromFavorites = (vehicleKey: string) => {
     const updated = favorites.filter((f) => f.key !== vehicleKey);
     setFavorites(updated);
-    localStorage.setItem("favoriteVehicles", JSON.stringify(updated));
+  };
+
+  const getUserLocation = () => {
+    setLocationLoading(true);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setUserLocation(
+            `📍 ${position.coords.latitude.toFixed(4)}, ${position.coords.longitude.toFixed(4)}`,
+          );
+          setLocationLoading(false);
+        },
+        () => {
+          setUserLocation("Konum alınamadı");
+          setLocationLoading(false);
+        },
+      );
+    } else {
+      setUserLocation("Tarayıcınız konumu desteklemiyor");
+      setLocationLoading(false);
+    }
   };
 
   const isFavorite = (vehicleKey: string) =>
@@ -256,6 +289,17 @@ function DealersContent() {
             Yurt Dışı Fiyatları
           </button>
           <button
+            onClick={() => setTab("tow")}
+            className={`flex items-center justify-center gap-2 rounded-lg px-4 py-3 font-semibold transition-all ${
+              tab === "tow"
+                ? "bg-white text-orange-600 shadow-sm dark:bg-slate-700"
+                : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+            }`}
+          >
+            <Truck className="h-5 w-5" />
+            Çekici
+          </button>
+          <button
             onClick={() => setTab("favorites")}
             className={`flex items-center justify-center gap-2 rounded-lg px-4 py-3 font-semibold transition-all ${
               tab === "favorites"
@@ -273,8 +317,8 @@ function DealersContent() {
           </button>
         </div>
 
-        {tab === "sales" && (
-          <div className="mb-6 grid gap-4 md:grid-cols-3">
+        <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div className="grid gap-4 md:grid-cols-3 flex-1">
             <select
               value={selectedCity}
               onChange={(e) => setSelectedCity(e.target.value)}
@@ -312,7 +356,32 @@ function DealersContent() {
               />
             </div>
           </div>
-        )}
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setViewMode("grid")}
+              className={`flex items-center gap-2 rounded-lg px-3 py-2 transition-colors ${
+                viewMode === "grid"
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300"
+              }`}
+            >
+              <Grid3X3 className="h-5 w-5" />
+              <span className="hidden sm:inline">Grid</span>
+            </button>
+            <button
+              onClick={() => setViewMode("list")}
+              className={`flex items-center gap-2 rounded-lg px-3 py-2 transition-colors ${
+                viewMode === "list"
+                  ? "bg-blue-600 text-white"
+                  : "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300"
+              }`}
+            >
+              <List className="h-5 w-5" />
+              <span className="hidden sm:inline">Liste</span>
+            </button>
+          </div>
+        </div>
 
         {tab === "service" && (
           <div className="mb-6 grid gap-4 md:grid-cols-3">
@@ -439,11 +508,17 @@ function DealersContent() {
         )}
 
         {(tab === "sales" || tab === "service") && (
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div
+            className={
+              viewMode === "grid"
+                ? "grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+                : "space-y-3"
+            }
+          >
             {filteredDealers.slice(0, 30).map((dealer) => (
               <div
                 key={dealer.id}
-                className="group flex flex-col rounded-2xl bg-white p-6 shadow-sm transition-all hover:shadow-lg dark:bg-slate-800"
+                className={`group flex ${viewMode === "grid" ? "flex-col rounded-2xl bg-white p-6 shadow-sm hover:shadow-lg dark:bg-slate-800" : "flex-row items-center rounded-xl bg-white p-4 shadow-sm hover:shadow-md dark:bg-slate-800"}`}
               >
                 <div className="mb-4 flex items-start justify-between">
                   <div className="flex items-center gap-3">
@@ -459,22 +534,47 @@ function DealersContent() {
                       </p>
                     </div>
                   </div>
+                  <div className="flex items-center gap-1">
+                    <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                      4.8
+                    </span>
+                  </div>
                 </div>
 
-                <div className="mb-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-slate-400" />
-                    <span>{dealer.city}</span>
+                {viewMode === "grid" && (
+                  <div className="mb-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                    <div className="flex items-center gap-2">
+                      <MapPin className="h-4 w-4 text-slate-400" />
+                      <span>{dealer.city}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Building2 className="h-4 w-4 text-slate-400" />
+                      <span className="line-clamp-2">{dealer.address}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-4 w-4 text-slate-400" />
+                      <span className="text-xs">{dealer.hours}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Building2 className="h-4 w-4 text-slate-400" />
-                    <span className="line-clamp-2">{dealer.address}</span>
+                )}
+
+                {viewMode === "list" && (
+                  <div className="flex flex-1 items-center justify-between">
+                    <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-300">
+                      <div className="flex items-center gap-1">
+                        <MapPin className="h-4 w-4 text-slate-400" />
+                        <span>{dealer.city}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="h-4 w-4 text-slate-400" />
+                        <span className="text-xs">
+                          {dealer.hours?.split("|")[0]}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-slate-400" />
-                    <span className="text-xs">{dealer.hours}</span>
-                  </div>
-                </div>
+                )}
 
                 <div className="mt-auto flex gap-2">
                   <a
@@ -482,7 +582,7 @@ function DealersContent() {
                     className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 font-semibold text-white transition-all hover:bg-blue-700"
                   >
                     <Phone className="h-4 w-4" />
-                    Ara
+                    {viewMode === "grid" ? "Ara" : ""}
                   </a>
                   <Link
                     href={`/dealers/${dealer.id}`}
@@ -744,6 +844,274 @@ function DealersContent() {
                     </Link>
                   );
                 })}
+              </div>
+            )}
+          </div>
+        )}
+
+        {tab === "tow" && (
+          <div>
+            {towRequestSent && selectedOffer === null ? (
+              <div className="space-y-6">
+                <div className="rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 p-6 text-white">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white/20">
+                      <Clock className="h-6 w-6 animate-pulse" />
+                    </div>
+                    <div>
+                      <h2 className="font-bold text-xl">
+                        Çekiciler Aranıyor...
+                      </h2>
+                      <p className="text-orange-100">
+                        En yakın çekicilere bildirim gönderildi
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800">
+                  <h3 className="mb-4 font-bold text-lg text-slate-900 dark:text-white">
+                    📋 Gelen Teklifler
+                  </h3>
+                  <p className="mb-4 text-sm text-slate-500 dark:text-slate-400">
+                    Çekiciler teklif gönderiyor. Size uygun olanı seçin.
+                  </p>
+
+                  {towOffers.length === 0 ? (
+                    <div className="space-y-3">
+                      {[1, 2, 3].map((i) => (
+                        <div
+                          key={i}
+                          className="animate-pulse flex items-center justify-between rounded-lg bg-slate-100 p-4 dark:bg-slate-700"
+                        >
+                          <div className="space-y-2">
+                            <div className="h-4 w-32 rounded bg-slate-300 dark:bg-slate-600"></div>
+                            <div className="h-3 w-20 rounded bg-slate-300 dark:bg-slate-600"></div>
+                          </div>
+                          <div className="h-8 w-20 rounded bg-slate-300 dark:bg-slate-600"></div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="space-y-3">
+                      {towOffers.map((offer) => (
+                        <div
+                          key={offer.id}
+                          className="flex items-center justify-between rounded-lg border border-slate-200 p-4 transition-all hover:border-orange-300 dark:border-slate-600"
+                        >
+                          <div>
+                            <div className="font-medium text-slate-900 dark:text-white">
+                              {offer.name}
+                            </div>
+                            <div className="text-sm text-slate-500">
+                              {offer.time} • {offer.status}
+                            </div>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <div className="text-right">
+                              <div className="font-bold text-lg text-orange-600">
+                                {offer.price} TL
+                              </div>
+                            </div>
+                            <button
+                              onClick={() => setSelectedOffer(offer.id)}
+                              className="rounded-lg bg-green-500 px-4 py-2 font-medium text-white hover:bg-green-600"
+                            >
+                              Kabul Et
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                <button
+                  onClick={() => {
+                    setTowRequestSent(false);
+                    setTowOffers([]);
+                    setSelectedOffer(null);
+                  }}
+                  className="w-full rounded-xl border border-slate-300 px-6 py-3 font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-600 dark:text-slate-300"
+                >
+                  İptal
+                </button>
+              </div>
+            ) : selectedOffer !== null ? (
+              <div className="rounded-2xl bg-white p-8 text-center dark:bg-slate-800">
+                <div className="mb-4 flex justify-center">
+                  <div className="flex h-20 w-20 items-center justify-center rounded-full bg-green-100 text-4xl">
+                    ✅
+                  </div>
+                </div>
+                <h2 className="mb-2 font-bold text-2xl text-slate-900 dark:text-white">
+                  Çekici Yolda!
+                </h2>
+                <p className="mb-6 text-slate-500 dark:text-slate-400">
+                  Seçtiğiniz çekici{" "}
+                  {towOffers.find((o) => o.id === selectedOffer)?.time} içinde
+                  yanınızda olacak.
+                </p>
+                <a
+                  href="tel:112"
+                  className="inline-flex items-center gap-2 rounded-xl bg-green-500 px-6 py-3 font-bold text-white hover:bg-green-600"
+                >
+                  <Phone className="h-5 w-5" />
+                  Çekiciyi Ara
+                </a>
+                <button
+                  onClick={() => {
+                    setTowRequestSent(false);
+                    setTowOffers([]);
+                    setSelectedOffer(null);
+                  }}
+                  className="ml-4 mt-4 text-sm text-slate-500 hover:underline"
+                >
+                  Başka bir talep oluştur
+                </button>
+              </div>
+            ) : (
+              <div>
+                <div className="mb-6 rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 p-6 text-white">
+                  <div className="flex items-center gap-4">
+                    <Truck className="h-12 w-12" />
+                    <div>
+                      <h2 className="font-bold text-xl">Çekici Hizmeti</h2>
+                      <p className="text-orange-100">
+                        Yolda kaldınız mı? Hemen yardım çağırın!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800">
+                    <h3 className="mb-4 font-bold text-lg text-slate-900 dark:text-white">
+                      🚨 Acil Çekici Talebi
+                    </h3>
+                    <form
+                      className="space-y-4"
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        setTowRequestSent(true);
+                        setTimeout(() => {
+                          setTowOffers([
+                            {
+                              id: 1,
+                              name: "ABC Çekici - İstanbul",
+                              price: 750,
+                              time: "15 dk",
+                              status: "Yola çıktı",
+                            },
+                            {
+                              id: 2,
+                              name: "Hızlı Yol Yardım",
+                              price: 900,
+                              time: "20 dk",
+                              status: "Kabul bekliyor",
+                            },
+                            {
+                              id: 3,
+                              name: "VIP Çekici Servisi",
+                              price: 1200,
+                              time: "25 dk",
+                              status: "Kabul bekliyor",
+                            },
+                          ]);
+                        }, 2000);
+                      }}
+                    >
+                      <div>
+                        <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                          Konumunuz
+                        </label>
+                        <div className="flex gap-2">
+                          <input
+                            type="text"
+                            placeholder="Otomatik algılanacak veya manuel girin"
+                            value={userLocation}
+                            onChange={(e) => setUserLocation(e.target.value)}
+                            required
+                            className="w-full rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+                          />
+                          <button
+                            type="button"
+                            onClick={getUserLocation}
+                            disabled={locationLoading}
+                            className="flex items-center gap-2 rounded-xl bg-blue-500 px-4 py-3 font-medium text-white hover:bg-blue-600 disabled:opacity-50"
+                          >
+                            {locationLoading ? (
+                              <Clock className="h-5 w-5 animate-spin" />
+                            ) : (
+                              <MapPin className="h-5 w-5" />
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                      <div>
+                        <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                          Telefon
+                        </label>
+                        <input
+                          type="tel"
+                          placeholder="0555 555 55 55"
+                          required
+                          className="w-full rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+                        />
+                      </div>
+                      <div>
+                        <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                          Araç Tipi
+                        </label>
+                        <select className="w-full rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white">
+                          <option>Otomobil (Sedan, Hatchback)</option>
+                          <option>SUV / Arazi</option>
+                          <option>Kamyonet / Pickup</option>
+                          <option>Minibüs</option>
+                          <option>Motorsiklet</option>
+                        </select>
+                      </div>
+                      <button
+                        type="submit"
+                        className="w-full rounded-xl bg-orange-600 px-6 py-3 font-bold text-white transition-colors hover:bg-orange-700"
+                      >
+                        Çekici Çağır
+                      </button>
+                    </form>
+                  </div>
+
+                  <div className="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800">
+                    <h3 className="mb-4 font-bold text-lg text-slate-900 dark:text-white">
+                      📍 En Yakın Çekici Servisleri
+                    </h3>
+                    <p className="mb-4 text-sm text-slate-500 dark:text-slate-400">
+                      Konumunuza en yakın çekici ve yol yardım hizmetleri
+                    </p>
+                    <div className="space-y-3">
+                      {filteredDealers.slice(0, 5).map((dealer) => (
+                        <div
+                          key={dealer.id}
+                          className="flex items-center justify-between rounded-lg bg-slate-50 p-3 dark:bg-slate-700"
+                        >
+                          <div>
+                            <div className="font-medium text-slate-900 dark:text-white">
+                              {dealer.name}
+                            </div>
+                            <div className="text-sm text-slate-500">
+                              {dealer.city}
+                            </div>
+                          </div>
+                          <a
+                            href={`tel:${formatPhone(dealer.phone)}`}
+                            className="rounded-lg bg-orange-500 px-3 py-2 text-sm font-medium text-white hover:bg-orange-600"
+                          >
+                            Ara
+                          </a>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
           </div>

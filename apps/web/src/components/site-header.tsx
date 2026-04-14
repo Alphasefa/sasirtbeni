@@ -10,6 +10,7 @@ import {
   BookOpen,
   GitCompare,
   Lightbulb,
+  Truck,
 } from "lucide-react";
 
 export default function SiteHeader() {
@@ -59,6 +60,13 @@ export default function SiteHeader() {
           >
             <Globe className="h-5 w-5" />
             Yurt Dışı
+          </Link>
+          <Link
+            href="/dealers?tab=tow"
+            className="flex items-center gap-2 text-slate-600 transition-colors hover:text-orange-600 dark:text-slate-300"
+          >
+            <Truck className="h-5 w-5" />
+            Çekici
           </Link>
           <Link
             href="/ipucclari"
