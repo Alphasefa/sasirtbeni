@@ -298,29 +298,6 @@ export default function ComparePage({
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <div className="container mx-auto max-w-5xl px-4 py-4">
-              >
-                <Share2 className="h-4 w-4" />
-                Paylaş
-              </button>
-              {mounted && (
-                <button
-                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="rounded-lg p-2 hover:bg-slate-100 dark:hover:bg-slate-700"
-                  aria-label="Tema değiştir"
-                >
-                  {theme === "dark" ? (
-                    <Sun className="h-5 w-5 dark:text-white" />
-                  ) : (
-                    <Moon className="h-5 w-5" />
-                  )}
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div className="container mx-auto max-w-5xl px-4 py-8">
         <a
           href={`/compare/${brand}`}

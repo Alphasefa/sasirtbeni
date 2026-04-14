@@ -4,18 +4,22 @@ import {
   ArrowRight,
   Car,
   Clock,
+  Factory,
   GitCompare,
   Heart,
   Leaf,
   Search,
   Star,
   TrendingUp,
+  Truck,
+  Users,
 } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState, Suspense, useEffect } from "react";
 import AdBanner from "@/components/ad-banner";
 import vehicleData from "@/shared/data/vehicles.json";
+import dealersData from "@/shared/data/dealers.json";
 
 const { brands, models } = vehicleData as {
   brands: { id: string; name: string; country: string; logo: string }[];
@@ -375,7 +379,7 @@ function HomeContent() {
         </div>
       </section>
 
-      <AdBanner slot="homepage-hero" />
+      <AdBanner slot="homepage-categories" />
 
       <section className="py-12">
         <div className="container mx-auto max-w-6xl px-4">
@@ -496,6 +500,85 @@ function HomeContent() {
                 </Link>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12 bg-white dark:bg-slate-800">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="mb-8 flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-600 dark:bg-green-900">
+              <Star className="h-5 w-5" />
+            </div>
+            <div>
+              <h2 className="font-bold text-2xl text-slate-900 dark:text-white">
+                Öne Çıkan Bayiler
+              </h2>
+              <p className="text-slate-500 dark:text-slate-400">
+                En yüksek puanlı satış bayilerimiz
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {dealersData.dealers.slice(0, 3).map((dealer: any) => (
+              <Link
+                key={dealer.id}
+                href={`/dealers/${dealer.id}`}
+                className="group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-all hover:border-green-300 hover:shadow-lg dark:border-slate-600 dark:bg-slate-700"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 text-green-600 font-bold dark:bg-green-900">
+                    {dealer.name.charAt(0)}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-slate-900 dark:text-white">
+                      {dealer.name}
+                    </h3>
+                    <p className="text-sm text-slate-500">{dealer.city}</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star
+                        key={star}
+                        className={`h-4 w-4 ${
+                          star <= 4
+                            ? "fill-yellow-400 text-yellow-400"
+                            : "text-slate-300"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-sm font-medium text-slate-600 dark:text-slate-400">
+                    4.8
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {dealer.services
+                    ?.slice(0, 3)
+                    .map((service: string, idx: number) => (
+                      <span
+                        key={idx}
+                        className="rounded-full bg-blue-100 px-2 py-1 text-xs font-medium text-blue-700 dark:bg-blue-900 dark:text-blue-300"
+                      >
+                        {service}
+                      </span>
+                    ))}
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-6 text-center">
+            <Link
+              href="/dealers?tab=sales"
+              className="inline-flex items-center gap-2 rounded-xl border border-green-300 px-6 py-3 font-semibold text-green-700 transition-colors hover:bg-green-50 dark:border-green-700 dark:text-green-400"
+            >
+              Tüm Bayileri Gör
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
