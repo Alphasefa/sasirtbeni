@@ -13,6 +13,7 @@ import {
   Phone,
   Search,
   Send,
+  Sparkles,
   Star,
   Tag,
   Truck,
@@ -96,6 +97,7 @@ function DealersContent() {
     "overseas",
     "favorites",
     "tow",
+    "detailing",
   ] as const;
   const initialTab = validTabs.includes(tabParam as any) ? tabParam : "sales";
 
@@ -298,6 +300,17 @@ function DealersContent() {
           >
             <Truck className="h-5 w-5" />
             Çekici
+          </button>
+          <button
+            onClick={() => setTab("detailing")}
+            className={`flex items-center justify-center gap-2 rounded-lg px-4 py-3 font-semibold transition-all ${
+              tab === "detailing"
+                ? "bg-white text-purple-600 shadow-sm dark:bg-slate-700"
+                : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+            }`}
+          >
+            <Sparkles className="h-5 w-5" />
+            Temizlik
           </button>
           <button
             onClick={() => setTab("favorites")}
@@ -1114,6 +1127,118 @@ function DealersContent() {
                 </div>
               </div>
             )}
+          </div>
+        )}
+
+        {tab === "detailing" && (
+          <div>
+            <div className="mb-6 rounded-2xl bg-gradient-to-r from-purple-500 to-purple-600 p-6 text-white">
+              <div className="flex items-center gap-4">
+                <Sparkles className="h-12 w-12" />
+                <div>
+                  <h2 className="font-bold text-xl">Araç Temizlik Hizmeti</h2>
+                  <p className="text-purple-100">
+                    Aracınızı yıkayalım, temizletelim!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800">
+                <h3 className="mb-4 font-bold text-lg text-slate-900 dark:text-white">
+                  🚿 Acil Temizlik Talebi
+                </h3>
+                <form className="space-y-4">
+                  <div>
+                    <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                      Konumunuz
+                    </label>
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        placeholder="Otomatik veya manuel"
+                        className="w-full rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+                      />
+                      <button
+                        type="button"
+                        className="flex items-center gap-2 rounded-xl bg-blue-500 px-4 py-3 font-medium text-white hover:bg-blue-600"
+                      >
+                        <MapPin className="h-5 w-5" />
+                      </button>
+                    </div>
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                      Temizlik Türü
+                    </label>
+                    <select className="w-full rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white">
+                      <option>Standart Yıkama (İç + Dış)</option>
+                      <option>Detaylı Temizlik (İç, Dış, Motor)</option>
+                      <option>Seramik Kaplama</option>
+                      <option>Derinlemesine İç Temizlik</option>
+                      <option>Dış Temizlik & Cilalama</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
+                      Araç Tipi
+                    </label>
+                    <select className="w-full rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white">
+                      <option>Sedan</option>
+                      <option>SUV / Arazi</option>
+                      <option>Hatchback</option>
+                      <option>Kamyonet</option>
+                    </select>
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full rounded-xl bg-purple-600 px-6 py-3 font-bold text-white transition-colors hover:bg-purple-700"
+                  >
+                    Temizlik Çağır
+                  </button>
+                </form>
+              </div>
+
+              <div className="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800">
+                <h3 className="mb-4 font-bold text-lg text-slate-900 dark:text-white">
+                  🎯 Popüler Hizmetler
+                </h3>
+                <div className="space-y-3">
+                  {[
+                    { name: "Standart Yıkama", price: "250 TL", time: "30 dk" },
+                    {
+                      name: "Detaylı Temizlik",
+                      price: "750 TL",
+                      time: "2 saat",
+                    },
+                    {
+                      name: "Seramik Kaplama",
+                      price: "2500 TL",
+                      time: "1 gün",
+                    },
+                    { name: "İç Temizlik", price: "500 TL", time: "1 saat" },
+                  ].map((service, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center justify-between rounded-lg bg-slate-50 p-4 dark:bg-slate-700"
+                    >
+                      <div>
+                        <div className="font-medium text-slate-900 dark:text-white">
+                          {service.name}
+                        </div>
+                        <div className="text-sm text-slate-500">
+                          ~{service.time}
+                        </div>
+                      </div>
+                      <div className="font-bold text-purple-600">
+                        {service.price}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </div>

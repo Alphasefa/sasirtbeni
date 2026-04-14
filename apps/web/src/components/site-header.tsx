@@ -11,6 +11,7 @@ import {
   GitCompare,
   Lightbulb,
   Truck,
+  Sparkles,
 } from "lucide-react";
 
 export default function SiteHeader() {
@@ -67,6 +68,13 @@ export default function SiteHeader() {
           >
             <Truck className="h-5 w-5" />
             Çekici
+          </Link>
+          <Link
+            href="/dealers?tab=detailing"
+            className="flex items-center gap-2 text-slate-600 transition-colors hover:text-purple-600 dark:text-slate-300"
+          >
+            <Sparkles className="h-5 w-5" />
+            Temizlik
           </Link>
           <Link
             href="/ipucclari"
