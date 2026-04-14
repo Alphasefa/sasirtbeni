@@ -9,6 +9,7 @@ import {
   Globe,
   BookOpen,
   GitCompare,
+  Lightbulb,
 } from "lucide-react";
 
 export default function SiteHeader() {
@@ -58,6 +59,13 @@ export default function SiteHeader() {
           >
             <Globe className="h-5 w-5" />
             Yurt Dışı
+          </Link>
+          <Link
+            href="/ipucclari"
+            className="flex items-center gap-2 text-slate-600 transition-colors hover:text-yellow-600 dark:text-slate-300"
+          >
+            <Lightbulb className="h-5 w-5" />
+            İpuçları
           </Link>
           <Link
             href="/hikayemiz"

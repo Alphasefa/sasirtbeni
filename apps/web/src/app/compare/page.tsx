@@ -227,26 +227,6 @@ export default function ComparePage() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:from-slate-900 dark:to-slate-800">
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/80">
-        <div className="container mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white text-xl font-bold">
-              🚗
-            </div>
-            <span className="font-bold text-xl text-slate-900 dark:text-white">
-              FiyatKarşılaştır
-            </span>
-          </Link>
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Ana Sayfa
-          </Link>
-        </div>
-      </header>
-
       <div className="container mx-auto max-w-6xl px-4 py-8">
         <div className="mb-6">
           <h1 className="mb-2 font-bold text-3xl text-slate-900 dark:text-white">

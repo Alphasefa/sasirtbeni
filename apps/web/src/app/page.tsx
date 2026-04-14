@@ -3,15 +3,17 @@
 import {
   ArrowRight,
   Car,
+  Clock,
   GitCompare,
+  Heart,
   Leaf,
   Search,
   Star,
   TrendingUp,
 } from "lucide-react";
 import Link from "next/link";
-import { useState, Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { useState, Suspense, useEffect } from "react";
 import AdBanner from "@/components/ad-banner";
 import vehicleData from "@/shared/data/vehicles.json";
 
@@ -120,6 +122,12 @@ function HomeContent() {
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const [showHikaye, setShowHikaye] = useState(false);
+  const [recentlyViewed, setRecentlyViewed] = useState<
+    { brand: string; model: string; name: string; price: number }[]
+  >([]);
+  const [favoriteKeys, setFavoriteKeys] = useState<
+    { key: string; priceTR?: number }[]
+  >([]);
   const searchParams = useSearchParams();
   const showElectricHybrid = searchParams.get("filter") === "electric";
 
@@ -129,6 +137,12 @@ function HomeContent() {
       setShowHikaye(true);
       localStorage.setItem("hikayeGosterildi", "true");
     }
+
+    const recent = JSON.parse(localStorage.getItem("recentlyViewed") || "[]");
+    setRecentlyViewed(recent);
+
+    const favs = JSON.parse(localStorage.getItem("favoriteVehicles") || "[]");
+    setFavoriteKeys(favs);
   }, []);
 
   const filteredBrands = brands.filter((b) =>
@@ -485,6 +499,98 @@ function HomeContent() {
           </div>
         </div>
       </section>
+
+      {recentlyViewed.length > 0 && (
+        <section className="bg-white py-12 dark:bg-slate-800">
+          <div className="container mx-auto max-w-6xl px-4">
+            <div className="mb-8 flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100 text-purple-600 dark:bg-purple-900">
+                <Clock className="h-5 w-5" />
+              </div>
+              <div>
+                <h2 className="font-bold text-2xl text-slate-900 dark:text-white">
+                  Son Bakılanlar
+                </h2>
+                <p className="text-slate-500 dark:text-slate-400">
+                  En son incelediğiniz araçlar
+                </p>
+              </div>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-4">
+              {recentlyViewed.slice(0, 4).map((item, idx) => (
+                <Link
+                  key={idx}
+                  href={`/compare/${item.brand}/${item.model}`}
+                  className="group flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 transition-all hover:border-purple-300 hover:shadow-md dark:border-slate-600 dark:bg-slate-700"
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-100 text-purple-600 font-bold dark:bg-purple-900">
+                    {item.name.charAt(0)}
+                  </div>
+                  <div>
+                    <div className="font-medium text-slate-900 dark:text-white">
+                      {item.name}
+                    </div>
+                    <div className="text-xs text-slate-500">Tekrar incele</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {favoriteKeys.length > 0 && (
+        <section className="py-12">
+          <div className="container mx-auto max-w-6xl px-4">
+            <div className="mb-8 flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-red-100 text-red-600 dark:bg-red-900">
+                <Heart className="h-5 w-5" />
+              </div>
+              <div>
+                <h2 className="font-bold text-2xl text-slate-900 dark:text-white">
+                  Favorilerim
+                </h2>
+                <p className="text-slate-500 dark:text-slate-400">
+                  Kaydettiğiniz araçlar
+                </p>
+              </div>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-4">
+              {favoriteKeys.slice(0, 4).map((item, idx) => {
+                const [brand, model] = (item.key || "").split("|");
+                const brandName =
+                  brands.find((b) => b.id === brand)?.name || brand;
+                return (
+                  <Link
+                    key={idx}
+                    href={brand && model ? `/compare/${brand}/${model}` : "#"}
+                    className="group flex items-center justify-between rounded-xl border border-slate-200 bg-white p-4 transition-all hover:border-red-300 hover:shadow-md dark:border-slate-600 dark:bg-slate-800"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-100 text-red-600 font-bold dark:bg-red-900">
+                        {(brandName || "?").charAt(0)}
+                      </div>
+                      <div>
+                        <div className="font-medium text-slate-900 dark:text-white">
+                          {brandName} {model}
+                        </div>
+                        <div className="font-bold text-red-600">
+                          {item.priceTR
+                            ? formatPrice(item.priceTR)
+                            : "Fiyat için tıkla"}
+                        </div>
+                      </div>
+                    </div>
+                    <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-red-500" />
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="py-12">
         <div className="container mx-auto max-w-6xl px-4">

@@ -4,22 +4,6 @@ import { ArrowLeft } from "lucide-react";
 export default function Hikayemiz() {
   return (
     <div className="min-h-screen bg-slate-50 dark:from-slate-900 dark:to-slate-800">
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/80">
-        <div className="container mx-auto flex max-w-4xl items-center justify-between px-4 py-3">
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-slate-600 hover:text-blue-600 dark:text-slate-300"
-          >
-            <ArrowLeft className="h-5 w-5" />
-            Geri
-          </Link>
-          <span className="font-bold text-xl text-slate-900 dark:text-white">
-            Hikayemiz
-          </span>
-          <div className="w-10" />
-        </div>
-      </header>
-
       <div className="container mx-auto max-w-4xl px-4 py-12">
         <div className="rounded-3xl bg-white p-8 shadow-lg dark:bg-slate-800">
           <div className="mb-8 flex justify-center">

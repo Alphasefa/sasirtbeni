@@ -298,30 +298,7 @@ export default function ComparePage({
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <header className="bg-white shadow-sm dark:bg-slate-800">
-        <div className="container mx-auto max-w-5xl px-4 py-4">
-          <div className="flex items-center justify-between">
-            <a href="/" className="flex items-center gap-2">
-              <span className="text-2xl">🚗</span>
-              <span className="font-bold text-slate-900 text-xl dark:text-white">
-                FiyatKarşılaştır
-              </span>
-            </a>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setShowCompare(!showCompare)}
-                className={`flex items-center gap-2 rounded-lg px-3 py-2 font-medium text-sm ${
-                  showCompare
-                    ? "bg-orange-600 text-white"
-                    : "text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
-                }`}
-              >
-                <GitCompare className="h-4 w-4" />
-                Karşılaştır
-              </button>
-              <button
-                onClick={handleShare}
-                className="flex items-center gap-2 rounded-lg px-3 py-2 font-medium text-slate-600 text-sm hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-700"
+      <div className="container mx-auto max-w-5xl px-4 py-4">
               >
                 <Share2 className="h-4 w-4" />
                 Paylaş
@@ -342,7 +319,7 @@ export default function ComparePage({
             </div>
           </div>
         </div>
-      </header>
+      </div>
 
       <div className="container mx-auto max-w-5xl px-4 py-8">
         <a

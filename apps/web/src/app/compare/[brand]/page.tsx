@@ -27,32 +27,30 @@ export default function BrandModelsPage({
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <header className="bg-white dark:bg-slate-800 shadow-sm">
-        <div className="container mx-auto max-w-5xl px-4 py-4">
-          <Link
-            href={`/dealers?tab=overseas&brand=${brand}`}
-            className="mb-4 inline-flex items-center gap-2 text-blue-600 hover:underline dark:text-blue-400"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Geri
-          </Link>
-          <div className="flex items-center gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-white font-bold text-xl">
-              {brand.charAt(0).toUpperCase()}
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
-                {brand} - Model Seçin
-              </h1>
-              {brandStories[brand] && (
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400 max-w-md">
-                  {brandStories[brand]}
-                </p>
-              )}
-            </div>
+      <div className="container mx-auto max-w-5xl px-4 py-8">
+        <Link
+          href={`/dealers?tab=overseas&brand=${brand}`}
+          className="mb-4 inline-flex items-center gap-2 text-blue-600 hover:underline dark:text-blue-400"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Geri
+        </Link>
+        <div className="flex items-center gap-4">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-white font-bold text-xl">
+            {brand.charAt(0).toUpperCase()}
+          </div>
+          <div>
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
+              {brand} - Model Seçin
+            </h1>
+            {brandStories[brand] && (
+              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400 max-w-md">
+                {brandStories[brand]}
+              </p>
+            )}
           </div>
         </div>
-      </header>
+      </div>
 
       <div className="container mx-auto max-w-5xl px-4 py-8">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
