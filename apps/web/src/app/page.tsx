@@ -223,56 +223,69 @@ function HomeContent() {
   if (showHikaye) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 p-4">
-        <div className="max-w-2xl rounded-3xl bg-white p-8 shadow-2xl">
+        <div className="max-w-2xl rounded-3xl bg-white p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
           <div className="mb-6 flex justify-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-orange-100 text-4xl">
               🚗
             </div>
           </div>
-          <h1 className="mb-6 text-center font-bold text-3xl text-slate-900">
-            Bizim Hikayemiz
+          <h1 className="mb-4 text-center font-bold text-2xl text-slate-900">
+            Biz O Manzarayı Gördük Yaşadık ve Bir Söz Verdik
           </h1>
-          <div className="space-y-4 text-lg leading-relaxed text-slate-700">
+          <div className="space-y-3 text-base leading-relaxed text-slate-700">
             <p>
-              <span className="font-semibold text-orange-600">Bir gün</span>{" "}
-              yolda giderken göstergedeki bir uyarıyı görmezden geldim. "Batarya
-              düşük, en yakın şarj istasyonuna gidin" diyordu ama "biraz daha
-              gider yetişir" dedim.
+              Hava kararırken, otoyolun kalabalığında gri bir sedan hızla
+              ilerliyordu. Direksiyonun başındaki sürücü, zihninde o akşamki
+              planlarını düşünüyordu. Ancak aracın ön panelinde, sessizce
+              yükselen kırmızı bir çizgi vardı: Hararet ibresi.
             </p>
             <p>
-              Tabii ki yetmedi. Yolda kaldım. Çekici çağırdım, servise taşıdık,{" "}
-              <span className="font-bold text-red-600">10.000 TL</span> fatura
-              geldi. Ama asıl sürpriz{" "}
-              <span className="font-bold text-red-600">sonra geldi</span>: tam
-              irfan kontrolünde{" "}
-              <span className="font-bold text-red-600">
-                batarya hasar görmüş
-              </span>{" "}
-              çıktı. Fatura{" "}
-              <span className="font-bold text-red-600">100.000 TL</span> oldu!
+              Araba, kendi dilinde imdat çığlığı atıyordu. Sürücü bir an
+              duraksadı ve "Şuradan sağa sapınca eve varırım zaten, dayanır
+              herhalde" dedi.
             </p>
-            <p>
-              Sadece <span className="font-semibold">10.000 TL</span> ile{" "}
-              <span className="font-semibold">100.000 TL</span> arasında{" "}
-              <span className="font-bold">fark şuydu</span>: bir uyarıyı ciddiye
-              almamak.
+            <p className="font-bold text-red-600">
+              İşte o an, aslında sadece bir yol tercihi de��il, 100.000 TL'lik
+              bir karar veriyordu.
             </p>
           </div>
-          <div className="mt-8 rounded-xl bg-orange-50 p-4 text-center">
+          <div className="mt-6 rounded-xl bg-red-50 p-4">
+            <p className="text-sm text-slate-700">
+              Dışarıdan her şey normal görünüyordu; ta ki kaputtan ince bir
+              duman sızana kadar. O birkaç kilometrelik "dayanır" inadı, motorun
+              içinde görünmez bir savaşı başlatmıştı. Önce 10.000 TL'lik soğutma
+              hortumu teslim oldu. Ardından ısı motorun kalbine ulaştı. En
+              sonunda pistonlar yuvalarına kaynadı.
+            </p>
+            <p className="font-bold text-red-600 mt-2">
+              10.000 TL ile kurtulabilecek o an, 100.000 TL'lik enkaz
+              bırakmıştı.
+            </p>
+          </div>
+          <div className="mt-6 rounded-xl bg-orange-50 p-4 text-center">
             <p className="font-bold text-orange-800">
-              Bu proje, aynı hatayı bir daha yapmamanız için var.
+              Biz bu manzarayı gördük ve bir söz verdik: Kimse bu çaresizlikle
+              yol kenarında kalmasın.
             </p>
             <p className="mt-2 text-orange-700">
               Araç fiyatlarını karşılaştırın, yedek parça ve servis fiyatlarını
               inceleyin, bilinçli karar verin.
             </p>
           </div>
-          <button
-            onClick={() => setShowHikaye(false)}
-            className="mt-8 w-full rounded-xl bg-blue-600 px-6 py-4 font-bold text-white transition-colors hover:bg-blue-700"
-          >
-            Anladım, Başla
-          </button>
+          <div className="mt-6 flex gap-2">
+            <Link
+              href="/hikayemiz"
+              className="flex-1 rounded-xl bg-orange-500 px-4 py-3 font-bold text-white text-center transition-colors hover:bg-orange-600"
+            >
+              Detaylı Oku
+            </Link>
+            <button
+              onClick={() => setShowHikaye(false)}
+              className="flex-1 rounded-xl bg-blue-600 px-4 py-3 font-bold text-white transition-colors hover:bg-blue-700"
+            >
+              Anladım
+            </button>
+          </div>
         </div>
       </div>
     );

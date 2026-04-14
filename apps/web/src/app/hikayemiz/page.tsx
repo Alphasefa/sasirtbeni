@@ -29,71 +29,83 @@ export default function Hikayemiz() {
           </div>
 
           <h1 className="mb-8 text-center font-bold text-4xl text-slate-900 dark:text-white">
-            Biz Kimiz?
+            Biz O Manzarayi Gördük ve Bir Söz Verdik
           </h1>
 
           <div className="space-y-6 text-lg leading-relaxed text-slate-700 dark:text-slate-300">
             <p>
-              <span className="font-semibold text-orange-600">Bir gün</span>{" "}
-              yolda giderken göstergedeki bir uyarıyı görmezden geldim. "Batarya
-              düşük, en yakın şarj istasyonuna gidin" diyordu ama "biraz daha
-              gider yetişir" dedim.
-            </p>
-            <p>
-              Tabii ki yetmedi. Yolda kaldım. Çekici çağırdım, servise taşıdık,{" "}
-              <span className="font-bold text-red-600">10.000 TL</span> fatura
-              geldi. Ama asıl sürpriz sonra geldi: tam servis kontrolünde{" "}
-              <span className="font-bold text-red-600">
-                batarya hasar görmüş
-              </span>{" "}
-              çıktı. Fatura{" "}
-              <span className="font-bold text-red-600">100.000 TL</span> oldu!
-            </p>
-            <p>
-              Sadece <span className="font-semibold">10.000 TL</span> ile{" "}
-              <span className="font-semibold">100.000 TL</span> arasında fark
-              şuydu: bir uyarıyı ciddiye almamak.
+              Yol kenarinda dumanlar içinde bekleyen o sürücüyü gördüğümüzde
+              sadece arizali bir metal degil; sarsilmis bir bütçe ve kaybolmus
+              bir huzur gördük. Bir saniyelik ihmalin, bir servet kaybina nasil
+              dönüstüğüne sahit olduk.
             </p>
           </div>
 
-          <div className="mt-10 rounded-xl bg-orange-50 p-6 text-center dark:bg-orange-900/20">
-            <p className="font-bold text-orange-800 dark:text-orange-400">
-              Bu proje, aynı hatayı bir daha yapmamanız için var.
-            </p>
-            <p className="mt-2 text-orange-700 dark:text-orange-500">
-              Araç fiyatlarını karşılaştırın, yedek parça ve servis fiyatlarını
-              inceleyin, bilinçli karar verin.
+          <div className="mt-8 rounded-xl bg-red-50 p-6 dark:bg-red-900/20">
+            <h2 className="mb-4 font-bold text-2xl text-red-800 dark:text-red-400">
+              DegEr, RakaMdan Büyüktür
+            </h2>
+            <p className="text-slate-700 dark:text-slate-300">
+              Aracınızin degeri ne olursa olsun, paneldeki küçük bir uyariyi
+              yönetememek sizi milyonluk zararlara sürükleyebilir. Aracınızi yok
+              pahasina sattiracak o stresli süreci yönetmek için buradayiz.
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            <div className="rounded-xl bg-blue-50 p-6 text-center dark:bg-blue-900/20">
-              <div className="mb-2 text-3xl">💰</div>
-              <h3 className="font-semibold text-blue-900 dark:text-blue-400">
-                Fiyat Karşılaştırma
-              </h3>
-              <p className="mt-2 text-sm text-blue-700 dark:text-blue-500">
-                Dünya ve Türkiye fiyatlarını karşılaştırın
-              </p>
+          <div className="mt-8 rounded-xl bg-orange-50 p-6 dark:bg-orange-900/20">
+            <h2 className="mb-4 font-bold text-2xl text-orange-800 dark:text-orange-400">
+              Belki Geç Kaldınız, Ama Yalnız Değilsiniz
+            </h2>
+            <p className="text-slate-700 dark:text-slate-300 mb-4">
+              Felaketle çoktan yüz yüze gelmiş olsaniz bile üzülmeyin; enkazi
+              çözüme dönüştürüyoruz:
+            </p>
+            <div className="grid gap-4 md:grid-cols-3">
+              <div className="text-center">
+                <div className="text-3xl mb-2">👨‍🔧</div>
+                <h3 className="font-semibold">Seçilmis Uzman Kadrosu</h3>
+                <p className="text-sm">
+                  Aracınızi rastgele ellere degil, titizlikle sectigimiz ehli
+                  ustalara emanet ediyoruz.
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl mb-2">🤝</div>
+                <h3 className="font-semibold">Sizin Adiniza Pazarlik</h3>
+                <p className="text-sm">
+                  Sektörel gücümüzle pazarlik masasina oturuyor, en makul
+                  fiyatlari aliyoruz.
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl mb-2">✅</div>
+                <h3 className="font-semibold">Garantili Hizmet</h3>
+                <p className="text-sm">
+                  Yapilan her islemin arkasinda duruyor, kurumsal güvence
+                  sagliyoruz.
+                </p>
+              </div>
             </div>
-            <div className="rounded-xl bg-green-50 p-6 text-center dark:bg-green-900/20">
-              <div className="mb-2 text-3xl">🔧</div>
-              <h3 className="font-semibold text-green-900 dark:text-green-400">
-                Servis Fiyatları
-              </h3>
-              <p className="mt-2 text-sm text-green-700 dark:text-green-500">
-                Yedek parça ve bakım fiyatlarını görün
-              </p>
-            </div>
-            <div className="rounded-xl bg-purple-50 p-6 text-center dark:bg-purple-900/20">
-              <div className="mb-2 text-3xl">⚡</div>
-              <h3 className="font-semibold text-purple-900 dark:text-purple-400">
-                Elektrikli Araçlar
-              </h3>
-              <p className="mt-2 text-sm text-purple-700 dark:text-purple-500">
-                EV ve hibrit araçlar hakkında bilgi edinin
-              </p>
-            </div>
+          </div>
+
+          <div className="mt-8 rounded-xl bg-blue-50 p-6 dark:bg-blue-900/20">
+            <h2 className="mb-4 font-bold text-2xl text-blue-800 dark:text-blue-400">
+              Profesyonel Yol Arkadasligi
+            </h2>
+            <p className="text-slate-700 dark:text-slate-300">
+              Sanayi jargonlarini ve karmasayi bir kenara birakin. Fiyat
+              karsilastirmalarindan teknik servise kadar her assamada; en dogru
+              hizmeti, en rasyonel maliyetle sunuyoruz.
+            </p>
+            <p className="mt-4 font-bold text-lg text-orange-700 dark:text-orange-400">
+              "Siz sadece yolun tadini çikarin. Biz, en zor aninizda
+              yatiriminizi koruyan o profesyonel güç olarak yaninizdayiz."
+            </p>
+            <p className="mt-3 font-bold text-lg text-green-700 dark:text-green-400">
+              "Aracizin degeri ne olursa olsun, bizim gözimizde o korunmasi
+              gereken bir yatirimdir. Sizi yol kenarinda çaresiz, bütçenizi ise
+              belirsiz birakmamak için buradayiz."
+            </p>
           </div>
 
           <div className="mt-12 text-center">
@@ -101,7 +113,7 @@ export default function Hikayemiz() {
               href="/"
               className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-8 py-4 font-bold text-white transition-colors hover:bg-blue-700"
             >
-              Karşılaştırmaya Başla
+              Karsilastirmaya Basla
             </Link>
           </div>
         </div>
