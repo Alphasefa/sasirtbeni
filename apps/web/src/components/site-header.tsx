@@ -23,7 +23,7 @@ export default function SiteHeader() {
             🚗
           </div>
           <span className="font-bold text-xl text-slate-900 dark:text-white">
-            FiyatKarşılaştır
+            BiYARDIMET
           </span>
         </Link>
         <nav className="hidden items-center gap-6 md:flex">

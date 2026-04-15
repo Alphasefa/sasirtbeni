@@ -18,13 +18,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FiyatKarşılaştır | Türkiye vs Almanya Araç Fiyatları",
+  title: "BiYARDIMET | Türkiye vs Almanya Araç Fiyatları",
   description:
     "Türkiye ve Almanya araç fiyatlarını karşılaştır. ÖTV ve KDV dahil ne kadar vergi ödediğini gör. Volkswagen, BMW, Toyota ve daha fazlası.",
   keywords:
     "araç fiyat karşılaştırma, ötv hesaplama, türkiye almanya fiyat, araba vergi hesaplama",
   openGraph: {
-    title: "FiyatKarşılaştır - Türkiye vs Almanya Araç Fiyatları",
+    title: "BiYARDIMET - Türkiye vs Almanya Araç Fiyatları",
     description:
       "Türkiye ve Almanya araç fiyatlarını karşılaştır. Ne kadar vergi ödediğini gör.",
     type: "website",

@@ -5,14 +5,17 @@ import {
   Car,
   Clock,
   Factory,
+  Filter,
   GitCompare,
   Heart,
   Leaf,
+  Plus,
   Search,
   Star,
   TrendingUp,
   Truck,
   Users,
+  X,
 } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -132,6 +135,33 @@ function HomeContent() {
   const [favoriteKeys, setFavoriteKeys] = useState<
     { key: string; priceTR?: number }[]
   >([]);
+  const [myCars, setMyCars] = useState<
+    {
+      id: string;
+      brand: string;
+      model: string;
+      year: number;
+      km: number;
+      price: number;
+      description: string;
+    }[]
+  >([]);
+  const [showAddCar, setShowAddCar] = useState(false);
+  const [newCar, setNewCar] = useState({
+    brand: "",
+    model: "",
+    year: new Date().getFullYear(),
+    km: 0,
+    price: 0,
+    description: "",
+  });
+  const [carFilter, setCarFilter] = useState({
+    brand: "",
+    minPrice: 0,
+    maxPrice: 0,
+    minYear: 0,
+    maxKm: 0,
+  });
   const searchParams = useSearchParams();
   const showElectricHybrid = searchParams.get("filter") === "electric";
 
@@ -147,7 +177,46 @@ function HomeContent() {
 
     const favs = JSON.parse(localStorage.getItem("favoriteVehicles") || "[]");
     setFavoriteKeys(favs);
+
+    const myCarsData = JSON.parse(localStorage.getItem("myCars") || "[]");
+    setMyCars(myCarsData);
   }, []);
+
+  const addMyCar = () => {
+    if (newCar.brand && newCar.model) {
+      const car = { ...newCar, id: Date.now().toString() };
+      const updated = [...myCars, car];
+      setMyCars(updated);
+      localStorage.setItem("myCars", JSON.stringify(updated));
+      setShowAddCar(false);
+      setNewCar({
+        brand: "",
+        model: "",
+        year: new Date().getFullYear(),
+        km: 0,
+        price: 0,
+        description: "",
+      });
+    }
+  };
+
+  const removeMyCar = (id: string) => {
+    const updated = myCars.filter((c) => c.id !== id);
+    setMyCars(updated);
+    localStorage.setItem("myCars", JSON.stringify(updated));
+  };
+
+  const filteredMyCars = myCars.filter((car) => {
+    if (
+      carFilter.brand &&
+      car.brand.toLowerCase() !== carFilter.brand.toLowerCase()
+    )
+      return false;
+    if (carFilter.minPrice && car.price < carFilter.minPrice) return false;
+    if (carFilter.maxPrice && car.price > carFilter.maxPrice) return false;
+    if (carFilter.maxKm && car.km > carFilter.maxKm) return false;
+    return true;
+  });
 
   const filteredBrands = brands.filter((b) =>
     b.name.toLowerCase().includes(searchQuery.toLowerCase()),
@@ -436,6 +505,182 @@ function HomeContent() {
           </div>
         </div>
       </section>
+
+      <section className="bg-white py-12 dark:bg-slate-800">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="mb-8 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 text-green-600 dark:bg-green-900">
+                <Users className="h-5 w-5" />
+              </div>
+              <div>
+                <h2 className="font-bold text-2xl text-slate-900 dark:text-white">
+                  2. El Araçlarım
+                </h2>
+                <p className="text-slate-500 dark:text-slate-400">
+                  Yüklediğiniz araçlar ve filtreler
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => setShowAddCar(true)}
+              className="flex items-center gap-2 rounded-xl bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-700"
+            >
+              <Plus className="h-5 w-5" /> Araç Ekle
+            </button>
+          </div>
+
+          <div className="mb-6 grid gap-4 md:grid-cols-4">
+            <select
+              value={carFilter.brand}
+              onChange={(e) =>
+                setCarFilter({ ...carFilter, brand: e.target.value })
+              }
+              className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3"
+            >
+              <option value="">Tüm Markalar</option>
+              {brands.map((b) => (
+                <option key={b.id} value={b.name}>
+                  {b.name}
+                </option>
+              ))}
+            </select>
+            <input
+              type="number"
+              placeholder="Min Fiyat (TL)"
+              value={carFilter.minPrice || ""}
+              onChange={(e) =>
+                setCarFilter({ ...carFilter, minPrice: Number(e.target.value) })
+              }
+              className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3"
+            />
+            <input
+              type="number"
+              placeholder="Max Fiyat (TL)"
+              value={carFilter.maxPrice || ""}
+              onChange={(e) =>
+                setCarFilter({ ...carFilter, maxPrice: Number(e.target.value) })
+              }
+              className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3"
+            />
+            <input
+              type="number"
+              placeholder="Max Km"
+              value={carFilter.maxKm || ""}
+              onChange={(e) =>
+                setCarFilter({ ...carFilter, maxKm: Number(e.target.value) })
+              }
+              className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3"
+            />
+          </div>
+
+          {filteredMyCars.length === 0 ? (
+            <div className="rounded-2xl bg-slate-50 p-8 text-center">
+              <Car className="mx-auto mb-4 h-12 w-12 text-slate-300" />
+              <p className="text-slate-500">Henüz araç eklemediniz.</p>
+            </div>
+          ) : (
+            <div className="grid gap-4 md:grid-cols-3">
+              {filteredMyCars.map((car) => (
+                <div
+                  key={car.id}
+                  className="group relative rounded-2xl bg-white p-4 shadow-md"
+                >
+                  <div className="mb-3 flex h-32 items-center justify-center rounded-xl bg-slate-100 text-4xl">
+                    🚗
+                  </div>
+                  <h3 className="font-bold text-lg">
+                    {car.brand} {car.model}
+                  </h3>
+                  <p className="text-sm text-slate-500">
+                    {car.year} • {car.km?.toLocaleString()} km
+                  </p>
+                  <p className="mt-2 font-bold text-xl text-green-600">
+                    {car.price?.toLocaleString()} TL
+                  </p>
+                  <button
+                    onClick={() => removeMyCar(car.id)}
+                    className="absolute right-2 top-2 rounded-full bg-red-100 p-2 text-red-500 hover:bg-red-200"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      {showAddCar && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <div className="w-full max-w-md rounded-2xl bg-white p-6">
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="font-bold text-xl">2. El Araç Ekle</h3>
+              <button
+                onClick={() => setShowAddCar(false)}
+                className="rounded-full p-2 hover:bg-slate-100"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="space-y-4">
+              <input
+                type="text"
+                placeholder="Marka"
+                value={newCar.brand}
+                onChange={(e) =>
+                  setNewCar({ ...newCar, brand: e.target.value })
+                }
+                className="w-full rounded-xl border border-slate-200 px-4 py-3"
+              />
+              <input
+                type="text"
+                placeholder="Model"
+                value={newCar.model}
+                onChange={(e) =>
+                  setNewCar({ ...newCar, model: e.target.value })
+                }
+                className="w-full rounded-xl border border-slate-200 px-4 py-3"
+              />
+              <div className="grid grid-cols-2 gap-4">
+                <input
+                  type="number"
+                  placeholder="Yıl"
+                  value={newCar.year}
+                  onChange={(e) =>
+                    setNewCar({ ...newCar, year: Number(e.target.value) })
+                  }
+                  className="rounded-xl border border-slate-200 px-4 py-3"
+                />
+                <input
+                  type="number"
+                  placeholder="Km"
+                  value={newCar.km || ""}
+                  onChange={(e) =>
+                    setNewCar({ ...newCar, km: Number(e.target.value) })
+                  }
+                  className="rounded-xl border border-slate-200 px-4 py-3"
+                />
+              </div>
+              <input
+                type="number"
+                placeholder="Fiyat (TL)"
+                value={newCar.price || ""}
+                onChange={(e) =>
+                  setNewCar({ ...newCar, price: Number(e.target.value) })
+                }
+                className="w-full rounded-xl border border-slate-200 px-4 py-3"
+              />
+              <button
+                onClick={addMyCar}
+                className="w-full rounded-xl bg-green-600 px-6 py-3 font-bold text-white hover:bg-green-700"
+              >
+                Kaydet
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <section className="bg-white py-12 dark:bg-slate-800">
         <div className="container mx-auto max-w-6xl px-4">
