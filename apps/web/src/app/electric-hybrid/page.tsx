@@ -18,17 +18,7 @@ import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 import { Loader2 } from "lucide-react";
 
-declare global {
-  interface Navigator {
-    geolocation: {
-      getCurrentPosition: (
-        successCallback: (position: GeolocationPosition) => void,
-        errorCallback?: (error: GeolocationPositionError) => void,
-        options?: PositionOptions,
-      ) => void;
-    };
-  }
-}
+declare global {}
 import dealersData from "@/shared/data/dealers.json";
 
 const { dealers } = dealersData as {
@@ -59,16 +49,6 @@ const cityCoords: Record<string, { lat: number; lng: number }> = {
   Istanbul: { lat: 41.0082, lng: 28.9784 },
   Ankara: { lat: 39.9334, lng: 32.8597 },
   Izmir: { lat: 38.4192, lng: 27.1287 },
-  Bursa: { lat: 40.1826, lng: 29.0665 },
-  Antalya: { lat: 36.8969, lng: 30.7133 },
-  Adana: { lat: 37.0017, lng: 35.3213 },
-  Konya: { lat: 37.8746, lng: 32.4932 },
-  Gaziantep: { lat: 37.0662, lng: 37.3833 },
-  Kayseri: { lat: 38.7312, lng: 35.4787 },
-  Eskişehir: { lat: 39.7667, lng: 30.5256 },
-  İstanbul: { lat: 41.0082, lng: 28.9784 },
-  Ankara: { lat: 39.9334, lng: 32.8597 },
-  İzmir: { lat: 38.4192, lng: 27.1287 },
   Bursa: { lat: 40.1826, lng: 29.0665 },
   Antalya: { lat: 36.8969, lng: 30.7133 },
   Adana: { lat: 37.0017, lng: 35.3213 },

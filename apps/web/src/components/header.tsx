@@ -14,7 +14,7 @@ import {
 import { ModeToggle } from "./mode-toggle";
 import UserMenu from "./user-menu";
 
-const navItems = [
+const navItems: { href: string; icon: any; label: string }[] = [
   { href: "/", icon: Home, label: "Ana Sayfa" },
   { href: "/electric-hybrid", icon: Leaf, label: "Elektrikli" },
   { href: "/dealers?tab=sales", icon: Users, label: "Bayiler" },
@@ -38,7 +38,7 @@ export default function Header() {
             return (
               <Link
                 key={href}
-                href={href}
+                href={href as any}
                 className={`flex items-center gap-1 px-2 md:px-3 py-1.5 rounded-lg transition-colors whitespace-nowrap ${
                   isActive
                     ? "bg-blue-600 text-white"
