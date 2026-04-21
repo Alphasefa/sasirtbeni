@@ -969,7 +969,24 @@
   "jaguar": {
     "name": "Jaguar",
     "website": "https://www.jaguar.com.tr",
-    "models": ["XE", "XF", "F-PACE", "E-PACE", "I-PACE", "F-TYPE"],
+    "models": [
+      "E-PACE",
+      "F-PACE",
+      "F-TYPE",
+      "I-PACE",
+      "XE",
+      "XF",
+      "XF Sportbrake",
+      "XJ",
+      "XJR",
+      "X-Type",
+      "S-TYPE",
+      "XK8",
+      "XKR",
+      "Daimler",
+      "Sovereign",
+      "XJS"
+    ],
     "ads": [
       {
         "id": "jaguar-ipace",

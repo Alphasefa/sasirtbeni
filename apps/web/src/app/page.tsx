@@ -11,38 +11,20 @@ import {
   Leaf,
   Plus,
   Search,
+  Sparkles,
   Star,
   TrendingUp,
   Truck,
   Users,
   X,
 } from "lucide-react";
+import { getBrandLogo } from "@/shared/utils/brand-logos";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState, Suspense, useEffect } from "react";
 import AdBanner from "@/components/ad-banner";
 import vehicleData from "@/shared/data/vehicles.json";
 import dealersData from "@/shared/data/dealers.json";
-
-const brandImages: Record<string, string> = {
-  volkswagen:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/VW_Golf_VIII_IMG_3829.jpg/640px-VW_Golf_VIII_IMG_3829.jpg",
-  toyota:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Toyota_Corolla_%28E170%2C_North_America%29_1X7A5749.jpg/640px-Toyota_Corolla_%28E170%2C_North_America%29_1X7A5749.jpg",
-  bmw: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/BMW_F30_201803.jpg/640px-BMW_F30_201803.jpg",
-  mercedes:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Mercedes-Benz_W206_001.jpg/640px-Mercedes-Benz_W206_001.jpg",
-  audi: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Audi_A4_B9_1X7A0189.jpg/640px-Audi_A4_B9_1X7A0189.jpg",
-  hyundai:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Hyundai_Elantra_2016.jpg/640px-Hyundai_Elantra_2016.jpg",
-  renault:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Renault_Clio_VI_Intens_1.0_TCe_2023.jpg/640px-Renault_Clio_VI_Intens_1.0_TCe_2023.jpg",
-  fiat: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Fiat_500_MY2019_front.jpg/640px-Fiat_500_MY2019_front.jpg",
-  ford: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Ford_Focus_IV_ST-Line.jpg/640px-Ford_Focus_IV_ST-Line.jpg",
-  opel: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Opel_Astra_L_ecoTEC.jpg/640px-Opel_Astra_L_ecoTEC.jpg",
-  nissan:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/2021_Nissan_Qashqai_front_view.png/640px-2021_Nissan_Qashqai_front_view.png",
-};
 
 const { brands, models } = vehicleData as {
   brands: { id: string; name: string; country: string; logo: string }[];
@@ -79,6 +61,24 @@ const popularBrands = [
   "mercedes",
   "audi",
   "ford",
+];
+
+const luxuryBrands = [
+  "porsche",
+  "mercedes",
+  "bmw",
+  "audi",
+  "landrover",
+  "jaguar",
+  "lexus",
+  "maserati",
+  "bentley",
+  "rollsroyce",
+  "ferrari",
+  "lamborghini",
+  "astonmartin",
+  "mclaren",
+  "lotus",
 ];
 
 const featuredComparisons = [
@@ -499,22 +499,10 @@ function HomeContent() {
                 <Link
                   key={brandId}
                   href={`/compare/${brandId}/${brandModels[0]?.id || ""}`}
-                  className="group flex flex-col items-center gap-3 rounded-2xl bg-white p-3 shadow-sm transition-all hover:shadow-lg hover:scale-105 dark:bg-slate-800 overflow-hidden"
+                  className="group flex flex-col items-center gap-3 rounded-2xl bg-white p-6 shadow-sm transition-all hover:shadow-lg hover:scale-105 dark:bg-slate-800"
                 >
-                  <div className="relative h-24 w-full overflow-hidden rounded-xl">
-                    {brandImages[brandId] ? (
-                      <img
-                        src={brandImages[brandId]}
-                        alt={brand.name}
-                        className="h-full w-full object-cover"
-                      />
-                    ) : (
-                      <img
-                        src={countryFlags[brand.country]}
-                        alt={brand.name}
-                        className="h-full w-full object-contain p-2"
-                      />
-                    )}
+                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 text-2xl font-bold text-slate-600 dark:from-slate-700 dark:to-slate-600 dark:text-slate-300">
+                    {brand.name.charAt(0)}
                   </div>
                   <div className="text-center">
                     <h3 className="font-semibold text-slate-900 dark:text-white">
@@ -524,6 +512,64 @@ function HomeContent() {
                       {totalVersions} model
                     </p>
                   </div>
+                  <div className="flex items-center gap-1">
+                    <img
+                      src={countryFlags[brand.country]}
+                      alt=""
+                      className="h-4 w-6"
+                    />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-12">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="mb-8 flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100 text-purple-600 dark:bg-purple-900">
+              <Sparkles className="h-5 w-5" />
+            </div>
+            <div>
+              <h2 className="font-bold text-2xl text-slate-900 dark:text-white">
+                Lüks Markalar
+              </h2>
+              <p className="text-slate-500 dark:text-slate-400">
+                Premium ve lüks otomobil markaları
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
+            {luxuryBrands.map((brandId) => {
+              const brand = brands.find((b) => b.id === brandId);
+              if (!brand) return null;
+              const brandModels = models[brandId] || [];
+              const totalVersions = brandModels.reduce(
+                (acc, model) => acc + (model.versions?.length || 0),
+                0,
+              );
+              return (
+                <Link
+                  key={brand.id}
+                  href={`/compare/${brand.id}`}
+                  className="group flex flex-col gap-2 rounded-xl border border-slate-200 bg-white p-4 transition-all hover:border-purple-300 hover:shadow-lg dark:border-slate-700 dark:bg-slate-800"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-semibold text-slate-900 dark:text-white">
+                      {brand.name}
+                    </span>
+                    <img
+                      src={getBrandLogo(brand.id)}
+                      alt={brand.name}
+                      className="h-8 w-8 object-contain"
+                    />
+                  </div>
+                  <p className="text-sm text-slate-500">
+                    {totalVersions} versiya
+                  </p>
                 </Link>
               );
             })}
