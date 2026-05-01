@@ -15,21 +15,13 @@ const FALLBACK_RATES: ExchangeRates = {
 };
 
 const CACHE_KEY = "currency_rates";
-const CACHE_DURATION = 60 * 60 * 1000;
 
 function getCachedRates(): ExchangeRates | null {
   if (typeof window === "undefined") return null;
-  const cached = localStorage.getItem(CACHE_KEY);
-  if (!cached) return null;
 
-  try {
-    const data = JSON.parse(cached);
-    if (Date.now() - data.timestamp < CACHE_DURATION) {
-      return data.rates;
-    }
-  } catch {
-    return null;
-  }
+  // Clear old cache on first run
+  localStorage.removeItem(CACHE_KEY);
+
   return null;
 }
 
@@ -49,19 +41,28 @@ export async function fetchExchangeRates(): Promise<ExchangeRates> {
   if (cached) return cached;
 
   try {
-    const res = await fetch("https://api.exchangerate-api.com/v1/latest/USD", {
-      mode: "cors",
+    const res = await fetch("/api/trpc/vehicle.getExchangeRates", {
+      cache: "no-store",
     });
-    if (!res.ok) throw new Error("Failed to fetch rates");
+    if (res.ok) {
+      const json = await res.json();
+      const ratesData = json?.result?.data?.json;
+      if (ratesData) {
+        const rates: ExchangeRates = {
+          USD: ratesData.USD || 1,
+          EUR: ratesData.EUR || 1.08,
+          GBP: ratesData.GBP || 0.78,
+          updatedAt: new Date(),
+        };
+        setCachedRates(rates);
+        return rates;
+      }
+    }
+  } catch {
+    // Fallback to TCMB
+  }
 
-    const data = await res.json();
-    const rates: ExchangeRates = {
-      USD: 1,
-      EUR: data.rates.EUR || 1.08,
-      GBP: data.rates.GBP || 0.78,
-      updatedAt: new Date(),
-    };
-
+  try {
     const tryResim = await fetch(
       "https://api.tcmb.gov.tr/kurlar/today?type=json",
     );
@@ -71,18 +72,23 @@ export async function fetchExchangeRates(): Promise<ExchangeRates> {
       const eurRate = tcmbData.find((k: any) => k.D_Short_Code === "EUR");
 
       if (usdRate && eurRate) {
-        rates.USD = 1;
-        rates.EUR =
-          Number.parseFloat(usdRate.ForexSelling) /
-          Number.parseFloat(eurRate.ForexSelling);
+        const usd = Number.parseFloat(usdRate.ForexSelling);
+        const eur = Number.parseFloat(eurRate.ForexSelling);
+        const rates: ExchangeRates = {
+          USD: usd,
+          EUR: eur,
+          GBP: 60,
+          updatedAt: new Date(),
+        };
+        setCachedRates(rates);
+        return rates;
       }
     }
-
-    setCachedRates(rates);
-    return rates;
   } catch {
-    return FALLBACK_RATES;
+    // Fallback to default
   }
+
+  return FALLBACK_RATES;
 }
 
 export function useCurrency() {
@@ -101,9 +107,10 @@ export function useCurrency() {
   }, []);
 
   const convertToTRY = (amount: number, fromCurrency: string): number => {
-    if (fromCurrency === "TRY") return amount;
+    if (fromCurrency === "TRY" || fromCurrency === "TL") return amount;
     if (fromCurrency === "USD") return amount * rates.USD;
-    if (fromCurrency === "EUR") return amount * (rates.USD / rates.EUR);
+    if (fromCurrency === "EUR") return amount * rates.EUR;
+    if (fromCurrency === "GBP") return amount * rates.GBP;
     return amount;
   };
 
