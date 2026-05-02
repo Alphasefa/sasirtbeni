@@ -19,7 +19,7 @@ import {
   X,
 } from "lucide-react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { use, useEffect, useState } from "react";
 import {
@@ -158,6 +158,7 @@ export default function ComparePage({
   params: Promise<{ brand: string; model: string }>;
 }) {
   const { brand, model } = use(params);
+  const router = useRouter();
   const searchParams = useSearchParams();
   const versionParam = searchParams?.get("v");
   const { rates, isLoading, convertToTRY } = useCurrency();
@@ -385,13 +386,13 @@ export default function ComparePage({
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto max-w-5xl px-4 py-8">
-        <a
-          href={`/compare/${brand}`}
+        <button
+          onClick={() => router.back()}
           className="mb-6 inline-flex items-center gap-2 text-blue-600 hover:underline dark:text-blue-400"
         >
           <ArrowLeft className="h-4 w-4" />
           Geri
-        </a>
+        </button>
         <h1 className="mb-2 flex items-center gap-4 font-bold text-4xl text-slate-900 dark:text-white">
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-200 font-bold text-2xl text-slate-600 dark:bg-slate-600 dark:text-slate-300">
             {brandName.charAt(0)}

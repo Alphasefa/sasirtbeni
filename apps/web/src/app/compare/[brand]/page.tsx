@@ -2,6 +2,7 @@
 
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { use } from "react";
 import vehicleData from "@/shared/data/vehicles.json";
 import { brandStories } from "@/shared/data/stories";
@@ -23,18 +24,19 @@ export default function BrandModelsPage({
   params: Promise<{ brand: string }>;
 }) {
   const { brand } = use(params);
+  const router = useRouter();
   const brandModels = models[brand] || [];
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto max-w-5xl px-4 py-8">
-        <Link
-          href="/"
+        <button
+          onClick={() => router.back()}
           className="mb-4 inline-flex items-center gap-2 text-blue-600 hover:underline dark:text-blue-400"
         >
           <ArrowLeft className="h-4 w-4" />
           Geri
-        </Link>
+        </button>
         <div className="flex items-center gap-4">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-white font-bold text-xl">
             {brand.charAt(0).toUpperCase()}
