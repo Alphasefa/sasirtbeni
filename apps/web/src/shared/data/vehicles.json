@@ -744,16 +744,6 @@
         ]
       },
       {
-        "id": "q8",
-        "name": "Q8",
-        "versions": [
-          { "engine": "3.0 TDI", "hp": 286, "tr": 4850000, "de": 85990 },
-          { "engine": "3.0 TFSI", "hp": 340, "tr": 5250000, "de": 92990 },
-          { "engine": "4.0 TDI", "hp": 435, "tr": 6950000, "de": 119000 },
-          { "engine": "RS Q8", "hp": 600, "tr": 8750000, "de": 145000 }
-        ]
-      },
-      {
         "id": "e-tron",
         "name": "e-tron",
         "versions": [
