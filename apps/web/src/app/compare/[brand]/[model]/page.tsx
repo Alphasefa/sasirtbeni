@@ -198,7 +198,7 @@ export default function ComparePage({
         const priceSection = document.getElementById("price-comparison");
         if (priceSection) {
           const y =
-            priceSection.getBoundingClientRect().top + window.scrollY + 200;
+            priceSection.getBoundingClientRect().top + window.scrollY + 100;
           window.scrollTo({ top: y, behavior: "smooth" });
         }
       }, 300);
@@ -595,27 +595,31 @@ export default function ComparePage({
               />
             </div>
           )}
-        <div id="price-comparison" className="mb-8 grid gap-6 md:grid-cols-2">
-          <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
-            <div className="mb-4">
-              <h2 className="font-semibold dark:text-white">Türkiye</h2>
-              <p className="text-slate-500 text-sm">Vitrin fiyatı</p>
+        <div id="price-comparison" className="mb-6 grid gap-4 md:grid-cols-2">
+          <div className="rounded-xl bg-white p-4 shadow-md dark:bg-slate-800">
+            <div className="mb-2">
+              <h2 className="font-semibold text-base dark:text-white">
+                🇹🇷 Türkiye
+              </h2>
+              <p className="text-slate-500 text-xs">Vitrin fiyatı</p>
             </div>
-            <div className="font-bold text-3xl text-slate-900 dark:text-white">
+            <div className="font-bold text-2xl text-slate-900 dark:text-white">
               {formatCurrency(trPrice)}
             </div>
           </div>
 
-          <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
-            <div className="mb-4">
-              <h2 className="font-semibold dark:text-white">Almanya</h2>
-              <p className="text-slate-500 text-sm">mobile.de</p>
+          <div className="rounded-xl bg-white p-4 shadow-md dark:bg-slate-800">
+            <div className="mb-2">
+              <h2 className="font-semibold text-base dark:text-white">
+                🇩🇪 Almanya
+              </h2>
+              <p className="text-slate-500 text-xs">mobile.de</p>
             </div>
-            <div className="font-bold text-3xl text-slate-900 dark:text-white">
+            <div className="font-bold text-2xl text-slate-900 dark:text-white">
               €{currentData?.de.toLocaleString()}
             </div>
-            <div className="mt-1 text-slate-500 text-sm">
-              ≈ {formatCurrency(dePriceTRY)} (kur dönüşümü)
+            <div className="text-slate-500 text-xs">
+              ≈ {formatCurrency(dePriceTRY)}
             </div>
           </div>
         </div>
