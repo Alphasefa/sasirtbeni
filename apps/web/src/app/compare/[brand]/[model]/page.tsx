@@ -197,7 +197,9 @@ export default function ComparePage({
       setTimeout(() => {
         const priceSection = document.getElementById("price-comparison");
         if (priceSection) {
-          priceSection.scrollIntoView({ behavior: "smooth", block: "center" });
+          const y =
+            priceSection.getBoundingClientRect().top + window.scrollY + 200;
+          window.scrollTo({ top: y, behavior: "smooth" });
         }
       }, 300);
     }
