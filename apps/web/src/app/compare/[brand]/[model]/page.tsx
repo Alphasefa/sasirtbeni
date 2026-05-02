@@ -441,21 +441,26 @@ export default function ComparePage({
             </div>
           )}
         </div>
-        <div className="mb-8 rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
-          <label className="mb-4 block font-medium text-slate-700 text-sm dark:text-slate-200">
-            Versiyon Seç
-          </label>
-          <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+        <div className="mb-8 rounded-xl bg-white p-6 shadow-lg ring-2 ring-blue-200 dark:bg-slate-800 dark:ring-slate-700">
+          <div className="mb-4 flex items-center gap-2">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
+              <Check className="h-5 w-5" />
+            </span>
+            <label className="font-bold text-slate-900 text-lg dark:text-white">
+              Versiyon Seç
+            </label>
+          </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {data.map((item, idx) => (
               <button
                 key={idx}
                 onClick={() =>
                   setSelectedVersion(selectedVersion === idx ? null : idx)
                 }
-                className={`relative rounded-lg p-4 text-left transition-all ${
+                className={`relative flex flex-col items-start rounded-xl border-2 p-5 text-left transition-all hover:scale-[1.02] ${
                   selectedVersion === idx
-                    ? "bg-blue-600 text-white"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600"
+                    ? "border-blue-600 bg-blue-600 text-white shadow-lg shadow-blue-200"
+                    : "border-slate-200 bg-slate-50 text-slate-700 hover:border-blue-400 hover:bg-blue-50 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200 dark:hover:border-blue-400"
                 }`}
               >
                 <div
@@ -463,20 +468,25 @@ export default function ComparePage({
                     e.stopPropagation();
                     toggleFavorite(idx);
                   }}
-                  className={`absolute right-2 top-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-colors ${
+                  className={`absolute right-3 top-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-colors ${
                     isFavorite(idx)
                       ? "bg-yellow-400 text-white"
-                      : "bg-slate-200/50 text-slate-400 hover:bg-slate-300"
+                      : "bg-slate-200/70 text-slate-500 hover:bg-yellow-200 hover:text-yellow-600"
                   }`}
                 >
-                  <Star className="h-4 w-4" />
+                  <Star className="h-5 w-5" />
                 </div>
-                <div className="font-semibold">{item.engine}</div>
+                <div className="mb-1 font-bold text-xl">{item.engine}</div>
                 <div
-                  className={`text-sm ${selectedVersion === idx ? "text-blue-100" : "text-slate-500"}`}
+                  className={`text-base font-medium ${selectedVersion === idx ? "text-blue-200" : "text-blue-600"}`}
                 >
                   {item.hp} HP
                 </div>
+                {selectedVersion !== idx && (
+                  <div className="mt-2 rounded bg-slate-200 px-2 py-1 text-xs font-medium text-slate-600 dark:bg-slate-600 dark:text-slate-300">
+                    Tıklayarak seç
+                  </div>
+                )}
               </button>
             ))}
           </div>
