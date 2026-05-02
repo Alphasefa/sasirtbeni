@@ -197,7 +197,7 @@ export default function ComparePage({
       setTimeout(() => {
         const priceSection = document.getElementById("price-comparison");
         if (priceSection) {
-          const yOffset = 100;
+          const yOffset = 50;
           const y =
             priceSection.getBoundingClientRect().top +
             window.pageYOffset +
