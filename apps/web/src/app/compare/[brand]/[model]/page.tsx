@@ -418,9 +418,9 @@ export default function ComparePage({
             {modelStories[`${brand}-${model}`] || brandStories[brand]}
           </p>
         )}
-        {currentData && (
-          <div className="mb-8">
-            <AdBanner slot={`hero-${brand}`} brand={brand} />
+        <div className="mb-8">
+          <AdBanner slot={`hero-${brand}`} brand={brand} />
+          {currentData && (
             <div className="mt-4 flex items-center justify-between rounded-lg bg-white px-4 py-3 shadow dark:bg-slate-800">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-600 dark:bg-blue-900 dark:text-blue-300">
@@ -439,8 +439,8 @@ export default function ComparePage({
                 {formatCurrency(currentData.tr)}
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
         <div className="mb-8 rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
           <label className="mb-4 block font-medium text-slate-700 text-sm dark:text-slate-200">
             Versiyon Seç
