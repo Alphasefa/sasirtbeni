@@ -1362,7 +1362,12 @@ function DealersContent() {
 
 export default function DealersPage() {
   return (
-    <Suspense fallback={<div className="p-8">Loading...</div>}>
+    <Suspense key={Date.now()} fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-slate-500">Yükleniyor...</div></div>}>
+      <DealersContent />
+    </Suspense>
+  );
+}
+    >
       <DealersContent />
     </Suspense>
   );
