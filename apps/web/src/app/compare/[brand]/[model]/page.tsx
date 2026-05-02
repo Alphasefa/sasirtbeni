@@ -414,62 +414,23 @@ export default function ComparePage({
           Fiyat karşılaştırması • {currentData?.engine}
         </p>
         {brandWebsites[brandName.toLowerCase()] && (
-          <div className="mb-6 overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-[2px]">
-            <div className="rounded-xl bg-white p-5 dark:bg-slate-800">
-              <div className="mb-3 flex items-center justify-between">
-                <span className="flex items-center gap-2 font-bold text-lg text-slate-800 dark:text-white">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
-                    🔗
-                  </span>
-                  Resmi Web Siteleri
-                </span>
-                <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-bold text-green-700 dark:bg-green-900 dark:text-green-300">
-                  ✓ Tıkla ve ziyaret et
-                </span>
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <a
-                  href={brandWebsites[brandName.toLowerCase()].tr}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 p-4 text-white shadow-lg transition-all hover:scale-[1.02] hover:from-blue-600 hover:to-blue-700 hover:shadow-xl"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 text-2xl">
-                      🇹🇷
-                    </span>
-                    <div>
-                      <div className="font-bold">Türkiye</div>
-                      <div className="text-xs text-white/80">
-                        Fiyat ve satış
-                      </div>
-                    </div>
-                  </div>
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </a>
-                <a
-                  href={brandWebsites[brandName.toLowerCase()].global}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between rounded-xl bg-gradient-to-r from-slate-600 to-slate-700 p-4 text-white shadow-lg transition-all hover:scale-[1.02] hover:from-slate-700 hover:to-slate-800 hover:shadow-xl dark:from-slate-500 dark:to-slate-600"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 text-2xl">
-                      🌍
-                    </span>
-                    <div>
-                      <div className="font-bold">Global</div>
-                      <div className="text-xs text-white/80">Dünya geneli</div>
-                    </div>
-                  </div>
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
-                </a>
-              </div>
-            </div>
+          <div className="mb-6 flex flex-wrap gap-3">
+            <a
+              href={brandWebsites[brandName.toLowerCase()].tr}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+            >
+              🇹🇷 Türkiye Web Sitesi
+            </a>
+            <a
+              href={brandWebsites[brandName.toLowerCase()].global}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-slate-600 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700"
+            >
+              🌍 Global Web Sitesi
+            </a>
           </div>
         )}
         {(brandStories[brand] || modelStories[`${brand}-${model}`]) && (
