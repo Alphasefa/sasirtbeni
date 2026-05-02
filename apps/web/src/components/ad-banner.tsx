@@ -71,7 +71,7 @@ export default function AdBanner({ slot }: { slot: string }) {
   const brandId = params?.brand as string;
 
   const getAds = (): BrandAd[] => {
-    if (!brandId) return defaultAds;
+    if (!brandId) return [];
 
     let brandKey = brandId.toLowerCase();
     brandKey = brandKeyMap[brandKey] || brandKey;
@@ -82,11 +82,15 @@ export default function AdBanner({ slot }: { slot: string }) {
       return brandData.ads;
     }
 
-    return defaultAds;
+    return [];
   };
 
   const ads = getAds();
   const [currentAdIndex, setCurrentAdIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentAdIndex(0);
+  }, [brandId]);
 
   useEffect(() => {
     if (ads.length <= 1) return;
@@ -101,6 +105,10 @@ export default function AdBanner({ slot }: { slot: string }) {
   const ad = ads[currentAdIndex] || ads[0];
 
   if (slot.includes("hero")) {
+    if (ads.length === 0) {
+      return null;
+    }
+
     return (
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800">
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30" />
