@@ -44,7 +44,7 @@ export default function RootLayout({
         <Providers>
           <div className="grid h-svh grid-rows-[auto_1fr]">
             <SiteHeader />
-            {children}
+            <main className="overflow-y-auto pt-16">{children}</main>
           </div>
           <ScrollToTop />
         </Providers>
