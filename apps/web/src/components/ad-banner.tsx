@@ -112,6 +112,10 @@ export default function AdBanner({
 
   const ad = ads[currentAdIndex] || ads[0];
 
+  if (!ad) {
+    return null;
+  }
+
   if (slot.includes("hero")) {
     if (ads.length === 0) {
       return null;
