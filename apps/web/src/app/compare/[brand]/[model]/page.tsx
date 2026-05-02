@@ -461,6 +461,16 @@ export default function ComparePage({
             </div>
           )}
         </div>
+        {selectedVersion === null && (
+          <div className="mb-6 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 p-4 text-center text-white shadow-lg">
+            <span className="font-bold text-lg">
+              👇 Aşağıdaki versiyonlardan birini seçin
+            </span>
+            <p className="mt-1 text-sm text-white/90">
+              Fiyatları görmek için versiyon seçmeniz gerekiyor
+            </p>
+          </div>
+        )}
         <div className="mb-8 rounded-xl bg-white p-6 shadow-lg ring-2 ring-blue-200 dark:bg-slate-800 dark:ring-slate-700">
           <div className="mb-4 flex items-center gap-2">
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
