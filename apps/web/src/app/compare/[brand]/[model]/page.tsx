@@ -585,7 +585,7 @@ export default function ComparePage({
         {brand === "alfaromeo" &&
           model === "tonale" &&
           selectedVersion !== null && (
-            <div className="mb-6 mx-auto max-w-4xl overflow-hidden rounded-xl">
+            <div className="mb-6 overflow-hidden rounded-xl">
               <iframe
                 className="aspect-video w-full"
                 src="https://www.youtube.com/embed/poYON3zPDik"
