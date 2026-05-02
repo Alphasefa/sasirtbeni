@@ -392,7 +392,7 @@ export default function ComparePage({
         <p className="mb-2 text-lg text-slate-500 dark:text-slate-400">
           Fiyat karşılaştırması • {currentData?.engine}
         </p>
-        {selectedVersion !== null && brandWebsites[brandName.toLowerCase()] && (
+        {brandWebsites[brandName.toLowerCase()] && (
           <div className="mb-6 flex flex-wrap gap-3">
             <a
               href={brandWebsites[brandName.toLowerCase()].tr}
