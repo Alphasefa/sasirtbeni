@@ -1,6 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import brandAdsData from "@/shared/data/brand-ads.json";
 
@@ -85,16 +86,19 @@ export default function AdBanner({ slot }: { slot: string }) {
   };
 
   const ads = getAds();
+  const [currentAdIndex, setCurrentAdIndex] = useState(0);
 
-  const getAdBySlot = () => {
-    const hash = slot.split("").reduce((acc, char) => {
-      return char.charCodeAt(0) + ((acc << 5) - acc);
-    }, 0);
-    const index = Math.abs(hash) % ads.length;
-    return ads[index];
-  };
+  useEffect(() => {
+    if (ads.length <= 1) return;
 
-  const ad = getAdBySlot();
+    const interval = setInterval(() => {
+      setCurrentAdIndex((prev) => (prev + 1) % ads.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [ads.length]);
+
+  const ad = ads[currentAdIndex] || ads[0];
 
   if (slot.includes("hero")) {
     return (
@@ -114,7 +118,10 @@ export default function AdBanner({ slot }: { slot: string }) {
           <div className="mb-2 flex items-center gap-2">
             <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
               {brandId
-                ? brandAds[brandId.toLowerCase()]?.name || brandId.toUpperCase()
+                ? (brandKeyMap[brandId.toLowerCase()]
+                    ? brandAds[brandKeyMap[brandId.toLowerCase()]]?.name
+                    : brandAds[brandId.toLowerCase()]?.name) ||
+                  brandId.toUpperCase()
                 : "Reklam"}
             </span>
           </div>
@@ -133,6 +140,19 @@ export default function AdBanner({ slot }: { slot: string }) {
             {ad.cta} →
           </a>
         </div>
+        {ads.length > 1 && (
+          <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+            {ads.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentAdIndex(idx)}
+                className={`h-2 rounded-full transition-all ${
+                  idx === currentAdIndex ? "w-6 bg-white" : "w-2 bg-white/50"
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     );
   }
