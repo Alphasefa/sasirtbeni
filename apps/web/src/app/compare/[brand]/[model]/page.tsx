@@ -192,6 +192,17 @@ export default function ComparePage({
     }
   }, []);
 
+  useEffect(() => {
+    if (selectedVersion !== null) {
+      setTimeout(() => {
+        const priceSection = document.getElementById("price-comparison");
+        if (priceSection) {
+          priceSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    }
+  }, [selectedVersion]);
+
   const toggleFavorite = (idx: number) => {
     const key = `${brand}|${model}|${idx}`;
     const currentPrice = data[idx];
@@ -582,7 +593,7 @@ export default function ComparePage({
               />
             </div>
           )}
-        <div className="mb-8 grid gap-6 md:grid-cols-2">
+        <div id="price-comparison" className="mb-8 grid gap-6 md:grid-cols-2">
           <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
             <div className="mb-4">
               <h2 className="font-semibold dark:text-white">Türkiye</h2>
