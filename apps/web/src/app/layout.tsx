@@ -44,10 +44,8 @@ export default function RootLayout({
       >
         <Providers>
           <ScrollRestoration />
-          <div className="grid h-svh grid-rows-[auto_1fr]">
-            <SiteHeader />
-            <main className="overflow-y-auto pt-16">{children}</main>
-          </div>
+          <SiteHeader />
+          <main className="min-h-screen pt-16">{children}</main>
           <ScrollToTop />
         </Providers>
       </body>

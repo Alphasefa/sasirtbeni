@@ -1,51 +1,34 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 export default function ScrollRestoration() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const [mounted, setMounted] = useState(false);
-  const positions = useRef<Map<string, number>>(new Map());
-
   useEffect(() => {
-    setMounted(true);
+    window.history.scrollRestoration = "manual";
   }, []);
 
-  useEffect(() => {
-    if (!mounted) return;
-
-    const key = pathname + "?" + searchParams.toString();
-    const saved = sessionStorage.getItem("scroll_" + key);
-
-    if (saved) {
-      setTimeout(() => {
-        const main = document.querySelector("main");
-        if (main) {
-          main.scrollTo(0, parseInt(saved));
-        }
-      }, 100);
+  return null;
+}
+        });
+      }
     }
-  }, [pathname, searchParams, mounted]);
+    initialized.current = true;
+  }, [pathname]);
 
   useEffect(() => {
-    if (!mounted) return;
+    const main = document.querySelector("main");
+    if (!main) return;
 
-    const handleScroll = () => {
-      const main = document.querySelector("main");
-      if (!main) return;
-
-      const key = pathname + "?" + searchParams.toString();
-      sessionStorage.setItem("scroll_" + key, main.scrollTop.toString());
+    const saveScroll = () => {
+      sessionStorage.setItem(
+        "scrollPos_" + pathname,
+        main.scrollTop.toString(),
+      );
     };
 
-    const main = document.querySelector("main");
-    if (main) {
-      main.addEventListener("scroll", handleScroll, { passive: true });
-      return () => main.removeEventListener("scroll", handleScroll);
-    }
-  }, [pathname, searchParams, mounted]);
+    main.addEventListener("scroll", saveScroll, { passive: true });
+    return () => main.removeEventListener("scroll", saveScroll);
+  }, [pathname]);
 
   return null;
 }
