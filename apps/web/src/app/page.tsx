@@ -498,7 +498,7 @@ function HomeContent() {
               return (
                 <Link
                   key={brandId}
-                  href={`/compare/${brandId}/${brandModels[0]?.id || ""}`}
+                  href={`/compare/${brandId}`}
                   className="group flex flex-col items-center gap-3 rounded-2xl bg-white p-6 shadow-sm transition-all hover:shadow-lg hover:scale-105 dark:bg-slate-800"
                 >
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 text-2xl font-bold text-slate-600 dark:from-slate-700 dark:to-slate-600 dark:text-slate-300">
@@ -562,7 +562,7 @@ function HomeContent() {
                       {brand.name}
                     </span>
                     <img
-                      src={getBrandLogo(brand.id)}
+                      src={getBrandLogo(brand.id) || undefined}
                       alt={brand.name}
                       className="h-8 w-8 object-contain"
                     />
