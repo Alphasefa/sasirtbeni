@@ -29,7 +29,7 @@ export default function BrandModelsPage({
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto max-w-5xl px-4 py-8">
         <Link
-          href={`/dealers?tab=overseas&brand=${brand}`}
+          href="/"
           className="mb-4 inline-flex items-center gap-2 text-blue-600 hover:underline dark:text-blue-400"
         >
           <ArrowLeft className="h-4 w-4" />
