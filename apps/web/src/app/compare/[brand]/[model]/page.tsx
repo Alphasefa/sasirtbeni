@@ -32,6 +32,7 @@ import {
 import vehicleData from "@/shared/data/vehicles.json";
 import dealersData from "@/shared/data/dealers.json";
 import { brandStories, modelStories } from "@/shared/data/stories";
+import AdBanner from "@/components/ad-banner";
 import { useCurrency } from "@/shared/utils/useCurrency";
 
 const { brands, models } = vehicleData as {
@@ -86,6 +87,71 @@ const countryFlags: Record<string, string> = {
   IR: "https://flagcdn.com/w40/ir.png",
 };
 
+const brandWebsites: Record<string, { tr: string; global: string }> = {
+  "alfa romeo": {
+    tr: "https://www.alfaromeo.com.tr",
+    global: "https://www.alfaromeo.com/",
+  },
+  audi: {
+    tr: "https://www.audi.com/tr/tr.html",
+    global: "https://www.audi.com",
+  },
+  bmw: { tr: "https://www.bmw.com.tr", global: "https://www.bmw.com" },
+  citroen: {
+    tr: "https://www.citroen.com.tr",
+    global: "https://www.citroen.com",
+  },
+  cupra: { tr: "https://www.cupra.com.tr", global: "https://www.cupra.com" },
+  dacia: { tr: "https://www.dacia.com.tr", global: "https://www.dacia.com" },
+  fiat: { tr: "https://www.fiat.com.tr", global: "https://www.fiat.com" },
+  ford: { tr: "https://www.ford.com.tr", global: "https://www.ford.com" },
+  hyundai: {
+    tr: "https://www.hyundai.com/tr",
+    global: "https://www.hyundai.com",
+  },
+  jeep: { tr: "https://www.jeep.com.tr", global: "https://www.jeep.com" },
+  kia: { tr: "https://www.kia.com/tr", global: "https://www.kia.com" },
+  landrover: {
+    tr: "https://www.landrover.com.tr",
+    global: "https://www.landrover.com",
+  },
+  mercedes: {
+    tr: "https://www.mercedes-benz.com.tr",
+    global: "https://www.mbusa.com",
+  },
+  mini: { tr: "https://www.mini.com.tr", global: "https://www.mini.com" },
+  nissan: {
+    tr: "https://www.nissan.com.tr",
+    global: "https://www.nissanusa.com",
+  },
+  opel: { tr: "https://www.opel.com.tr", global: "https://www.opel.com" },
+  peugeot: {
+    tr: "https://www.peugeot.com.tr",
+    global: "https://www.peugeot.com",
+  },
+  porsche: {
+    tr: "https://www.porsche.com.tr",
+    global: "https://www.porsche.com",
+  },
+  renault: {
+    tr: "https://www.renault.com.tr",
+    global: "https://www.renault.com",
+  },
+  seat: { tr: "https://www.seat.com.tr", global: "https://www.seat.com" },
+  skoda: {
+    tr: "https://www.skoda.com.tr",
+    global: "https://www.skoda-auto.com",
+  },
+  smart: { tr: "https://www.smart.com.tr", global: "https://www.smart.com" },
+  suzuki: { tr: "https://www.suzuki.com.tr", global: "https://www.suzuki.com" },
+  tesla: { tr: "https://www.tesla.com/tr", global: "https://www.tesla.com" },
+  tiggo: { tr: "https://www.tiggo.com.tr", global: "https://www.tiggo.com" },
+  togg: { tr: "https://www.togg.com.tr", global: "https://www.togg.com.tr" },
+  volvo: { tr: "https://www.volvo.com.tr", global: "https://www.volvo.com" },
+  volkswagen: { tr: "https://www.vw.com.tr", global: "https://www.vw.com" },
+  byd: { tr: "https://www.byd.com/tr", global: "https://www.byd.com" },
+};
+
 export default function ComparePage({
   params,
 }: {
@@ -125,6 +191,22 @@ export default function ComparePage({
       } catch {}
     }
   }, []);
+
+  useEffect(() => {
+    if (selectedVersion !== null) {
+      setTimeout(() => {
+        const priceSection = document.getElementById("price-comparison");
+        if (priceSection) {
+          const yOffset = -150;
+          const y =
+            priceSection.getBoundingClientRect().top +
+            window.pageYOffset +
+            yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      }, 300);
+    }
+  }, [selectedVersion]);
 
   const toggleFavorite = (idx: number) => {
     const key = `${brand}|${model}|${idx}`;
@@ -327,43 +409,74 @@ export default function ComparePage({
         <p className="mb-2 text-lg text-slate-500 dark:text-slate-400">
           Fiyat karşılaştırması • {currentData?.engine}
         </p>
+        {brandWebsites[brandName.toLowerCase()] && (
+          <div className="mb-6 flex flex-wrap gap-3">
+            <a
+              href={brandWebsites[brandName.toLowerCase()].tr}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+            >
+              🇹🇷 Türkiye Web Sitesi
+            </a>
+            <a
+              href={brandWebsites[brandName.toLowerCase()].global}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-slate-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-slate-700"
+            >
+              🌍 Global Web Sitesi
+            </a>
+          </div>
+        )}
         {(brandStories[brand] || modelStories[`${brand}-${model}`]) && (
           <p className="mb-8 text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
             {modelStories[`${brand}-${model}`] || brandStories[brand]}
           </p>
         )}
-        {currentData && (
-          <div className="mb-8 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800">
-            <div className="relative h-64 w-full bg-gradient-to-b from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800">
-              <div className="flex h-full w-full items-center justify-center">
-                <div className="flex items-center justify-center rounded-2xl bg-slate-300 font-bold text-6xl text-slate-500 dark:bg-slate-600 dark:text-slate-400">
+        <div className="mb-8">
+          <AdBanner slot={`hero-${brand}`} brand={brand} />
+          {currentData && (
+            <div className="mt-4 flex items-center justify-between rounded-lg bg-white px-4 py-3 shadow dark:bg-slate-800">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-600 dark:bg-blue-900 dark:text-blue-300">
                   {brandName.charAt(0)}
                 </div>
+                <div>
+                  <div className="font-medium text-slate-900 dark:text-white">
+                    {brandName} {modelName}
+                  </div>
+                  <div className="text-sm text-slate-500">
+                    {currentData.engine} • {currentData.hp} HP
+                  </div>
+                </div>
               </div>
-              <div className="absolute bottom-4 left-4 rounded-lg bg-black/70 px-4 py-2 text-white">
-                <span className="font-bold">{brandName}</span> {modelName}
-              </div>
-              <div className="absolute right-4 bottom-4 rounded-lg bg-blue-600 px-4 py-2 text-white">
-                {currentData.engine} • {currentData.hp} HP
+              <div className="font-bold text-blue-600 dark:text-blue-400">
+                {formatCurrency(currentData.tr)}
               </div>
             </div>
+          )}
+        </div>
+        <div className="mb-8 rounded-xl bg-white p-6 shadow-lg ring-2 ring-blue-200 dark:bg-slate-800 dark:ring-slate-700">
+          <div className="mb-4 flex items-center gap-2">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
+              <Check className="h-5 w-5" />
+            </span>
+            <label className="font-bold text-slate-900 text-lg dark:text-white">
+              Versiyon Seç
+            </label>
           </div>
-        )}
-        <div className="mb-8 rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
-          <label className="mb-4 block font-medium text-slate-700 text-sm dark:text-slate-200">
-            Versiyon Seç
-          </label>
-          <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {data.map((item, idx) => (
               <button
                 key={idx}
                 onClick={() =>
                   setSelectedVersion(selectedVersion === idx ? null : idx)
                 }
-                className={`relative rounded-lg p-4 text-left transition-all ${
+                className={`relative flex flex-col items-start rounded-xl border-2 p-5 text-left transition-all hover:scale-[1.02] ${
                   selectedVersion === idx
-                    ? "bg-blue-600 text-white"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600"
+                    ? "border-blue-600 bg-blue-600 text-white shadow-lg shadow-blue-200"
+                    : "border-slate-200 bg-slate-50 text-slate-700 hover:border-blue-400 hover:bg-blue-50 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200 dark:hover:border-blue-400"
                 }`}
               >
                 <div
@@ -371,20 +484,25 @@ export default function ComparePage({
                     e.stopPropagation();
                     toggleFavorite(idx);
                   }}
-                  className={`absolute right-2 top-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full transition-colors ${
+                  className={`absolute right-3 top-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-colors ${
                     isFavorite(idx)
                       ? "bg-yellow-400 text-white"
-                      : "bg-slate-200/50 text-slate-400 hover:bg-slate-300"
+                      : "bg-slate-200/70 text-slate-500 hover:bg-yellow-200 hover:text-yellow-600"
                   }`}
                 >
-                  <Star className="h-4 w-4" />
+                  <Star className="h-5 w-5" />
                 </div>
-                <div className="font-semibold">{item.engine}</div>
+                <div className="mb-1 font-bold text-xl">{item.engine}</div>
                 <div
-                  className={`text-sm ${selectedVersion === idx ? "text-blue-100" : "text-slate-500"}`}
+                  className={`text-base font-medium ${selectedVersion === idx ? "text-blue-200" : "text-blue-600"}`}
                 >
                   {item.hp} HP
                 </div>
+                {selectedVersion !== idx && (
+                  <div className="mt-2 rounded bg-slate-200 px-2 py-1 text-xs font-medium text-slate-600 dark:bg-slate-600 dark:text-slate-300">
+                    Tıklayarak seç
+                  </div>
+                )}
               </button>
             ))}
           </div>
@@ -480,7 +598,7 @@ export default function ComparePage({
               />
             </div>
           )}
-        <div className="mb-8 grid gap-6 md:grid-cols-2">
+        <div id="price-comparison" className="mb-8 grid gap-6 md:grid-cols-2">
           <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
             <div className="mb-4">
               <h2 className="font-semibold dark:text-white">Türkiye</h2>
