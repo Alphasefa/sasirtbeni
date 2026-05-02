@@ -381,13 +381,13 @@ export default function ComparePage({
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto max-w-5xl px-4 py-8">
-        <button
-          onClick={() => router.back()}
+        <Link
+          href={`/compare/${brand}`}
           className="mb-6 inline-flex items-center gap-2 text-blue-600 hover:underline dark:text-blue-400"
         >
           <ArrowLeft className="h-4 w-4" />
           Geri
-        </button>
+        </Link>
         <h1 className="mb-2 flex items-center gap-4 font-bold text-4xl text-slate-900 dark:text-white">
           <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-200 font-bold text-2xl text-slate-600 dark:bg-slate-600 dark:text-slate-300">
             {brandName.charAt(0)}
