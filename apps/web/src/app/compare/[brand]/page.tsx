@@ -36,7 +36,7 @@ export default function BrandModelsPage({
         >
           <ArrowLeft className="h-4 w-4" />
           Geri
-        </button>
+        </Link>
         <div className="flex items-center gap-4">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-white font-bold text-xl">
             {brand.charAt(0).toUpperCase()}
