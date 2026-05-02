@@ -32,6 +32,7 @@ import {
 import vehicleData from "@/shared/data/vehicles.json";
 import dealersData from "@/shared/data/dealers.json";
 import { brandStories, modelStories } from "@/shared/data/stories";
+import AdBanner from "@/components/ad-banner";
 import { useCurrency } from "@/shared/utils/useCurrency";
 
 const { brands, models } = vehicleData as {
@@ -418,18 +419,24 @@ export default function ComparePage({
           </p>
         )}
         {currentData && (
-          <div className="mb-8 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800">
-            <div className="relative h-64 w-full bg-gradient-to-b from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800">
-              <div className="flex h-full w-full items-center justify-center">
-                <div className="flex items-center justify-center rounded-2xl bg-slate-300 font-bold text-6xl text-slate-500 dark:bg-slate-600 dark:text-slate-400">
+          <div className="mb-8">
+            <AdBanner slot={`hero-${brand}`} />
+            <div className="mt-4 flex items-center justify-between rounded-lg bg-white px-4 py-3 shadow dark:bg-slate-800">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-600 dark:bg-blue-900 dark:text-blue-300">
                   {brandName.charAt(0)}
                 </div>
+                <div>
+                  <div className="font-medium text-slate-900 dark:text-white">
+                    {brandName} {modelName}
+                  </div>
+                  <div className="text-sm text-slate-500">
+                    {currentData.engine} • {currentData.hp} HP
+                  </div>
+                </div>
               </div>
-              <div className="absolute bottom-4 left-4 rounded-lg bg-black/70 px-4 py-2 text-white">
-                <span className="font-bold">{brandName}</span> {modelName}
-              </div>
-              <div className="absolute right-4 bottom-4 rounded-lg bg-blue-600 px-4 py-2 text-white">
-                {currentData.engine} • {currentData.hp} HP
+              <div className="font-bold text-blue-600 dark:text-blue-400">
+                {formatCurrency(currentData.tr)}
               </div>
             </div>
           </div>
