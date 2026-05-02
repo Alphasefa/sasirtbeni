@@ -86,36 +86,69 @@ const countryFlags: Record<string, string> = {
   IR: "https://flagcdn.com/w40/ir.png",
 };
 
-const brandWebsites: Record<string, string> = {
-  "alfa romeo": "https://www.alfaromeo.com/",
-  audi: "https://www.audi.com/tr/tr.html",
-  bmw: "https://www.bmw.com.tr",
-  citroen: "https://www.citroen.com.tr",
-  cupra: "https://www.cupra.com.tr",
-  dacia: "https://www.dacia.com.tr",
-  fiat: "https://www.fiat.com.tr",
-  ford: "https://www.ford.com.tr",
-  hyundai: "https://www.hyundai.com/tr",
-  jeep: "https://www.jeep.com.tr",
-  kia: "https://www.kia.com/tr",
-  landrover: "https://www.landrover.com.tr",
-  mercedes: "https://www.mercedes-benz.com.tr",
-  mini: "https://www.mini.com.tr",
-  nissan: "https://www.nissan.com.tr",
-  opel: "https://www.opel.com.tr",
-  peugeot: "https://www.peugeot.com.tr",
-  porsche: "https://www.porsche.com.tr",
-  renault: "https://www.renault.com.tr",
-  seat: "https://www.seat.com.tr",
-  skoda: "https://www.skoda.com.tr",
-  smart: "https://www.smart.com.tr",
-  suzuki: "https://www.suzuki.com.tr",
-  tesla: "https://www.tesla.com/tr",
-  tiggo: "https://www.tiggo.com.tr",
-  togg: "https://www.togg.com.tr",
-  volvo: "https://www.volvo.com.tr",
-  volkswagen: "https://www.vw.com.tr",
-  byd: "https://www.byd.com/tr",
+const brandWebsites: Record<string, { tr: string; global: string }> = {
+  "alfa romeo": {
+    tr: "https://www.alfaromeo.com.tr",
+    global: "https://www.alfaromeo.com/",
+  },
+  audi: {
+    tr: "https://www.audi.com/tr/tr.html",
+    global: "https://www.audi.com",
+  },
+  bmw: { tr: "https://www.bmw.com.tr", global: "https://www.bmw.com" },
+  citroen: {
+    tr: "https://www.citroen.com.tr",
+    global: "https://www.citroen.com",
+  },
+  cupra: { tr: "https://www.cupra.com.tr", global: "https://www.cupra.com" },
+  dacia: { tr: "https://www.dacia.com.tr", global: "https://www.dacia.com" },
+  fiat: { tr: "https://www.fiat.com.tr", global: "https://www.fiat.com" },
+  ford: { tr: "https://www.ford.com.tr", global: "https://www.ford.com" },
+  hyundai: {
+    tr: "https://www.hyundai.com/tr",
+    global: "https://www.hyundai.com",
+  },
+  jeep: { tr: "https://www.jeep.com.tr", global: "https://www.jeep.com" },
+  kia: { tr: "https://www.kia.com/tr", global: "https://www.kia.com" },
+  landrover: {
+    tr: "https://www.landrover.com.tr",
+    global: "https://www.landrover.com",
+  },
+  mercedes: {
+    tr: "https://www.mercedes-benz.com.tr",
+    global: "https://www.mbusa.com",
+  },
+  mini: { tr: "https://www.mini.com.tr", global: "https://www.mini.com" },
+  nissan: {
+    tr: "https://www.nissan.com.tr",
+    global: "https://www.nissanusa.com",
+  },
+  opel: { tr: "https://www.opel.com.tr", global: "https://www.opel.com" },
+  peugeot: {
+    tr: "https://www.peugeot.com.tr",
+    global: "https://www.peugeot.com",
+  },
+  porsche: {
+    tr: "https://www.porsche.com.tr",
+    global: "https://www.porsche.com",
+  },
+  renault: {
+    tr: "https://www.renault.com.tr",
+    global: "https://www.renault.com",
+  },
+  seat: { tr: "https://www.seat.com.tr", global: "https://www.seat.com" },
+  skoda: {
+    tr: "https://www.skoda.com.tr",
+    global: "https://www.skoda-auto.com",
+  },
+  smart: { tr: "https://www.smart.com.tr", global: "https://www.smart.com" },
+  suzuki: { tr: "https://www.suzuki.com.tr", global: "https://www.suzuki.com" },
+  tesla: { tr: "https://www.tesla.com/tr", global: "https://www.tesla.com" },
+  tiggo: { tr: "https://www.tiggo.com.tr", global: "https://www.tiggo.com" },
+  togg: { tr: "https://www.togg.com.tr", global: "https://www.togg.com.tr" },
+  volvo: { tr: "https://www.volvo.com.tr", global: "https://www.volvo.com" },
+  volkswagen: { tr: "https://www.vw.com.tr", global: "https://www.vw.com" },
+  byd: { tr: "https://www.byd.com/tr", global: "https://www.byd.com" },
 };
 
 export default function ComparePage({
@@ -359,6 +392,26 @@ export default function ComparePage({
         <p className="mb-2 text-lg text-slate-500 dark:text-slate-400">
           Fiyat karşılaştırması • {currentData?.engine}
         </p>
+        {selectedVersion !== null && brandWebsites[brandName.toLowerCase()] && (
+          <div className="mb-6 flex flex-wrap gap-3">
+            <a
+              href={brandWebsites[brandName.toLowerCase()].tr}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+            >
+              🇹🇷 Türkiye Web Sitesi
+            </a>
+            <a
+              href={brandWebsites[brandName.toLowerCase()].global}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-slate-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-slate-700"
+            >
+              🌍 Global Web Sitesi
+            </a>
+          </div>
+        )}
         {(brandStories[brand] || modelStories[`${brand}-${model}`]) && (
           <p className="mb-8 text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
             {modelStories[`${brand}-${model}`] || brandStories[brand]}
@@ -536,19 +589,6 @@ export default function ComparePage({
             </div>
           </div>
         </div>
-
-        {selectedVersion !== null && brandWebsites[brandName.toLowerCase()] && (
-          <div className="mb-8 flex justify-center">
-            <a
-              href={brandWebsites[brandName.toLowerCase()]}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-700"
-            >
-              <span>🏠 {brandName} Resmi Web Sitesi</span>
-            </a>
-          </div>
-        )}
 
         {showCompare && compareCurrentData && selectedVersion !== null && (
           <div className="mb-8 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800">
