@@ -420,7 +420,7 @@ export default function ComparePage({
         )}
         {currentData && (
           <div className="mb-8">
-            <AdBanner slot={`hero-${brand}`} />
+            <AdBanner slot={`hero-${brand}`} brand={brand} />
             <div className="mt-4 flex items-center justify-between rounded-lg bg-white px-4 py-3 shadow dark:bg-slate-800">
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-600 dark:bg-blue-900 dark:text-blue-300">
