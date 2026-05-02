@@ -54,6 +54,17 @@ const defaultAds: BrandAd[] = [
   },
 ];
 
+const brandKeyMap: Record<string, string> = {
+  "alfa romeo": "alfa-romeo",
+  "alfa romëo": "alfa-romeo",
+  "land rover": "landrover",
+  jaguar: "jaguar",
+  mini: "mini",
+  smart: "smart",
+  byd: "byd",
+  tiggo: "tiggo",
+};
+
 export default function AdBanner({ slot }: { slot: string }) {
   const params = useParams();
   const brandId = params?.brand as string;
@@ -61,7 +72,9 @@ export default function AdBanner({ slot }: { slot: string }) {
   const getAds = (): BrandAd[] => {
     if (!brandId) return defaultAds;
 
-    const brandKey = brandId.toLowerCase();
+    let brandKey = brandId.toLowerCase();
+    brandKey = brandKeyMap[brandKey] || brandKey;
+
     const brandData = brandAds[brandKey];
 
     if (brandData?.ads && brandData.ads.length > 0) {
