@@ -1112,5 +1112,1059 @@
         "link": "https://www.infiniti.com.tr/qx80"
       }
     ]
+  },
+  "mini": {
+    "name": "Mini",
+    "website": "https://www.mini.com.tr",
+    "models": ["Cooper", "Clubman", "Countryman", "Electric"],
+    "ads": [
+      {
+        "id": "mini-cooper",
+        "title": "Mini Cooper",
+        "subtitle": "Şehir Efsanesi",
+        "description": "Kompakt ve şık",
+        "image": "https://images.mini.com/mini-cooper-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.mini.com.tr/cooper"
+      },
+      {
+        "id": "mini-countryman",
+        "title": "Mini Countryman",
+        "subtitle": "SUV'nin Şık Hali",
+        "description": "Aile için ideal",
+        "image": "https://images.mini.com/mini-countryman-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.mini.com.tr/countryman"
+      }
+    ]
+  },
+  "smart": {
+    "name": "Smart",
+    "website": "https://www.smart.com.tr",
+    "models": ["#1", "#3", "EQ Fortwo", "EQ Forfour"],
+    "ads": [
+      {
+        "id": "smart-1",
+        "title": "Smart #1",
+        "subtitle": "Elektrikli Şehir SUV",
+        "description": "Kompakt ve çevre dostu",
+        "image": "https://images.smart.com/smart1-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.smart.com.tr/smart1"
+      },
+      {
+        "id": "smart-3",
+        "title": "Smart #3",
+        "subtitle": "Spor Elektrikli Coupe",
+        "description": "Yüksek performans",
+        "image": "https://images.smart.com/smart3-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.smart.com.tr/smart3"
+      }
+    ]
+  },
+  "byd": {
+    "name": "BYD",
+    "website": "https://www.byd.com/tr",
+    "models": ["Dolphin", "Seal", "Atto 3", "Seal U", "Han"],
+    "ads": [
+      {
+        "id": "byd-seal",
+        "title": "BYD Seal",
+        "subtitle": "Elektrikli Spor Sedan",
+        "description": "520 km menzil",
+        "image": "https://images.byd.com/byd-seal-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.byd.com/tr/seal"
+      },
+      {
+        "id": "byd-dolphin",
+        "title": "BYD Dolphin",
+        "subtitle": "Erişilebilir Elektrikli",
+        "description": "420 km menzil",
+        "image": "https://images.byd.com/byd-dolphin-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.byd.com/tr/dolphin"
+      }
+    ]
+  },
+  "tiggo": {
+    "name": "Tiggo",
+    "website": "https://www.tiggo.com.tr",
+    "models": ["Tiggo 4", "Tiggo 7 Pro", "Tiggo 8 Pro"],
+    "ads": [
+      {
+        "id": "tiggo-8",
+        "title": "Tiggo 8 Pro",
+        "subtitle": "7 Kişilik SUV",
+        "description": "Geniş ve konforlu",
+        "image": "https://images.tiggo.com/tiggo8-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.tiggo.com.tr/tiggo8"
+      }
+    ]
+  },
+  "polestar": {
+    "name": "Polestar",
+    "website": "https://www.polestar.com/tr",
+    "models": ["Polestar 2", "Polestar 3", "Polestar 4"],
+    "ads": [
+      {
+        "id": "polestar-2",
+        "title": "Polestar 2",
+        "subtitle": "Performans Elektrikli",
+        "description": "590 km menzil",
+        "image": "https://images.polestar.com/polestar2-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.polestar.com/tr/polestar2"
+      },
+      {
+        "id": "polestar-4",
+        "title": "Polestar 4",
+        "subtitle": "Spor SUV Coupe",
+        "description": "Yeni nesil tasarım",
+        "image": "https://images.polestar.com/polestar4-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.polestar.com/tr/polestar4"
+      }
+    ]
+  },
+  "honda": {
+    "name": "Honda",
+    "website": "https://www.honda.com.tr",
+    "models": ["Civic", "CR-V", "HR-V", "Accord", "Jazz", "e:Ny1"],
+    "ads": [
+      {
+        "id": "honda-civic",
+        "title": "Honda Civic",
+        "subtitle": "Şimdi Hibrit",
+        "description": "Spor ve verimli",
+        "image": "https://images.honda.com/honda-civic-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.honda.com.tr/civic"
+      },
+      {
+        "id": "honda-cr-v",
+        "title": "Honda CR-V",
+        "subtitle": "Premium SUV",
+        "description": "Hibrit güç",
+        "image": "https://images.honda.com/honda-crv-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.honda.com.tr/cr-v"
+      }
+    ]
+  },
+  "mazda": {
+    "name": "Mazda",
+    "website": "https://www.mazda.com.tr",
+    "models": ["Mazda3", "Mazda6", "CX-30", "CX-5", "CX-60", "MX-30"],
+    "ads": [
+      {
+        "id": "mazda-cx60",
+        "title": "Mazda CX-60",
+        "subtitle": "Premium SUV",
+        "description": "Hibrit performans",
+        "image": "https://images.mazda.com/mazda-cx60-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.mazda.com.tr/cx-60"
+      },
+      {
+        "id": "mazda-mx30",
+        "title": "Mazda MX-30",
+        "subtitle": "Elektrikli Sports",
+        "description": "200 km menzil",
+        "image": "https://images.mazda.com/mazda-mx30-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.mazda.com.tr/mx-30"
+      }
+    ]
+  },
+  "subaru": {
+    "name": "Subaru",
+    "website": "https://www.subaru.com.tr",
+    "models": ["Impreza", "WRX", "BRZ", "Forester", "Outback", "Solterra"],
+    "ads": [
+      {
+        "id": "subaru-outback",
+        "title": "Subaru Outback",
+        "subtitle": "Adventure Wagon",
+        "description": "Symmetrical AWD",
+        "image": "https://images.subaru.com/subaru-outback-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.subaru.com.tr/outback"
+      },
+      {
+        "id": "subaru-solterra",
+        "title": "Subaru Solterra",
+        "subtitle": "Elektrikli SUV",
+        "description": "Arazi yeteneği",
+        "image": "https://images.subaru.com/subaru-solterra-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.subaru.com.tr/solterra"
+      }
+    ]
+  },
+  "suzuki": {
+    "name": "Suzuki",
+    "website": "https://www.suzuki.com.tr",
+    "models": ["Swift", "Vitara", "Jimny", "S-Cross", "Across"],
+    "ads": [
+      {
+        "id": "suzuki-jimny",
+        "title": "Suzuki Jimny",
+        "subtitle": "Efsane Off-Road",
+        "description": "Sınırsız macera",
+        "image": "https://images.suzuki.com/suzuki-jimny-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.suzuki.com.tr/jimny"
+      },
+      {
+        "id": "suzuki-vitara",
+        "title": "Suzuki Vitara",
+        "subtitle": "Hibrit SUV",
+        "description": "Şehir ve doğa",
+        "image": "https://images.suzuki.com/suzuki-vitara-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.suzuki.com.tr/vitara"
+      }
+    ]
+  },
+  "mitsubishi": {
+    "name": "Mitsubishi",
+    "website": "https://www.mitsubishi.com.tr",
+    "models": ["Space Star", "Eclipse Cross", "Outlander", "L200", "ASX"],
+    "ads": [
+      {
+        "id": "mitsubishi-outlander",
+        "title": "Mitsubishi Outlander PHEV",
+        "subtitle": "Hibrit SUV",
+        "description": "Plug-in Hybrid",
+        "image": "https://images.mitsubishi.com/mitsubishi-outlander-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.mitsubishi.com.tr/outlander"
+      },
+      {
+        "id": "mitsubishi-l200",
+        "title": "Mitsubishi L200",
+        "subtitle": "Pick-up",
+        "description": "Dayanıklı ve güçlü",
+        "image": "https://images.mitsubishi.com/mitsubishi-l200-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.mitsubishi.com.tr/l200"
+      }
+    ]
+  },
+  "lexus": {
+    "name": "Lexus",
+    "website": "https://www.lexus.com.tr",
+    "models": ["UX", "NX", "RX", "LX", "ES", "LS", "RZ", "LBX"],
+    "ads": [
+      {
+        "id": "lexus-rz",
+        "title": "Lexus RZ",
+        "subtitle": "Elektrikli Premium SUV",
+        "description": "Yeni nesil Lexus",
+        "image": "https://images.lexus.com/lexus-rz-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.lexus.com.tr/rz"
+      },
+      {
+        "id": "lexus-nx",
+        "title": "Lexus NX",
+        "subtitle": "Premium SUV",
+        "description": "Hibrit ve plug-in hybrid",
+        "image": "https://images.lexus.com/lexus-nx-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.lexus.com.tr/nx"
+      }
+    ]
+  },
+  "seat": {
+    "name": "Seat",
+    "website": "https://www.seat.com.tr",
+    "models": ["Leon", "Arona", "Ateca", "Tarraco", "Ibiza"],
+    "ads": [
+      {
+        "id": "seat-leon",
+        "title": "Seat Leon",
+        "subtitle": "Spor Hatchback",
+        "description": "Dinamik sürüş",
+        "image": "https://images.seat.com/seat-leon-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.seat.com.tr/leon"
+      },
+      {
+        "id": "seat-ateca",
+        "title": "Seat Ateca",
+        "subtitle": "Spor SUV",
+        "description": "Performans ve stil",
+        "image": "https://images.seat.com/seat-ateca-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.seat.com.tr/ateca"
+      }
+    ]
+  },
+  "cupra": {
+    "name": "Cupra",
+    "website": "https://www.cupra.com.tr",
+    "models": ["Leon", "Born", "Formentor", "Tavascan", "Terramar"],
+    "ads": [
+      {
+        "id": "cupra-terramar",
+        "title": "Cupra Terramar",
+        "subtitle": "Spor SUV",
+        "description": "Yeni tasarım, yüksek performans",
+        "image": "https://images.cupra.com/cupra-terramar-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.cupra.com.tr/terramar"
+      },
+      {
+        "id": "cupra-born",
+        "title": "Cupra Born",
+        "subtitle": "Elektrikli Hatchback",
+        "description": "Spor karakter",
+        "image": "https://images.cupra.com/cupra-born-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.cupra.com.tr/born"
+      }
+    ]
+  },
+  "ds": {
+    "name": "DS Automobiles",
+    "website": "https://www.ds.com.tr",
+    "models": ["DS 3", "DS 4", "DS 7", "DS 9"],
+    "ads": [
+      {
+        "id": "ds-7",
+        "title": "DS 7",
+        "subtitle": "French Luxury",
+        "description": "Sanat ve zanaat",
+        "image": "https://images.ds.com/ds7-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.ds.com.tr/ds-7"
+      },
+      {
+        "id": "ds-4",
+        "title": "DS 4",
+        "subtitle": "Premium Hatchback",
+        "description": "Fransız zarafeti",
+        "image": "https://images.ds.com/ds4-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.ds.com.tr/ds-4"
+      }
+    ]
+  },
+  "jeep": {
+    "name": "Jeep",
+    "website": "https://www.jeep.com.tr",
+    "models": ["Renegade", "Compass", "Wrangler", "Grand Cherokee", "Avenger"],
+    "ads": [
+      {
+        "id": "jeep-wrangler",
+        "title": "Jeep Wrangler",
+        "subtitle": "Efsane Off-Road",
+        "description": "Sınırsız arazi yeteneği",
+        "image": "https://images.jeep.com/jeep-wrangler-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.jeep.com.tr/wrangler"
+      },
+      {
+        "id": "jeep-grand-cherokee",
+        "title": "Jeep Grand Cherokee",
+        "subtitle": "Premium SUV",
+        "description": "Lüks ve performans",
+        "image": "https://images.jeep.com/jeep-grand-cherokee-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.jeep.com.tr/grand-cherokee"
+      }
+    ]
+  },
+  "nissan": {
+    "name": "Nissan",
+    "website": "https://www.nissan.com.tr",
+    "models": ["Micra", "Qashqai", "X-Trail", "Ariya", "Leaf", "Z"],
+    "ads": [
+      {
+        "id": "nissan-qashqai",
+        "title": "Nissan Qashqai",
+        "subtitle": "Crossover Efsanesi",
+        "description": "Hibrit teknoloji",
+        "image": "https://images.nissan.com/nissan-qashqai-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.nissan.com.tr/qashqai"
+      },
+      {
+        "id": "nissan-arriya",
+        "title": "Nissan Ariya",
+        "subtitle": "Elektrikli Coupe SUV",
+        "description": "610 km menzil",
+        "image": "https://images.nissan.com/nissan-arriya-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.nissan.com.tr/ariya"
+      }
+    ]
+  },
+  "dacia": {
+    "name": "Dacia",
+    "website": "https://www.dacia.com.tr",
+    "models": ["Sandero", "Stepway", "Duster", "Jogger", "Spring", "Logan"],
+    "ads": [
+      {
+        "id": "dacia-duster",
+        "title": "Yeni Dacia Duster",
+        "subtitle": "Macera için",
+        "description": "Hibrit seçenekler",
+        "image": "https://images.dacia.com/dacia-duster-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.dacia.com.tr/duster"
+      },
+      {
+        "id": "dacia-spring",
+        "title": "Dacia Spring",
+        "subtitle": "Erişilebilir Elektrikli",
+        "description": "220 km menzil",
+        "image": "https://images.dacia.com/dacia-spring-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.dacia.com.tr/spring"
+      }
+    ]
+  },
+  "togg": {
+    "name": "TOGG",
+    "website": "https://www.togg.com.tr",
+    "models": ["T10X", "T8S", "T7"],
+    "ads": [
+      {
+        "id": "togg-t10x",
+        "title": "TOGG T10X",
+        "subtitle": "Türkiye'nin Otomobili",
+        "description": "Yerli elektrikli SUV",
+        "image": "https://images.togg.com/togg-t10x-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.togg.com.tr/t10x"
+      },
+      {
+        "id": "togg-t7",
+        "title": "TOGG T7",
+        "subtitle": "Yeni Nesil Sedan",
+        "description": "Türkiye'nin ilk yerli sedan",
+        "image": "https://images.togg.com/togg-t7-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.togg.com.tr/t7"
+      }
+    ]
+  },
+  "fiat": {
+    "name": "Fiat",
+    "website": "https://www.fiat.com.tr",
+    "models": ["500", "500X", "500L", "Panda", "Tipo", "Egea", "Doblo"],
+    "ads": [
+      {
+        "id": "fiat-500e",
+        "title": "Fiat 500e",
+        "subtitle": "Elektrikli Şehirli",
+        "description": "320 km menzil",
+        "image": "https://images.fiat.com/fiat-500e-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.fiat.com.tr/fiat-500e"
+      },
+      {
+        "id": "fiat-egea",
+        "title": "Fiat Egea",
+        "subtitle": "Türkiye'nin Sedanı",
+        "description": "Tüm aile için ideal",
+        "image": "https://images.fiat.com/fiat-egea-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.fiat.com.tr/egea"
+      }
+    ]
+  },
+  "renault": {
+    "name": "Renault",
+    "website": "https://www.renault.com.tr",
+    "models": ["Clio", "Megane", "Arkana", "Austral", "Captur", "Rafale"],
+    "ads": [
+      {
+        "id": "renault-rafale",
+        "title": "Renault Rafale",
+        "subtitle": "Yeni Amiral Gemisi",
+        "description": "Spor SUV Coupe",
+        "image": "https://images.renault.com/renault-rafale-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.renault.com.tr/yeni-rafale"
+      },
+      {
+        "id": "renault-clio",
+        "title": "Yeni Renault Clio",
+        "subtitle": "Şehirli Hatchback",
+        "description": "Hibrit seçenekleri",
+        "image": "https://images.renault.com/renault-clio-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.renault.com.tr/clio"
+      }
+    ]
+  },
+  "peugeot": {
+    "name": "Peugeot",
+    "website": "https://www.peugeot.com.tr",
+    "models": ["208", "308", "508", "2008", "3008", "5008"],
+    "ads": [
+      {
+        "id": "peugeot-508",
+        "title": "Peugeot 508 PSE",
+        "subtitle": "Peugeot Sport Engineered",
+        "description": "Yüksek performans hibrit",
+        "image": "https://images.peugeot.com/peugeot-508-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.peugeot.com.tr/508"
+      },
+      {
+        "id": "peugeot-3008",
+        "title": "Yeni Peugeot 3008",
+        "subtitle": "Spor SUV",
+        "description": "Yenilikçi i-Cockpit",
+        "image": "https://images.peugeot.com/peugeot-3008-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.peugeot.com.tr/3008"
+      }
+    ]
+  },
+  "citroen": {
+    "name": "Citroën",
+    "website": "https://www.citroen.com.tr",
+    "models": ["C3", "C4", "C5 X", "C5 Aircross", "Berlingo", "ë-C3"],
+    "ads": [
+      {
+        "id": "citroen-c5x",
+        "title": "Citroën C5 X",
+        "subtitle": "Advanced Comfort",
+        "description": "Benzersiz konfor deneyimi",
+        "image": "https://images.citroen.com/citroen-c5x-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.citroen.com.tr/c5-x"
+      },
+      {
+        "id": "citroen-ec3",
+        "title": "Citroën ë-C3",
+        "subtitle": "Erişilebilir Elektrikli",
+        "description": "320 km menzil",
+        "image": "https://images.citroen.com/citroen-ec3-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.citroen.com.tr/e-c3"
+      }
+    ]
+  },
+  "ford": {
+    "name": "Ford",
+    "website": "https://www.ford.com.tr",
+    "models": [
+      "Focus",
+      "Puma",
+      "Kuga",
+      "Explorer",
+      "Mustang",
+      "Bronco",
+      "Ranger"
+    ],
+    "ads": [
+      {
+        "id": "ford-mustang",
+        "title": "Ford Mustang",
+        "subtitle": "Efsane Sport Coupe",
+        "description": "5.0L V8 performans",
+        "image": "https://images.ford.com/ford-mustang-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.ford.com.tr/mustang"
+      },
+      {
+        "id": "ford-kuga",
+        "title": "Yeni Ford Kuga",
+        "subtitle": "Hibrit SUV",
+        "description": "Aile için ideal seçim",
+        "image": "https://images.ford.com/ford-kuga-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.ford.com.tr/kuga"
+      }
+    ]
+  },
+  "opel": {
+    "name": "Opel",
+    "website": "https://www.opel.com.tr",
+    "models": ["Corsa", "Astra", "Mokka", "Grandland", "Combo", "Vivaro"],
+    "ads": [
+      {
+        "id": "opel-mokka",
+        "title": "Opel Mokka",
+        "subtitle": "Spor SUV",
+        "description": "Elektrikli seçenekler",
+        "image": "https://images.opel.com/opel-mokka-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.opel.com.tr/mokka"
+      },
+      {
+        "id": "opel-astra",
+        "title": "Yeni Opel Astra",
+        "subtitle": "Premium Hatchback",
+        "description": "Hibrit teknoloji",
+        "image": "https://images.opel.com/opel-astra-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.opel.com.tr/astra"
+      }
+    ]
+  },
+  "skoda": {
+    "name": "Škoda",
+    "website": "https://www.skoda.com.tr",
+    "models": [
+      "Fabia",
+      "Scala",
+      "Octavia",
+      "Superb",
+      "Kamiq",
+      "Karoq",
+      "Kodiaq",
+      "Enyaq"
+    ],
+    "ads": [
+      {
+        "id": "skoda-kodiaq",
+        "title": "Škoda Kodiaq",
+        "subtitle": "7 Kişilik SUV",
+        "description": "Yeni nesil tasarım",
+        "image": "https://images.skoda.com/skoda-kodiaq-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.skoda.com.tr/kodiaq"
+      },
+      {
+        "id": "skoda-enyaq",
+        "title": "Škoda Enyaq",
+        "subtitle": "Elektrikli SUV",
+        "description": "Sıfır emisyon, sıfır compromise",
+        "image": "https://images.skoda.com/skoda-enyaq-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.skoda.com.tr/enyaq"
+      }
+    ]
+  },
+  "volvo": {
+    "name": "Volvo",
+    "website": "https://www.volvo.com.tr",
+    "models": ["XC40", "XC60", "XC90", "S60", "V60", "C40", "EX30", "EX90"],
+    "ads": [
+      {
+        "id": "volvo-ex90",
+        "title": "Volvo EX90",
+        "subtitle": "Elektrikli Amiral Gemisi",
+        "description": "Otonom sürüş teknolojisi",
+        "image": "https://images.volvo.com/volvo-ex90-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.volvo.com.tr/ex90"
+      },
+      {
+        "id": "volvo-xc90",
+        "title": "Volvo XC90",
+        "subtitle": "Premium SUV",
+        "description": "7 kişilik, hibrit",
+        "image": "https://images.volvo.com/volvo-xc90-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.volvo.com.tr/xc90"
+      }
+    ]
+  },
+  "porsche": {
+    "name": "Porsche",
+    "website": "https://www.porsche.com.tr",
+    "models": ["911", "718", "Taycan", "Panamera", "Cayenne", "Macan"],
+    "ads": [
+      {
+        "id": "porsche-taycan",
+        "title": "Porsche Taycan",
+        "subtitle": "Elektrikli Spor",
+        "description": "800V mimari, 0-100 2.8s",
+        "image": "https://images.porsche.com/porsche-taycan-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.porsche.com.tr/taycan"
+      },
+      {
+        "id": "porsche-cayenne",
+        "title": "Porsche Cayenne",
+        "subtitle": "Spor SUV",
+        "description": "Performans ve lüks",
+        "image": "https://images.porsche.com/porsche-cayenne-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.porsche.com.tr/cayenne"
+      }
+    ]
+  },
+  "tesla": {
+    "name": "Tesla",
+    "website": "https://www.tesla.com/tr",
+    "models": ["Model 3", "Model Y", "Model S", "Model X", "Cybertruck"],
+    "ads": [
+      {
+        "id": "tesla-model3",
+        "title": "Tesla Model 3",
+        "subtitle": "En Çok Satılan Elektrikli",
+        "description": "600+ km menzil",
+        "image": "https://images.tesla.com/tesla-model3-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.tesla.com/tr/model3"
+      },
+      {
+        "id": "tesla-modely",
+        "title": "Tesla Model Y",
+        "subtitle": "Elektrikli SUV",
+        "description": "Aile için ideal",
+        "image": "https://images.tesla.com/tesla-modely-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.tesla.com/tr/modely"
+      }
+    ]
+  },
+  "hyundai": {
+    "name": "Hyundai",
+    "website": "https://www.hyundai.com.tr",
+    "models": [
+      "i10",
+      "i20",
+      "i30",
+      "Tucson",
+      "Santa Fe",
+      "IONIQ 5",
+      "IONIQ 6",
+      "Kona"
+    ],
+    "ads": [
+      {
+        "id": "hyundai-ioniq6",
+        "title": "Hyundai IONIQ 6",
+        "subtitle": "Akıllı Elektrikli",
+        "description": "614 km menzil",
+        "image": "https://images.hyundai.com/hyundai-ioniq6-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.hyundai.com.tr/araclar/ioniq-6"
+      },
+      {
+        "id": "hyundai-tucson",
+        "title": "Yeni Hyundai Tucson",
+        "subtitle": "Premium SUV",
+        "description": "Spor ve dinamik tasarım",
+        "image": "https://images.hyundai.com/hyundai-tucson-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.hyundai.com.tr/araclar/tucson"
+      }
+    ]
+  },
+  "kia": {
+    "name": "Kia",
+    "website": "https://www.kia.com.tr",
+    "models": [
+      "Picanto",
+      "Rio",
+      "Ceed",
+      "Sportage",
+      "Sorento",
+      "EV6",
+      "EV9",
+      "Niro"
+    ],
+    "ads": [
+      {
+        "id": "kia-ev6",
+        "title": "Kia EV6",
+        "subtitle": "Elektrikli Performans",
+        "description": "770 km menzil, 0-100 3.5s",
+        "image": "https://images.kia.com/kia-ev6-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.kia.com.tr/araclar/ev6"
+      },
+      {
+        "id": "kia-sportage",
+        "title": "Yeni Kia Sportage",
+        "subtitle": "Premium SUV",
+        "description": "Dinamik tasarım, üstün konfor",
+        "image": "https://images.kia.com/kia-sportage-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.kia.com.tr/araclar/sportage"
+      }
+    ]
+  },
+  "toyota": {
+    "name": "Toyota",
+    "website": "https://www.toyota.com.tr",
+    "models": [
+      "Yaris",
+      "Corolla",
+      "Camry",
+      "C-HR",
+      "RAV4",
+      "Highlander",
+      "Land Cruiser",
+      "Hilux",
+      "bZ4X"
+    ],
+    "ads": [
+      {
+        "id": "toyota-c-hr",
+        "title": "Toyota C-HR",
+        "subtitle": "Hibrit Teknoloji",
+        "description": "Spor tasarım, çevre dostu",
+        "image": "https://images.toyota.com/toyota-chr-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.toyota.com.tr/otomobil/chr"
+      },
+      {
+        "id": "toyota-corolla",
+        "title": "Toyota Corolla",
+        "subtitle": "Dünyanın En Çok Satılan Aracı",
+        "description": "Hibrit verimlilik",
+        "image": "https://images.toyota.com/toyota-corolla-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.toyota.com.tr/otomobil/corolla"
+      }
+    ]
+  },
+  "volkswagen": {
+    "name": "Volkswagen",
+    "website": "https://www.vw.com.tr",
+    "models": [
+      "Polo",
+      "Golf",
+      "Passat",
+      "T-Cross",
+      "T-Roc",
+      "Tiguan",
+      "ID.3",
+      "ID.4",
+      "ID.5",
+      "Touareg"
+    ],
+    "ads": [
+      {
+        "id": "vw-id5",
+        "title": "Volkswagen ID.5",
+        "subtitle": "Elektrikli SUV",
+        "description": "Geleceğin teknolojisi bugün",
+        "image": "https://images.vw.com/vw-id5-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.vw.com.tr/tr/models/id5.html"
+      },
+      {
+        "id": "vw-tiguan",
+        "title": "Yeni Volkswagen Tiguan",
+        "subtitle": "Premium Compact SUV",
+        "description": "Her macera için hazır",
+        "image": "https://images.vw.com/vw-tiguan-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.vw.com.tr/tr/models/tiguan.html"
+      }
+    ]
+  },
+  "mercedes": {
+    "name": "Mercedes-Benz",
+    "website": "https://www.mercedes-benz.com.tr",
+    "models": [
+      "A Serisi",
+      "C Serisi",
+      "E Serisi",
+      "S Serisi",
+      "GLA",
+      "GLC",
+      "GLE",
+      "GLS",
+      "EQB",
+      "EQE",
+      "EQS"
+    ],
+    "ads": [
+      {
+        "id": "mercedes-eqs",
+        "title": "Mercedes-Benz EQS",
+        "subtitle": "Elektrikli Lüks",
+        "description": "Sıfır emisyon, sınırsız konfor",
+        "image": "https://images.mercedes.com/mercedes-eqs-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.mercedes-benz.com.tr/tr/eqs"
+      },
+      {
+        "id": "mercedes-gle",
+        "title": "Mercedes-Benz GLE",
+        "subtitle": "Premium SUV",
+        "description": "Her yolculuk için mükemmel",
+        "image": "https://images.mercedes.com/mercedes-gle-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.mercedes-benz.com.tr/tr/gle"
+      }
+    ]
+  },
+  "bmw": {
+    "name": "BMW",
+    "website": "https://www.bmw.com.tr",
+    "models": [
+      "1 Serisi",
+      "2 Serisi",
+      "3 Serisi",
+      "4 Serisi",
+      "5 Serisi",
+      "7 Serisi",
+      "X1",
+      "X3",
+      "X5",
+      "X7",
+      "i4",
+      "i5",
+      "iX"
+    ],
+    "ads": [
+      {
+        "id": "bmw-ix",
+        "title": "BMW iX",
+        "subtitle": "Elektrikli Gelecek",
+        "description": "Sürdürülebilir lüks deneyimi",
+        "image": "https://images.bmw.com/bmw-ix-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.bmw.com.tr/tr/bmw-bir-auto/ix.html"
+      },
+      {
+        "id": "bmw-5-serisi",
+        "title": "Yeni BMW 5 Serisi",
+        "subtitle": "Teknoloji ve Performans",
+        "description": "Premium sedan deneyimi",
+        "image": "https://images.bmw.com/bmw-5serisi-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.bmw.com.tr/tr/bmw-bir-auto/5-serisi.html"
+      }
+    ]
+  },
+  "audi": {
+    "name": "Audi",
+    "website": "https://www.audi.com.tr",
+    "models": [
+      "A3",
+      "A4",
+      "A5",
+      "A6",
+      "A7",
+      "A8",
+      "Q2",
+      "Q3",
+      "Q4 e-tron",
+      "Q5",
+      "Q6 e-tron",
+      "Q7",
+      "Q8",
+      "e-tron GT"
+    ],
+    "ads": [
+      {
+        "id": "audi-q6-etron",
+        "title": "Audi Q6 e-tron",
+        "subtitle": "Elektrikli mobiliteyi bir üst seviyeye taşıyor",
+        "description": "Olağanüstü elektrikli performans, ilerici tasarım",
+        "image": "https://images.audi.com/audi-q6-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.audi.com.tr/tr/modeller/q6-e-tron/"
+      },
+      {
+        "id": "audi-q4-sportback",
+        "title": "Audi Q4 Sportback e-tron",
+        "subtitle": "557 km menzil",
+        "description": "28 dakikada %10'dan %80'e şarj",
+        "image": "https://images.audi.com/audi-q4-2024.jpg",
+        "cta": "Bilgi Al",
+        "link": "https://www.audi.com.tr/tr/modeller/q4-e-tron/"
+      },
+      {
+        "id": "audi-a6-avanti",
+        "title": "Yeni A6 Avant e-tron",
+        "subtitle": "Premium Station Wagon",
+        "description": "Elektrikli performansın yeni tanımı",
+        "image": "https://images.audi.com/audi-a6-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.audi.com.tr/tr/modeller/a6-e-tron/"
+      }
+    ]
+  },
+  "jaguar": {
+    "name": "Jaguar",
+    "website": "https://www.jaguar.com.tr",
+    "models": ["E-PACE", "F-PACE", "F-TYPE", "I-PACE", "XE", "XF"],
+    "ads": [
+      {
+        "id": "jaguar-ipace",
+        "title": "Jaguar I-PACE",
+        "subtitle": "Elektrikli Performans",
+        "description": "470 km menzil",
+        "image": "https://images.jaguar.com/jaguar-ipace-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.jaguar.com.tr/i-pace"
+      },
+      {
+        "id": "jaguar-fpace",
+        "title": "Jaguar F-PACE",
+        "subtitle": "Premium SUV",
+        "description": "Spor lüks",
+        "image": "https://images.jaguar.com/jaguar-fpace-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.jaguar.com.tr/f-pace"
+      }
+    ]
+  },
+  "landrover": {
+    "name": "Land Rover",
+    "website": "https://www.landrover.com.tr",
+    "models": [
+      "Defender",
+      "Discovery",
+      "Range Rover",
+      "Range Rover Sport",
+      "Range Rover Evoque",
+      "Range Rover Velar"
+    ],
+    "ads": [
+      {
+        "id": "landrover-defender",
+        "title": "Land Rover Defender",
+        "subtitle": "Efsane Geri Döndü",
+        "description": "Sınırsız off-road yeteneği",
+        "image": "https://images.landrover.com/landrover-defender-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.landrover.com.tr/defender"
+      },
+      {
+        "id": "rangerover",
+        "title": "Range Rover",
+        "subtitle": "Lüx SUV'nin Kralı",
+        "description": "Sınırsız konfor",
+        "image": "https://images.landrover.com/rangerover-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.landrover.com.tr/range-rover"
+      }
+    ]
+  },
+  "alfa-romeo": {
+    "name": "Alfa Romeo",
+    "website": "https://www.alfaromeo.com.tr",
+    "models": ["Giulia", "Stelvio", "Tonale", "Brennero"],
+    "ads": [
+      {
+        "id": "alfaromeo-tonale",
+        "title": "Alfa Romeo Tonale",
+        "subtitle": "Hibrit SUV",
+        "description": "İtalyan zarafeti",
+        "image": "https://images.alfaromeo.com/alfaromeo-tonale-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.alfaromeo.com.tr/tonale"
+      },
+      {
+        "id": "alfaromeo-giulia",
+        "title": "Alfa Romeo Giulia",
+        "subtitle": "Spor Sedan",
+        "description": "400 HP performans",
+        "image": "https://images.alfaromeo.com/alfaromeo-giulia-2024.jpg",
+        "cta": "Keşfet",
+        "link": "https://www.alfaromeo.com.tr/giulia"
+      }
+    ]
   }
 }
