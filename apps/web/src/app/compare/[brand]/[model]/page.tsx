@@ -93,7 +93,7 @@ const brandWebsites: Record<string, { tr: string; global: string }> = {
     global: "https://www.alfaromeo.com/",
   },
   audi: {
-    tr: "https://www.audi.com/tr/tr.html",
+    tr: "https://www.audi.com.tr",
     global: "https://www.audi.com",
   },
   bmw: { tr: "https://www.bmw.com.tr", global: "https://www.bmw.com" },
