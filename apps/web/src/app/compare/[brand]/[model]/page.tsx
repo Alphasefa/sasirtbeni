@@ -193,6 +193,10 @@ export default function ComparePage({
   }, []);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (selectedVersion !== null) {
       setTimeout(() => {
         const priceSection = document.getElementById("price-comparison");
