@@ -414,29 +414,61 @@ export default function ComparePage({
           Fiyat karşılaştırması • {currentData?.engine}
         </p>
         {brandWebsites[brandName.toLowerCase()] && (
-          <div className="mb-6 rounded-xl border-2 border-dashed border-blue-300 bg-blue-50 p-4 dark:border-blue-700 dark:bg-slate-800">
-            <div className="mb-2 text-sm font-semibold text-blue-600 dark:text-blue-400">
-              🔗 Resmi Web Siteleri
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <a
-                href={brandWebsites[brandName.toLowerCase()].tr}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-3 font-bold text-white shadow-md transition-all hover:bg-blue-700 hover:shadow-lg"
-              >
-                <span className="text-xl">🇹🇷</span>
-                <span>Türkiye</span>
-              </a>
-              <a
-                href={brandWebsites[brandName.toLowerCase()].global}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-lg bg-slate-700 px-5 py-3 font-bold text-white shadow-md transition-all hover:bg-slate-600 hover:shadow-lg dark:bg-slate-600"
-              >
-                <span className="text-xl">🌍</span>
-                <span>Global</span>
-              </a>
+          <div className="mb-6 overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-[2px]">
+            <div className="rounded-xl bg-white p-5 dark:bg-slate-800">
+              <div className="mb-3 flex items-center justify-between">
+                <span className="flex items-center gap-2 font-bold text-lg text-slate-800 dark:text-white">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
+                    🔗
+                  </span>
+                  Resmi Web Siteleri
+                </span>
+                <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-bold text-green-700 dark:bg-green-900 dark:text-green-300">
+                  ✓ Tıkla ve ziyaret et
+                </span>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <a
+                  href={brandWebsites[brandName.toLowerCase()].tr}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 p-4 text-white shadow-lg transition-all hover:scale-[1.02] hover:from-blue-600 hover:to-blue-700 hover:shadow-xl"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 text-2xl">
+                      🇹🇷
+                    </span>
+                    <div>
+                      <div className="font-bold">Türkiye</div>
+                      <div className="text-xs text-white/80">
+                        Fiyat ve satış
+                      </div>
+                    </div>
+                  </div>
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 transition-transform group-hover:translate-x-1">
+                    →
+                  </span>
+                </a>
+                <a
+                  href={brandWebsites[brandName.toLowerCase()].global}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between rounded-xl bg-gradient-to-r from-slate-600 to-slate-700 p-4 text-white shadow-lg transition-all hover:scale-[1.02] hover:from-slate-700 hover:to-slate-800 hover:shadow-xl dark:from-slate-500 dark:to-slate-600"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 text-2xl">
+                      🌍
+                    </span>
+                    <div>
+                      <div className="font-bold">Global</div>
+                      <div className="text-xs text-white/80">Dünya geneli</div>
+                    </div>
+                  </div>
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 transition-transform group-hover:translate-x-1">
+                    →
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
         )}
