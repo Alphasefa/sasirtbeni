@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../index.css";
 import Providers from "@/components/providers";
 import ScrollToTop from "@/components/scroll-to-top";
+import ScrollRestoration from "@/components/scroll-restoration";
 import SiteHeader from "@/components/site-header";
 
 const geistSans = Geist({
@@ -42,6 +43,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
+          <ScrollRestoration />
           <div className="grid h-svh grid-rows-[auto_1fr]">
             <SiteHeader />
             <main className="overflow-y-auto pt-16">{children}</main>
