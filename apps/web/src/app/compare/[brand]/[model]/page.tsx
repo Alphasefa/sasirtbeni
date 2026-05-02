@@ -194,12 +194,18 @@ export default function ComparePage({
 
   useEffect(() => {
     if (selectedVersion !== null) {
-      setTimeout(() => {
-        const priceSection = document.getElementById("price-comparison");
-        if (priceSection) {
-          priceSection.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 100);
+      const priceSection = document.getElementById("price-comparison");
+      if (priceSection) {
+        const headerOffset = 80;
+        const elementPosition = priceSection.getBoundingClientRect().top;
+        const offsetPosition =
+          elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
     }
   }, [selectedVersion]);
 
