@@ -201,13 +201,12 @@ export default function ComparePage({
     if (selectedVersion !== null) {
       setTimeout(() => {
         const priceSection = document.getElementById("price-comparison");
-        if (priceSection) {
-          const yOffset = -50;
+        const main = document.querySelector("main");
+        if (priceSection && main) {
+          const yOffset = -100;
           const y =
-            priceSection.getBoundingClientRect().top +
-            window.pageYOffset +
-            yOffset;
-          window.scrollTo({ top: y, behavior: "smooth" });
+            priceSection.getBoundingClientRect().top + main.scrollTop + yOffset;
+          main.scrollTo({ top: y, behavior: "smooth" });
         }
       }, 300);
     }
