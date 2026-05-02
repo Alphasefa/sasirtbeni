@@ -194,14 +194,10 @@ export default function ComparePage({
 
   useEffect(() => {
     if (selectedVersion !== null) {
-      setTimeout(() => {
-        const priceSection = document.getElementById("price-comparison");
-        if (priceSection) {
-          const y =
-            priceSection.getBoundingClientRect().top + window.scrollY + 100;
-          window.scrollTo({ top: y, behavior: "smooth" });
-        }
-      }, 300);
+      const versionSection = document.getElementById("version-selector");
+      if (versionSection) {
+        versionSection.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
     }
   }, [selectedVersion]);
 
@@ -431,30 +427,46 @@ export default function ComparePage({
             {modelStories[`${brand}-${model}`] || brandStories[brand]}
           </p>
         )}
-        <div className="mb-8">
-          <AdBanner slot={`hero-${brand}`} brand={brand} />
-          {currentData && (
-            <div className="mt-4 flex items-center justify-between rounded-lg bg-white px-4 py-3 shadow dark:bg-slate-800">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-600 dark:bg-blue-900 dark:text-blue-300">
-                  {brandName.charAt(0)}
-                </div>
-                <div>
-                  <div className="font-medium text-slate-900 dark:text-white">
-                    {brandName} {modelName}
+        <div className="mb-6">
+          {selectedVersion !== null ? (
+            <div className="space-y-4">
+              <AdBanner slot={`hero-${brand}`} brand={brand} />
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="rounded-xl bg-white p-4 shadow-md dark:bg-slate-800">
+                  <div className="mb-2">
+                    <h2 className="font-semibold text-base dark:text-white">
+                      🇹🇷 Türkiye
+                    </h2>
+                    <p className="text-slate-500 text-xs">Vitrin fiyatı</p>
                   </div>
-                  <div className="text-sm text-slate-500">
-                    {currentData.engine} • {currentData.hp} HP
+                  <div className="font-bold text-2xl text-slate-900 dark:text-white">
+                    {formatCurrency(trPrice)}
                   </div>
                 </div>
-              </div>
-              <div className="font-bold text-blue-600 dark:text-blue-400">
-                {formatCurrency(currentData.tr)}
+                <div className="rounded-xl bg-white p-4 shadow-md dark:bg-slate-800">
+                  <div className="mb-2">
+                    <h2 className="font-semibold text-base dark:text-white">
+                      🇩🇪 Almanya
+                    </h2>
+                    <p className="text-slate-500 text-xs">mobile.de</p>
+                  </div>
+                  <div className="font-bold text-2xl text-slate-900 dark:text-white">
+                    €{currentData?.de.toLocaleString()}
+                  </div>
+                  <div className="text-slate-500 text-xs">
+                    ≈ {formatCurrency(dePriceTRY)}
+                  </div>
+                </div>
               </div>
             </div>
+          ) : (
+            <AdBanner slot={`hero-${brand}`} brand={brand} />
           )}
         </div>
-        <div className="mb-8 rounded-xl bg-white p-6 shadow-lg ring-2 ring-blue-200 dark:bg-slate-800 dark:ring-slate-700">
+        <div
+          id="version-selector"
+          className="mb-8 rounded-xl bg-white p-6 shadow-lg ring-2 ring-blue-200 dark:bg-slate-800 dark:ring-slate-700"
+        >
           <div className="mb-4 flex items-center gap-2">
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
               <Check className="h-5 w-5" />
@@ -595,34 +607,36 @@ export default function ComparePage({
               />
             </div>
           )}
-        <div id="price-comparison" className="mb-6 grid gap-4 md:grid-cols-2">
-          <div className="rounded-xl bg-white p-4 shadow-md dark:bg-slate-800">
-            <div className="mb-2">
-              <h2 className="font-semibold text-base dark:text-white">
-                🇹🇷 Türkiye
-              </h2>
-              <p className="text-slate-500 text-xs">Vitrin fiyatı</p>
+        {selectedVersion === null && (
+          <div id="price-comparison" className="mb-6 grid gap-4 md:grid-cols-2">
+            <div className="rounded-xl bg-white p-4 shadow-md dark:bg-slate-800">
+              <div className="mb-2">
+                <h2 className="font-semibold text-base dark:text-white">
+                  🇹🇷 Türkiye
+                </h2>
+                <p className="text-slate-500 text-xs">Vitrin fiyatı</p>
+              </div>
+              <div className="font-bold text-2xl text-slate-900 dark:text-white">
+                {formatCurrency(trPrice)}
+              </div>
             </div>
-            <div className="font-bold text-2xl text-slate-900 dark:text-white">
-              {formatCurrency(trPrice)}
-            </div>
-          </div>
 
-          <div className="rounded-xl bg-white p-4 shadow-md dark:bg-slate-800">
-            <div className="mb-2">
-              <h2 className="font-semibold text-base dark:text-white">
-                🇩🇪 Almanya
-              </h2>
-              <p className="text-slate-500 text-xs">mobile.de</p>
-            </div>
-            <div className="font-bold text-2xl text-slate-900 dark:text-white">
-              €{currentData?.de.toLocaleString()}
-            </div>
-            <div className="text-slate-500 text-xs">
-              ≈ {formatCurrency(dePriceTRY)}
+            <div className="rounded-xl bg-white p-4 shadow-md dark:bg-slate-800">
+              <div className="mb-2">
+                <h2 className="font-semibold text-base dark:text-white">
+                  🇩🇪 Almanya
+                </h2>
+                <p className="text-slate-500 text-xs">mobile.de</p>
+              </div>
+              <div className="font-bold text-2xl text-slate-900 dark:text-white">
+                €{currentData?.de.toLocaleString()}
+              </div>
+              <div className="text-slate-500 text-xs">
+                ≈ {formatCurrency(dePriceTRY)}
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {showCompare && compareCurrentData && selectedVersion !== null && (
           <div className="mb-8 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800">
