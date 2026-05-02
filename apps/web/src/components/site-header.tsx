@@ -21,7 +21,12 @@ export default function SiteHeader() {
   const handleHomeClick = (e: React.MouseEvent) => {
     e.preventDefault();
     if (window.location.pathname === "/") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      const main = document.querySelector("main");
+      if (main) {
+        main.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     } else {
       router.push("/");
     }
