@@ -414,23 +414,30 @@ export default function ComparePage({
           Fiyat karşılaştırması • {currentData?.engine}
         </p>
         {brandWebsites[brandName.toLowerCase()] && (
-          <div className="mb-6 flex flex-wrap gap-3">
-            <a
-              href={brandWebsites[brandName.toLowerCase()].tr}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
-            >
-              🇹🇷 Türkiye Web Sitesi
-            </a>
-            <a
-              href={brandWebsites[brandName.toLowerCase()].global}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-slate-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-slate-700"
-            >
-              🌍 Global Web Sitesi
-            </a>
+          <div className="mb-6 rounded-xl border-2 border-dashed border-blue-300 bg-blue-50 p-4 dark:border-blue-700 dark:bg-slate-800">
+            <div className="mb-2 text-sm font-semibold text-blue-600 dark:text-blue-400">
+              🔗 Resmi Web Siteleri
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={brandWebsites[brandName.toLowerCase()].tr}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-3 font-bold text-white shadow-md transition-all hover:bg-blue-700 hover:shadow-lg"
+              >
+                <span className="text-xl">🇹🇷</span>
+                <span>Türkiye</span>
+              </a>
+              <a
+                href={brandWebsites[brandName.toLowerCase()].global}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 rounded-lg bg-slate-700 px-5 py-3 font-bold text-white shadow-md transition-all hover:bg-slate-600 hover:shadow-lg dark:bg-slate-600"
+              >
+                <span className="text-xl">🌍</span>
+                <span>Global</span>
+              </a>
+            </div>
           </div>
         )}
         {(brandStories[brand] || modelStories[`${brand}-${model}`]) && (
