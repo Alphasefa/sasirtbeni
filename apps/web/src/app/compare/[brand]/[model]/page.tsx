@@ -86,6 +86,38 @@ const countryFlags: Record<string, string> = {
   IR: "https://flagcdn.com/w40/ir.png",
 };
 
+const brandWebsites: Record<string, string> = {
+  alfa Romeo: "https://www.alfaromeo.com/",
+  audi: "https://www.audi.com/tr/tr.html",
+  bmw: "https://www.bmw.com.tr",
+  citroen: "https://www.citroen.com.tr",
+  cupra: "https://www.cupra.com.tr",
+  dacia: "https://www.dacia.com.tr",
+  fiat: "https://www.fiat.com.tr",
+  ford: "https://www.ford.com.tr",
+  hyundai: "https://www.hyundai.com/tr",
+  jeep: "https://www.jeep.com.tr",
+  kia: "https://www.kia.com/tr",
+  landrover: "https://www.landrover.com.tr",
+  mercedes: "https://www.mercedes-benz.com.tr",
+  mini: "https://www.mini.com.tr",
+  nissan: "https://www.nissan.com.tr",
+  opel: "https://www.opel.com.tr",
+  peugeot: "https://www.peugeot.com.tr",
+  porsche: "https://www.porsche.com.tr",
+  renault: "https://www.renault.com.tr",
+  seat: "https://www.seat.com.tr",
+  skoda: "https://www.skoda.com.tr",
+  smart: "https://www.smart.com.tr",
+  susuki: "https://www.suzuki.com.tr",
+  tesla: "https://www.tesla.com/tr",
+  tiggo: "https://www.tiggo.com.tr",
+  togg: "https://www.togg.com.tr",
+  volvo: "https://www.volvo.com.tr",
+  volkswagen: "https://www.vw.com.tr",
+  z在一起: "https://www.byd.com/tr",
+};
+
 export default function ComparePage({
   params,
 }: {
@@ -504,6 +536,19 @@ export default function ComparePage({
             </div>
           </div>
         </div>
+
+        {selectedVersion !== null && brandWebsites[brandName] && (
+          <div className="mb-8 flex justify-center">
+            <a
+              href={brandWebsites[brandName]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-700"
+            >
+              <span>🏠 {brandName} Resmi Web Sitesi</span>
+            </a>
+          </div>
+        )}
 
         {showCompare && compareCurrentData && selectedVersion !== null && (
           <div className="mb-8 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800">
