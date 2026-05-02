@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import "../index.css";
 import Providers from "@/components/providers";
+import ScrollManager from "@/components/scroll-manager";
 import ScrollToTop from "@/components/scroll-to-top";
 import SiteHeader from "@/components/site-header";
 
@@ -42,8 +43,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Providers>
+          <ScrollManager />
           <SiteHeader />
-          <main className="min-h-screen overflow-y-auto pt-16">{children}</main>
+          <main className="min-h-screen pt-16">{children}</main>
           <ScrollToTop />
         </Providers>
       </body>
