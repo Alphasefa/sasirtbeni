@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Leaf,
   Users,
@@ -15,17 +16,32 @@ import {
 } from "lucide-react";
 
 export default function SiteHeader() {
+  const router = useRouter();
+
+  const handleHomeClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (window.location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      router.push("/");
+    }
+  };
+
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/80">
+    <header className="fixed top-0 left-0 right-0 z-[100] border-b border-slate-200 bg-white/95 shadow-sm backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/95">
       <div className="container mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link href="/" className="flex items-center gap-2">
+        <a
+          href="/"
+          onClick={handleHomeClick}
+          className="flex cursor-pointer items-center gap-2"
+        >
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white text-xl font-bold">
             🚗
           </div>
           <span className="font-bold text-xl text-slate-900 dark:text-white">
             BiYARDIMET
           </span>
-        </Link>
+        </a>
         <nav className="hidden items-center gap-6 md:flex">
           <Link
             href="/electric-hybrid"
