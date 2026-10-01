@@ -7,6 +7,7 @@ import Providers from "@/components/providers";
 import ScrollManager from "@/components/scroll-manager";
 import ScrollToTop from "@/components/scroll-to-top";
 import SiteHeader from "@/components/site-header";
+import Footer from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="tr" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -46,6 +47,7 @@ export default function RootLayout({
           <ScrollManager />
           <SiteHeader />
           <main className="min-h-screen pt-16">{children}</main>
+          <Footer />
           <ScrollToTop />
         </Providers>
       </body>

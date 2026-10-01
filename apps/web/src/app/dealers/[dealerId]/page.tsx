@@ -68,11 +68,11 @@ export default function DealerPage({
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:from-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
       <header className="bg-white dark:bg-slate-800 shadow-sm">
-        <div className="container mx-auto max-w-5xl px-4 py-4">
+        <div className="container mx-auto max-w-6xl px-4 py-4">
           <Link
-            href={`/dealers?sales&dealer=${dealerId}`}
+            href={`/dealers?tab=sales`}
             className="mb-4 inline-flex items-center gap-2 text-blue-600 hover:underline dark:text-blue-400"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -80,7 +80,7 @@ export default function DealerPage({
           </Link>
 
           <div className="flex items-center gap-6">
-            <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 text-white text-3xl font-bold">
+            <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white text-3xl font-bold">
               {dealer.name.charAt(0)}
             </div>
             <div>
@@ -96,10 +96,10 @@ export default function DealerPage({
         </div>
       </header>
 
-      <div className="container mx-auto max-w-5xl px-4 py-8">
+      <div className="container mx-auto max-w-6xl px-4 py-8">
         <div className="grid gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2 space-y-6">
-            <div className="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800">
+            <div className="rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
               <h2 className="mb-4 text-xl font-bold text-slate-900 dark:text-white">
                 Bayi Hakkında
               </h2>
@@ -109,7 +109,7 @@ export default function DealerPage({
             </div>
 
             {dealer.newCars && dealer.newCars.length > 0 && (
-              <div className="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800">
+              <div className="rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
                 <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white">
                   <Car className="h-5 w-5 text-green-600" />
                   Sıfır Araç Stokları
@@ -140,7 +140,7 @@ export default function DealerPage({
             )}
 
             {dealer.usedCars && dealer.usedCars.length > 0 && (
-              <div className="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800">
+              <div className="rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
                 <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white">
                   <Car className="h-5 w-5 text-orange-600" />
                   2. El Araçlar
@@ -170,7 +170,7 @@ export default function DealerPage({
           </div>
 
           <div className="space-y-6">
-            <div className="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800">
+            <div className="rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
               <h3 className="mb-4 font-bold text-lg text-slate-900 dark:text-white">
                 Bayi Bilgileri
               </h3>
@@ -211,7 +211,7 @@ export default function DealerPage({
               </div>
             </div>
 
-            <div className="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800">
+            <div className="rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
               <h3 className="mb-4 font-bold text-lg text-slate-900 dark:text-white">
                 Sertifikalar
               </h3>
@@ -227,7 +227,7 @@ export default function DealerPage({
               </div>
             </div>
 
-            <div className="rounded-2xl bg-white p-6 shadow-sm dark:bg-slate-800">
+            <div className="rounded-xl bg-white p-6 shadow-sm dark:bg-slate-800">
               <h3 className="mb-4 font-bold text-lg text-slate-900 dark:text-white">
                 Hizmetler
               </h3>

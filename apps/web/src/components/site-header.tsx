@@ -1,35 +1,63 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
+import { useState, useRef, useEffect } from "react";
 import {
   Leaf,
   Users,
-  Wrench,
   DollarSign,
   Globe,
   BookOpen,
   GitCompare,
   Lightbulb,
-  Truck,
-  Sparkles,
+  ChevronDown,
+  Wrench,
 } from "lucide-react";
+import MobileMenu from "./mobile-menu";
+
+const mainLinks: { href: string; label: string; icon: any; color: string }[] = [
+  { href: "/", label: "Karşılaştır", icon: GitCompare, color: "text-blue-600" },
+  { href: "/electric-hybrid", label: "Elektrikli & Hibrit", icon: Leaf, color: "text-emerald-600" },
+  { href: "/dealers?tab=sales", label: "Bayiler", icon: Users, color: "text-blue-600" },
+  { href: "/hizmetler", label: "Hizmetler", icon: Wrench, color: "text-orange-600" },
+];
+
+const moreLinks: { href: string; label: string; icon: any; color: string }[] = [
+  { href: "/dealers?tab=overseas", label: "Yurt Dışı Fiyatları", icon: Globe, color: "text-blue-500" },
+  { href: "/dealers?tab=campaigns", label: "Kampanyalar", icon: DollarSign, color: "text-green-600" },
+  { href: "/ipucclari", label: "İpuçları", icon: Lightbulb, color: "text-yellow-500" },
+  { href: "/hikayemiz", label: "Hikayemiz", icon: BookOpen, color: "text-orange-500" },
+];
 
 export default function SiteHeader() {
   const router = useRouter();
+  const pathname = usePathname();
+  const [moreOpen, setMoreOpen] = useState(false);
+  const moreRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
+        setMoreOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const handleHomeClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (window.location.pathname === "/") {
-      const main = document.querySelector("main");
-      if (main) {
-        main.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+    if (pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       router.push("/");
     }
+  };
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href.split("?")[0]);
   };
 
   return (
@@ -47,71 +75,57 @@ export default function SiteHeader() {
             BiYARDIMET
           </span>
         </a>
-        <nav className="hidden items-center gap-6 md:flex">
-          <Link
-            href="/electric-hybrid"
-            className="flex items-center gap-2 text-slate-600 transition-colors hover:text-emerald-600 dark:text-slate-300"
-          >
-            <Leaf className="h-5 w-5" />
-            Elektrikli & Hibrit
-          </Link>
-          <Link
-            href="/dealers?tab=sales"
-            className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
-          >
-            <Users className="h-5 w-5" />
-            Bayiler
-          </Link>
-          <Link
-            href="/dealers?tab=service"
-            className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
-          >
-            <Wrench className="h-5 w-5" />
-            Servis
-          </Link>
-          <Link
-            href="/dealers?tab=campaigns"
-            className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
-          >
-            <DollarSign className="h-5 w-5" />
-            Kampanyalar
-          </Link>
-          <Link
-            href="/dealers?tab=overseas"
-            className="flex items-center gap-2 text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-300"
-          >
-            <Globe className="h-5 w-5" />
-            Yurt Dışı
-          </Link>
-          <Link
-            href="/dealers?tab=tow"
-            className="flex items-center gap-2 text-slate-600 transition-colors hover:text-orange-600 dark:text-slate-300"
-          >
-            <Truck className="h-5 w-5" />
-            Çekici
-          </Link>
-          <Link
-            href="/dealers?tab=detailing"
-            className="flex items-center gap-2 text-slate-600 transition-colors hover:text-purple-600 dark:text-slate-300"
-          >
-            <Sparkles className="h-5 w-5" />
-            Temizlik
-          </Link>
-          <Link
-            href="/ipucclari"
-            className="flex items-center gap-2 text-slate-600 transition-colors hover:text-yellow-600 dark:text-slate-300"
-          >
-            <Lightbulb className="h-5 w-5" />
-            İpuçları
-          </Link>
-          <Link
-            href="/hikayemiz"
-            className="flex items-center gap-2 text-slate-600 transition-colors hover:text-orange-600 dark:text-slate-300"
-          >
-            <BookOpen className="h-5 w-5" />
-            Hikayemiz
-          </Link>
+
+        <nav className="hidden items-center gap-1 md:flex">
+          {mainLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                isActive(link.href)
+                  ? "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+                  : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+              }`}
+            >
+              <link.icon className={`h-4 w-4 ${link.color}`} />
+              {link.label}
+            </Link>
+          ))}
+
+          <div ref={moreRef} className="relative">
+            <button
+              onClick={() => setMoreOpen(!moreOpen)}
+              className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white"
+            >
+              Diğer
+              <ChevronDown className={`h-4 w-4 transition-transform ${moreOpen ? "rotate-180" : ""}`} />
+            </button>
+
+            {moreOpen && (
+              <div className="absolute right-0 top-full z-50 mt-1 w-56 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl dark:border-slate-700 dark:bg-slate-900">
+                {moreLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMoreOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${
+                      isActive(link.href)
+                        ? "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300"
+                        : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800"
+                    }`}
+                  >
+                    <link.icon className={`h-4 w-4 ${link.color}`} />
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
         </nav>
+
+        <div className="md:hidden">
+          <MobileMenu />
+        </div>
       </div>
     </header>
   );

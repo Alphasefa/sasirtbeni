@@ -30,7 +30,7 @@ export default function SignUpForm({ onSwitchToSignIn }: { onSwitchToSignIn: () 
         {
           onSuccess: () => {
             router.push("/dashboard");
-            toast.success("Sign up successful");
+            toast.success("Kayıt başarılı");
           },
           onError: (error) => {
             toast.error(error.error.message || error.error.statusText);
@@ -40,9 +40,9 @@ export default function SignUpForm({ onSwitchToSignIn }: { onSwitchToSignIn: () 
     },
     validators: {
       onSubmit: z.object({
-        name: z.string().min(2, "Name must be at least 2 characters"),
-        email: z.email("Invalid email address"),
-        password: z.string().min(8, "Password must be at least 8 characters"),
+        name: z.string().min(2, "Ad en az 2 karakter olmalı"),
+        email: z.email("Geçerli bir e-posta adresi girin"),
+        password: z.string().min(8, "Şifre en az 8 karakter olmalı"),
       }),
     },
   });
@@ -53,7 +53,7 @@ export default function SignUpForm({ onSwitchToSignIn }: { onSwitchToSignIn: () 
 
   return (
     <div className="mx-auto w-full mt-10 max-w-md p-6">
-      <h1 className="mb-6 text-center text-3xl font-bold">Create Account</h1>
+      <h1 className="mb-6 text-center text-3xl font-bold">Hesap Oluştur</h1>
 
       <form
         onSubmit={(e) => {
@@ -67,7 +67,7 @@ export default function SignUpForm({ onSwitchToSignIn }: { onSwitchToSignIn: () 
           <form.Field name="name">
             {(field) => (
               <div className="space-y-2">
-                <Label htmlFor={field.name}>Name</Label>
+                <Label htmlFor={field.name}>Ad Soyad</Label>
                 <Input
                   id={field.name}
                   name={field.name}
@@ -89,7 +89,7 @@ export default function SignUpForm({ onSwitchToSignIn }: { onSwitchToSignIn: () 
           <form.Field name="email">
             {(field) => (
               <div className="space-y-2">
-                <Label htmlFor={field.name}>Email</Label>
+                <Label htmlFor={field.name}>E-posta</Label>
                 <Input
                   id={field.name}
                   name={field.name}
@@ -112,7 +112,7 @@ export default function SignUpForm({ onSwitchToSignIn }: { onSwitchToSignIn: () 
           <form.Field name="password">
             {(field) => (
               <div className="space-y-2">
-                <Label htmlFor={field.name}>Password</Label>
+                <Label htmlFor={field.name}>Şifre</Label>
                 <Input
                   id={field.name}
                   name={field.name}
@@ -138,7 +138,7 @@ export default function SignUpForm({ onSwitchToSignIn }: { onSwitchToSignIn: () 
               className="w-full"
               disabled={!state.canSubmit || state.isSubmitting}
             >
-              {state.isSubmitting ? "Submitting..." : "Sign Up"}
+              {state.isSubmitting ? "Gönderiliyor..." : "Kayıt Ol"}
             </Button>
           )}
         </form.Subscribe>
@@ -150,7 +150,7 @@ export default function SignUpForm({ onSwitchToSignIn }: { onSwitchToSignIn: () 
           onClick={onSwitchToSignIn}
           className="text-indigo-600 hover:text-indigo-800"
         >
-          Already have an account? Sign In
+          Zaten hesabınız var mı? Giriş Yapın
         </Button>
       </div>
     </div>

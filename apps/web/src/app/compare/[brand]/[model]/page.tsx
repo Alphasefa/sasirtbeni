@@ -1,26 +1,21 @@
 "use client";
 
 import {
-  ArrowDown,
   ArrowLeft,
   ArrowRight,
-  ArrowUp,
-  Building2,
   Check,
-  GitCompare,
+  ChevronDown,
+  ExternalLink,
+  Globe,
   MapPin,
-  Moon,
   Phone,
-  Plus,
   Send,
   Share2,
   Star,
-  Sun,
   X,
 } from "lucide-react";
 import Link from "next/link";
-import { useSearchParams, useRouter } from "next/navigation";
-import { useTheme } from "next-themes";
+import { useSearchParams } from "next/navigation";
 import { use, useEffect, useState } from "react";
 import {
   calculateTax,
@@ -32,6 +27,7 @@ import {
 import vehicleData from "@/shared/data/vehicles.json";
 import dealersData from "@/shared/data/dealers.json";
 import { brandStories, modelStories } from "@/shared/data/stories";
+import { countryNames, countryFlags, brandWebsites } from "@/shared/data/constants";
 import AdBanner from "@/components/ad-banner";
 import { useCurrency } from "@/shared/utils/useCurrency";
 
@@ -47,138 +43,20 @@ const { brands, models } = vehicleData as {
   >;
 };
 
-const countryNames: Record<string, string> = {
-  US: "ABD",
-  DE: "Almanya",
-  CZ: "Çekya",
-  FR: "Fransa",
-  KR: "Güney Kore",
-  SE: "İsveç",
-  IT: "İtalya",
-  JP: "Japonya",
-  TR: "Türkiye",
-  GB: "İngiltere",
-  ES: "İspanya",
-  RO: "Romanya",
-  RU: "Rusya",
-  CN: "Çin",
-  MY: "Malezya",
-  IN: "Hindistan",
-  IR: "İran",
-};
-
-const countryFlags: Record<string, string> = {
-  US: "https://flagcdn.com/w40/us.png",
-  DE: "https://flagcdn.com/w40/de.png",
-  CZ: "https://flagcdn.com/w40/cz.png",
-  FR: "https://flagcdn.com/w40/fr.png",
-  KR: "https://flagcdn.com/w40/kr.png",
-  SE: "https://flagcdn.com/w40/se.png",
-  IT: "https://flagcdn.com/w40/it.png",
-  JP: "https://flagcdn.com/w40/jp.png",
-  TR: "https://flagcdn.com/w40/tr.png",
-  GB: "https://flagcdn.com/w40/gb.png",
-  ES: "https://flagcdn.com/w40/es.png",
-  RO: "https://flagcdn.com/w40/ro.png",
-  RU: "https://flagcdn.com/w40/ru.png",
-  CN: "https://flagcdn.com/w40/cn.png",
-  MY: "https://flagcdn.com/w40/my.png",
-  IN: "https://flagcdn.com/w40/in.png",
-  IR: "https://flagcdn.com/w40/ir.png",
-};
-
-const brandWebsites: Record<string, { tr: string; global: string }> = {
-  "alfa romeo": {
-    tr: "https://www.alfaromeo.com.tr",
-    global: "https://www.alfaromeo.com/",
-  },
-  audi: {
-    tr: "https://www.audi.com.tr",
-    global: "https://www.audi.com",
-  },
-  bmw: { tr: "https://www.bmw.com.tr", global: "https://www.bmw.com" },
-  citroen: {
-    tr: "https://www.citroen.com.tr",
-    global: "https://www.citroen.com",
-  },
-  cupra: { tr: "https://www.cupra.com.tr", global: "https://www.cupra.com" },
-  dacia: { tr: "https://www.dacia.com.tr", global: "https://www.dacia.com" },
-  fiat: { tr: "https://www.fiat.com.tr", global: "https://www.fiat.com" },
-  ford: { tr: "https://www.ford.com.tr", global: "https://www.ford.com" },
-  hyundai: {
-    tr: "https://www.hyundai.com/tr",
-    global: "https://www.hyundai.com",
-  },
-  jeep: { tr: "https://www.jeep.com.tr", global: "https://www.jeep.com" },
-  kia: { tr: "https://www.kia.com/tr", global: "https://www.kia.com" },
-  landrover: {
-    tr: "https://www.landrover.com.tr",
-    global: "https://www.landrover.com",
-  },
-  mercedes: {
-    tr: "https://www.mercedes-benz.com.tr",
-    global: "https://www.mbusa.com",
-  },
-  mini: { tr: "https://www.mini.com.tr", global: "https://www.mini.com" },
-  nissan: {
-    tr: "https://www.nissan.com.tr",
-    global: "https://www.nissanusa.com",
-  },
-  opel: { tr: "https://www.opel.com.tr", global: "https://www.opel.com" },
-  peugeot: {
-    tr: "https://www.peugeot.com.tr",
-    global: "https://www.peugeot.com",
-  },
-  porsche: {
-    tr: "https://www.porsche.com.tr",
-    global: "https://www.porsche.com",
-  },
-  renault: {
-    tr: "https://www.renault.com.tr",
-    global: "https://www.renault.com",
-  },
-  seat: { tr: "https://www.seat.com.tr", global: "https://www.seat.com" },
-  skoda: {
-    tr: "https://www.skoda.com.tr",
-    global: "https://www.skoda-auto.com",
-  },
-  smart: { tr: "https://www.smart.com.tr", global: "https://www.smart.com" },
-  suzuki: { tr: "https://www.suzuki.com.tr", global: "https://www.suzuki.com" },
-  tesla: { tr: "https://www.tesla.com/tr", global: "https://www.tesla.com" },
-  tiggo: { tr: "https://www.tiggo.com.tr", global: "https://www.tiggo.com" },
-  togg: { tr: "https://www.togg.com.tr", global: "https://www.togg.com.tr" },
-  volvo: { tr: "https://www.volvo.com.tr", global: "https://www.volvo.com" },
-  volkswagen: { tr: "https://www.vw.com.tr", global: "https://www.vw.com" },
-  byd: { tr: "https://www.byd.com/tr", global: "https://www.byd.com" },
-};
-
 export default function ComparePage({
   params,
 }: {
   params: Promise<{ brand: string; model: string }>;
 }) {
   const { brand, model } = use(params);
-  const router = useRouter();
   const searchParams = useSearchParams();
   const versionParam = searchParams?.get("v");
-  const { rates, isLoading, convertToTRY } = useCurrency();
+  const { rates, convertToTRY } = useCurrency();
   const [selectedVersion, setSelectedVersion] = useState<number | null>(
     versionParam ? parseInt(versionParam) : null,
   );
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const [showCompare, setShowCompare] = useState(false);
-  const [compareBrand, setCompareBrand] = useState("");
-  const [compareModel, setCompareModel] = useState("");
-  const [compareVersion, setCompareVersion] = useState<number | null>(null);
   const [showLeadModal, setShowLeadModal] = useState(false);
-  const [leadForm, setLeadForm] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    city: "",
-    message: "",
-  });
+  const [leadForm, setLeadForm] = useState({ name: "", phone: "", city: "" });
   const [leadSent, setLeadSent] = useState(false);
   const [favorites, setFavorites] = useState<
     { key: string; timestamp: number; priceTR: number; priceDE: number }[]
@@ -187,22 +65,17 @@ export default function ComparePage({
   useEffect(() => {
     const saved = localStorage.getItem("favoriteVehicles");
     if (saved) {
-      try {
-        setFavorites(JSON.parse(saved));
-      } catch {}
+      try { setFavorites(JSON.parse(saved)); } catch {}
     }
   }, []);
 
   useEffect(() => {
     if (selectedVersion !== null) {
       setTimeout(() => {
-        const priceSection = document.getElementById("price-comparison");
+        const el = document.getElementById("price-comparison");
         const main = document.querySelector("main");
-        if (priceSection && main) {
-          const yOffset = -100;
-          const y =
-            priceSection.getBoundingClientRect().top + main.scrollTop + yOffset;
-          main.scrollTo({ top: y, behavior: "smooth" });
+        if (el && main) {
+          main.scrollTo({ top: el.getBoundingClientRect().top + main.scrollTop - 100, behavior: "smooth" });
         }
       }, 300);
     }
@@ -212,26 +85,9 @@ export default function ComparePage({
     const key = `${brand}|${model}|${idx}`;
     const currentPrice = data[idx];
     const existing = favorites.find((f) => f.key === key);
-
-    let updated: {
-      key: string;
-      timestamp: number;
-      priceTR: number;
-      priceDE: number;
-    }[];
-    if (existing) {
-      updated = favorites.filter((f) => f.key !== key);
-    } else {
-      updated = [
-        ...favorites,
-        {
-          key,
-          timestamp: Date.now(),
-          priceTR: currentPrice?.tr || 0,
-          priceDE: currentPrice?.de || 0,
-        },
-      ];
-    }
+    const updated = existing
+      ? favorites.filter((f) => f.key !== key)
+      : [...favorites, { key, timestamp: Date.now(), priceTR: currentPrice?.tr || 0, priceDE: currentPrice?.de || 0 }];
     setFavorites(updated);
     localStorage.setItem("favoriteVehicles", JSON.stringify(updated));
   };
@@ -239,62 +95,22 @@ export default function ComparePage({
   const isFavorite = (idx: number) =>
     favorites.some((f) => f.key === `${brand}|${model}|${idx}`);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const handleShare = async () => {
     const url = window.location.href;
     if (navigator.share) {
-      try {
-        await navigator.share({
-          title: `${brandName} ${modelName} Fiyat Karşılaştırması`,
-          text: "Bu aracın Türkiye ve Almanya fiyatlarını karşılaştırın!",
-          url: url,
-        });
-      } catch (err) {
-        console.log("Share cancelled");
-      }
+      try { await navigator.share({ title: `${brandName} ${modelName}`, text: "Fiyat karşılaştırması", url }); } catch {}
     } else {
       navigator.clipboard.writeText(url);
-      alert("Link kopyalandı!");
     }
   };
 
   const handleLeadSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    const { dealers } = dealersData as {
-      dealers: {
-        id: string;
-        name: string;
-        brand: string;
-        city: string;
-        phone: string;
-        address: string;
-      }[];
-    };
-
-    const relevantDealers = dealers.filter((d) => d.brand === brand);
-    const formData = {
-      ...leadForm,
-      vehicle: `${brandName} ${modelName}`,
-      version: currentData?.engine || "",
-      selectedVersion: selectedVersion !== null ? selectedVersion : 0,
-    };
-
-    console.log(
-      "Lead submitted:",
-      formData,
-      "Dealers:",
-      relevantDealers.map((d) => d.name),
-    );
-
     setLeadSent(true);
     setTimeout(() => {
       setShowLeadModal(false);
       setLeadSent(false);
-      setLeadForm({ name: "", phone: "", email: "", city: "", message: "" });
+      setLeadForm({ name: "", phone: "", city: "" });
     }, 2000);
   };
 
@@ -302,726 +118,432 @@ export default function ComparePage({
   const modelData = brandData.find((m: { id: string }) => m.id === model);
   const data = modelData?.versions || [];
   const currentData = selectedVersion !== null ? data[selectedVersion] : null;
-
   const brandInfo = brands.find((b: { id: string }) => b.id === brand);
   const brandName = brandInfo?.name || brand;
   const modelName = modelData?.name || model;
+
+  const currentModelIndex = brandData.findIndex((m) => m.id === model);
+  const prevModel = currentModelIndex > 0 ? brandData[currentModelIndex - 1] : null;
+  const nextModel = currentModelIndex < brandData.length - 1 ? brandData[currentModelIndex + 1] : null;
 
   if (data.length === 0) {
     return (
       <div className="flex min-h-screen items-center justify-center">
         <div className="text-center">
           <h1 className="mb-4 font-bold text-2xl">Bu model henüz eklenmedi</h1>
-          <a href="/" className="text-blue-600 hover:underline">
-            Ana sayfaya dön
-          </a>
+          <Link href="/" className="text-blue-600 hover:underline">Ana sayfaya dön</Link>
         </div>
       </div>
     );
   }
 
   const taxInfo = currentData
-    ? calculateTax(
-        currentData.de,
-        rates.USD,
-        extractEngineCC(currentData.engine),
-        detectFuel(currentData.engine),
-      )
+    ? calculateTax(currentData.de, rates.USD, extractEngineCC(currentData.engine), detectFuel(currentData.engine))
     : null;
 
   const trPrice = currentData?.tr || 0;
   const dePriceTRY = currentData ? convertToTRY(currentData.de, "EUR") : 0;
   const diff = trPrice - dePriceTRY;
   const diffPercent = dePriceTRY > 0 ? diff / dePriceTRY : 0;
-
   const minimumWageTR = 22600;
   const monthsToAffordTR = Math.ceil(trPrice / minimumWageTR);
+  const deMonthsToAfford = currentData ? Math.ceil(currentData.de / 2200) : 0;
 
-  const minimumWages: Record<
-    string,
-    { amount: number; currency: string; name: string }
-  > = {
-    IT: { amount: 1900, currency: "€", name: "İtalya" },
-    DE: { amount: 2200, currency: "€", name: "Almanya" },
-    FR: { amount: 1800, currency: "€", name: "Fransa" },
-    GB: { amount: 1700, currency: "£", name: "İngiltere" },
-    US: { amount: 2200, currency: "$", name: "ABD" },
-    JP: { amount: 180000, currency: "¥", name: "Japonya" },
-    KR: { amount: 2000000, currency: "₩", name: "Güney Kore" },
-    CN: { amount: 5000, currency: "¥", name: "Çin" },
-    TR: { amount: 22600, currency: "₺", name: "Türkiye" },
-    ES: { amount: 1650, currency: "€", name: "İspanya" },
-    SE: { amount: 22000, currency: "kr", name: "İsveç" },
-    RO: { amount: 600, currency: "lei", name: "Romanya" },
-    CZ: { amount: 18000, currency: "Kč", name: "Çekya" },
-  };
-
-  const brandCountry = brandInfo?.country || "DE";
-  const brandCountryWage = minimumWages[brandCountry] || minimumWages.DE;
-
-  const compareBrandData = compareBrand ? models[compareBrand] || [] : [];
-  const compareModelData = compareBrandData.find(
-    (m: { id: string }) => m.id === compareModel,
-  );
-  const compareVersionData = compareModelData?.versions || [];
-  const compareCurrentData =
-    compareVersion !== null ? compareVersionData[compareVersion] : null;
-
-  const compareBrandInfo = compareBrand
-    ? brands.find((b: { id: string }) => b.id === compareBrand)
-    : null;
-  const compareBrandName = compareBrandInfo?.name || compareBrand;
-  const compareModelName = compareModelData?.name || compareModel;
-
-  const compareTrPrice = compareCurrentData?.tr || 0;
-  const compareDePriceTRY = compareCurrentData
-    ? convertToTRY(compareCurrentData.de, "EUR")
-    : 0;
+  const brandWebsite = brandWebsites[brandName.toLowerCase()];
+  const relevantDealers = (dealersData as any).dealers?.filter((d: any) => d.brand === brand) || [];
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
-      <div className="container mx-auto max-w-5xl px-4 py-8">
+      <div className="container mx-auto max-w-6xl px-4 py-6 sm:py-8">
         <Link
           href={`/compare/${brand}`}
-          className="mb-6 inline-flex items-center gap-2 text-blue-600 hover:underline dark:text-blue-400"
+          className="mb-4 inline-flex items-center gap-2 text-sm text-blue-600 hover:underline dark:text-blue-400"
         >
           <ArrowLeft className="h-4 w-4" />
-          Geri
+          {brandName} Modelleri
         </Link>
-        <h1 className="mb-2 flex items-center gap-4 font-bold text-4xl text-slate-900 dark:text-white">
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-200 font-bold text-2xl text-slate-600 dark:bg-slate-600 dark:text-slate-300">
-            {brandName.charAt(0)}
-          </div>
-          <div className="flex flex-col">
-            <span>
-              {brandName} {modelName}
-            </span>
-            <span className="flex items-center gap-2 font-normal text-lg text-slate-500">
-              <img
-                src={countryFlags[brandInfo?.country || "TR"]}
-                alt=""
-                className="h-4 w-6"
-              />
+
+        <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div>
+            <h1 className="flex items-center gap-3 font-bold text-3xl text-slate-900 dark:text-white">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-200 font-bold text-xl text-slate-600 dark:bg-slate-600 dark:text-slate-300">
+                {brandName.charAt(0)}
+              </div>
+              <span>{brandName} {modelName}</span>
+            </h1>
+            <div className="mt-1 flex items-center gap-2 pl-[60px] text-sm text-slate-500">
+              <img src={countryFlags[brandInfo?.country || "TR"]} alt="" className="h-3 w-5" />
               {countryNames[brandInfo?.country || "TR"] || brandInfo?.country}
-            </span>
-          </div>
-        </h1>
-        <p className="mb-2 text-lg text-slate-500 dark:text-slate-400">
-          Fiyat karşılaştırması • {currentData?.engine}
-        </p>
-        {brandWebsites[brandName.toLowerCase()] && (
-          <div className="mb-6 flex flex-wrap gap-3">
-            <a
-              href={brandWebsites[brandName.toLowerCase()].tr}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
-            >
-              🇹🇷 Türkiye Web Sitesi
-            </a>
-            <a
-              href={brandWebsites[brandName.toLowerCase()].global}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-slate-600 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700"
-            >
-              🌍 Global Web Sitesi
-            </a>
-          </div>
-        )}
-        {(brandStories[brand] || modelStories[`${brand}-${model}`]) && (
-          <p className="mb-8 text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
-            {modelStories[`${brand}-${model}`] || brandStories[brand]}
-          </p>
-        )}
-        <div className="mb-8">
-          <AdBanner slot={`hero-${brand}`} brand={brand} />
-          {currentData && (
-            <div className="mt-4 flex items-center justify-between rounded-lg bg-white px-4 py-3 shadow dark:bg-slate-800">
-              <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-600 dark:bg-blue-900 dark:text-blue-300">
-                  {brandName.charAt(0)}
-                </div>
-                <div>
-                  <div className="font-medium text-slate-900 dark:text-white">
-                    {brandName} {modelName}
-                  </div>
-                  <div className="text-sm text-slate-500">
-                    {currentData.engine} • {currentData.hp} HP
-                  </div>
-                </div>
-              </div>
-              <div className="font-bold text-blue-600 dark:text-blue-400">
-                {formatCurrency(currentData.tr)}
-              </div>
             </div>
-          )}
-        </div>
-        {selectedVersion === null && (
-          <div className="mb-6 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 p-4 text-center text-white shadow-lg">
-            <span className="font-bold text-lg">
-              👇 Aşağıdaki versiyonlardan birini seçin
-            </span>
-            <p className="mt-1 text-sm text-white/90">
-              Fiyatları görmek için versiyon seçmeniz gerekiyor
-            </p>
           </div>
-        )}
-        <div className="mb-8 rounded-xl bg-white p-6 shadow-lg ring-2 ring-blue-200 dark:bg-slate-800 dark:ring-slate-700">
-          <div className="mb-4 flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
-              <Check className="h-5 w-5" />
-            </span>
-            <label className="font-bold text-slate-900 text-lg dark:text-white">
-              Versiyon Seç
-            </label>
-          </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            {data.map((item, idx) => (
-              <button
-                key={idx}
-                onClick={() =>
-                  setSelectedVersion(selectedVersion === idx ? null : idx)
-                }
-                className={`relative flex flex-col items-start rounded-xl border-2 p-5 text-left transition-all hover:scale-[1.02] ${
-                  selectedVersion === idx
-                    ? "border-blue-600 bg-blue-600 text-white shadow-lg shadow-blue-200"
-                    : "border-slate-200 bg-slate-50 text-slate-700 hover:border-blue-400 hover:bg-blue-50 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-200 dark:hover:border-blue-400"
-                }`}
-              >
-                <div
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    toggleFavorite(idx);
-                  }}
-                  className={`absolute right-3 top-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full transition-colors ${
-                    isFavorite(idx)
-                      ? "bg-yellow-400 text-white"
-                      : "bg-slate-200/70 text-slate-500 hover:bg-yellow-200 hover:text-yellow-600"
-                  }`}
-                >
-                  <Star className="h-5 w-5" />
-                </div>
-                <div className="mb-1 font-bold text-xl">{item.engine}</div>
-                <div
-                  className={`text-base font-medium ${selectedVersion === idx ? "text-blue-200" : "text-blue-600"}`}
-                >
-                  {item.hp} HP
-                </div>
-                {selectedVersion !== idx && (
-                  <div className="mt-2 rounded bg-slate-200 px-2 py-1 text-xs font-medium text-slate-600 dark:bg-slate-600 dark:text-slate-300">
-                    Tıklayarak seç
-                  </div>
-                )}
-              </button>
-            ))}
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleShare}
+              className="flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-sm font-medium text-slate-600 shadow-sm transition-colors hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-300"
+            >
+              <Share2 className="h-4 w-4" />
+              <span className="hidden sm:inline">Paylaş</span>
+            </button>
           </div>
         </div>
 
+        {brandWebsite && (
+          <div className="mb-6 flex flex-col gap-3 sm:flex-row">
+            <a
+              href={brandWebsite.tr}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-3 text-sm font-medium text-white shadow-sm transition-all hover:bg-blue-700 hover:shadow-md"
+            >
+              <img src={countryFlags.TR} alt="" className="h-4 w-6 rounded-sm" />
+              Türkiye Resmi Sitesi
+              <ExternalLink className="ml-auto h-4 w-4 opacity-60" />
+            </a>
+            <a
+              href={brandWebsite.global}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 rounded-xl bg-white px-4 py-3 text-sm font-medium text-slate-700 shadow-sm transition-all hover:bg-slate-50 hover:shadow-md dark:bg-slate-800 dark:text-slate-300"
+            >
+              <Globe className="h-4 w-4 text-slate-400" />
+              Global Web Sitesi
+              <ExternalLink className="ml-auto h-4 w-4 opacity-40" />
+            </a>
+          </div>
+        )}
+
+        {(brandStories[brand] || modelStories[`${brand}-${model}`]) && (
+          <p className="mb-6 max-w-2xl text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+            {modelStories[`${brand}-${model}`] || brandStories[brand]}
+          </p>
+        )}
+
+        <div className="mb-6">
+          <AdBanner slot={`hero-${brand}`} brand={brand} />
+        </div>
+
+        <div className="mb-6 rounded-xl bg-white p-4 shadow-sm dark:bg-slate-800">
+          <div className="mb-3 flex items-center justify-between">
+            <span className="text-sm font-medium text-slate-700 dark:text-slate-200">
+              Versiyon Seçin
+            </span>
+            <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-600 dark:bg-blue-900 dark:text-blue-300">
+              {data.length} seçenek
+            </span>
+          </div>
+          <div className="space-y-2">
+            {data.map((item, idx) => {
+              const isSelected = selectedVersion === idx;
+              const dePrice = item.de;
+              const trP = item.tr;
+              const saving = trP - convertToTRY(dePrice, "EUR");
+              return (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedVersion(isSelected ? null : idx)}
+                  className={`flex w-full items-center justify-between rounded-xl border-2 p-4 text-left transition-all ${
+                    isSelected
+                      ? "border-blue-600 bg-blue-50 shadow-sm dark:bg-blue-900/30"
+                      : "border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm dark:border-slate-600 dark:bg-slate-700"
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`flex h-10 w-10 items-center justify-center rounded-xl font-bold ${
+                      isSelected
+                        ? "bg-blue-600 text-white"
+                        : "bg-slate-100 text-slate-600 dark:bg-slate-600 dark:text-slate-300"
+                    }`}>
+                      {idx + 1}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-slate-900 dark:text-white">
+                        {item.engine}
+                      </div>
+                      <div className="flex items-center gap-3 text-sm text-slate-500">
+                        <span>{item.hp} HP</span>
+                        <span className="text-slate-300">•</span>
+                        <span className={saving > 0 ? "text-green-600 font-medium" : "text-red-600 font-medium"}>
+                          {saving > 0 ? `₺${Math.round(saving / 1000)}K tasarruf` : `₺${Math.abs(Math.round(saving / 1000))}K fazla`}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); toggleFavorite(idx); }}
+                      className={`rounded-full p-2 transition-colors ${
+                        isFavorite(idx) ? "text-yellow-400" : "text-slate-300 hover:text-yellow-400"
+                      }`}
+                    >
+                      <Star className="h-4 w-4" fill={isFavorite(idx) ? "currentColor" : "none"} />
+                    </button>
+                    <ChevronDown className={`h-5 w-5 transition-transform ${
+                      isSelected ? "rotate-180 text-blue-600" : "text-slate-300"
+                    }`} />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {selectedVersion === null && (
+          <div className="mb-6 rounded-xl border-2 border-dashed border-amber-300 bg-amber-50 p-5 text-center dark:border-amber-700 dark:bg-amber-900/20">
+            <p className="font-medium text-amber-700 dark:text-amber-300">
+              👆 Yukarıdaki listeden bir versiyon seçerek fiyatları keşfedin
+            </p>
+          </div>
+        )}
+
         <button
           onClick={() => setShowLeadModal(true)}
-          className="mb-8 w-full rounded-xl bg-gradient-to-r from-green-500 to-green-600 py-4 text-lg font-bold text-white shadow-lg transition-all hover:from-green-600 hover:to-green-700 hover:shadow-xl"
+          className="mb-6 w-full rounded-xl bg-gradient-to-r from-green-500 to-green-600 py-3.5 text-lg font-bold text-white shadow-lg transition-all hover:from-green-600 hover:to-green-700 hover:shadow-xl active:scale-[0.98]"
         >
           <Send className="mr-2 inline h-5 w-5" />
           Bayiden Özel Teklif Al
         </button>
 
-        {showCompare && (
-          <div className="mb-8 rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
-            <div className="mb-4 flex items-center justify-between">
-              <h3 className="font-bold text-xl dark:text-white">
-                Araç Karşılaştır
-              </h3>
-              <button
-                onClick={() => setShowCompare(false)}
-                className="text-slate-500 hover:text-slate-700"
-              >
-                <X className="h-5 w-5" />
-              </button>
+        {currentData && (
+          <div id="price-comparison" className="mb-6 grid gap-4 sm:grid-cols-2">
+            <div className="rounded-xl bg-white p-5 shadow-sm dark:bg-slate-800">
+              <div className="mb-3 flex items-center gap-2">
+                <span className="text-xl">🇹🇷</span>
+                <div>
+                  <div className="font-semibold text-slate-900 dark:text-white">Türkiye</div>
+                  <div className="text-xs text-slate-500">Vitrin fiyatı</div>
+                </div>
+              </div>
+              <div className="font-bold text-3xl text-slate-900 dark:text-white">
+                {formatCurrency(trPrice)}
+              </div>
+              <div className="mt-3 rounded-lg bg-slate-50 p-3 dark:bg-slate-700">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-slate-500">Asgari ücrete göre</span>
+                  <span className="font-semibold text-slate-900 dark:text-white">
+                    ~{monthsToAffordTR} ay
+                  </span>
+                </div>
+                <div className="mt-1 text-xs text-slate-400">
+                  ≈ {Math.floor(monthsToAffordTR / 12)} yıl {monthsToAffordTR % 12} ay
+                </div>
+              </div>
             </div>
-            <div className="grid gap-4 md:grid-cols-3">
-              <select
-                value={compareBrand}
-                onChange={(e) => {
-                  setCompareBrand(e.target.value);
-                  setCompareModel("");
-                  setCompareVersion(null);
-                }}
-                className="rounded-lg border border-slate-200 px-4 py-2 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-              >
-                <option value="">Marka seç</option>
-                {brands
-                  .filter((b: { id: string }) => b.id !== brand)
-                  .map((b: { id: string; name: string }) => (
-                    <option key={b.id} value={b.id}>
-                      {b.name}
-                    </option>
-                  ))}
-              </select>
-              <select
-                value={compareModel}
-                onChange={(e) => {
-                  setCompareModel(e.target.value);
-                  setCompareVersion(null);
-                }}
-                disabled={!compareBrand}
-                className="rounded-lg border border-slate-200 px-4 py-2 disabled:opacity-50 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-              >
-                <option value="">Model seç</option>
-                {compareBrandData.map((m: { id: string; name: string }) => (
-                  <option key={m.id} value={m.id}>
-                    {m.name}
-                  </option>
-                ))}
-              </select>
-              <select
-                value={compareVersion?.toString() || ""}
-                onChange={(e) =>
-                  setCompareVersion(
-                    e.target.value ? Number.parseInt(e.target.value) : null,
-                  )
-                }
-                disabled={!compareModel}
-                className="rounded-lg border border-slate-200 px-4 py-2 disabled:opacity-50 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-              >
-                <option value="">Versiyon seç</option>
-                {compareVersionData.map((item, idx) => (
-                  <option key={idx} value={idx.toString()}>
-                    {item.engine} - {item.hp} HP
-                  </option>
-                ))}
-              </select>
+
+            <div className="rounded-xl bg-white p-5 shadow-sm dark:bg-slate-800">
+              <div className="mb-3 flex items-center gap-2">
+                <span className="text-xl">🇩🇪</span>
+                <div>
+                  <div className="font-semibold text-slate-900 dark:text-white">Almanya</div>
+                  <div className="text-xs text-slate-500">mobile.de fiyatı</div>
+                </div>
+              </div>
+              <div className="font-bold text-3xl text-slate-900 dark:text-white">
+                €{currentData.de.toLocaleString()}
+              </div>
+              <div className="mt-3 rounded-lg bg-slate-50 p-3 dark:bg-slate-700">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-slate-500">Kur dönüşümü</span>
+                  <span className="font-semibold text-slate-900 dark:text-white">
+                    {formatCurrency(dePriceTRY)}
+                  </span>
+                </div>
+                <div className="mt-1 text-xs text-slate-400">
+                  1 EUR = {rates.USD.toFixed(2)} TL
+                </div>
+              </div>
             </div>
           </div>
         )}
 
-        {brand === "alfaromeo" &&
-          model === "tonale" &&
-          selectedVersion !== null && (
-            <div className="mb-8 overflow-hidden rounded-xl">
-              <iframe
-                className="aspect-video w-full"
-                src="https://www.youtube.com/embed/poYON3zPDik"
-                title="Alfa Romeo Tonale"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          )}
-        <div id="price-comparison" className="mb-8 grid gap-6 md:grid-cols-2">
-          <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
-            <div className="mb-4">
-              <h2 className="font-semibold dark:text-white">Türkiye</h2>
-              <p className="text-slate-500 text-sm">Vitrin fiyatı</p>
-            </div>
-            <div className="font-bold text-3xl text-slate-900 dark:text-white">
-              {formatCurrency(trPrice)}
-            </div>
-          </div>
-
-          <div className="rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
-            <div className="mb-4">
-              <h2 className="font-semibold dark:text-white">Almanya</h2>
-              <p className="text-slate-500 text-sm">mobile.de</p>
-            </div>
-            <div className="font-bold text-3xl text-slate-900 dark:text-white">
-              €{currentData?.de.toLocaleString()}
-            </div>
-            <div className="mt-1 text-slate-500 text-sm">
-              ≈ {formatCurrency(dePriceTRY)} (kur dönüşümü)
-            </div>
-          </div>
-        </div>
-
-        {showCompare && compareCurrentData && selectedVersion !== null && (
-          <div className="mb-8 overflow-hidden rounded-xl bg-white shadow-lg dark:bg-slate-800">
-            <div className="grid grid-cols-3 divide-x divide-slate-200 bg-slate-50 dark:divide-slate-600 dark:bg-slate-700">
-              <div className="p-4 text-center">
-                <div className="mb-2 text-slate-500 text-sm">Karşılaştırma</div>
+        {currentData && (
+          <div className={`mb-6 rounded-xl p-5 ${
+            diff > 0
+              ? "bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20"
+              : "bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20"
+          }`}>
+            <div className="text-center">
+              <div className="mb-1 text-sm font-medium text-slate-500 dark:text-slate-400">
+                Türkiye'de fiyat Almanya'ya göre
               </div>
-              <div className="p-4 text-center">
-                <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 font-bold text-blue-600 text-xl dark:bg-blue-900 dark:text-blue-300">
-                  {brandName.charAt(0)}
+              <div className={`font-bold text-3xl ${
+                diff > 0 ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"
+              }`}>
+                {diff > 0 ? "+" : ""}{formatPercent(diffPercent)} daha pahalı
+              </div>
+              <div className="mt-2 text-sm text-slate-600 dark:text-slate-300">
+                Fark: {formatCurrency(Math.abs(diff))}
+              </div>
+            </div>
+            <div className="mt-4 grid grid-cols-2 gap-3 border-t border-slate-200/50 pt-4 dark:border-slate-600/50">
+              <div className="rounded-lg bg-white/50 p-3 text-center dark:bg-slate-800/50">
+                <div className="text-xs text-slate-500">🇹🇷 Asgari ücretle</div>
+                <div className="mt-1 font-bold text-slate-900 dark:text-white">
+                  ~{monthsToAffordTR} ay
                 </div>
-                <div className="font-bold dark:text-white">{brandName}</div>
-                <div className="text-slate-500 text-sm">{modelName}</div>
               </div>
-              <div className="p-4 text-center">
-                <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 font-bold text-orange-600 text-xl dark:bg-orange-900 dark:text-orange-300">
-                  {compareBrandName.charAt(0)}
+              <div className="rounded-lg bg-white/50 p-3 text-center dark:bg-slate-800/50">
+                <div className="text-xs text-slate-500">🇩🇪 Asgari ücretle</div>
+                <div className="mt-1 font-bold text-slate-900 dark:text-white">
+                  ~{deMonthsToAfford} ay
                 </div>
-                <div className="font-bold dark:text-white">
-                  {compareBrandName}
-                </div>
-                <div className="text-slate-500 text-sm">{compareModelName}</div>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-3 divide-x divide-slate-200 dark:divide-slate-600">
-              <div className="p-4">
-                <div className="text-slate-500 text-sm">Motor</div>
-              </div>
-              <div className="p-4 text-center font-medium dark:text-white">
-                {currentData?.engine}
-              </div>
-              <div className="p-4 text-center font-medium dark:text-white">
-                {compareCurrentData.engine}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-3 divide-x divide-slate-200 bg-slate-50 dark:divide-slate-600 dark:bg-slate-700">
-              <div className="p-4">
-                <div className="text-slate-500 text-sm">HP</div>
-              </div>
-              <div className="p-4 text-center font-medium dark:text-white">
-                {currentData?.hp} HP
-              </div>
-              <div className="p-4 text-center font-medium dark:text-white">
-                {compareCurrentData.hp} HP
-              </div>
-            </div>
-
-            <div className="grid grid-cols-3 divide-x divide-slate-200 dark:divide-slate-600">
-              <div className="p-4">
-                <div className="text-slate-500 text-sm">Almanya Fiyat</div>
-              </div>
-              <div className="p-4 text-center font-bold text-blue-600">
-                €{currentData?.de.toLocaleString()}
-              </div>
-              <div className="p-4 text-center font-bold text-orange-600">
-                €{compareCurrentData.de.toLocaleString()}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-3 divide-x divide-slate-200 bg-slate-50 dark:divide-slate-600 dark:bg-slate-700">
-              <div className="p-4">
-                <div className="text-slate-500 text-sm">Türkiye Fiyat</div>
-              </div>
-              <div className="p-4 text-center font-bold text-blue-600">
-                {formatCurrency(trPrice)}
-              </div>
-              <div className="p-4 text-center font-bold text-orange-600">
-                {formatCurrency(compareTrPrice)}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-3 divide-x divide-slate-200 dark:divide-slate-600">
-              <div className="p-4">
-                <div className="text-slate-500 text-sm">Fark</div>
-              </div>
-              <div className="col-span-2 p-4 text-center">
-                <span
-                  className={`inline-block rounded-full px-4 py-2 font-bold ${
-                    dePriceTRY > compareDePriceTRY
-                      ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
-                      : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
-                  }`}
-                >
-                  {dePriceTRY > compareDePriceTRY
-                    ? `${compareBrandName} €${(dePriceTRY - compareDePriceTRY).toLocaleString()} daha uygun`
-                    : `${brandName} €${(compareDePriceTRY - dePriceTRY).toLocaleString()} daha uygun`}
-                </span>
               </div>
             </div>
           </div>
         )}
 
         {taxInfo && (
-          <div className="mb-8 rounded-xl bg-white p-6 shadow-lg dark:bg-slate-800">
-            <h3 className="mb-4 font-semibold text-lg dark:text-white">
-              🧮 Vergi Kırılımı
+          <div className="mb-6 rounded-xl bg-white p-5 shadow-sm dark:bg-slate-800">
+            <h3 className="mb-4 font-semibold text-slate-900 dark:text-white">
+              Vergi Kırılımı
             </h3>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <tbody className="divide-y">
-                  <tr>
-                    <td className="py-3 text-slate-600 dark:text-slate-300">
-                      Gümrük Çıkış Fiyatı (EUR)
-                    </td>
-                    <td className="py-3 text-right font-medium dark:text-white">
-                      €{currentData?.de.toLocaleString()}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 text-slate-600 dark:text-slate-300">
-                      Döviz Kuru (USD)
-                    </td>
-                    <td className="py-3 text-right font-medium dark:text-white">
-                      {rates.USD.toFixed(2)} TL
-                    </td>
-                  </tr>
-                  <tr className="bg-slate-50 dark:bg-slate-700">
-                    <td className="py-3 font-medium text-slate-600 dark:text-slate-200">
-                      Matrah (Vergisiz Fiyat)
-                    </td>
-                    <td className="py-3 text-right font-medium dark:text-white">
-                      {formatCurrency(taxInfo.matrah)}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 text-slate-600 dark:text-slate-300">
-                      ÖTV Oranı
-                    </td>
-                    <td className="py-3 text-right font-medium dark:text-white">
-                      {formatPercent(taxInfo.otvRate)}
-                    </td>
-                  </tr>
-                  <tr className="bg-slate-50 dark:bg-slate-700">
-                    <td className="py-3 font-medium text-slate-600 dark:text-slate-200">
-                      ÖTV Tutarı
-                    </td>
-                    <td className="py-3 text-right font-medium text-red-600 dark:text-red-400">
-                      +{formatCurrency(taxInfo.otvAmount)}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 text-slate-600 dark:text-slate-300">
-                      KDV Oranı
-                    </td>
-                    <td className="py-3 text-right font-medium dark:text-white">
-                      {formatPercent(taxInfo.kdvRate)}
-                    </td>
-                  </tr>
-                  <tr className="bg-slate-50 dark:bg-slate-700">
-                    <td className="py-3 font-medium text-slate-600 dark:text-slate-200">
-                      KDV Tutarı
-                    </td>
-                    <td className="py-3 text-right font-medium text-red-600 dark:text-red-400">
-                      +{formatCurrency(taxInfo.kdvAmount)}
-                    </td>
-                  </tr>
-                  <tr className="border-slate-200 border-t-2 dark:border-slate-600">
-                    <td className="py-4 font-bold text-lg dark:text-white">
-                      Toplam (Türkiye)
-                    </td>
-                    <td className="py-4 text-right font-bold text-blue-600 text-lg dark:text-blue-400">
-                      {formatCurrency(taxInfo.totalPrice)}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-        <div
-          className={`rounded-xl p-6 ${diff > 0 ? "bg-red-50 dark:bg-red-900/30" : "bg-green-50 dark:bg-green-900/30"}`}
-        >
-          <div className="text-center">
-            <div className="mb-2 font-medium text-lg dark:text-white">
-              Türkiye'de fiyat Almanya'ya göre
-            </div>
-            <div
-              className={`font-bold text-3xl ${diff > 0 ? "text-red-600 dark:text-red-400" : "text-green-600 dark:text-green-400"}`}
-            >
-              {diff > 0 ? "+" : ""}
-              {formatPercent(diffPercent)} daha pahalı
-            </div>
-            <div className="mt-2 text-slate-600 dark:text-slate-300">
-              Fark: {formatCurrency(Math.abs(diff))}
-            </div>
-            <div className="mt-4 border-slate-300 border-t pt-4 dark:border-slate-600">
-              <div className="grid gap-3 text-sm md:grid-cols-2">
-                <div>
-                  <div className="text-slate-500 dark:text-slate-400">
-                    Türkiye (Asgari ücret {formatCurrency(minimumWageTR)} TL)
-                    ile:
+            <div className="space-y-4">
+              {[
+                { label: "Gümrük Fiyatı (EUR)", value: `€${currentData?.de.toLocaleString()}`, percent: 100, color: "bg-slate-400" },
+                { label: "Matrah (Vergisiz)", value: formatCurrency(taxInfo.matrah), percent: 100, color: "bg-blue-500" },
+                { label: `ÖTV (%${(taxInfo.otvRate * 100).toFixed(0)})`, value: formatCurrency(taxInfo.otvAmount), percent: (taxInfo.otvAmount / taxInfo.totalPrice) * 100, color: "bg-orange-500" },
+                { label: `KDV (%${(taxInfo.kdvRate * 100).toFixed(0)})`, value: formatCurrency(taxInfo.kdvAmount), percent: (taxInfo.kdvAmount / taxInfo.totalPrice) * 100, color: "bg-red-500" },
+              ].map((row) => (
+                <div key={row.label}>
+                  <div className="mb-1.5 flex items-center justify-between">
+                    <span className="text-sm text-slate-600 dark:text-slate-300">{row.label}</span>
+                    <span className="font-semibold text-slate-900 dark:text-white">{row.value}</span>
                   </div>
-                  <div className="mt-1 font-bold text-slate-900 dark:text-white">
-                    {monthsToAffordTR} ay (~{Math.floor(monthsToAffordTR / 12)}{" "}
-                    yıl)
+                  <div className="h-2.5 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700">
+                    <div className={`h-full rounded-full transition-all ${row.color}`} style={{ width: `${Math.min(row.percent, 100)}%` }} />
                   </div>
                 </div>
-                <div>
-                  <div className="text-slate-500 dark:text-slate-400">
-                    {brandCountryWage.name} (Asgari ücret{" "}
-                    {brandCountryWage.amount.toLocaleString()}{" "}
-                    {brandCountryWage.currency}) ile:
-                  </div>
-                  <div className="mt-1 font-bold text-slate-900 dark:text-white">
-                    ~
-                    {Math.ceil(
-                      (currentData?.de || 0) / brandCountryWage.amount,
-                    )}{" "}
-                    ay (~
-                    {Math.floor(
-                      Math.ceil(
-                        (currentData?.de || 0) / brandCountryWage.amount,
-                      ) / 12,
-                    )}{" "}
-                    yıl)
-                  </div>
+              ))}
+              <div className="border-t border-slate-200 pt-4 dark:border-slate-600">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-slate-900 dark:text-white">Toplam (Türkiye)</span>
+                  <span className="font-bold text-xl text-blue-600 dark:text-blue-400">
+                    {formatCurrency(taxInfo.totalPrice)}
+                  </span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
+
+        {(prevModel || nextModel) && (
+          <div className="mb-6 grid grid-cols-2 gap-3">
+            {prevModel ? (
+              <Link
+                href={`/compare/${brand}/${prevModel.id}`}
+                className="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm transition-all hover:shadow-md dark:bg-slate-800"
+              >
+                <ArrowLeft className="h-5 w-5 shrink-0 text-slate-400" />
+                <div className="min-w-0">
+                  <div className="text-xs text-slate-500">Önceki</div>
+                  <div className="truncate font-medium text-slate-900 dark:text-white">{prevModel.name}</div>
+                </div>
+              </Link>
+            ) : <div />}
+            {nextModel && (
+              <Link
+                href={`/compare/${brand}/${nextModel.id}`}
+                className="flex items-center justify-end gap-3 rounded-xl bg-white p-4 text-right shadow-sm transition-all hover:shadow-md dark:bg-slate-800"
+              >
+                <div className="min-w-0">
+                  <div className="text-xs text-slate-500">Sonraki</div>
+                  <div className="truncate font-medium text-slate-900 dark:text-white">{nextModel.name}</div>
+                </div>
+                <ArrowRight className="h-5 w-5 shrink-0 text-slate-400" />
+              </Link>
+            )}
+          </div>
+        )}
+
+        {relevantDealers.length > 0 && (
+          <div className="rounded-xl bg-white p-5 shadow-sm dark:bg-slate-800">
+            <h3 className="mb-3 font-semibold text-slate-900 dark:text-white">
+              Yetkili Bayiler
+            </h3>
+            <div className="space-y-2">
+              {relevantDealers.slice(0, 4).map((dealer: any) => (
+                <div key={dealer.id} className="flex items-center justify-between rounded-lg bg-slate-50 p-3 transition-colors hover:bg-slate-100 dark:bg-slate-700 dark:hover:bg-slate-600">
+                  <div className="min-w-0">
+                    <div className="font-medium text-slate-900 dark:text-white">{dealer.name}</div>
+                    <div className="flex items-center gap-1 text-xs text-slate-500">
+                      <MapPin className="h-3 w-3 shrink-0" />
+                      <span className="truncate">{dealer.city} • {dealer.address?.substring(0, 30)}</span>
+                    </div>
+                  </div>
+                  <a
+                    href={`tel:${dealer.phone}`}
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600 transition-colors hover:bg-blue-200 dark:bg-blue-900 dark:text-blue-300"
+                  >
+                    <Phone className="h-4 w-4" />
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {showLeadModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <div className="w-full max-w-md rounded-2xl bg-white p-6 dark:bg-slate-800">
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-0 sm:items-center sm:p-4" onClick={() => setShowLeadModal(false)}>
+          <div
+            className="w-full max-w-md rounded-t-2xl bg-white p-6 sm:rounded-2xl dark:bg-slate-800"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="mb-4 flex items-center justify-between">
-              <h3 className="font-bold text-xl text-slate-900 dark:text-white">
-                {brandName} {modelName} için Teklif Al
+              <h3 className="font-bold text-lg text-slate-900 dark:text-white">
+                Teklif Al
               </h3>
-              <button
-                onClick={() => setShowLeadModal(false)}
-                className="rounded-full p-2 hover:bg-slate-100 dark:hover:bg-slate-700"
-              >
+              <button onClick={() => setShowLeadModal(false)} className="rounded-full p-2 hover:bg-slate-100 dark:hover:bg-slate-700">
                 <X className="h-5 w-5 text-slate-500" />
               </button>
             </div>
 
-            <p className="mb-4 text-slate-500 dark:text-slate-400">
-              Bu araç için yetkili bayilerden özel teklif isteyin. En kısa
-              sürede size ulaşacaklar.
+            <p className="mb-4 text-sm text-slate-500 dark:text-slate-400">
+              {brandName} {modelName} için bayilerden teklif isteyin.
             </p>
-
-            {(() => {
-              const { dealers } = dealersData as {
-                dealers: {
-                  id: string;
-                  name: string;
-                  brand: string;
-                  city: string;
-                  phone: string;
-                  address: string;
-                }[];
-              };
-              const relevantDealers = dealers.filter((d) => d.brand === brand);
-
-              if (relevantDealers.length === 0) {
-                return (
-                  <div className="mb-4 rounded-lg bg-yellow-50 p-3 text-sm text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400">
-                    ℹ️ Bu marka için henüz bayi verisi yok. Formu doldurarak
-                    genel teklif talep edebilirsiniz.
-                  </div>
-                );
-              }
-
-              return (
-                <div className="mb-4">
-                  <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                    Yetkili Bayi Seç
-                  </label>
-                  <div className="max-h-40 space-y-2 overflow-y-auto rounded-lg border border-slate-200 p-2 dark:border-slate-600">
-                    {relevantDealers.slice(0, 5).map((dealer) => (
-                      <label
-                        key={dealer.id}
-                        className="flex cursor-pointer items-center gap-2 rounded p-2 hover:bg-slate-50 dark:hover:bg-slate-700"
-                      >
-                        <input
-                          type="radio"
-                          name="dealer"
-                          value={dealer.id}
-                          className="text-blue-600"
-                          defaultChecked={dealer.id === relevantDealers[0]?.id}
-                        />
-                        <div>
-                          <div className="text-sm font-medium text-slate-900 dark:text-white">
-                            {dealer.name}
-                          </div>
-                          <div className="text-xs text-slate-500">
-                            {dealer.city} • {dealer.address.substring(0, 40)}...
-                          </div>
-                        </div>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-              );
-            })()}
 
             {leadSent ? (
               <div className="flex flex-col items-center justify-center py-8">
-                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-                  <Check className="h-8 w-8 text-green-600" />
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
+                  <Check className="h-7 w-7 text-green-600" />
                 </div>
-                <h4 className="font-semibold text-lg text-slate-900 dark:text-white">
-                  Talep Gönderildi!
-                </h4>
-                <p className="text-slate-500 text-center">
-                  Bayiler en kısa sürede sizinle iletişime geçecek.
-                </p>
+                <h4 className="font-semibold text-lg text-slate-900 dark:text-white">Gönderildi!</h4>
+                <p className="text-sm text-slate-500">Bayiler en kısa sürede ulaşacak.</p>
               </div>
             ) : (
-              <form onSubmit={handleLeadSubmit} className="space-y-4">
-                <div>
-                  <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                    Ad Soyad
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={leadForm.name}
-                    onChange={(e) =>
-                      setLeadForm({ ...leadForm, name: e.target.value })
-                    }
-                    className="w-full rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-                    placeholder="Adınızı girin"
-                  />
-                </div>
-
-                <div>
-                  <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                    Telefon
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    value={leadForm.phone}
-                    onChange={(e) =>
-                      setLeadForm({ ...leadForm, phone: e.target.value })
-                    }
-                    className="w-full rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-                    placeholder="05XX XXX XX XX"
-                  />
-                </div>
-
-                <div>
-                  <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                    Şehir
-                  </label>
-                  <select
-                    required
-                    value={leadForm.city}
-                    onChange={(e) =>
-                      setLeadForm({ ...leadForm, city: e.target.value })
-                    }
-                    className="w-full rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-                  >
-                    <option value="">Şehir seçin</option>
-                    <option value="İstanbul">İstanbul</option>
-                    <option value="Ankara">Ankara</option>
-                    <option value="İzmir">İzmir</option>
-                    <option value="Bursa">Bursa</option>
-                    <option value="Antalya">Antalya</option>
-                    <option value="Adana">Adana</option>
-                    <option value="Konya">Konya</option>
-                    <option value="Gaziantep">Gaziantep</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="mb-1 block text-sm font-medium text-slate-700 dark:text-slate-300">
-                    Mesaj (İsteğe bağlı)
-                  </label>
-                  <textarea
-                    value={leadForm.message}
-                    onChange={(e) =>
-                      setLeadForm({ ...leadForm, message: e.target.value })
-                    }
-                    className="w-full rounded-xl border border-slate-200 px-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-                    rows={3}
-                    placeholder={`${brandName} ${modelName} için fiyat teklifi istiyorum`}
-                  />
-                </div>
-
+              <form onSubmit={handleLeadSubmit} className="space-y-3">
+                <input
+                  type="text"
+                  required
+                  value={leadForm.name}
+                  onChange={(e) => setLeadForm({ ...leadForm, name: e.target.value })}
+                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+                  placeholder="Adınız Soyadınız"
+                />
+                <input
+                  type="tel"
+                  required
+                  value={leadForm.phone}
+                  onChange={(e) => setLeadForm({ ...leadForm, phone: e.target.value })}
+                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+                  placeholder="05XX XXX XX XX"
+                />
+                <select
+                  required
+                  value={leadForm.city}
+                  onChange={(e) => setLeadForm({ ...leadForm, city: e.target.value })}
+                  className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-white"
+                >
+                  <option value="">Şehir seçin</option>
+                  {["İstanbul","Ankara","İzmir","Bursa","Antalya","Adana","Konya","Gaziantep"].map((c) => (
+                    <option key={c} value={c}>{c}</option>
+                  ))}
+                </select>
                 <button
                   type="submit"
-                  className="w-full rounded-xl bg-green-600 py-3 font-semibold text-white transition-all hover:bg-green-700"
+                  className="w-full rounded-xl bg-green-600 py-3 text-sm font-semibold text-white transition-all hover:bg-green-700 active:scale-[0.98]"
                 >
-                  Teklif İste →
+                  Teklif İste
                 </button>
               </form>
             )}

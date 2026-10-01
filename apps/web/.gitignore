@@ -34,6 +34,7 @@
 .DS_Store
 *.pem
 *.local
+*.db
 
 # Logs
 npm-debug.log*

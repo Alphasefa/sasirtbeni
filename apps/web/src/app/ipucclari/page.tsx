@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  ArrowLeft,
   Wrench,
   Fuel,
   Battery,
@@ -164,10 +163,10 @@ const tips = [
 
 export default function Ipuclari() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:from-slate-900 dark:to-slate-800">
-      <div className="container mx-auto max-w-4xl px-4 py-12">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      <div className="container mx-auto max-w-6xl px-4 py-8">
         <div className="mb-8 text-center">
-          <h1 className="mb-4 font-bold text-4xl text-slate-900 dark:text-white">
+          <h1 className="mb-4 text-3xl font-bold text-slate-900 dark:text-white">
             Araç Sahipleri İçin İpuçları
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
@@ -180,7 +179,7 @@ export default function Ipuclari() {
           {tips.map((tip, idx) => (
             <div
               key={idx}
-              className="group rounded-2xl bg-white p-6 shadow-md transition-all hover:shadow-lg dark:bg-slate-800"
+              className="group rounded-xl bg-white p-6 shadow-md transition-all hover:shadow-lg dark:bg-slate-800"
             >
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600 dark:bg-blue-900">
@@ -202,7 +201,7 @@ export default function Ipuclari() {
           ))}
         </div>
 
-        <div className="mt-12 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 p-8 text-center text-white">
+        <div className="mt-12 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 p-8 text-center text-white">
           <h2 className="mb-4 font-bold text-2xl">Hala Sorularınız mı Var?</h2>
           <p className="mb-6 text-blue-100">
             Araç fiyatları, servis ücretleri veya herhangi bir konuda yardımcı
@@ -211,13 +210,13 @@ export default function Ipuclari() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/dealers?tab=service"
-              className="rounded-xl bg-white px-6 py-3 font-bold text-blue-600 transition-colors hover:bg-blue-50"
+              className="rounded-xl bg-white px-6 py-3 font-semibold text-blue-600 transition-colors hover:bg-blue-50"
             >
               Servis Bul
             </Link>
             <Link
               href="/compare"
-              className="rounded-xl bg-blue-500 px-6 py-3 font-bold text-white transition-colors hover:bg-blue-400"
+              className="rounded-xl bg-blue-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-400"
             >
               Fiyat Karşılaştır
             </Link>

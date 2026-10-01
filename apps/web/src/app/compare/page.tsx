@@ -1,8 +1,8 @@
 "use client";
 
-import { ArrowLeft, Car, Check, Plus, Search, Star, X } from "lucide-react";
+import { Car, Check, Plus, Search, Star, X, Clock } from "lucide-react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import vehicleData from "@/shared/data/vehicles.json";
 import {
   detectFuelType,
@@ -24,22 +24,29 @@ const { brands, models } = vehicleData as {
   >;
 };
 
-const countryFlags: Record<string, string> = {
-  US: "https://flagcdn.com/w40/us.png",
-  DE: "https://flagcdn.com/w40/de.png",
-  JP: "https://flagcdn.com/w40/jp.png",
-  KR: "https://flagcdn.com/w40/kr.png",
-  FR: "https://flagcdn.com/w40/fr.png",
-  IT: "https://flagcdn.com/w40/it.png",
-  GB: "https://flagcdn.com/w40/gb.png",
-  TR: "https://flagcdn.com/w40/tr.png",
-  CN: "https://flagcdn.com/w40/cn.png",
-};
+const popularBrands = [
+  "volkswagen",
+  "toyota",
+  "renault",
+  "hyundai",
+  "fiat",
+  "bmw",
+  "mercedes",
+  "audi",
+];
 
 interface SelectedVehicle {
   brand: string;
   model: string;
   versionIndex: number;
+}
+
+interface SearchResult {
+  brandId: string;
+  brandName: string;
+  modelId: string;
+  modelName: string;
+  country: string;
 }
 
 function formatCurrencyTRY(amount: number): string {
@@ -54,15 +61,18 @@ export default function ComparePage() {
   const [selectedVehicles, setSelectedVehicles] = useState<SelectedVehicle[]>(
     [],
   );
-  const [showBrandSelect, setShowBrandSelect] = useState<number | null>(null);
+  const [activeSlot, setActiveSlot] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [showModelSelect, setShowModelSelect] = useState<number | null>(null);
   const [fuelFilter, setFuelFilter] = useState<string>("Tümü");
   const [transmissionFilter, setTransmissionFilter] = useState<string>("Tümü");
   const [priceFilter, setPriceFilter] = useState<string>("Tümü");
   const [favorites, setFavorites] = useState<
     { key: string; timestamp?: number; priceTR?: number; priceDE?: number }[]
   >([]);
+  const [recentComparisons, setRecentComparisons] = useState<
+    { brand: string; model: string; name: string }[]
+  >([]);
+  const searchRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const saved = localStorage.getItem("favoriteVehicles");
@@ -74,7 +84,16 @@ export default function ComparePage() {
         );
       } catch {}
     }
+
+    const recent = JSON.parse(localStorage.getItem("recentComparisons") || "[]");
+    setRecentComparisons(recent);
   }, []);
+
+  useEffect(() => {
+    if (activeSlot !== null && searchRef.current) {
+      searchRef.current.focus();
+    }
+  }, [activeSlot]);
 
   const addToFavorites = (vehicle: SelectedVehicle) => {
     const key = `${vehicle.brand}|${vehicle.model}|${vehicle.versionIndex}`;
@@ -106,41 +125,65 @@ export default function ComparePage() {
     return favorites.some((f) => f.key === key);
   };
 
-  const filteredBrands = brands.filter((b) =>
-    b.name.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
+  const searchResults: SearchResult[] = searchTerm
+    ? brands
+        .flatMap((brand) => {
+          const brandModels = models[brand.id] || [];
+          return brandModels.map((model) => ({
+            brandId: brand.id,
+            brandName: brand.name,
+            modelId: model.id,
+            modelName: model.name,
+            country: brand.country,
+          }));
+        })
+        .filter(
+          (item) =>
+            item.brandName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            item.modelName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            `${item.brandName} ${item.modelName}`
+              .toLowerCase()
+              .includes(searchTerm.toLowerCase()),
+        )
+        .slice(0, 12)
+    : [];
 
-  const selectBrand = (brandId: string, slotIndex: number) => {
-    const brandModels = models[brandId] || [];
-    if (brandModels.length > 0) {
-      setSelectedVehicles((prev) => {
-        const updated = [...prev];
-        updated[slotIndex] = {
-          brand: brandId,
-          model: brandModels[0].id,
-          versionIndex: 0,
-        };
-        return updated;
-      });
-    }
-    setShowBrandSelect(null);
-    setSearchTerm("");
-    setShowModelSelect(slotIndex);
-  };
-
-  const selectModel = (modelId: string, slotIndex: number) => {
+  const selectVehicle = (result: SearchResult, slotIndex: number) => {
     setSelectedVehicles((prev) => {
       const updated = [...prev];
-      if (updated[slotIndex]) {
-        updated[slotIndex] = {
-          ...updated[slotIndex],
-          model: modelId,
-          versionIndex: 0,
-        };
-      }
+      updated[slotIndex] = {
+        brand: result.brandId,
+        model: result.modelId,
+        versionIndex: 0,
+      };
       return updated;
     });
-    setShowModelSelect(null);
+
+    const brandName = result.brandName;
+    const modelName = result.modelName;
+    const recent = JSON.parse(localStorage.getItem("recentComparisons") || "[]");
+    const newRecent = [
+      { brand: result.brandId, model: result.modelId, name: `${brandName} ${modelName}` },
+      ...recent.filter((r: any) => !(r.brand === result.brandId && r.model === result.modelId)),
+    ].slice(0, 6);
+    localStorage.setItem("recentComparisons", JSON.stringify(newRecent));
+    setRecentComparisons(newRecent);
+
+    setActiveSlot(null);
+    setSearchTerm("");
+  };
+
+  const quickSelect = (brandId: string, modelId: string, slotIndex: number) => {
+    setSelectedVehicles((prev) => {
+      const updated = [...prev];
+      updated[slotIndex] = {
+        brand: brandId,
+        model: modelId,
+        versionIndex: 0,
+      };
+      return updated;
+    });
+    setActiveSlot(null);
   };
 
   const selectVersion = (versionIndex: number, slotIndex: number) => {
@@ -226,7 +269,7 @@ export default function ComparePage() {
   const selectedCount = selectedVehicles.filter(Boolean).length;
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:from-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
       <div className="container mx-auto max-w-6xl px-4 py-8">
         <div className="mb-6">
           <h1 className="mb-2 font-bold text-3xl text-slate-900 dark:text-white">
@@ -237,42 +280,52 @@ export default function ComparePage() {
           </p>
         </div>
 
-        <div className="mb-6 flex flex-wrap gap-3">
-          <select
-            value={fuelFilter}
-            onChange={(e) => setFuelFilter(e.target.value)}
-            className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-          >
-            <option value="Tümü">Yakıt: Tümü</option>
-            {fuelTypes.map((f) => (
-              <option key={f} value={f}>
-                {f}
-              </option>
-            ))}
-          </select>
-          <select
-            value={transmissionFilter}
-            onChange={(e) => setTransmissionFilter(e.target.value)}
-            className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-          >
-            <option value="Tümü">Vites: Tümü</option>
-            {transmissions.map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
-          <select
-            value={priceFilter}
-            onChange={(e) => setPriceFilter(e.target.value)}
-            className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-          >
-            {priceRanges.map((p) => (
-              <option key={p.label} value={p.label}>
-                {p.label}
-              </option>
-            ))}
-          </select>
+        <div className="mb-6 flex flex-wrap gap-2">
+          {fuelTypes.map((f) => (
+            <button
+              key={f}
+              onClick={() => setFuelFilter(fuelFilter === f ? "Tümü" : f)}
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                fuelFilter === f
+                  ? "bg-blue-600 text-white shadow-sm"
+                  : "bg-white text-slate-600 shadow-sm hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-300"
+              }`}
+            >
+              {f}
+            </button>
+          ))}
+          <div className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
+          {transmissions.map((t) => (
+            <button
+              key={t}
+              onClick={() =>
+                setTransmissionFilter(transmissionFilter === t ? "Tümü" : t)
+              }
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                transmissionFilter === t
+                  ? "bg-blue-600 text-white shadow-sm"
+                  : "bg-white text-slate-600 shadow-sm hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-300"
+              }`}
+            >
+              {t}
+            </button>
+          ))}
+          <div className="h-6 w-px bg-slate-200 dark:bg-slate-700" />
+          {priceRanges.map((p) => (
+            <button
+              key={p.label}
+              onClick={() =>
+                setPriceFilter(priceFilter === p.label ? "Tümü" : p.label)
+              }
+              className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
+                priceFilter === p.label
+                  ? "bg-blue-600 text-white shadow-sm"
+                  : "bg-white text-slate-600 shadow-sm hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-300"
+              }`}
+            >
+              {p.label}
+            </button>
+          ))}
         </div>
 
         <div className="mb-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -283,8 +336,8 @@ export default function ComparePage() {
             return (
               <div key={slotIndex} className="relative">
                 {isSelected ? (
-                  <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg transition-all hover:shadow-xl dark:bg-slate-800">
-                    <div className="absolute right-3 top-3 flex gap-2 z-10">
+                  <div className="relative overflow-hidden rounded-xl bg-white shadow-lg transition-all hover:shadow-xl dark:bg-slate-800">
+                    <div className="absolute right-3 top-3 z-10 flex gap-2">
                       <button
                         onClick={() =>
                           isFavorite(vehicle)
@@ -308,12 +361,12 @@ export default function ComparePage() {
                     </div>
 
                     <div className="p-6">
-                      <div className="mb-4 flex h-20 w-full items-center justify-center rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 text-4xl font-bold text-slate-600 dark:from-slate-700 dark:to-slate-600 dark:text-slate-300">
+                      <div className="mb-4 flex h-20 w-full items-center justify-center rounded-xl bg-gradient-to-br from-slate-100 to-slate-200 text-4xl font-bold text-slate-600 dark:from-slate-700 dark:to-slate-600 dark:text-slate-300">
                         {getBrandName(vehicle.brand).charAt(0)}
                       </div>
 
                       <div className="mb-4 text-center">
-                        <div className="font-bold text-lg text-slate-900 dark:text-white">
+                        <div className="text-lg font-bold text-slate-900 dark:text-white">
                           {getBrandName(vehicle.brand)}
                         </div>
                         <div className="text-slate-500 dark:text-slate-400">
@@ -368,8 +421,11 @@ export default function ComparePage() {
                   </div>
                 ) : (
                   <button
-                    onClick={() => setShowBrandSelect(slotIndex)}
-                    className="flex h-full min-h-[280px] w-full flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed border-slate-300 bg-white p-6 text-slate-400 transition-all hover:border-blue-400 hover:text-blue-500 hover:shadow-lg dark:border-slate-600 dark:bg-slate-800"
+                    onClick={() => {
+                      setActiveSlot(slotIndex);
+                      setSearchTerm("");
+                    }}
+                    className="flex h-full min-h-[280px] w-full flex-col items-center justify-center gap-3 rounded-xl border-2 border-dashed border-slate-300 bg-white p-6 text-slate-400 transition-all hover:border-blue-400 hover:text-blue-500 hover:shadow-lg dark:border-slate-600 dark:bg-slate-800"
                   >
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700">
                       <Plus className="h-8 w-8" />
@@ -379,94 +435,129 @@ export default function ComparePage() {
                   </button>
                 )}
 
-                {showBrandSelect === slotIndex && (
-                  <div className="absolute left-0 right-0 top-0 z-50 mt-2 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-600 dark:bg-slate-800">
+                {activeSlot === slotIndex && (
+                  <div className="absolute left-0 right-0 top-0 z-50 mt-2 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-2xl dark:border-slate-600 dark:bg-slate-800">
                     <div className="border-b border-slate-200 p-4 dark:border-slate-600">
                       <div className="relative">
                         <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
                         <input
+                          ref={searchRef}
                           type="text"
-                          placeholder="Marka ara..."
+                          placeholder="Marka veya model ara... (ör: Volkswagen Golf)"
                           value={searchTerm}
                           onChange={(e) => setSearchTerm(e.target.value)}
-                          className="w-full rounded-xl border border-slate-200 bg-slate-50 pl-10 pr-4 py-3 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
-                          autoFocus
+                          className="w-full rounded-xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-4 dark:border-slate-600 dark:bg-slate-700 dark:text-white"
                         />
                       </div>
                     </div>
+
+                    {!searchTerm && (
+                      <div className="border-b border-slate-200 p-4 dark:border-slate-600">
+                        <div className="mb-2 text-xs font-medium text-slate-500">
+                          Popüler Markalar
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {popularBrands.map((brandId) => {
+                            const brand = brands.find((b) => b.id === brandId);
+                            if (!brand) return null;
+                            const brandModels = models[brandId] || [];
+                            return (
+                              <button
+                                key={brandId}
+                                onClick={() => {
+                                  if (brandModels.length > 0) {
+                                    selectVehicle(
+                                      {
+                                        brandId: brand.id,
+                                        brandName: brand.name,
+                                        modelId: brandModels[0].id,
+                                        modelName: brandModels[0].name,
+                                        country: brand.country,
+                                      },
+                                      slotIndex,
+                                    );
+                                  }
+                                }}
+                                className="flex items-center gap-2 rounded-xl bg-slate-100 px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-blue-50 hover:text-blue-600 dark:bg-slate-700 dark:text-slate-300 dark:hover:bg-blue-900"
+                              >
+                                <span className="font-bold">{brand.name.charAt(0)}</span>
+                                {brand.name}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+
+                    {!searchTerm && recentComparisons.length > 0 && (
+                      <div className="border-b border-slate-200 p-4 dark:border-slate-600">
+                        <div className="mb-2 flex items-center gap-2 text-xs font-medium text-slate-500">
+                          <Clock className="h-3 w-3" />
+                          Son Karşılaştırmalar
+                        </div>
+                        <div className="space-y-1">
+                          {recentComparisons.slice(0, 4).map((recent, idx) => (
+                            <button
+                              key={idx}
+                              onClick={() =>
+                                quickSelect(recent.brand, recent.model, slotIndex)
+                              }
+                              className="flex w-full items-center gap-3 rounded-xl px-3 py-2 text-left text-sm transition-colors hover:bg-slate-100 dark:hover:bg-slate-700"
+                            >
+                              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 font-bold text-slate-600 dark:bg-slate-600 dark:text-slate-300">
+                                {recent.name.charAt(0)}
+                              </div>
+                              <span className="font-medium text-slate-700 dark:text-slate-300">
+                                {recent.name}
+                              </span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
                     <div className="max-h-80 overflow-y-auto p-2">
-                      {filteredBrands.slice(0, 15).map((brand) => (
-                        <button
-                          key={brand.id}
-                          onClick={() => selectBrand(brand.id, slotIndex)}
-                          className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left transition-colors hover:bg-slate-100 dark:hover:bg-slate-700"
-                        >
-                          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 font-bold text-slate-600 dark:bg-slate-600 dark:text-slate-300">
-                            {brand.name.charAt(0)}
-                          </div>
-                          <div className="flex-1">
-                            <span className="font-medium text-slate-900 dark:text-white">
-                              {brand.name}
+                      {searchResults.length > 0 ? (
+                        searchResults.map((result) => (
+                          <button
+                            key={`${result.brandId}-${result.modelId}`}
+                            onClick={() => selectVehicle(result, slotIndex)}
+                            className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left transition-colors hover:bg-slate-100 dark:hover:bg-slate-700"
+                          >
+                            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 font-bold text-slate-600 dark:bg-slate-600 dark:text-slate-300">
+                              {result.brandName.charAt(0)}
+                            </div>
+                            <div className="flex-1">
+                              <div className="font-medium text-slate-900 dark:text-white">
+                                {result.brandName}
+                              </div>
+                              <div className="text-sm text-slate-500">
+                                {result.modelName}
+                              </div>
+                            </div>
+                            <span className="text-xs text-slate-400">
+                              {models[result.brandId]?.find((m) => m.id === result.modelId)?.versions.length || 0} versiyon
                             </span>
-                          </div>
-                          <img
-                            src={countryFlags[brand.country]}
-                            alt=""
-                            className="h-5 w-8"
-                          />
-                        </button>
-                      ))}
-                      {filteredBrands.length === 0 && (
+                          </button>
+                        ))
+                      ) : searchTerm ? (
                         <p className="p-4 text-center text-slate-500">
-                          Marka bulunamadı
+                          &quot;{searchTerm}&quot; için sonuç bulunamadı
                         </p>
+                      ) : (
+                        <div className="p-4 text-center text-slate-500">
+                          Marka veya model adı yazarak arama yapın
+                        </div>
                       )}
                     </div>
                     <button
-                      onClick={() => setShowBrandSelect(null)}
-                      className="w-full border-t border-slate-200 py-3 text-center font-medium text-slate-500 hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-700"
-                    >
-                      Kapat
-                    </button>
-                  </div>
-                )}
-
-                {showModelSelect === slotIndex && vehicle && (
-                  <div className="absolute left-0 right-0 top-0 z-50 mt-2 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-600 dark:bg-slate-800">
-                    <div className="border-b border-slate-200 p-4 dark:border-slate-600">
-                      <div className="flex items-center gap-3">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 font-bold text-slate-600 dark:bg-slate-600 dark:text-slate-300">
-                          {getBrandName(vehicle.brand).charAt(0)}
-                        </div>
-                        <span className="font-bold text-slate-900 dark:text-white">
-                          {getBrandName(vehicle.brand)} - Model seç
-                        </span>
-                      </div>
-                    </div>
-                    <div className="max-h-80 overflow-y-auto p-2">
-                      {models[vehicle.brand]?.map((model) => (
-                        <button
-                          key={model.id}
-                          onClick={() => selectModel(model.id, slotIndex)}
-                          className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-left transition-colors hover:bg-slate-100 dark:hover:bg-slate-700"
-                        >
-                          <span className="font-medium text-slate-900 dark:text-white">
-                            {model.name}
-                          </span>
-                          <span className="text-sm text-slate-500">
-                            {model.versions.length} versiyon
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                    <button
                       onClick={() => {
-                        setShowModelSelect(null);
-                        setShowBrandSelect(slotIndex);
+                        setActiveSlot(null);
+                        setSearchTerm("");
                       }}
                       className="w-full border-t border-slate-200 py-3 text-center font-medium text-slate-500 hover:bg-slate-50 dark:border-slate-600 dark:hover:bg-slate-700"
                     >
-                      ← Marka değiştir
+                      Kapat
                     </button>
                   </div>
                 )}
@@ -476,9 +567,9 @@ export default function ComparePage() {
         </div>
 
         {selectedCount >= 2 && (
-          <div className="overflow-hidden rounded-2xl bg-white shadow-xl dark:bg-slate-800">
+          <div className="overflow-hidden rounded-xl bg-white shadow-xl dark:bg-slate-800">
             <div className="border-b border-slate-200 bg-slate-50 px-6 py-4 dark:border-slate-600 dark:bg-slate-700">
-              <h2 className="font-bold text-lg text-slate-900 dark:text-white">
+              <h2 className="text-lg font-bold text-slate-900 dark:text-white">
                 Karşılaştırma Tablosu
               </h2>
               <p className="text-sm text-slate-500 dark:text-slate-400">
@@ -495,7 +586,7 @@ export default function ComparePage() {
                     {selectedVehicles.filter(Boolean).map((v, idx) => (
                       <th
                         key={idx}
-                        className="px-6 py-4 text-left font-semibold dark:text-white"
+                        className="px-6 py-4 text-left font-bold dark:text-white"
                       >
                         <div className="flex items-center gap-2">
                           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-200 font-bold text-slate-600 dark:bg-slate-600 dark:text-slate-300">
@@ -571,7 +662,7 @@ export default function ComparePage() {
         )}
 
         {selectedCount < 2 && (
-          <div className="rounded-2xl bg-gradient-to-r from-blue-50 to-indigo-50 p-8 text-center dark:from-blue-900/30 dark:to-indigo-900/30">
+          <div className="rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 p-8 text-center dark:from-blue-900/30 dark:to-indigo-900/30">
             <Car className="mx-auto mb-4 h-12 w-12 text-blue-400" />
             <p className="text-lg font-medium text-blue-600 dark:text-blue-400">
               En az 2 araç seçerek karşılaştırmaya başlayabilirsiniz
@@ -594,7 +685,7 @@ export default function ComparePage() {
               <Link
                 key={name}
                 href={`/compare/${brand}/${model}`}
-                className="rounded-full bg-white px-5 py-2 text-sm font-medium text-slate-600 shadow-sm transition-all hover:shadow-md hover:text-blue-600 dark:bg-slate-800 dark:text-slate-300"
+                className="rounded-full bg-white px-5 py-2 text-sm font-medium text-slate-600 shadow-sm transition-all hover:text-blue-600 hover:shadow-md dark:bg-slate-800 dark:text-slate-300"
               >
                 {name} →
               </Link>

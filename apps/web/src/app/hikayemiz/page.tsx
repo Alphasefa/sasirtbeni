@@ -3,16 +3,16 @@ import { ArrowLeft } from "lucide-react";
 
 export default function Hikayemiz() {
   return (
-    <div className="min-h-screen bg-slate-50 dark:from-slate-900 dark:to-slate-800">
-      <div className="container mx-auto max-w-4xl px-4 py-12">
-        <div className="rounded-3xl bg-white p-8 shadow-lg dark:bg-slate-800">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900">
+      <div className="container mx-auto max-w-6xl px-4 py-8">
+        <div className="rounded-xl bg-white p-8 shadow-lg dark:bg-slate-800">
           <div className="mb-8 flex justify-center">
             <div className="flex h-20 w-20 items-center justify-center rounded-full bg-orange-100 text-5xl">
               🚗
             </div>
           </div>
 
-          <h1 className="mb-8 text-center font-bold text-4xl text-slate-900 dark:text-white">
+          <h1 className="mb-8 text-center text-3xl font-bold text-slate-900 dark:text-white">
             Biz O Manzarayi Gördük ve Bir Söz Verdik
           </h1>
 
